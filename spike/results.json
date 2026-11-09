@@ -1,0 +1,1880 @@
+{
+  "B1": {
+    "status": "Pass",
+    "inputs": {
+      "tags": [
+        "cfs-spike",
+        "spike-B1"
+      ],
+      "note": "CFS spike B1: price override test. Not a real order.",
+      "acceptAutomaticDiscounts": false,
+      "allowDiscountCodesInCheckout": false,
+      "lineItems": [
+        {
+          "variantId": "gid://shopify/ProductVariant/55773143433555",
+          "quantity": 1,
+          "priceOverride": {
+            "amount": "1089.98",
+            "currencyCode": "GBP"
+          },
+          "customAttributes": [
+            {
+              "key": "CFS drawer assignment",
+              "value": "17020886"
+            },
+            {
+              "key": "CFS drawer charge",
+              "value": "89.99"
+            }
+          ]
+        }
+      ]
+    },
+    "expected": {
+      "checkoutMerchandise": "1089.98",
+      "catalogueAfter": "999.99"
+    },
+    "actual": {
+      "draft": {
+        "id": "gid://shopify/DraftOrder/1587832389971",
+        "name": "#D7",
+        "status": "OPEN",
+        "invoiceUrl": "https://urban-deco-dev.myshopify.com/109635797331/invoices/5ed27cb19af9f3a9b73e264554531ebc",
+        "taxesIncluded": true,
+        "tags": [
+          "cfs-spike",
+          "spike-B1"
+        ],
+        "subtotalPriceSet": {
+          "shopMoney": {
+            "amount": "1089.98",
+            "currencyCode": "GBP"
+          }
+        },
+        "totalDiscountsSet": {
+          "shopMoney": {
+            "amount": "0.0",
+            "currencyCode": "GBP"
+          }
+        },
+        "totalTaxSet": {
+          "shopMoney": {
+            "amount": "0.0",
+            "currencyCode": "GBP"
+          }
+        },
+        "totalPriceSet": {
+          "shopMoney": {
+            "amount": "1089.98",
+            "currencyCode": "GBP"
+          }
+        },
+        "lineItems": {
+          "nodes": [
+            {
+              "title": "CFS TEST - Natural Gold 3500 Platform Top Divan Bed - Sizes Available",
+              "sku": "CFS-TYPE-146477-17019157",
+              "quantity": 1,
+              "variant": {
+                "id": "gid://shopify/ProductVariant/55773143433555"
+              },
+              "originalUnitPriceSet": {
+                "shopMoney": {
+                  "amount": "1089.98"
+                }
+              },
+              "discountedTotalSet": {
+                "shopMoney": {
+                  "amount": "1089.98"
+                }
+              },
+              "customAttributes": [
+                {
+                  "key": "CFS drawer assignment",
+                  "value": "17020886"
+                },
+                {
+                  "key": "CFS drawer charge",
+                  "value": "89.99"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "catalogueBefore": {
+        "price": "999.99",
+        "inventoryQuantity": 100
+      },
+      "catalogueAfter": {
+        "price": "999.99",
+        "inventoryQuantity": 100
+      }
+    },
+    "ids": {
+      "draftOrder": "gid://shopify/DraftOrder/1587832389971",
+      "name": "#D7",
+      "order": "gid://shopify/Order/8371412599123",
+      "orderName": "#1026",
+      "confirmationNumber": "PULWMPIQ8"
+    },
+    "updatedAt": "2026-11-09T10:04:53.655Z",
+    "evidence": {
+      "checkoutScreenshot": "ScreenShots/Screenshot 2026-11-09 153017.png",
+      "checkoutSubtotal": "1089.98",
+      "checkoutTotal": "1089.98",
+      "shipping": "FREE",
+      "taxLineShown": false
+    },
+    "order": {
+      "test": true,
+      "gateway": "bogus",
+      "transaction": "SALE SUCCESS 1089.98",
+      "financialStatus": "PAID",
+      "sourceName": "shopify_draft_order",
+      "variantRetained": true,
+      "attributesRetained": true,
+      "tagsCarried": true,
+      "totalTax": "0.0",
+      "taxesIncluded": true
+    },
+    "catalogue": {
+      "priceAfter": "999.99",
+      "stockBefore": 100,
+      "stockAfter": 99
+    },
+    "notes": [
+      "Payment was completed during this step, earlier than planned; useful early evidence for B7, which still needs a discounted order.",
+      "Order tax is 0.00, so VAT behaviour remains unverified."
+    ]
+  },
+  "B2": {
+    "status": "Pass",
+    "discount": {
+      "id": "gid://shopify/DiscountAutomaticNode/1863264502099",
+      "automaticDiscount": {
+        "title": "CFS SPIKE B2 - 10% automatic",
+        "status": "ACTIVE",
+        "startsAt": "2026-11-09T10:26:18Z",
+        "endsAt": "2026-11-10T10:26:18Z"
+      }
+    },
+    "ids": {
+      "discount": "gid://shopify/DiscountAutomaticNode/1863264502099",
+      "draftOrder": "gid://shopify/DraftOrder/1587841565011",
+      "name": "#D8",
+      "invoiceUrl": "https://urban-deco-dev.myshopify.com/109635797331/invoices/96c4993c747c87a638e07c868e7207ea"
+    },
+    "updatedAt": "2026-11-09T10:27:56.885Z",
+    "inputs": {
+      "tags": [
+        "cfs-spike",
+        "spike-B2"
+      ],
+      "note": "CFS spike B2: automatic discount on an overridden price. Not a real order.",
+      "acceptAutomaticDiscounts": true,
+      "allowDiscountCodesInCheckout": false,
+      "lineItems": [
+        {
+          "variantId": "gid://shopify/ProductVariant/55773143433555",
+          "quantity": 1,
+          "priceOverride": {
+            "amount": "1089.98",
+            "currencyCode": "GBP"
+          },
+          "customAttributes": [
+            {
+              "key": "CFS drawer assignment",
+              "value": "17020886"
+            },
+            {
+              "key": "CFS drawer charge",
+              "value": "89.99"
+            }
+          ]
+        }
+      ]
+    },
+    "expected": {
+      "checkoutTotal": "about 980.98",
+      "discountedOnce": true,
+      "catalogueAfter": "999.99"
+    },
+    "actual": {
+      "draft": {
+        "id": "gid://shopify/DraftOrder/1587841565011",
+        "name": "#D8",
+        "status": "OPEN",
+        "invoiceUrl": "https://urban-deco-dev.myshopify.com/109635797331/invoices/96c4993c747c87a638e07c868e7207ea",
+        "taxesIncluded": true,
+        "tags": [
+          "cfs-spike",
+          "spike-B2"
+        ],
+        "subtotalPriceSet": {
+          "shopMoney": {
+            "amount": "980.99",
+            "currencyCode": "GBP"
+          }
+        },
+        "totalDiscountsSet": {
+          "shopMoney": {
+            "amount": "108.99",
+            "currencyCode": "GBP"
+          }
+        },
+        "totalTaxSet": {
+          "shopMoney": {
+            "amount": "0.0",
+            "currencyCode": "GBP"
+          }
+        },
+        "totalPriceSet": {
+          "shopMoney": {
+            "amount": "980.99",
+            "currencyCode": "GBP"
+          }
+        },
+        "lineItems": {
+          "nodes": [
+            {
+              "title": "CFS TEST - Natural Gold 3500 Platform Top Divan Bed - Sizes Available",
+              "sku": "CFS-TYPE-146477-17019157",
+              "quantity": 1,
+              "variant": {
+                "id": "gid://shopify/ProductVariant/55773143433555"
+              },
+              "originalUnitPriceSet": {
+                "shopMoney": {
+                  "amount": "1089.98"
+                }
+              },
+              "discountedTotalSet": {
+                "shopMoney": {
+                  "amount": "980.99"
+                }
+              },
+              "customAttributes": [
+                {
+                  "key": "CFS drawer assignment",
+                  "value": "17020886"
+                },
+                {
+                  "key": "CFS drawer charge",
+                  "value": "89.99"
+                }
+              ]
+            }
+          ]
+        },
+        "acceptAutomaticDiscounts": true,
+        "platformDiscounts": [
+          {
+            "title": "CFS SPIKE B2 - 10% automatic",
+            "automaticDiscount": true,
+            "code": null,
+            "totalAmount": {
+              "amount": "108.99",
+              "currencyCode": "GBP"
+            }
+          }
+        ]
+      },
+      "catalogueBefore": {
+        "price": "999.99",
+        "inventoryQuantity": 99
+      },
+      "catalogueAfter": {
+        "price": "999.99",
+        "inventoryQuantity": 99
+      }
+    },
+    "evidence": {
+      "checkoutScreenshot": "ScreenShots/Screenshot 2026-11-09 155723.png",
+      "lineWas": "1089.98",
+      "lineNow": "980.99",
+      "discountShown": "CFS SPIKE B2 - 10% AUTOMATIC (-108.99)",
+      "subtotal": "980.99",
+      "shipping": "FREE (Standard)",
+      "total": "980.99",
+      "totalSavings": "108.99",
+      "taxLineShown": false,
+      "paid": false
+    },
+    "notes": [
+      "Discount applied once, to the overridden price. Shopify rounded the discount down: 108.99, not 109.00.",
+      "No VAT line shown, so VAT remains unverified."
+    ]
+  },
+  "B3": {
+    "status": "Pass",
+    "discount": {
+      "id": "gid://shopify/DiscountCodeNode/1863266042195",
+      "codeDiscount": {
+        "title": "CFS SPIKE B3 - 10% code",
+        "status": "ACTIVE",
+        "startsAt": "2026-11-09T10:29:25Z",
+        "endsAt": "2026-11-10T10:29:25Z"
+      }
+    },
+    "ids": {
+      "discount": "gid://shopify/DiscountCodeNode/1863266042195",
+      "code": "CFSSPIKE10",
+      "draftOrder": "gid://shopify/DraftOrder/1587842515283",
+      "name": "#D9",
+      "invoiceUrl": "https://urban-deco-dev.myshopify.com/109635797331/invoices/ed70a8de798f1c07570db9a85d2a263a"
+    },
+    "updatedAt": "2026-11-09T10:31:26.462Z",
+    "inputs": {
+      "tags": [
+        "cfs-spike",
+        "spike-B3"
+      ],
+      "note": "CFS spike B3: shopper-entered code on an overridden price. Not a real order.",
+      "acceptAutomaticDiscounts": false,
+      "allowDiscountCodesInCheckout": true,
+      "lineItems": [
+        {
+          "variantId": "gid://shopify/ProductVariant/55773143433555",
+          "quantity": 1,
+          "priceOverride": {
+            "amount": "1089.98",
+            "currencyCode": "GBP"
+          },
+          "customAttributes": [
+            {
+              "key": "CFS drawer assignment",
+              "value": "17020886"
+            },
+            {
+              "key": "CFS drawer charge",
+              "value": "89.99"
+            }
+          ]
+        }
+      ]
+    },
+    "expected": {
+      "beforeCode": "1089.98",
+      "afterCode": "980.99",
+      "codeBoxShown": true,
+      "catalogueAfter": "999.99"
+    },
+    "actual": {
+      "draft": {
+        "id": "gid://shopify/DraftOrder/1587842515283",
+        "name": "#D9",
+        "status": "OPEN",
+        "invoiceUrl": "https://urban-deco-dev.myshopify.com/109635797331/invoices/ed70a8de798f1c07570db9a85d2a263a",
+        "taxesIncluded": true,
+        "tags": [
+          "cfs-spike",
+          "spike-B3"
+        ],
+        "subtotalPriceSet": {
+          "shopMoney": {
+            "amount": "1089.98",
+            "currencyCode": "GBP"
+          }
+        },
+        "totalDiscountsSet": {
+          "shopMoney": {
+            "amount": "0.0",
+            "currencyCode": "GBP"
+          }
+        },
+        "totalTaxSet": {
+          "shopMoney": {
+            "amount": "0.0",
+            "currencyCode": "GBP"
+          }
+        },
+        "totalPriceSet": {
+          "shopMoney": {
+            "amount": "1089.98",
+            "currencyCode": "GBP"
+          }
+        },
+        "lineItems": {
+          "nodes": [
+            {
+              "title": "CFS TEST - Natural Gold 3500 Platform Top Divan Bed - Sizes Available",
+              "sku": "CFS-TYPE-146477-17019157",
+              "quantity": 1,
+              "variant": {
+                "id": "gid://shopify/ProductVariant/55773143433555"
+              },
+              "originalUnitPriceSet": {
+                "shopMoney": {
+                  "amount": "1089.98"
+                }
+              },
+              "discountedTotalSet": {
+                "shopMoney": {
+                  "amount": "1089.98"
+                }
+              },
+              "customAttributes": [
+                {
+                  "key": "CFS drawer assignment",
+                  "value": "17020886"
+                },
+                {
+                  "key": "CFS drawer charge",
+                  "value": "89.99"
+                }
+              ]
+            }
+          ]
+        },
+        "acceptAutomaticDiscounts": false,
+        "allowDiscountCodesInCheckout": true,
+        "platformDiscounts": []
+      },
+      "catalogueBefore": {
+        "price": "999.99",
+        "inventoryQuantity": 99
+      },
+      "catalogueAfter": {
+        "price": "999.99",
+        "inventoryQuantity": 99
+      }
+    },
+    "evidence": {
+      "checkoutScreenshot": "ScreenShots/Screenshot 2026-11-09 160053.png",
+      "codeBoxShown": true,
+      "codeEntered": "CFSSPIKE10",
+      "lineWas": "1089.98",
+      "lineNow": "980.99",
+      "discountShown": "CFSSPIKE10 (-108.99)",
+      "subtotal": "980.99",
+      "total": "980.99",
+      "totalSavings": "108.99",
+      "taxLineShown": false,
+      "shippingShown": "Not yet calculated, no address entered",
+      "paid": false
+    },
+    "notes": [
+      "Shopper-entered code applied once to the overridden price at hosted checkout.",
+      "The pre-code checkout total was not captured on screen; the draft itself was 1089.98 with no discounts before checkout."
+    ]
+  },
+  "B4a": {
+    "status": "Pass",
+    "inputs": {
+      "tags": [
+        "cfs-spike",
+        "spike-B4a"
+      ],
+      "note": "CFS spike B4a: non-combinable automatic discount and code. Not a real order.",
+      "acceptAutomaticDiscounts": true,
+      "allowDiscountCodesInCheckout": true,
+      "lineItems": [
+        {
+          "variantId": "gid://shopify/ProductVariant/55773143433555",
+          "quantity": 1,
+          "priceOverride": {
+            "amount": "1089.98",
+            "currencyCode": "GBP"
+          },
+          "customAttributes": [
+            {
+              "key": "CFS drawer assignment",
+              "value": "17020886"
+            },
+            {
+              "key": "CFS drawer charge",
+              "value": "89.99"
+            }
+          ]
+        }
+      ]
+    },
+    "expected": {
+      "total": "980.99",
+      "stacked": false,
+      "failureIf": "total near 882"
+    },
+    "actual": {
+      "draft": {
+        "id": "gid://shopify/DraftOrder/1587843596627",
+        "name": "#D10",
+        "status": "OPEN",
+        "invoiceUrl": "https://urban-deco-dev.myshopify.com/109635797331/invoices/f0b3677e07af14a81d67a1d2191b1261",
+        "taxesIncluded": true,
+        "tags": [
+          "cfs-spike",
+          "spike-B4a"
+        ],
+        "subtotalPriceSet": {
+          "shopMoney": {
+            "amount": "980.99",
+            "currencyCode": "GBP"
+          }
+        },
+        "totalDiscountsSet": {
+          "shopMoney": {
+            "amount": "108.99",
+            "currencyCode": "GBP"
+          }
+        },
+        "totalTaxSet": {
+          "shopMoney": {
+            "amount": "0.0",
+            "currencyCode": "GBP"
+          }
+        },
+        "totalPriceSet": {
+          "shopMoney": {
+            "amount": "980.99",
+            "currencyCode": "GBP"
+          }
+        },
+        "lineItems": {
+          "nodes": [
+            {
+              "title": "CFS TEST - Natural Gold 3500 Platform Top Divan Bed - Sizes Available",
+              "sku": "CFS-TYPE-146477-17019157",
+              "quantity": 1,
+              "variant": {
+                "id": "gid://shopify/ProductVariant/55773143433555"
+              },
+              "originalUnitPriceSet": {
+                "shopMoney": {
+                  "amount": "1089.98"
+                }
+              },
+              "discountedTotalSet": {
+                "shopMoney": {
+                  "amount": "980.99"
+                }
+              },
+              "customAttributes": [
+                {
+                  "key": "CFS drawer assignment",
+                  "value": "17020886"
+                },
+                {
+                  "key": "CFS drawer charge",
+                  "value": "89.99"
+                }
+              ]
+            }
+          ]
+        },
+        "acceptAutomaticDiscounts": true,
+        "allowDiscountCodesInCheckout": true,
+        "platformDiscounts": [
+          {
+            "title": "CFS SPIKE B2 - 10% automatic",
+            "automaticDiscount": true,
+            "code": null,
+            "totalAmount": {
+              "amount": "108.99",
+              "currencyCode": "GBP"
+            }
+          }
+        ]
+      },
+      "catalogueBefore": {
+        "price": "999.99",
+        "inventoryQuantity": 99
+      },
+      "catalogueAfter": {
+        "price": "999.99",
+        "inventoryQuantity": 99
+      }
+    },
+    "ids": {
+      "draftOrder": "gid://shopify/DraftOrder/1587843596627",
+      "name": "#D10",
+      "invoiceUrl": "https://urban-deco-dev.myshopify.com/109635797331/invoices/f0b3677e07af14a81d67a1d2191b1261"
+    },
+    "updatedAt": "2026-11-09T10:36:04.809Z",
+    "evidence": {
+      "checkoutScreenshot": "ScreenShots/Screenshot 2026-11-09 160516.png",
+      "codeEntered": "CFSSPIKE10",
+      "codeRefused": true,
+      "message": "CFSSPIKE10 could not be used with your existing discounts.",
+      "discountKept": "CFS SPIKE B2 - 10% AUTOMATIC (-108.99)",
+      "subtotal": "980.99",
+      "total": "980.99",
+      "totalSavings": "108.99",
+      "stacked": false,
+      "paid": false
+    },
+    "notes": [
+      "Shopify refused the second non-combinable discount and kept the automatic one."
+    ]
+  },
+  "B4b": {
+    "status": "Pass",
+    "discounts": {
+      "automatic": {
+        "id": "gid://shopify/DiscountAutomaticNode/1863264502099",
+        "automaticDiscount": {
+          "title": "CFS SPIKE B2 - 10% automatic",
+          "status": "ACTIVE",
+          "combinesWith": {
+            "orderDiscounts": false,
+            "productDiscounts": true,
+            "shippingDiscounts": false
+          }
+        }
+      },
+      "code": {
+        "id": "gid://shopify/DiscountCodeNode/1863266042195",
+        "codeDiscount": {
+          "title": "CFS SPIKE B3 - 10% code",
+          "status": "ACTIVE",
+          "combinesWith": {
+            "orderDiscounts": false,
+            "productDiscounts": true,
+            "shippingDiscounts": false
+          }
+        }
+      }
+    },
+    "updatedAt": "2026-11-09T10:40:47.029Z",
+    "inputs": {
+      "tags": [
+        "cfs-spike",
+        "spike-B4b"
+      ],
+      "note": "CFS spike B4b: combinable automatic discount and code. Not a real order.",
+      "acceptAutomaticDiscounts": true,
+      "allowDiscountCodesInCheckout": true,
+      "lineItems": [
+        {
+          "variantId": "gid://shopify/ProductVariant/55773143433555",
+          "quantity": 1,
+          "priceOverride": {
+            "amount": "1089.98",
+            "currencyCode": "GBP"
+          },
+          "customAttributes": [
+            {
+              "key": "CFS drawer assignment",
+              "value": "17020886"
+            },
+            {
+              "key": "CFS drawer charge",
+              "value": "89.99"
+            }
+          ]
+        }
+      ]
+    },
+    "expected": {
+      "note": "Follows Shopify combination settings; each applied discount shown. Total recorded, not assumed."
+    },
+    "actual": {
+      "draft": {
+        "id": "gid://shopify/DraftOrder/1587845595475",
+        "name": "#D11",
+        "status": "OPEN",
+        "invoiceUrl": "https://urban-deco-dev.myshopify.com/109635797331/invoices/ade8768287f26fa73829b8c9cd2a3a9f",
+        "taxesIncluded": true,
+        "tags": [
+          "cfs-spike",
+          "spike-B4b"
+        ],
+        "subtotalPriceSet": {
+          "shopMoney": {
+            "amount": "980.99",
+            "currencyCode": "GBP"
+          }
+        },
+        "totalDiscountsSet": {
+          "shopMoney": {
+            "amount": "108.99",
+            "currencyCode": "GBP"
+          }
+        },
+        "totalTaxSet": {
+          "shopMoney": {
+            "amount": "0.0",
+            "currencyCode": "GBP"
+          }
+        },
+        "totalPriceSet": {
+          "shopMoney": {
+            "amount": "980.99",
+            "currencyCode": "GBP"
+          }
+        },
+        "lineItems": {
+          "nodes": [
+            {
+              "title": "CFS TEST - Natural Gold 3500 Platform Top Divan Bed - Sizes Available",
+              "sku": "CFS-TYPE-146477-17019157",
+              "quantity": 1,
+              "variant": {
+                "id": "gid://shopify/ProductVariant/55773143433555"
+              },
+              "originalUnitPriceSet": {
+                "shopMoney": {
+                  "amount": "1089.98"
+                }
+              },
+              "discountedTotalSet": {
+                "shopMoney": {
+                  "amount": "980.99"
+                }
+              },
+              "customAttributes": [
+                {
+                  "key": "CFS drawer assignment",
+                  "value": "17020886"
+                },
+                {
+                  "key": "CFS drawer charge",
+                  "value": "89.99"
+                }
+              ]
+            }
+          ]
+        },
+        "acceptAutomaticDiscounts": true,
+        "allowDiscountCodesInCheckout": true,
+        "platformDiscounts": [
+          {
+            "title": "CFS SPIKE B2 - 10% automatic",
+            "automaticDiscount": true,
+            "code": null,
+            "totalAmount": {
+              "amount": "108.99",
+              "currencyCode": "GBP"
+            }
+          }
+        ]
+      },
+      "catalogueBefore": {
+        "price": "999.99",
+        "inventoryQuantity": 99
+      },
+      "catalogueAfter": {
+        "price": "999.99",
+        "inventoryQuantity": 99
+      }
+    },
+    "ids": {
+      "automaticDiscount": "gid://shopify/DiscountAutomaticNode/1863264502099",
+      "codeDiscount": "gid://shopify/DiscountCodeNode/1863266042195",
+      "draftOrder": "gid://shopify/DraftOrder/1587845595475",
+      "name": "#D11",
+      "invoiceUrl": "https://urban-deco-dev.myshopify.com/109635797331/invoices/ade8768287f26fa73829b8c9cd2a3a9f"
+    },
+    "evidence": {
+      "checkoutScreenshot": "ScreenShots/Screenshot 2026-11-09 161019.png",
+      "codeEntered": "CFSSPIKE10",
+      "codeAccepted": true,
+      "draftDiscountBeforeCode": "CFS SPIKE B2 - 10% automatic (-108.99)",
+      "discountShownAfterCode": "CFSSPIKE10 (-108.99)",
+      "subtotal": "980.99",
+      "total": "980.99",
+      "totalSavings": "108.99",
+      "stacked": false,
+      "paid": false
+    },
+    "notes": [
+      "With product-discount combining enabled, the code was accepted and replaced the automatic discount on the single line. Only one discount was applied.",
+      "Both discounts were the same size, so this does not show which wins when they differ.",
+      "Two lines, and order or shipping discount combinations, were not tested."
+    ]
+  },
+  "B5": {
+    "status": "Pass",
+    "discountStatus": "EXPIRED",
+    "discount": {
+      "id": "gid://shopify/DiscountCodeNode/1863271022931",
+      "codeDiscount": {
+        "title": "CFS SPIKE B5 - expired code",
+        "status": "EXPIRED",
+        "startsAt": "2026-11-07T10:43:16Z",
+        "endsAt": "2026-11-09T09:43:16Z"
+      }
+    },
+    "ids": {
+      "discount": "gid://shopify/DiscountCodeNode/1863271022931",
+      "code": "CFSSPIKEOLD",
+      "draftOrder": "gid://shopify/DraftOrder/1587847561555",
+      "name": "#D12",
+      "invoiceUrl": "https://urban-deco-dev.myshopify.com/109635797331/invoices/abb0cc38e4ab5f526ead270803b8af55"
+    },
+    "updatedAt": "2026-11-09T10:45:26.798Z",
+    "inputs": {
+      "tags": [
+        "cfs-spike",
+        "spike-B5"
+      ],
+      "note": "CFS spike B5: invalid and expired codes. Not a real order.",
+      "acceptAutomaticDiscounts": false,
+      "allowDiscountCodesInCheckout": true,
+      "lineItems": [
+        {
+          "variantId": "gid://shopify/ProductVariant/55773143433555",
+          "quantity": 1,
+          "priceOverride": {
+            "amount": "1089.98",
+            "currencyCode": "GBP"
+          },
+          "customAttributes": [
+            {
+              "key": "CFS drawer assignment",
+              "value": "17020886"
+            },
+            {
+              "key": "CFS drawer charge",
+              "value": "89.99"
+            }
+          ]
+        }
+      ]
+    },
+    "expected": {
+      "invalidCodeRefused": true,
+      "expiredCodeRefused": true,
+      "total": "1089.98"
+    },
+    "actual": {
+      "draft": {
+        "id": "gid://shopify/DraftOrder/1587847561555",
+        "name": "#D12",
+        "status": "OPEN",
+        "invoiceUrl": "https://urban-deco-dev.myshopify.com/109635797331/invoices/abb0cc38e4ab5f526ead270803b8af55",
+        "taxesIncluded": true,
+        "tags": [
+          "cfs-spike",
+          "spike-B5"
+        ],
+        "subtotalPriceSet": {
+          "shopMoney": {
+            "amount": "1089.98",
+            "currencyCode": "GBP"
+          }
+        },
+        "totalDiscountsSet": {
+          "shopMoney": {
+            "amount": "0.0",
+            "currencyCode": "GBP"
+          }
+        },
+        "totalTaxSet": {
+          "shopMoney": {
+            "amount": "0.0",
+            "currencyCode": "GBP"
+          }
+        },
+        "totalPriceSet": {
+          "shopMoney": {
+            "amount": "1089.98",
+            "currencyCode": "GBP"
+          }
+        },
+        "lineItems": {
+          "nodes": [
+            {
+              "title": "CFS TEST - Natural Gold 3500 Platform Top Divan Bed - Sizes Available",
+              "sku": "CFS-TYPE-146477-17019157",
+              "quantity": 1,
+              "variant": {
+                "id": "gid://shopify/ProductVariant/55773143433555"
+              },
+              "originalUnitPriceSet": {
+                "shopMoney": {
+                  "amount": "1089.98"
+                }
+              },
+              "discountedTotalSet": {
+                "shopMoney": {
+                  "amount": "1089.98"
+                }
+              },
+              "customAttributes": [
+                {
+                  "key": "CFS drawer assignment",
+                  "value": "17020886"
+                },
+                {
+                  "key": "CFS drawer charge",
+                  "value": "89.99"
+                }
+              ]
+            }
+          ]
+        },
+        "acceptAutomaticDiscounts": false,
+        "allowDiscountCodesInCheckout": true
+      },
+      "catalogueBefore": {
+        "price": "999.99",
+        "inventoryQuantity": 99
+      },
+      "catalogueAfter": {
+        "price": "999.99",
+        "inventoryQuantity": 99
+      }
+    },
+    "evidence": {
+      "checkoutScreenshot": "ScreenShots/Screenshot 2026-11-09 161448.png",
+      "screenshotShows": "CFSSPIKEOLD refused: Enter a valid discount code; total 1089.98",
+      "userReported": "NOTAREALCODE gave the same message; total stayed 1089.98",
+      "subtotal": "1089.98",
+      "total": "1089.98",
+      "paid": false
+    },
+    "notes": [
+      "Expired code captured on screen. Invalid code result reported by the user in chat, not captured."
+    ]
+  },
+  "B6": {
+    "status": "Pass",
+    "inputs": {
+      "tags": [
+        "cfs-spike",
+        "spike-B6"
+      ],
+      "note": "CFS spike B6: mixed basket. Not a real order.",
+      "acceptAutomaticDiscounts": true,
+      "allowDiscountCodesInCheckout": false,
+      "lineItems": [
+        {
+          "variantId": "gid://shopify/ProductVariant/55773143433555",
+          "quantity": 1,
+          "priceOverride": {
+            "amount": "1089.98",
+            "currencyCode": "GBP"
+          },
+          "customAttributes": [
+            {
+              "key": "CFS drawer assignment",
+              "value": "17020886"
+            },
+            {
+              "key": "CFS drawer charge",
+              "value": "89.99"
+            }
+          ]
+        },
+        {
+          "variantId": "gid://shopify/ProductVariant/55724611273043",
+          "quantity": 1
+        }
+      ]
+    },
+    "expected": {
+      "configuredLine": "980.99",
+      "ordinaryLine": "149.00",
+      "total": "1129.99"
+    },
+    "actual": {
+      "draft": {
+        "id": "gid://shopify/DraftOrder/1587848577363",
+        "name": "#D13",
+        "status": "OPEN",
+        "invoiceUrl": "https://urban-deco-dev.myshopify.com/109635797331/invoices/6d6795661d7b23bcdb1af43f945a9859",
+        "taxesIncluded": true,
+        "tags": [
+          "cfs-spike",
+          "spike-B6"
+        ],
+        "subtotalPriceSet": {
+          "shopMoney": {
+            "amount": "1129.99",
+            "currencyCode": "GBP"
+          }
+        },
+        "totalDiscountsSet": {
+          "shopMoney": {
+            "amount": "108.99",
+            "currencyCode": "GBP"
+          }
+        },
+        "totalTaxSet": {
+          "shopMoney": {
+            "amount": "0.0",
+            "currencyCode": "GBP"
+          }
+        },
+        "totalPriceSet": {
+          "shopMoney": {
+            "amount": "1129.99",
+            "currencyCode": "GBP"
+          }
+        },
+        "lineItems": {
+          "nodes": [
+            {
+              "title": "CFS TEST - Natural Gold 3500 Platform Top Divan Bed - Sizes Available",
+              "sku": "CFS-TYPE-146477-17019157",
+              "quantity": 1,
+              "variant": {
+                "id": "gid://shopify/ProductVariant/55773143433555"
+              },
+              "originalUnitPriceSet": {
+                "shopMoney": {
+                  "amount": "1089.98"
+                }
+              },
+              "discountedTotalSet": {
+                "shopMoney": {
+                  "amount": "980.99"
+                }
+              },
+              "customAttributes": [
+                {
+                  "key": "CFS drawer assignment",
+                  "value": "17020886"
+                },
+                {
+                  "key": "CFS drawer charge",
+                  "value": "89.99"
+                }
+              ]
+            },
+            {
+              "title": "Essential Open Coil Mattress",
+              "sku": "TEST-EOC-S",
+              "quantity": 1,
+              "variant": {
+                "id": "gid://shopify/ProductVariant/55724611273043"
+              },
+              "originalUnitPriceSet": {
+                "shopMoney": {
+                  "amount": "149.0"
+                }
+              },
+              "discountedTotalSet": {
+                "shopMoney": {
+                  "amount": "149.0"
+                }
+              },
+              "customAttributes": []
+            }
+          ]
+        },
+        "acceptAutomaticDiscounts": true,
+        "platformDiscounts": [
+          {
+            "title": "CFS SPIKE B2 - 10% automatic",
+            "automaticDiscount": true,
+            "code": null,
+            "totalAmount": {
+              "amount": "108.99",
+              "currencyCode": "GBP"
+            }
+          }
+        ]
+      },
+      "cataloguesBefore": {
+        "configured": {
+          "price": "999.99",
+          "inventoryQuantity": 99
+        },
+        "ordinary": {
+          "price": "149.00",
+          "inventoryQuantity": 20
+        }
+      },
+      "cataloguesAfter": {
+        "configured": {
+          "price": "999.99",
+          "inventoryQuantity": 99
+        },
+        "ordinary": {
+          "price": "149.00",
+          "inventoryQuantity": 20
+        }
+      }
+    },
+    "ids": {
+      "draftOrder": "gid://shopify/DraftOrder/1587848577363",
+      "name": "#D13",
+      "invoiceUrl": "https://urban-deco-dev.myshopify.com/109635797331/invoices/6d6795661d7b23bcdb1af43f945a9859"
+    },
+    "updatedAt": "2026-11-09T10:48:50.011Z",
+    "evidence": {
+      "checkoutScreenshot": "ScreenShots/Screenshot 2026-11-09 161819.png",
+      "configuredLine": "980.99 (was 1089.98)",
+      "ordinaryLine": "149.00",
+      "discountShown": "CFS SPIKE B2 - 10% AUTOMATIC (-108.99), on Natural Gold only",
+      "subtotal": "1129.99",
+      "total": "1129.99",
+      "totalSavings": "108.99",
+      "paid": false
+    },
+    "notes": [
+      "Configured and ordinary lines shared one hosted checkout. The product-targeted discount did not touch the ordinary line."
+    ]
+  },
+  "B7": {
+    "status": "Pass",
+    "ids": {
+      "draftOrder": "gid://shopify/DraftOrder (see B6)",
+      "draftName": "#D13",
+      "order": "gid://shopify/Order/8372053016915",
+      "orderName": "#1027",
+      "confirmationNumber": "MML8LMTGG"
+    },
+    "order": {
+      "test": true,
+      "gateway": "bogus",
+      "transaction": "SALE SUCCESS 1129.99",
+      "financialStatus": "PAID",
+      "subtotal": "1129.99",
+      "discounts": "108.99",
+      "shipping": "0.0",
+      "tax": "0.0",
+      "taxesIncluded": true,
+      "total": "1129.99",
+      "discountApplication": "AutomaticDiscountApplication: CFS SPIKE B2 - 10% automatic",
+      "configuredLine": {
+        "sku": "CFS-TYPE-146477-17019157",
+        "original": "1089.98",
+        "discounted": "980.99",
+        "allocation": "108.99",
+        "attributesRetained": true
+      },
+      "ordinaryLine": {
+        "sku": "TEST-EOC-S",
+        "original": "149.0",
+        "discounted": "149.0",
+        "allocations": 0
+      }
+    },
+    "stock": {
+      "configured": {
+        "before": 99,
+        "after": 98
+      },
+      "ordinary": {
+        "before": 20,
+        "after": 19
+      }
+    },
+    "catalogue": {
+      "configuredPrice": "999.99",
+      "ordinaryPrice": "149.00"
+    },
+    "notes": [
+      "Paid order from the B6 mixed-basket draft. Order tax is 0.00, so VAT remains unverified. Earlier undiscounted payment evidence is B1 order #1026."
+    ],
+    "updatedAt": "2026-11-09T10:50:38.733Z"
+  },
+  "B8": {
+    "status": "Pass (bypass confirmed)",
+    "inputs": {
+      "permalink": "/cart/55773143433555:1",
+      "addJs": "POST /cart/add.js with variant 55773143433555"
+    },
+    "expected": "Documents whether a published configured variant can be bought at base price",
+    "evidence": {
+      "checkoutScreenshot": "ScreenShots/Screenshot 2026-11-09 162122.png",
+      "was": "999.99",
+      "now": "900.00",
+      "discountShown": "CFS SPIKE B2 - 10% AUTOMATIC (-99.99)",
+      "total": "900.00",
+      "configurationOnLine": false,
+      "paid": false,
+      "addJs": {
+        "viaBrowser": true,
+        "status": 200,
+        "variant": 55773143433555,
+        "pricePence": 99999
+      }
+    },
+    "unmeasured": {
+      "storefrontApi": "Not tested."
+    },
+    "notes": [
+      "Direct cart link reached checkout at the 999.99 base price with no configuration details, and the store discount applied on top.",
+      "/cart/add.js accepted the published configured variant at 999.99 when run from a browser past the storefront password. The earlier scripted 401 was not a block."
+    ],
+    "updatedAt": "2026-11-09T10:54:58.295Z"
+  },
+  "B9": {
+    "status": "Pass",
+    "inputs": {
+      "variant": "gid://shopify/ProductVariant/55752708358483",
+      "product": "CFS PILOT - Alice Static Armchair",
+      "productStatus": "ACTIVE",
+      "publishedAt": null,
+      "tracked": false,
+      "price": "639.89"
+    },
+    "expected": "Refused through direct cart link and /cart/add.js, while the published comparison succeeds",
+    "evidence": {
+      "permalink": {
+        "screenshot": "ScreenShots/Screenshot 2026-11-09 162401.png",
+        "url": "/cart/55752708358483:1",
+        "result": "Something went wrong. Link no longer exists."
+      },
+      "addJs": {
+        "viaBrowser": true,
+        "status": 422,
+        "error": "Cannot find variant"
+      },
+      "comparison": {
+        "variant": 55773143433555,
+        "addJsStatus": 200
+      }
+    },
+    "unmeasured": {
+      "storefrontApi": "Not tested.",
+      "otherChannels": "publishedAt covers the Online Store only; this login cannot read other sales-channel publications.",
+      "acceleratedCheckout": "Not directly tested; no product page exists for an unpublished product."
+    },
+    "notes": [
+      "Used the existing unpublished Alice pilot instead of creating a new spike product."
+    ],
+    "updatedAt": "2026-11-09T10:54:58.297Z"
+  },
+  "B10a": {
+    "status": "Pass",
+    "discount": {
+      "id": "gid://shopify/DiscountAutomaticNode/1863275610451",
+      "automaticDiscount": {
+        "title": "CFS SPIKE B10 - 10% automatic unpublished",
+        "status": "ACTIVE",
+        "startsAt": "2026-11-09T10:56:17Z",
+        "endsAt": "2026-11-10T10:56:17Z"
+      }
+    },
+    "ids": {
+      "discount": "gid://shopify/DiscountAutomaticNode/1863275610451",
+      "draftOrder": "gid://shopify/DraftOrder/1587851559251",
+      "name": "#D14",
+      "invoiceUrl": "https://urban-deco-dev.myshopify.com/109635797331/invoices/257efac0fc0f664d6b1720155beaf2a3"
+    },
+    "updatedAt": "2026-11-09T10:56:55.654Z",
+    "inputs": {
+      "tags": [
+        "cfs-spike",
+        "spike-B10a"
+      ],
+      "note": "CFS spike B10a: automatic discount on an unpublished product. Not a real order.",
+      "acceptAutomaticDiscounts": true,
+      "allowDiscountCodesInCheckout": false,
+      "lineItems": [
+        {
+          "variantId": "gid://shopify/ProductVariant/55752708358483",
+          "quantity": 1,
+          "priceOverride": {
+            "amount": "672.28",
+            "currencyCode": "GBP"
+          },
+          "customAttributes": [
+            {
+              "key": "CFS test option",
+              "value": "Band C : Kenzo Chocolate, 32.39"
+            }
+          ]
+        }
+      ]
+    },
+    "expected": {
+      "checkoutTotal": "about 605.06",
+      "discountedOnce": true,
+      "catalogueAfter": "639.89"
+    },
+    "actual": {
+      "draft": {
+        "id": "gid://shopify/DraftOrder/1587851559251",
+        "name": "#D14",
+        "status": "OPEN",
+        "invoiceUrl": "https://urban-deco-dev.myshopify.com/109635797331/invoices/257efac0fc0f664d6b1720155beaf2a3",
+        "taxesIncluded": true,
+        "tags": [
+          "cfs-spike",
+          "spike-B10a"
+        ],
+        "subtotalPriceSet": {
+          "shopMoney": {
+            "amount": "605.06",
+            "currencyCode": "GBP"
+          }
+        },
+        "totalDiscountsSet": {
+          "shopMoney": {
+            "amount": "67.22",
+            "currencyCode": "GBP"
+          }
+        },
+        "totalTaxSet": {
+          "shopMoney": {
+            "amount": "0.0",
+            "currencyCode": "GBP"
+          }
+        },
+        "totalPriceSet": {
+          "shopMoney": {
+            "amount": "605.06",
+            "currencyCode": "GBP"
+          }
+        },
+        "lineItems": {
+          "nodes": [
+            {
+              "title": "CFS PILOT - Alice Static Armchair",
+              "sku": "",
+              "quantity": 1,
+              "variant": {
+                "id": "gid://shopify/ProductVariant/55752708358483"
+              },
+              "originalUnitPriceSet": {
+                "shopMoney": {
+                  "amount": "672.28"
+                }
+              },
+              "discountedTotalSet": {
+                "shopMoney": {
+                  "amount": "605.06"
+                }
+              },
+              "customAttributes": [
+                {
+                  "key": "CFS test option",
+                  "value": "Band C : Kenzo Chocolate, 32.39"
+                }
+              ]
+            }
+          ]
+        },
+        "acceptAutomaticDiscounts": true,
+        "platformDiscounts": [
+          {
+            "title": "CFS SPIKE B10 - 10% automatic unpublished",
+            "automaticDiscount": true,
+            "code": null,
+            "totalAmount": {
+              "amount": "67.22",
+              "currencyCode": "GBP"
+            }
+          }
+        ]
+      },
+      "catalogueBefore": {
+        "price": "639.89",
+        "inventoryQuantity": -4
+      },
+      "catalogueAfter": {
+        "price": "639.89",
+        "inventoryQuantity": -4
+      }
+    },
+    "evidence": {
+      "checkoutScreenshot": "C:/Users/Admin/AppData/Local/Temp/claude-chrome-screenshots-oJqtAI/screenshot-1794221809567-0.jpg",
+      "readBy": "Claude in Chrome",
+      "lineWas": "672.28",
+      "lineNow": "605.06",
+      "discountShown": "CFS SPIKE B10 - 10% AUTOMATIC UNPUBLISHED (-67.22)",
+      "subtotal": "605.06",
+      "total": "605.06",
+      "totalSavings": "67.22",
+      "taxLineShown": false,
+      "paid": false
+    },
+    "notes": [
+      "Automatic discount applied once to an overridden price on a product with no Online Store publication."
+    ]
+  },
+  "B10b": {
+    "status": "Pass",
+    "discount": {
+      "id": "gid://shopify/DiscountCodeNode/1863276626259",
+      "codeDiscount": {
+        "title": "CFS SPIKE B10 - 10% code unpublished",
+        "status": "ACTIVE",
+        "startsAt": "2026-11-09T10:58:31Z",
+        "endsAt": "2026-11-10T10:58:31Z"
+      }
+    },
+    "ids": {
+      "discount": "gid://shopify/DiscountCodeNode/1863276626259",
+      "code": "CFSSPIKEALICE",
+      "draftOrder": "gid://shopify/DraftOrder/1587852116307",
+      "name": "#D15",
+      "invoiceUrl": "https://urban-deco-dev.myshopify.com/109635797331/invoices/f5eb53c10827c67c019734cd835978da"
+    },
+    "updatedAt": "2026-11-09T10:59:20.161Z",
+    "inputs": {
+      "tags": [
+        "cfs-spike",
+        "spike-B10b"
+      ],
+      "note": "CFS spike B10b: shopper-entered code on an unpublished product. Not a real order.",
+      "acceptAutomaticDiscounts": false,
+      "allowDiscountCodesInCheckout": true,
+      "lineItems": [
+        {
+          "variantId": "gid://shopify/ProductVariant/55752708358483",
+          "quantity": 1,
+          "priceOverride": {
+            "amount": "672.28",
+            "currencyCode": "GBP"
+          },
+          "customAttributes": [
+            {
+              "key": "CFS test option",
+              "value": "Band C : Kenzo Chocolate, 32.39"
+            }
+          ]
+        }
+      ]
+    },
+    "expected": {
+      "beforeCode": "672.28",
+      "afterCode": "605.06",
+      "catalogueAfter": "639.89"
+    },
+    "actual": {
+      "draft": {
+        "id": "gid://shopify/DraftOrder/1587852116307",
+        "name": "#D15",
+        "status": "OPEN",
+        "invoiceUrl": "https://urban-deco-dev.myshopify.com/109635797331/invoices/f5eb53c10827c67c019734cd835978da",
+        "taxesIncluded": true,
+        "tags": [
+          "cfs-spike",
+          "spike-B10b"
+        ],
+        "subtotalPriceSet": {
+          "shopMoney": {
+            "amount": "672.28",
+            "currencyCode": "GBP"
+          }
+        },
+        "totalDiscountsSet": {
+          "shopMoney": {
+            "amount": "0.0",
+            "currencyCode": "GBP"
+          }
+        },
+        "totalTaxSet": {
+          "shopMoney": {
+            "amount": "0.0",
+            "currencyCode": "GBP"
+          }
+        },
+        "totalPriceSet": {
+          "shopMoney": {
+            "amount": "672.28",
+            "currencyCode": "GBP"
+          }
+        },
+        "lineItems": {
+          "nodes": [
+            {
+              "title": "CFS PILOT - Alice Static Armchair",
+              "sku": "",
+              "quantity": 1,
+              "variant": {
+                "id": "gid://shopify/ProductVariant/55752708358483"
+              },
+              "originalUnitPriceSet": {
+                "shopMoney": {
+                  "amount": "672.28"
+                }
+              },
+              "discountedTotalSet": {
+                "shopMoney": {
+                  "amount": "672.28"
+                }
+              },
+              "customAttributes": [
+                {
+                  "key": "CFS test option",
+                  "value": "Band C : Kenzo Chocolate, 32.39"
+                }
+              ]
+            }
+          ]
+        },
+        "acceptAutomaticDiscounts": false,
+        "allowDiscountCodesInCheckout": true,
+        "platformDiscounts": []
+      },
+      "catalogueBefore": {
+        "price": "639.89",
+        "inventoryQuantity": -4
+      },
+      "catalogueAfter": {
+        "price": "639.89",
+        "inventoryQuantity": -4
+      }
+    },
+    "evidence": {
+      "beforeCodeScreenshot": "C:/Users/Admin/AppData/Local/Temp/claude-chrome-screenshots-oJqtAI/screenshot-1794221942875-1.jpg",
+      "afterCodeScreenshot": "C:/Users/Admin/AppData/Local/Temp/claude-chrome-screenshots-oJqtAI/screenshot-1794221951373-2.jpg",
+      "readBy": "Claude in Chrome",
+      "codeBoxShown": true,
+      "totalBeforeCode": "672.28",
+      "codeEntered": "CFSSPIKEALICE",
+      "discountShown": "CFSSPIKEALICE (-67.22)",
+      "subtotal": "605.06",
+      "total": "605.06",
+      "totalSavings": "67.22",
+      "paid": false
+    },
+    "notes": [
+      "Shopper-entered code applied once to an overridden price on a product with no Online Store publication."
+    ]
+  },
+  "B10c": {
+    "status": "Pass",
+    "ids": {
+      "draftName": "#D15",
+      "draftOrder": "gid://shopify/DraftOrder/1587852116307",
+      "order": "gid://shopify/Order/8372373225811",
+      "orderName": "#1028",
+      "confirmationNumber": "WPE3Q8938"
+    },
+    "order": {
+      "test": true,
+      "gateway": "bogus",
+      "transaction": "SALE SUCCESS 605.06",
+      "financialStatus": "PAID",
+      "subtotal": "605.06",
+      "discounts": "67.22",
+      "total": "605.06",
+      "tax": "0.0",
+      "discountApplication": "CFSSPIKEALICE",
+      "line": {
+        "variant": "gid://shopify/ProductVariant/55752708358483",
+        "productStatus": "ACTIVE",
+        "publishedAt": null,
+        "original": "672.28",
+        "discountedTotalField": "672.28",
+        "allocation": "67.22",
+        "attributesRetained": true
+      }
+    },
+    "inventory": {
+      "tracked": false,
+      "quantityBefore": -4,
+      "quantityAfter": -5
+    },
+    "notes": [
+      "Paid order from an unpublished product. Stock is untracked, so enforcement of stock limits on unpublished products is not proven.",
+      "On this code-discount order the line discountedTotalSet stayed 672.28 while discountAllocations held 67.22; on the automatic-discount order #1027 it showed the reduced amount. Order snapshots must read allocations and order totals, not discountedTotalSet alone.",
+      "Order tax is 0.00, so VAT remains unverified."
+    ],
+    "updatedAt": "2026-11-09T11:01:29.637Z"
+  },
+  "B11": {
+    "status": "Blocked: wrong price shown, payment did not complete",
+    "inputs": {
+      "tags": [
+        "cfs-spike",
+        "spike-B11"
+      ],
+      "note": "CFS spike B11: stale checkout test. Not a real order.",
+      "acceptAutomaticDiscounts": false,
+      "allowDiscountCodesInCheckout": false,
+      "lineItems": [
+        {
+          "variantId": "gid://shopify/ProductVariant/55773143433555",
+          "quantity": 1,
+          "priceOverride": {
+            "amount": "1089.98",
+            "currencyCode": "GBP"
+          },
+          "customAttributes": [
+            {
+              "key": "CFS test price",
+              "value": "1089.98"
+            }
+          ]
+        }
+      ]
+    },
+    "ids": {
+      "draftOrder": "gid://shopify/DraftOrder/1587853558099",
+      "name": "#D16",
+      "invoiceUrl": "https://urban-deco-dev.myshopify.com/109635797331/invoices/c4598280bc5ba416bc2b7f3937681db6"
+    },
+    "created": {
+      "id": "gid://shopify/DraftOrder/1587853558099",
+      "name": "#D16",
+      "status": "OPEN",
+      "invoiceUrl": "https://urban-deco-dev.myshopify.com/109635797331/invoices/c4598280bc5ba416bc2b7f3937681db6",
+      "total": "1089.98",
+      "line": "1089.98"
+    },
+    "updatedAt": "2026-11-09T11:27:58.940Z",
+    "updated": {
+      "id": "gid://shopify/DraftOrder/1587853558099",
+      "name": "#D16",
+      "status": "OPEN",
+      "invoiceUrl": "https://urban-deco-dev.myshopify.com/109635797331/invoices/c4598280bc5ba416bc2b7f3937681db6",
+      "total": "1179.97",
+      "line": "1179.97"
+    },
+    "updatedAt2": "2026-11-09T11:03:11.389Z",
+    "expected": "Record the price actually charged after the draft changes while checkout is open",
+    "evidence": {
+      "beforeChange": "C:/Users/Admin/AppData/Local/Temp/claude-chrome-screenshots-oJqtAI/screenshot-1794222179719-3.jpg",
+      "afterChangeNoReload": "C:/Users/Admin/AppData/Local/Temp/claude-chrome-screenshots-oJqtAI/screenshot-1794222203178-4.jpg",
+      "priceUpdateDialog": "ScreenShots/Screenshot 2026-11-09 163556.png",
+      "payNowNoResponse": "ScreenShots/Screenshot 2026-11-09 163943.png",
+      "draftTotalInAdmin": "1179.97",
+      "openTabInitially": "1089.98",
+      "priceUpdateDialogShown": "1089.98 to 999.99",
+      "checkoutTotalAfterDialog": "999.99",
+      "shipping": "FREE",
+      "attributeStillShown": "CFS test price: 1089.98",
+      "orderCreated": false,
+      "stockAfterAttempt": 98,
+      "afterSecondPayClick": "C:/Users/Admin/AppData/Local/Temp/claude-chrome-screenshots-oJqtAI/screenshot-1794222695230-8.jpg",
+      "payNowClicks": 2,
+      "draftStatus": "OPEN",
+      "stockAfterAttempts": 98,
+      "chargedAmount": null,
+      "freshOpenAfterChange": "C:/Users/Admin/AppData/Local/Temp/claude-chrome-screenshots-oJqtAI/screenshot-1794223672377-9.jpg",
+      "freshOpenTotal": "1179.97",
+      "freshOpenAttribute": "CFS test price: 1179.97"
+    },
+    "notes": [
+      "Checkout lost the override and showed the catalogue price of 999.99, while the draft in admin was 1179.97.",
+      "Pay now produced no visible response. Draft remains OPEN with no order.",
+      "After the second Pay now click the page returned to the top with no visible message and no order exists.",
+      "Browser tools recorded no console messages or network requests, so the cause of the stalled payment is unknown. Whether Shopify would accept 999.99 is unproven.",
+      "B11b: opening the same draft link fresh showed the updated 1179.97, so the base-price fallback affected only the checkout already open when the draft changed."
+    ]
+  },
+  "B12": {
+    "status": "Pass with caveat",
+    "ids": {
+      "deletedDraft": "gid://shopify/DraftOrder/1587853558099",
+      "name": "#D16",
+      "invoiceUrl": "https://urban-deco-dev.myshopify.com/109635797331/invoices/c4598280bc5ba416bc2b7f3937681db6"
+    },
+    "actual": {
+      "deletedId": "gid://shopify/DraftOrder/1587853558099",
+      "readBackAfterDelete": null
+    },
+    "updatedAt": "2026-11-09T11:33:05.062Z",
+    "expected": "Deleted draft cannot be bought from its old link or an already-open checkout tab",
+    "evidence": {
+      "openTabAfterDelete": "C:/Users/Admin/AppData/Local/Temp/claude-chrome-screenshots-oJqtAI/screenshot-1794223732675-10.jpg",
+      "openTabStillShows": "1179.97",
+      "freshLinkAfterDelete": "C:/Users/Admin/AppData/Local/Temp/claude-chrome-screenshots-oJqtAI/screenshot-1794223742295-11.jpg",
+      "freshLinkResult": "Something went wrong. This invoice is not available."
+    },
+    "outcome": {
+      "freshLink": "Refused: This invoice is not available",
+      "openTab": "Still displayed the checkout. Showed 1179.97, then a Price update box to 999.99 (catalogue base price), then total 999.99 with the attribute CFS test price: 1179.97",
+      "paymentAttempt": "Pay now showed Your order total has changed. Review and try again, and a later attempt stayed on a spinner. Screenshots 170047 and 170126",
+      "ordersAfter": "Latest order still #1028, Natural Gold stock still 98, so no order was created"
+    },
+    "caveat": "Cause of the payment failure is unknown. One attempt on one dev store. Do not treat as a guarantee; the app must still match every order to a live checkout attempt.",
+    "checkedAt": "2026-11-09T11:33:05.060Z"
+  },
+  "B13": {
+    "status": "Shopify did not de-duplicate",
+    "inputs": {
+      "tags": [
+        "cfs-spike",
+        "spike-B13"
+      ],
+      "note": "CFS spike B13: duplicate create test. Not a real order.",
+      "acceptAutomaticDiscounts": false,
+      "allowDiscountCodesInCheckout": false,
+      "lineItems": [
+        {
+          "variantId": "gid://shopify/ProductVariant/55773143433555",
+          "quantity": 1,
+          "priceOverride": {
+            "amount": "1089.98",
+            "currencyCode": "GBP"
+          },
+          "customAttributes": [
+            {
+              "key": "CFS test attempt",
+              "value": "3df85378-184e-4c31-84d4-72c9a60a44f9"
+            }
+          ]
+        }
+      ]
+    },
+    "actual": {
+      "key": "3df85378-184e-4c31-84d4-72c9a60a44f9",
+      "keyed": [
+        {
+          "draft": {
+            "id": "gid://shopify/DraftOrder/1587863617875",
+            "name": "#D17",
+            "status": "OPEN",
+            "invoiceUrl": "https://urban-deco-dev.myshopify.com/109635797331/invoices/ca9e3bea1ceb037131ded22c9fb370cc"
+          },
+          "userErrors": []
+        },
+        {
+          "draft": {
+            "id": "gid://shopify/DraftOrder/1587863650643",
+            "name": "#D18",
+            "status": "OPEN",
+            "invoiceUrl": "https://urban-deco-dev.myshopify.com/109635797331/invoices/dfa2aaf8f4a236915d7ae7601c5d65a8"
+          },
+          "userErrors": []
+        }
+      ],
+      "plain": [],
+      "onStore": [
+        {
+          "id": "gid://shopify/DraftOrder/1587863617875",
+          "name": "#D17",
+          "status": "OPEN"
+        }
+      ]
+    },
+    "ids": {
+      "drafts": [
+        "gid://shopify/DraftOrder/1587863617875",
+        "gid://shopify/DraftOrder/1587863650643"
+      ]
+    },
+    "updatedAt": "2026-11-09T11:35:04.923Z",
+    "recheck": {
+      "a": {
+        "name": "#D17",
+        "status": "OPEN",
+        "totalPriceSet": {
+          "shopMoney": {
+            "amount": "1089.98"
+          }
+        },
+        "lineItems": {
+          "nodes": [
+            {
+              "customAttributes": [
+                {
+                  "key": "CFS test attempt",
+                  "value": "3df85378-184e-4c31-84d4-72c9a60a44f9"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "b": {
+        "name": "#D18",
+        "status": "OPEN",
+        "totalPriceSet": {
+          "shopMoney": {
+            "amount": "1089.98"
+          }
+        },
+        "lineItems": {
+          "nodes": [
+            {
+              "customAttributes": [
+                {
+                  "key": "CFS test attempt",
+                  "value": "3df85378-184e-4c31-84d4-72c9a60a44f9"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "search": {
+        "nodes": [
+          {
+            "name": "#D18"
+          },
+          {
+            "name": "#D17"
+          }
+        ]
+      }
+    },
+    "finding": "Same @idempotent key accepted on draftOrderCreate but created two open drafts. The app needs its own duplicate protection."
+  },
+  "B15": {
+    "status": "Pass",
+    "inputs": {
+      "title": "CFS SPIKE B15 - Display product zero stock",
+      "status": "ACTIVE",
+      "tags": [
+        "cfs-spike",
+        "spike-B15"
+      ],
+      "productOptions": [
+        {
+          "name": "Title",
+          "position": 1,
+          "values": [
+            {
+              "name": "Default Title"
+            }
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "optionValues": [
+            {
+              "optionName": "Title",
+              "name": "Default Title"
+            }
+          ],
+          "sku": "TEST-CFS-DISPLAY",
+          "price": "499.00",
+          "inventoryPolicy": "DENY",
+          "inventoryItem": {
+            "tracked": true
+          }
+        }
+      ]
+    },
+    "ids": {
+      "product": "gid://shopify/Product/11072937984339",
+      "handle": "cfs-spike-b15-display-product-zero-stock",
+      "variant": "gid://shopify/ProductVariant/55799811342675",
+      "legacyVariant": "55799811342675"
+    },
+    "updatedAt": "2026-11-09T11:51:17.095Z",
+    "actual": {
+      "variant": {
+        "id": "gid://shopify/ProductVariant/55799811342675",
+        "legacyResourceId": "55799811342675",
+        "sku": "TEST-CFS-DISPLAY",
+        "price": "499.00",
+        "inventoryPolicy": "DENY",
+        "inventoryQuantity": 0,
+        "inventoryItem": {
+          "tracked": true
+        }
+      },
+      "publishedAt": "2026-11-09T11:50:32Z"
+    },
+    "expected": "Published zero-stock product with overselling off cannot be added or checked out directly",
+    "evidence": {
+      "productPage": {
+        "screenshot": "C:/Users/Admin/AppData/Local/Temp/claude-chrome-screenshots-oJqtAI/screenshot-1794225057415-12.jpg",
+        "shows": "Page loads at 499, button Sold out",
+        "productJsStatus": 200,
+        "available": false
+      },
+      "addJs": {
+        "status": 422,
+        "message": "already sold out",
+        "cartLinesAfter": 0
+      },
+      "permalink": {
+        "screenshot": "C:/Users/Admin/AppData/Local/Temp/claude-chrome-screenshots-oJqtAI/screenshot-1794225057416-13.jpg",
+        "result": "Checkout opened an Out of stock dialog with only Return to store"
+      }
+    },
+    "unmeasured": {
+      "storefrontApi": "Not tested.",
+      "otherChannels": "Published to Online Store only.",
+      "acceleratedCheckout": "Not tested; button shows Sold out on page."
+    },
+    "notes": [
+      "The guard depends on stock staying at zero and overselling staying off."
+    ]
+  }
+}
