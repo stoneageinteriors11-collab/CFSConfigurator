@@ -2,7 +2,7 @@
 
 client_id = "ba56863440a98e9902156dcb72192238"
 name = "cfs-configurator"
-application_url = "https://example.com"
+application_url = "https://cfsconfigurator.onrender.com"
 embedded = true
 
 [access_scopes]
@@ -21,7 +21,7 @@ api_version = "2026-10"
   topics = [ "app/scopes_update" ]
 
 [auth]
-redirect_urls = [ "https://example.com/api/auth" ]
+redirect_urls = [ "https://cfsconfigurator.onrender.com/api/auth" ]
 
 [build]
 include_config_on_deploy = true
