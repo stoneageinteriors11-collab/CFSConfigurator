@@ -1,17 +1,17 @@
 # Graph Report - cfs-configurator  (2026-11-10)
 
 ## Corpus Check
-- 61 files · ~23,324 words
+- 63 files · ~24,135 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 14 file(s) not represented in the graph (top: (none) 8, .toml 3, .css 1)
 
 ## Summary
-- 433 nodes · 646 edges · 35 communities (30 shown, 5 thin omitted)
+- 438 nodes · 654 edges · 34 communities (30 shown, 4 thin omitted)
 - Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 17 edges (avg confidence: 0.9)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `ac7d7c07`
+- Built from commit: `a5657eda`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -47,9 +47,8 @@
 - b10a-unpublished-automatic.js
 - CFS configurator: small-step plan
 - graphql-config@^5.1.1
-- eslint-import-resolver-typescript@^3.10.1
-- eslint-plugin-react-hooks@^4.6.2
-- @shopify/api-codegen-preset
+- typescript@^5.9.3
+- @typescript-eslint/parser@^6.21.0
 
 ## God Nodes (most connected - your core abstractions)
 1. `loadResults()` - 18 edges
@@ -64,10 +63,10 @@
 10. `NATURAL_GOLD_VARIANT` - 12 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `ask()` --calls--> `handleQuoteRequest()`  [EXTRACTED]
-  test/pricing/quote-request.test.js → app/pricing/quote-request.server.js
 - `load()` --calls--> `loadConfigurableProduct()`  [EXTRACTED]
   test/pricing/load-product.test.js → app/pricing/load-product.server.js
+- `ask()` --calls--> `handleQuoteRequest()`  [EXTRACTED]
+  test/pricing/quote-request.test.js → app/pricing/quote-request.server.js
 - `quote()` --calls--> `quoteConfiguration()`  [EXTRACTED]
   test/pricing/quote.test.js → app/pricing/quote.server.js
 - `graphql()` --calls--> `read()`  [EXTRACTED]
@@ -83,11 +82,11 @@
 - **Production hosting options** — readme_google_cloud_run_deployment, readme_fly_io_deployment, readme_render_deployment, readme_manual_deployment_guide [EXTRACTED 1.00]
 - **Webhook subscription pitfalls and remedy** — readme_app_specific_webhooks, readme_afterauth_shop_specific_webhooks, readme_admin_created_webhook_hmac_failure, readme_cli_webhook_admin_undefined [INFERRED 0.85]
 
-## Communities (35 total, 5 thin omitted)
+## Communities (34 total, 4 thin omitted)
 
 ### Community 0 - "package.json"
-Cohesion: 0.13
-Nodes (14): author, prettier@^3.6.2, @types/eslint@^9.6.1, engines, node, name, private, resolutions (+6 more)
+Cohesion: 0.12
+Nodes (16): author, eslint@^8.57.1, prettier@^3.6.2, @shopify/api-codegen-preset@^1.2.0, engines, node, name, private (+8 more)
 
 ### Community 1 - "Template Security Changelog"
 Cohesion: 0.05
@@ -98,8 +97,8 @@ Cohesion: 0.07
 Nodes (16): loginErrorMessage(), action(), loader(), loginErrorMessage(), action(), apiVersion, authenticate, login (+8 more)
 
 ### Community 3 - "Server Rendering Runtime"
-Cohesion: 0.11
-Nodes (18): dependencies, prisma@^6.16.3, @prisma/client@^6.16.3, react@^18.3.1, @react-router/fs-routes@7.18.2, @react-router/serve@7.18.2, @shopify/app-bridge-react@^4.2.4, @shopify/cli@4.9.3 (+10 more)
+Cohesion: 0.12
+Nodes (16): dependencies, prisma@^6.16.3, react@^18.3.1, @react-router/fs-routes@7.18.2, @react-router/serve@7.18.2, @shopify/app-bridge-react@^4.2.4, @shopify/cli@4.9.3, @shopify/shopify-app-react-router@^4.0.0 (+8 more)
 
 ### Community 4 - "lib.js"
 Cohesion: 0.19
@@ -178,12 +177,12 @@ Cohesion: 0.40
 Nodes (4): after, before, { draftOrderCreate }, input
 
 ### Community 24 - "EncryptedSessionStorage"
-Cohesion: 0.11
-Nodes (8): decrypt(), encrypt(), EncryptedSessionStorage, parseKey(), cases, good, original, storage
+Cohesion: 0.08
+Nodes (14): decrypt(), encrypt(), EncryptedSessionStorage, parseKey(), @prisma/client@^6.16.3, @prisma/client, cases, good (+6 more)
 
 ### Community 25 - "devDependencies"
 Cohesion: 0.09
-Nodes (23): devDependencies, eslint@^8.57.1, eslint-plugin-import@^2.32.0, eslint-plugin-jsx-a11y@^6.10.2, eslint-plugin-react@^7.37.5, @shopify/polaris-types@^2.0.0, @types/node@^22.18.8, @types/react@^18.3.25 (+15 more)
+Nodes (23): devDependencies, eslint-import-resolver-typescript@^3.10.1, eslint-plugin-import@^2.32.0, eslint-plugin-jsx-a11y@^6.10.2, eslint-plugin-react@^7.37.5, eslint-plugin-react-hooks@^4.6.2, @shopify/polaris-types@^2.0.0, @types/eslint@^9.6.1 (+15 more)
 
 ### Community 26 - "@react-router/dev"
 Cohesion: 0.29
@@ -207,23 +206,23 @@ Nodes (11): CFS configurator: small-step plan, Context, How we work, Inputs need
 
 ## Knowledge Gaps
 - **28 isolated node(s):** `npx`, `@shopify/dev-mcp`, `npx`, `@shopify/dev-mcp`, `CVE-2026-82417` (+23 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 228 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 231 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **4 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `@shopify/shopify-app-react-router` connect `Admin Demo Routes` to `EncryptedSessionStorage`, `package.json`, `Server Rendering Runtime`?**
-  _High betweenness centrality (0.172) - this node is a cross-community bridge._
+- **Why does `@prisma/client` connect `EncryptedSessionStorage` to `package.json`, `Admin Demo Routes`?**
+  _High betweenness centrality (0.116) - this node is a cross-community bridge._
 - **What connects `npx`, `@shopify/dev-mcp`, `npx` to the rest of the system?**
   _28 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `package.json` be split into smaller, more focused modules?**
-  _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
-- **Why does `scripts` connect `NPM Scripts` to `package.json`?**
-  _High betweenness centrality (0.054) - this node is a cross-community bridge._
+  _Cohesion score 0.11764705882352941 - nodes in this community are weakly interconnected._
+- **Why does `@shopify/shopify-app-react-router` connect `Admin Demo Routes` to `EncryptedSessionStorage`, `package.json`, `Server Rendering Runtime`?**
+  _High betweenness centrality (0.091) - this node is a cross-community bridge._
 - **Should `Template Security Changelog` be split into smaller, more focused modules?**
   _Cohesion score 0.048625792811839326 - nodes in this community are weakly interconnected._
-- **Why does `@shopify/shopify-app-session-storage-prisma` connect `Server Rendering Runtime` to `package.json`, `EncryptedSessionStorage`, `Admin Demo Routes`?**
-  _High betweenness centrality (0.047) - this node is a cross-community bridge._
+- **Why does `scripts` connect `NPM Scripts` to `package.json`?**
+  _High betweenness centrality (0.054) - this node is a cross-community bridge._
 - **Should `Admin Demo Routes` be split into smaller, more focused modules?**
   _Cohesion score 0.06567992599444958 - nodes in this community are weakly interconnected._

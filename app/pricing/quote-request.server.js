@@ -8,19 +8,18 @@ const CHOICE_ID = /^[\w-]{1,64}$/;
 
 const refuse = (status, code) => ({ status, body: { ok: false, errors: [{ code }] } });
 
-/** params is a URLSearchParams with product, variant and one choice entry per selected option. */
-export async function handleQuoteRequest(graphql, params) {
-  const productId = params.get("product");
-  const variantId = params.get("variant");
-  const choiceIds = params.getAll("choice");
+const matches = (pattern, value) => typeof value === "string" && pattern.test(value);
 
+/** Validates untrusted IDs and prices them from live Shopify data. Returns { quote } or { refusal }. */
+export async function quoteSelection(graphql, { productId, variantId, choiceIds }) {
   if (
-    !SHOPIFY_ID.test(productId ?? "") ||
-    !SHOPIFY_ID.test(variantId ?? "") ||
+    !matches(SHOPIFY_ID, productId) ||
+    !matches(SHOPIFY_ID, variantId) ||
+    !Array.isArray(choiceIds) ||
     choiceIds.length > MAX_CHOICES ||
-    !choiceIds.every((id) => CHOICE_ID.test(id))
+    !choiceIds.every((id) => matches(CHOICE_ID, id))
   ) {
-    return refuse(400, "bad_request");
+    return { refusal: refuse(400, "bad_request") };
   }
 
   let product;
@@ -28,15 +27,25 @@ export async function handleQuoteRequest(graphql, params) {
     product = await loadConfigurableProduct(graphql, `gid://shopify/Product/${productId}`);
   } catch (error) {
     console.error("Quote: could not read product", productId, error?.message);
-    return refuse(502, "unavailable");
+    return { refusal: refuse(502, "unavailable") };
   }
-  if (!product) return refuse(404, "product_not_found");
+  if (!product) return { refusal: refuse(404, "product_not_found") };
 
   const quote = quoteConfiguration(product, {
     variantId: `gid://shopify/ProductVariant/${variantId}`,
     choiceIds,
   });
-  if (!quote.ok) return { status: 422, body: quote };
+  return quote.ok ? { quote } : { refusal: { status: 422, body: quote } };
+}
+
+/** params is a URLSearchParams with product, variant and one choice entry per selected option. */
+export async function handleQuoteRequest(graphql, params) {
+  const { quote, refusal } = await quoteSelection(graphql, {
+    productId: params.get("product"),
+    variantId: params.get("variant"),
+    choiceIds: params.getAll("choice"),
+  });
+  if (refusal) return refusal;
 
   return {
     status: 200,
