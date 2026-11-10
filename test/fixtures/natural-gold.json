@@ -1,0 +1,2615 @@
+{
+ "source": "cfs-data-review/mvp-store-snapshot.json, verified 2026-11-09",
+ "productId": "gid://shopify/Product/11067852980563",
+ "variants": [
+  {
+   "id": "gid://shopify/ProductVariant/55773143433555",
+   "sku": "CFS-TYPE-146477-17019157",
+   "price": "999.99",
+   "inventoryQuantity": 100
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55773143466323",
+   "sku": "CFS-TYPE-146477-17019158",
+   "price": "999.99",
+   "inventoryQuantity": 100
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55773143499091",
+   "sku": "CFS-TYPE-146477-17019159",
+   "price": "1209.99",
+   "inventoryQuantity": 100
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55773143531859",
+   "sku": "CFS-TYPE-146477-17019160",
+   "price": "1209.99",
+   "inventoryQuantity": 100
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55773143564627",
+   "sku": "CFS-TYPE-146477-17019161",
+   "price": "1399.99",
+   "inventoryQuantity": 100
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55773143597395",
+   "sku": "CFS-TYPE-146477-17019162",
+   "price": "1849.99",
+   "inventoryQuantity": 100
+  }
+ ],
+ "modelCards": {
+  "CFS-TYPE-146477-17019157": {
+   "source_id": "17019157",
+   "image": "",
+   "dimensions": "",
+   "height": "",
+   "width": ""
+  },
+  "CFS-TYPE-146477-17019158": {
+   "source_id": "17019158",
+   "image": "",
+   "dimensions": "",
+   "height": "",
+   "width": ""
+  },
+  "CFS-TYPE-146477-17019159": {
+   "source_id": "17019159",
+   "image": "",
+   "dimensions": "",
+   "height": "",
+   "width": ""
+  },
+  "CFS-TYPE-146477-17019160": {
+   "source_id": "17019160",
+   "image": "",
+   "dimensions": "",
+   "height": "",
+   "width": ""
+  },
+  "CFS-TYPE-146477-17019161": {
+   "source_id": "17019161",
+   "image": "",
+   "dimensions": "",
+   "height": "",
+   "width": ""
+  },
+  "CFS-TYPE-146477-17019162": {
+   "source_id": "17019162",
+   "image": "",
+   "dimensions": "",
+   "height": "",
+   "width": ""
+  }
+ },
+ "workflow": {
+  "mode": "multipleDropDownWithMapping",
+  "model_label": "Size",
+  "ordered": true,
+  "filters": [],
+  "groups": [
+   {
+    "name": "Select Drawer",
+    "optional": false,
+    "requires": "$model"
+   },
+   {
+    "name": "Select Fabric",
+    "optional": false,
+    "requires": "Select Drawer"
+   }
+  ],
+  "pricing": {
+   "basis_points": 7700,
+   "independent_subtotal": false,
+   "verified_date": "2026-11-07",
+   "source_url": "https://www.choicefurnituresuperstore.co.uk/p/natural-gold-3500-platform-top-divan-bed-sizes-available",
+   "accessory_max_quantity": 5
+  }
+ },
+ "options": [
+  {
+   "cfsId": "17020880",
+   "label": "without Drawer",
+   "groupName": "Select Drawer",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17020880",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020881",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020882",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020883",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020884",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020885",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17020886",
+   "label": "with 2 Drawer",
+   "groupName": "Select Drawer",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17020886",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "89.99"
+     },
+     {
+      "id": "17020887",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "89.99"
+     },
+     {
+      "id": "17020888",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "89.99"
+     },
+     {
+      "id": "17020889",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "89.99"
+     },
+     {
+      "id": "17020890",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "89.99"
+     },
+     {
+      "id": "17020891",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "89.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17020892",
+   "label": "with 4 Drawer",
+   "groupName": "Select Drawer",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17020892",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "179.99"
+     },
+     {
+      "id": "17020893",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "179.99"
+     },
+     {
+      "id": "17020894",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "179.99"
+     },
+     {
+      "id": "17020895",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "179.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17020896",
+   "label": "with End Drawer",
+   "groupName": "Select Drawer",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17020896",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "89.99"
+     },
+     {
+      "id": "17020897",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "89.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17020898",
+   "label": "with Slidestore",
+   "groupName": "Select Drawer",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17020898",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "59.99"
+     },
+     {
+      "id": "17020899",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "59.99"
+     },
+     {
+      "id": "17020900",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "59.99"
+     },
+     {
+      "id": "17020901",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "59.99"
+     },
+     {
+      "id": "17020902",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "59.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17020903",
+   "label": "Carlton Black",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17020903",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020904",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020905",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020906",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020907",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020908",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17020909",
+   "label": "Carlton Caramel",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17020909",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020910",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020911",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020912",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020913",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020914",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17020915",
+   "label": "Carlton Charcoal",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17020915",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020916",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020917",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020918",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020919",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020920",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17020921",
+   "label": "Carlton Mink",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17020921",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020922",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020923",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020924",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020925",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020926",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17020927",
+   "label": "Comet Charcoal",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17020927",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020928",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020929",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020930",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020931",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020932",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17020933",
+   "label": "Comet Mink",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17020933",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020934",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020935",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020936",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020937",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020938",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17020939",
+   "label": "Comet Silver",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17020939",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020940",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020941",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020942",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020943",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020944",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17020945",
+   "label": "Comet Stone",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17020945",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020946",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020947",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020948",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020949",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020950",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17020951",
+   "label": "Lana Beige",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17020951",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020952",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020953",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020954",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020955",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020956",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17020957",
+   "label": "Lana Charcoal",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17020957",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020958",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020959",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020960",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020961",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020962",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17020963",
+   "label": "Lana Grey",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17020963",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020964",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020965",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020966",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020967",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020968",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17020969",
+   "label": "Lana Petrol",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17020969",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020970",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020971",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020972",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020973",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020974",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17020975",
+   "label": "Lana Silver",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17020975",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020976",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020977",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020978",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020979",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020980",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17020981",
+   "label": "Lana Slate",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17020981",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020982",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020983",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020984",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020985",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020986",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17020987",
+   "label": "Marble Gunmetal",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17020987",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020988",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020989",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020990",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020991",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020992",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17020993",
+   "label": "Marble Mink",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17020993",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020994",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020995",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020996",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020997",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17020998",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17020999",
+   "label": "Marble Peacock",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17020999",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021000",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021001",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021002",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021003",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021004",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021005",
+   "label": "Marble Platinum",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021005",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021006",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021007",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021008",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021009",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021010",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021011",
+   "label": "Marble Steel",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021011",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021012",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021013",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021014",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021015",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021016",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021017",
+   "label": "Monaco Claret",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021017",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021018",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021019",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021020",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021021",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021022",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021023",
+   "label": "Monaco Ebony",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021023",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021024",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021025",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021026",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021027",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021028",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021029",
+   "label": "Monaco Grey",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021029",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021030",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021031",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021032",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021033",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021034",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021035",
+   "label": "Monaco Mink",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021035",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021036",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021037",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021038",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021039",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021040",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021041",
+   "label": "Monaco Mustard",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021041",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021042",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021043",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021044",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021045",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021046",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021047",
+   "label": "Monaco Silver",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021047",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021048",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021049",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021050",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021051",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021052",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021053",
+   "label": "Monaco Steel",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021053",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021054",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021055",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021056",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021057",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021058",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021059",
+   "label": "Monaco Teal",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021059",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021060",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021061",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021062",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021063",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021064",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021065",
+   "label": "Nevada Black",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021065",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021066",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021067",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021068",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021069",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021070",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021071",
+   "label": "Nevada Charcoal",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021071",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021072",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021073",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021074",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021075",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021076",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021077",
+   "label": "Nevada Chocolate",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021077",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021078",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021079",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021080",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021081",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021082",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021083",
+   "label": "Glitz Black",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021083",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021084",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021085",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021086",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021087",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021088",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021089",
+   "label": "Glitz Grape",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021089",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021090",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021091",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021092",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021093",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021094",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021095",
+   "label": "Glitz Pearl",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021095",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021096",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021097",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021098",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021099",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021100",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021101",
+   "label": "Glitz Steel",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021101",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021102",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021103",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021104",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021105",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021106",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021107",
+   "label": "Glitz Stone",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021107",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021108",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021109",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021110",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021111",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021112",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021113",
+   "label": "Sierra Anthracite",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021113",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021114",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021115",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021116",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021117",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021118",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021119",
+   "label": "Sierra Charcoal",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021119",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021120",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021121",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021122",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021123",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021124",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021125",
+   "label": "Sierra Denim",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021125",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021126",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021127",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021128",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021129",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021130",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021131",
+   "label": "Sierra Grey",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021131",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021132",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021133",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021134",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021135",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021136",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021137",
+   "label": "Sierra Mink",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021137",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021138",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021139",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021140",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021141",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021142",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021143",
+   "label": "Sierra Sky",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021143",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021144",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021145",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021146",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021147",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021148",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021149",
+   "label": "Sierra Silver",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021149",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021150",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021151",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021152",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021153",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021154",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021155",
+   "label": "Westbury Charcoal",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021155",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021156",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021157",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021158",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021159",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021160",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021161",
+   "label": "Westbury Duckegg",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021161",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021162",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021163",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021164",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021165",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021166",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021167",
+   "label": "Westbury Rose",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021167",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021168",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021169",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021170",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021171",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021172",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021173",
+   "label": "Westbury Silver",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021173",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021174",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021175",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021176",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021177",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021178",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021179",
+   "label": "Westbury Stone",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021179",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021180",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021181",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021182",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021183",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021184",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17021185",
+   "label": "Westbury Taupe",
+   "groupName": "Select Fabric",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17021185",
+      "parent": "17019157",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021186",
+      "parent": "17019158",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021187",
+      "parent": "17019159",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021188",
+      "parent": "17019160",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021189",
+      "parent": "17019161",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17021190",
+      "parent": "17019162",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  }
+ ]
+}

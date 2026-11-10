@@ -120,10 +120,10 @@
     "semantic_hash": "dc6fcebae82b4007b692db48aff3b717"
   },
   "app/shopify.server.js": {
-    "mtime": 1794217237.7085865,
-    "seen": 1794219410.4212792,
-    "ast_hash": "44fa18ae726f0af4aec531cfc4241f22",
-    "semantic_hash": "44fa18ae726f0af4aec531cfc4241f22"
+    "mtime": 1794289719.4902508,
+    "seen": 1794291619.2643137,
+    "ast_hash": "0de62fcfb2579dd7ecd8e4850d161154",
+    "semantic_hash": ""
   },
   "package.json": {
     "mtime": 1794216933.167057,
@@ -285,6 +285,18 @@
     "mtime": 1794225106.222134,
     "seen": 1794227747.4838262,
     "ast_hash": "67725b0355ed1dcbb0454ddc89913340",
+    "semantic_hash": ""
+  },
+  "app/encrypted-session-storage.server.js": {
+    "mtime": 1794289708.7258341,
+    "seen": 1794291619.2633128,
+    "ast_hash": "a23796378de70e44cafdd3d564109ac3",
+    "semantic_hash": ""
+  },
+  "spike/session-encryption-check.js": {
+    "mtime": 1794289708.8383012,
+    "seen": 1794291619.2663114,
+    "ast_hash": "51e29b419861ae75f7e4e772c616321e",
     "semantic_hash": ""
   },
   "package-lock.json": {

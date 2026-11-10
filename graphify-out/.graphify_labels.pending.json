@@ -4,6 +4,7 @@
   "5": "loadResults",
   "10": "write",
   "11": "b10b-unpublished-code.js",
+  "14": "entry.server.jsx",
   "16": "b4b-combinable.js",
   "17": "CFS checkout risk tests: report",
   "18": "b1-draft-price-override.js",
@@ -16,16 +17,10 @@
   "25": "devDependencies",
   "26": "@react-router/dev",
   "27": "overrides",
-  "28": "eslint-import-resolver-typescript@^3.10.1",
-  "29": "eslint-plugin-import@^2.32.0",
+  "28": "@shopify/api-codegen-preset",
+  "29": "@typescript-eslint/eslint-plugin@^6.21.0",
   "30": "eslint-plugin-react@^7.37.5",
-  "31": "eslint-plugin-react-hooks@^4.6.2",
-  "32": "graphql-config@^5.1.1",
   "33": "prettier@^3.6.2",
-  "34": "@shopify/polaris-types@^2.0.0",
-  "35": "@types/eslint@^9.6.1",
   "36": "@types/node@^22.18.8",
-  "37": "@types/react-dom@^18.3.7",
-  "38": "typescript@^5.9.3",
-  "39": "@typescript-eslint/parser@^6.21.0"
+  "37": "@types/react-dom@^18.3.7"
 }
