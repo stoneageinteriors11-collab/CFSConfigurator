@@ -336,15 +336,15 @@
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1794297914.7900004,
-    "seen": 1794298003.5918324,
-    "ast_hash": "224412cb2093d736d67b1041332c904f",
+    "mtime": 1794303199.1266327,
+    "seen": 1794303603.1590686,
+    "ast_hash": "fa74ce2c2c6527e53672d72b6064835f",
     "semantic_hash": ""
   },
   "app/pricing/quote-request.server.js": {
-    "mtime": 1794295832.6563911,
-    "seen": 1794295940.0407355,
-    "ast_hash": "df2f7ed370aeebd313f238b254a0c395",
+    "mtime": 1794303082.5977168,
+    "seen": 1794303603.1590686,
+    "ast_hash": "d93395bfee8d191d081afe0ada2b34aa",
     "semantic_hash": ""
   },
   "app/routes/proxy.quote.jsx": {
@@ -369,6 +369,54 @@
     "mtime": 1794297867.8198438,
     "seen": 1794298003.5908308,
     "ast_hash": "89d46ae24a6744905e138d1665dfa04c",
+    "semantic_hash": ""
+  },
+  "app/basket/basket-request.server.js": {
+    "mtime": 1794303082.9368448,
+    "seen": 1794303603.1590686,
+    "ast_hash": "1e5c3f3ce3f73bca6819c98517000957",
+    "semantic_hash": ""
+  },
+  "app/basket/basket.server.js": {
+    "mtime": 1794303082.820612,
+    "seen": 1794303603.1590686,
+    "ast_hash": "2770cc3e73013d1571d6e5af7196557f",
+    "semantic_hash": ""
+  },
+  "app/routes/proxy.basket.jsx": {
+    "mtime": 1794303082.9773848,
+    "seen": 1794303603.1590686,
+    "ast_hash": "a54764e11289256b9e38ee92934ac1a0",
+    "semantic_hash": ""
+  },
+  "prisma/migrations/20261110120000_create_basket_tables/migration.sql": {
+    "mtime": 1794297880.2448094,
+    "seen": 1794303603.1590686,
+    "ast_hash": "33a03b1c5d34daa704d700e74e364594",
+    "semantic_hash": ""
+  },
+  "spike/e4b-basket-check.js": {
+    "mtime": 1794303082.9007668,
+    "seen": 1794303603.1590686,
+    "ast_hash": "6e23f4ead471656a8bcd58e448f5ce8b",
+    "semantic_hash": ""
+  },
+  "spike/e4c-signed-basket.js": {
+    "mtime": 1794303083.2404232,
+    "seen": 1794303603.1590686,
+    "ast_hash": "2fc6336bd2df845f492637da7b9043a0",
+    "semantic_hash": ""
+  },
+  "test/basket/basket-request.test.js": {
+    "mtime": 1794303083.1566246,
+    "seen": 1794303603.1590686,
+    "ast_hash": "1b58375e8eaafd6faeece4ef52c860e5",
+    "semantic_hash": ""
+  },
+  "test/basket/basket.test.js": {
+    "mtime": 1794302525.42517,
+    "seen": 1794303603.1590686,
+    "ast_hash": "edec876b425607e39fefdef5cac44583",
     "semantic_hash": ""
   },
   "package-lock.json": {

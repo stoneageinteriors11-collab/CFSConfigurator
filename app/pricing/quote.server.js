@@ -24,6 +24,23 @@ function resolveAssignment(option, modelId) {
   return cents === null ? "invalid" : { id: matches[0].id, cents };
 }
 
+/** Prices a product with no configuration at its Shopify variant price. */
+export function quoteOrdinaryProduct(product, { variantId, choiceIds }) {
+  const fail = (code) => ({ ok: false, errors: [{ code }] });
+
+  if (choiceIds.length > 0) return fail("choices_not_allowed");
+  if (product.status !== "ACTIVE" || !product.publishedAt) return fail("product_unavailable");
+
+  const variant = product.variants.find((v) => v.id === variantId);
+  if (!variant) return fail("unknown_variant");
+  if (!variant.availableForSale) return fail("variant_unavailable");
+
+  const baseCents = toPennies(variant.price);
+  if (baseCents === null) return fail("invalid_product_data");
+
+  return { ok: true, variantId: variant.id, sku: variant.sku ?? "", baseCents, lines: [], totalCents: baseCents };
+}
+
 export function quoteConfiguration(product, { variantId, choiceIds }) {
   const fail = (...errors) => ({ ok: false, errors });
 

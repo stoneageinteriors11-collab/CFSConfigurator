@@ -1,7 +1,9 @@
 {
   "0": "package.json",
+  "1": "Shopify App Template - React Router README",
   "4": "lib.js",
   "5": "loadResults",
+  "6": "Prisma session storage",
   "10": "write",
   "11": "b10b-unpublished-code.js",
   "14": "entry.server.jsx",
@@ -22,5 +24,13 @@
   "30": "CFS configurator: small-step plan",
   "31": "graphql-config@^5.1.1",
   "32": "typescript@^5.9.3",
-  "33": "@typescript-eslint/parser@^6.21.0"
+  "33": "@typescript-eslint/parser@^6.21.0",
+  "34": "e4b-basket-check.js",
+  "35": "Polaris web components 2.x (polaris-2.js)",
+  "36": "@shopify/shopify-app-template-remix",
+  "37": "qs forced to ^6.16.0",
+  "38": "shopify.app.toml",
+  "39": "polarisUrl option",
+  "40": "Shopify CLI",
+  "41": "app/shopify.server.ts shopify const"
 }

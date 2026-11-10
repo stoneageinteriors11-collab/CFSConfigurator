@@ -1,6 +1,6 @@
 // Turns a storefront price request into a validated quote. Prices sent by the browser are never read.
 import { loadConfigurableProduct } from "./load-product.server.js";
-import { quoteConfiguration } from "./quote.server.js";
+import { quoteConfiguration, quoteOrdinaryProduct } from "./quote.server.js";
 
 const MAX_CHOICES = 20;
 const SHOPIFY_ID = /^\d{1,20}$/;
@@ -31,7 +31,8 @@ export async function quoteSelection(graphql, { productId, variantId, choiceIds 
   }
   if (!product) return { refusal: refuse(404, "product_not_found") };
 
-  const quote = quoteConfiguration(product, {
+  const quoteProduct = product.ordinary ? quoteOrdinaryProduct : quoteConfiguration;
+  const quote = quoteProduct(product, {
     variantId: `gid://shopify/ProductVariant/${variantId}`,
     choiceIds,
   });

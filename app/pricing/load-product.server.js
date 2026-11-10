@@ -4,9 +4,11 @@ const PRODUCT_QUERY = `#graphql
   query CfsConfigurableProduct($id: ID!) {
     product(id: $id) {
       id
+      status
+      publishedAt
       variants(first: 250) {
         pageInfo { hasNextPage }
-        nodes { id sku price inventoryQuantity }
+        nodes { id sku price inventoryQuantity availableForSale }
       }
       modelCards: metafield(namespace: "cfs_import", key: "model_cards") { value }
       workflow: metafield(namespace: "cfs_import", key: "workflow") { value }
@@ -37,15 +39,28 @@ function parseJson(value) {
 /**
  * Returns the product, or null if it is missing or Shopify returned only part of it.
  * Bad JSON is left undefined so the pricing engine refuses it.
+ * A product is marked ordinary only if it has none of the CFS data, so a configurable
+ * product with damaged or partial data can never be sold at its plain variant price.
  */
 export async function loadConfigurableProduct(graphql, productId) {
   const response = await graphql(PRODUCT_QUERY, { variables: { id: productId } });
   const { data } = await response.json();
   const product = data.product;
-  const references = product?.options?.references;
 
-  if (!product || !references) return null;
-  if (product.variants.pageInfo.hasNextPage || references.pageInfo.hasNextPage) return null;
+  if (!product || product.variants.pageInfo.hasNextPage) return null;
+
+  if (!product.modelCards && !product.workflow && !product.options) {
+    return {
+      productId: product.id,
+      ordinary: true,
+      status: product.status,
+      publishedAt: product.publishedAt,
+      variants: product.variants.nodes,
+    };
+  }
+
+  const references = product.options?.references;
+  if (!references || references.pageInfo.hasNextPage) return null;
 
   return {
     productId: product.id,

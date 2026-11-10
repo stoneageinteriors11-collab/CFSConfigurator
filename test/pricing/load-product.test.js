@@ -45,6 +45,35 @@ test("refuses a missing product or missing options", async () => {
   assert.equal(await load(product), null);
 });
 
+const plainProduct = () => ({
+  ...shopifyProduct(),
+  status: "ACTIVE",
+  publishedAt: "2026-01-01T00:00:00Z",
+  modelCards: null,
+  workflow: null,
+  options: null,
+});
+
+test("marks a product with none of the CFS data as ordinary", async () => {
+  const loaded = await load(plainProduct());
+  assert.equal(loaded.ordinary, true);
+  assert.equal(loaded.status, "ACTIVE");
+  assert.equal(loaded.variants.length, 1);
+});
+
+test("never treats a product with any CFS data as ordinary", async () => {
+  for (const key of ["modelCards", "workflow"]) {
+    assert.equal(await load({ ...plainProduct(), [key]: { value: "{}" } }), null, key);
+  }
+  assert.equal(await load({ ...plainProduct(), options: { references: null } }), null);
+});
+
+test("refuses a partial variant list on an ordinary product", async () => {
+  const product = plainProduct();
+  product.variants = { ...product.variants, pageInfo: { hasNextPage: true } };
+  assert.equal(await load(product), null);
+});
+
 test("refuses a partial list, which could hide required choices", async () => {
   const moreVariants = shopifyProduct();
   moreVariants.variants.pageInfo.hasNextPage = true;
