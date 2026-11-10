@@ -1,19 +1,31 @@
 // Turns a storefront Checkout click into a checkout link. The body is not covered by Shopify's
-// signature, so the only thing read from it is the token, which proves ownership of the basket.
+// signature, so only two things are read from it: the token, which proves ownership of the
+// basket, and which ordinary items are in the Shopify cart, which are priced here.
 import { TOKEN, publicBasket } from "../basket/basket-request.server.js";
 import { getBasket, setLineQuantity } from "../basket/basket.server.js";
+import { copyCartItems, readCartItems } from "./copy-cart.server.js";
 import { startCheckout } from "./start-checkout.server.js";
 
-const MAX_BODY_LENGTH = 1024;
-const STATUS = { basket_not_found: 404, empty_basket: 422, checkout_in_progress: 409, checkout_refused: 502 };
+const MAX_BODY_LENGTH = 4096;
+const STATUS = {
+  basket_not_found: 404,
+  empty_basket: 422,
+  basket_full: 422,
+  checkout_in_progress: 409,
+  checkout_refused: 502,
+};
 
 const refuse = (status, code) => ({ status, body: { ok: false, errors: [{ code }] } });
 
-function readToken(rawBody) {
+/** Returns { token, items }, with items undefined when the browser sent no Shopify cart. */
+function readRequest(rawBody) {
   if (rawBody.length > MAX_BODY_LENGTH) return null;
   try {
-    const token = JSON.parse(rawBody)?.token;
-    return typeof token === "string" && TOKEN.test(token) ? token : null;
+    const { token, cart } = JSON.parse(rawBody);
+    if (typeof token !== "string" || !TOKEN.test(token)) return null;
+    if (cart === undefined) return { token };
+    const items = readCartItems(cart);
+    return items && { token, items };
   } catch {
     return null;
   }
@@ -47,13 +59,25 @@ async function needsReview(db, ref, problems) {
   };
 }
 
+async function cartRefused(db, ref, { code, problems }) {
+  if (!problems) return refuse(STATUS[code] ?? 503, code);
+  return {
+    status: 409,
+    body: { ok: false, errors: [{ code: "review_basket" }], problems, ...publicBasket(await getBasket(db, ref)) },
+  };
+}
+
 /** shop must come from the verified Shopify request; rawBody is the unverified JSON text. */
 export async function handleCheckoutRequest({ db, graphql, shop, rawBody }) {
-  const token = readToken(rawBody);
-  if (!token) return refuse(400, "bad_request");
-  const ref = { shop, token };
+  const request = readRequest(rawBody);
+  if (!request) return refuse(400, "bad_request");
+  const ref = { shop, token: request.token };
 
   try {
+    if (request.items) {
+      const copied = await copyCartItems({ db, graphql, ref, items: request.items });
+      if (!copied.ok) return await cartRefused(db, ref, copied);
+    }
     const result = await startCheckout({ db, graphql, ...ref });
     if (result.ok) {
       return { status: 200, body: { ok: true, checkoutUrl: result.checkoutUrl, totalCents: result.totalCents } };

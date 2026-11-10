@@ -336,9 +336,9 @@
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1794305900.5360188,
-    "seen": 1794305995.6942723,
-    "ast_hash": "53d8f3080cd8c01e00ba63e892cad3bb",
+    "mtime": 1794307574.8656764,
+    "seen": 1794307872.6855147,
+    "ast_hash": "e6cf116bb0769d32df4a195295e9ccbc",
     "semantic_hash": ""
   },
   "app/pricing/quote-request.server.js": {
@@ -435,6 +435,18 @@
     "mtime": 1794305870.3180015,
     "seen": 1794305995.693275,
     "ast_hash": "40ae25331103489ee706289cb42f50b5",
+    "semantic_hash": ""
+  },
+  "prisma/migrations/20261110140000_add_basket_line_display/migration.sql": {
+    "mtime": 1794305883.4959497,
+    "seen": 1794307872.6785104,
+    "ast_hash": "fc5f1a4976e6abf27e1fa88b53df26ca",
+    "semantic_hash": ""
+  },
+  "spike/e5a-attempt-table-check.js": {
+    "mtime": 1794307800.7456703,
+    "seen": 1794307872.682511,
+    "ast_hash": "9b056fd7d5398dd0c93d3842b73ab1e2",
     "semantic_hash": ""
   },
   "package-lock.json": {

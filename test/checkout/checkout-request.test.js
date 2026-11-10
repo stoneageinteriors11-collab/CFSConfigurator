@@ -91,7 +91,10 @@ const send = (db, graphql, body = { token: TOKEN }) =>
 const codeOf = (result) => result.body.errors[0].code;
 
 test("refuses malformed requests before reaching Shopify or the database", async () => {
-  for (const body of ["not json", "null", "[]", "x".repeat(2000), {}, { token: "short" }, { token: 12345 }, { token: ["a"] }]) {
+  for (const body of [
+    "not json", "null", "[]", "x".repeat(5000), {}, { token: "short" }, { token: 12345 }, { token: ["a"] },
+    { token: TOKEN, cart: "x" }, { token: TOKEN, cart: [{ product: "1", variant: "abc", quantity: 1 }] },
+  ]) {
     const result = await send(forbidden("database"), neverCalled, body);
     assert.equal(result.status, 400, String(JSON.stringify(body)).slice(0, 60));
     assert.equal(codeOf(result), "bad_request");
@@ -163,6 +166,30 @@ test("gives each failure its own answer", async () => {
 
   result = await send(fakeDatabase(), fakeShopify({ userErrors: [{ message: "no" }] }).graphql);
   assert.deepEqual([result.status, codeOf(result)], [502, "checkout_refused"]);
+});
+
+test("a Shopify cart item that cannot be sold comes back for review, naming the item", async () => {
+  const bed = {
+    id: "line-1", productId: "222", variantId: VARIANT, sku: "M", title: "Bed", variantTitle: "Single",
+    handle: "bed", imageUrl: null, quantity: 1, baseCents: 14900, unitCents: 14900, selection: [{ choiceId: "x", group: "G", label: "L", cents: 0 }],
+  };
+  const db = fakeDatabase({ lines: [bed] });
+  const { graphql, calls } = fakeShopify();
+  const result = await send(db, graphql, { token: TOKEN, cart: [{ product: "222", variant: "999", quantity: 1 }] });
+
+  assert.equal(result.status, 409);
+  assert.equal(codeOf(result), "review_basket");
+  assert.deepEqual(result.body.problems, [{ variant: "999", code: "unknown_variant" }]);
+  assert.equal(result.body.ok, false);
+  assert.equal(result.body.lines.length, 1);
+  assert.equal(calls.creates, 0);
+});
+
+test("a basket with no configured item is refused when a Shopify cart is sent", async () => {
+  const { graphql, calls } = fakeShopify();
+  const result = await send(fakeDatabase(), graphql, { token: TOKEN, cart: [] });
+  assert.deepEqual([result.status, codeOf(result)], [422, "empty_basket"]);
+  assert.equal(calls.creates, 0);
 });
 
 test("says unavailable when the database fails", async () => {

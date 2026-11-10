@@ -294,9 +294,9 @@
     "semantic_hash": ""
   },
   "app/pricing/quote.server.js": {
-    "mtime": 1794305870.0142374,
-    "seen": 1794305995.6882732,
-    "ast_hash": "6139a8926e7572220b03694f738ff69c",
+    "mtime": 1794308223.462013,
+    "seen": 1794308931.6373653,
+    "ast_hash": "1ca2e17dc2113e25c9ce5884eb7e431f",
     "semantic_hash": ""
   },
   "test/fixtures/natural-gold-price-checks.json": {
@@ -318,9 +318,9 @@
     "semantic_hash": ""
   },
   "app/pricing/load-product.server.js": {
-    "mtime": 1794305869.8888495,
-    "seen": 1794305995.6882732,
-    "ast_hash": "83a08a45a56506ec0af9ee7ccb165a56",
+    "mtime": 1794308223.409238,
+    "seen": 1794308931.6373653,
+    "ast_hash": "7a3f6fa0e080f6ad780a23f14f44357a",
     "semantic_hash": ""
   },
   "spike/e3a-live-quote.js": {
@@ -336,15 +336,15 @@
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1794307574.8656764,
-    "seen": 1794307872.6855147,
-    "ast_hash": "e6cf116bb0769d32df4a195295e9ccbc",
+    "mtime": 1794308688.3205018,
+    "seen": 1794308931.6373653,
+    "ast_hash": "38897861c28c13e06d8c901a85384115",
     "semantic_hash": ""
   },
   "app/pricing/quote-request.server.js": {
-    "mtime": 1794304744.9846566,
-    "seen": 1794304928.7122679,
-    "ast_hash": "5cc95ee5e76aa9fac59d869c0953924e",
+    "mtime": 1794308223.5616474,
+    "seen": 1794308931.6373653,
+    "ast_hash": "4e191f2f1eedf90c5bdf078f1f5c3025",
     "semantic_hash": ""
   },
   "app/routes/proxy.quote.jsx": {
@@ -372,9 +372,9 @@
     "semantic_hash": ""
   },
   "app/basket/basket-request.server.js": {
-    "mtime": 1794305870.107109,
-    "seen": 1794305995.6882732,
-    "ast_hash": "97b2f45f1d981ee98432a2ec8383ee8d",
+    "mtime": 1794308843.5497053,
+    "seen": 1794308931.6373653,
+    "ast_hash": "87f85e70feef5f4f981682194726c830",
     "semantic_hash": ""
   },
   "app/basket/basket.server.js": {
@@ -447,6 +447,72 @@
     "mtime": 1794307800.7456703,
     "seen": 1794307872.682511,
     "ast_hash": "9b056fd7d5398dd0c93d3842b73ab1e2",
+    "semantic_hash": ""
+  },
+  "app/checkout/check-basket.server.js": {
+    "mtime": 1794308843.4544694,
+    "seen": 1794308931.6373653,
+    "ast_hash": "209fbe04e8437fede787913a03bd3e6d",
+    "semantic_hash": ""
+  },
+  "app/checkout/checkout-request.server.js": {
+    "mtime": 1794308843.600573,
+    "seen": 1794308931.6373653,
+    "ast_hash": "fbbab536550e1dac1258cbf5645455da",
+    "semantic_hash": ""
+  },
+  "app/checkout/start-checkout.server.js": {
+    "mtime": 1794308516.024643,
+    "seen": 1794308931.6373653,
+    "ast_hash": "119256ffa7c68f4e440ba2d1862a3860",
+    "semantic_hash": ""
+  },
+  "app/routes/proxy.checkout.jsx": {
+    "mtime": 1794308843.6754324,
+    "seen": 1794308931.6373653,
+    "ast_hash": "1324a25c4d472c7ca0a39c96f0a35b87",
+    "semantic_hash": ""
+  },
+  "prisma/migrations/20261110160000_create_checkout_attempts/migration.sql": {
+    "mtime": 1794307800.6656222,
+    "seen": 1794308931.6373653,
+    "ast_hash": "40b0a2f3fcf0645340ffe861380194df",
+    "semantic_hash": ""
+  },
+  "spike/e5b-live-check.js": {
+    "mtime": 1794308243.3488226,
+    "seen": 1794308931.6373653,
+    "ast_hash": "46a572c3a6017f2b0309f410f71af51e",
+    "semantic_hash": ""
+  },
+  "spike/e5c-draft-check.js": {
+    "mtime": 1794308551.0038135,
+    "seen": 1794308931.6373653,
+    "ast_hash": "9c5f5d996b25cc3517932d3e06202013",
+    "semantic_hash": ""
+  },
+  "spike/e5d-signed-checkout.js": {
+    "mtime": 1794308843.8893898,
+    "seen": 1794308931.6373653,
+    "ast_hash": "fe0d1180b7848518636e6340bd54bcbd",
+    "semantic_hash": ""
+  },
+  "test/checkout/check-basket.test.js": {
+    "mtime": 1794308223.6424537,
+    "seen": 1794308931.6373653,
+    "ast_hash": "a650d65023d9642637fd46e373aba227",
+    "semantic_hash": ""
+  },
+  "test/checkout/checkout-request.test.js": {
+    "mtime": 1794308843.8450663,
+    "seen": 1794308931.6373653,
+    "ast_hash": "2e551a654890c30849aa90d11e986ba3",
+    "semantic_hash": ""
+  },
+  "test/checkout/start-checkout.test.js": {
+    "mtime": 1794308516.0666873,
+    "seen": 1794308931.6373653,
+    "ast_hash": "d03b16596c03cb818f8384f978fca697",
     "semantic_hash": ""
   },
   "package-lock.json": {
