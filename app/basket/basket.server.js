@@ -34,6 +34,7 @@ export const validQuantity = (quantity) =>
 const pricedFields = (quote) => ({
   variantId: quote.variantId,
   sku: quote.sku,
+  ...quote.display,
   baseCents: quote.baseCents,
   unitCents: quote.totalCents,
   selection: quote.lines,

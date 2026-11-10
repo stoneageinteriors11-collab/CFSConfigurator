@@ -4,6 +4,9 @@ import { loadConfigurableProduct } from "../../app/pricing/load-product.server.j
 
 const shopifyProduct = () => ({
   id: "gid://shopify/Product/1",
+  title: "Bed",
+  handle: "bed",
+  featuredMedia: { preview: { image: { url: "https://cdn.example/bed.jpg" } } },
   variants: {
     pageInfo: { hasNextPage: false },
     nodes: [{ id: "v1", sku: "A", price: "10.00", inventoryQuantity: 1 }],
@@ -31,6 +34,9 @@ const load = (product) =>
 test("converts Shopify's response for the pricing engine", async () => {
   assert.deepEqual(await load(shopifyProduct()), {
     productId: "gid://shopify/Product/1",
+    title: "Bed",
+    handle: "bed",
+    imageUrl: "https://cdn.example/bed.jpg",
     variants: [{ id: "v1", sku: "A", price: "10.00", inventoryQuantity: 1 }],
     modelCards: { A: { source_id: "1" } },
     workflow: { mode: "m" },

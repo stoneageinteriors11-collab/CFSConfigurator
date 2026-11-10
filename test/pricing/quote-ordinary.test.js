@@ -2,9 +2,12 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { quoteOrdinaryProduct } from "../../app/pricing/quote.server.js";
 
-const variant = { id: "v1", sku: "TEST-EOC-S", price: "149.00", availableForSale: true };
+const variant = { id: "v1", sku: "TEST-EOC-S", title: "Single", price: "149.00", availableForSale: true };
 const product = (changes = {}) => ({
   ordinary: true,
+  title: "Mattress",
+  handle: "mattress",
+  imageUrl: "https://cdn.example/m.jpg",
   status: "ACTIVE",
   publishedAt: "2026-01-01T00:00:00Z",
   variants: [variant],
@@ -18,6 +21,7 @@ test("prices an ordinary product at its Shopify variant price", () => {
     ok: true,
     variantId: "v1",
     sku: "TEST-EOC-S",
+    display: { title: "Mattress", variantTitle: "Single", handle: "mattress", imageUrl: "https://cdn.example/m.jpg" },
     baseCents: 14900,
     lines: [],
     totalCents: 14900,

@@ -4,11 +4,14 @@ const PRODUCT_QUERY = `#graphql
   query CfsConfigurableProduct($id: ID!) {
     product(id: $id) {
       id
+      title
+      handle
       status
       publishedAt
+      featuredMedia { preview { image { url } } }
       variants(first: 250) {
         pageInfo { hasNextPage }
-        nodes { id sku price inventoryQuantity availableForSale }
+        nodes { id sku title price inventoryQuantity availableForSale }
       }
       modelCards: metafield(namespace: "cfs_import", key: "model_cards") { value }
       workflow: metafield(namespace: "cfs_import", key: "workflow") { value }
@@ -49,9 +52,16 @@ export async function loadConfigurableProduct(graphql, productId) {
 
   if (!product || product.variants.pageInfo.hasNextPage) return null;
 
+  const shared = {
+    productId: product.id,
+    title: product.title,
+    handle: product.handle,
+    imageUrl: product.featuredMedia?.preview?.image?.url ?? null,
+  };
+
   if (!product.modelCards && !product.workflow && !product.options) {
     return {
-      productId: product.id,
+      ...shared,
       ordinary: true,
       status: product.status,
       publishedAt: product.publishedAt,
@@ -63,7 +73,7 @@ export async function loadConfigurableProduct(graphql, productId) {
   if (!references || references.pageInfo.hasNextPage) return null;
 
   return {
-    productId: product.id,
+    ...shared,
     variants: product.variants.nodes,
     modelCards: parseJson(product.modelCards?.value),
     workflow: parseJson(product.workflow?.value),

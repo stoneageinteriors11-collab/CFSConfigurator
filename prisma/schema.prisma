@@ -59,6 +59,10 @@ model BasketLine {
   productId        String
   variantId        String
   sku              String
+  title            String   @default("")
+  variantTitle     String   @default("")
+  handle           String   @default("")
+  imageUrl         String?
   quantity         Int
   baseCents        Int
   unitCents        Int

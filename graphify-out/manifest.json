@@ -294,9 +294,9 @@
     "semantic_hash": ""
   },
   "app/pricing/quote.server.js": {
-    "mtime": 1794295041.6892188,
-    "seen": 1794295145.3253446,
-    "ast_hash": "bae7c69038d73ce2917e60e5710c2207",
+    "mtime": 1794304744.8924873,
+    "seen": 1794304928.7122679,
+    "ast_hash": "6ec02ddc9c0a035fbf995d121609da7f",
     "semantic_hash": ""
   },
   "test/fixtures/natural-gold-price-checks.json": {
@@ -318,9 +318,9 @@
     "semantic_hash": ""
   },
   "app/pricing/load-product.server.js": {
-    "mtime": 1794295374.3335085,
-    "seen": 1794295542.2160754,
-    "ast_hash": "bcd6b83f2374989b1b34857d841e7852",
+    "mtime": 1794304744.844182,
+    "seen": 1794304928.7122679,
+    "ast_hash": "b6213821878c9b53d79d6a92f4641815",
     "semantic_hash": ""
   },
   "spike/e3a-live-quote.js": {
@@ -330,21 +330,21 @@
     "semantic_hash": ""
   },
   "test/pricing/load-product.test.js": {
-    "mtime": 1794295374.3904626,
-    "seen": 1794295542.2170758,
-    "ast_hash": "b42c032e58043dfcbed5f407e99e792c",
+    "mtime": 1794304745.024818,
+    "seen": 1794304928.7132678,
+    "ast_hash": "4541797e3e88c0cbeea3b9884ff06930",
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1794303199.1266327,
-    "seen": 1794303603.1590686,
-    "ast_hash": "fa74ce2c2c6527e53672d72b6064835f",
+    "mtime": 1794304831.504779,
+    "seen": 1794304928.7132678,
+    "ast_hash": "b063f954eb2df9b0b4ad792c97e51c24",
     "semantic_hash": ""
   },
   "app/pricing/quote-request.server.js": {
-    "mtime": 1794303082.5977168,
-    "seen": 1794303603.1590686,
-    "ast_hash": "d93395bfee8d191d081afe0ada2b34aa",
+    "mtime": 1794304744.9846566,
+    "seen": 1794304928.7122679,
+    "ast_hash": "5cc95ee5e76aa9fac59d869c0953924e",
     "semantic_hash": ""
   },
   "app/routes/proxy.quote.jsx": {
@@ -417,6 +417,18 @@
     "mtime": 1794302525.42517,
     "seen": 1794303603.1590686,
     "ast_hash": "edec876b425607e39fefdef5cac44583",
+    "semantic_hash": ""
+  },
+  "spike/e4d-signed-mixed-basket.js": {
+    "mtime": 1794304745.1401415,
+    "seen": 1794304928.7132678,
+    "ast_hash": "854e281d70f67a4cbe56887e843bf6ed",
+    "semantic_hash": ""
+  },
+  "test/pricing/quote-ordinary.test.js": {
+    "mtime": 1794304745.1041448,
+    "seen": 1794304928.7132678,
+    "ast_hash": "8ccdd112aa4999f21f27f23d4e16ffe4",
     "semantic_hash": ""
   },
   "package-lock.json": {

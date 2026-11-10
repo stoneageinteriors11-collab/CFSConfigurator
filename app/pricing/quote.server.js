@@ -24,6 +24,14 @@ function resolveAssignment(option, modelId) {
   return cents === null ? "invalid" : { id: matches[0].id, cents };
 }
 
+/** What the basket shows for this item. */
+const displayOf = (product, variant) => ({
+  title: product.title ?? "",
+  variantTitle: variant.title ?? "",
+  handle: product.handle ?? "",
+  imageUrl: product.imageUrl ?? null,
+});
+
 /** Prices a product with no configuration at its Shopify variant price. */
 export function quoteOrdinaryProduct(product, { variantId, choiceIds }) {
   const fail = (code) => ({ ok: false, errors: [{ code }] });
@@ -38,7 +46,15 @@ export function quoteOrdinaryProduct(product, { variantId, choiceIds }) {
   const baseCents = toPennies(variant.price);
   if (baseCents === null) return fail("invalid_product_data");
 
-  return { ok: true, variantId: variant.id, sku: variant.sku ?? "", baseCents, lines: [], totalCents: baseCents };
+  return {
+    ok: true,
+    variantId: variant.id,
+    sku: variant.sku ?? "",
+    display: displayOf(product, variant),
+    baseCents,
+    lines: [],
+    totalCents: baseCents,
+  };
 }
 
 export function quoteConfiguration(product, { variantId, choiceIds }) {
@@ -116,6 +132,7 @@ export function quoteConfiguration(product, { variantId, choiceIds }) {
     variantId: variant.id,
     sku: variant.sku,
     modelId,
+    display: displayOf(product, variant),
     baseCents,
     lines,
     totalCents: lines.reduce((sum, line) => sum + line.cents, baseCents),
