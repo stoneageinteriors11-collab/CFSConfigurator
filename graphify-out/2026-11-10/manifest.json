@@ -317,6 +317,30 @@
     "ast_hash": "93c8137e022f0a48df577a21ae10a19f",
     "semantic_hash": ""
   },
+  "app/pricing/load-product.server.js": {
+    "mtime": 1794295374.3335085,
+    "seen": 1794295542.2160754,
+    "ast_hash": "bcd6b83f2374989b1b34857d841e7852",
+    "semantic_hash": ""
+  },
+  "spike/e3a-live-quote.js": {
+    "mtime": 1794295458.563266,
+    "seen": 1794295542.2170758,
+    "ast_hash": "3b586dba43a90404db97927ee072ae65",
+    "semantic_hash": ""
+  },
+  "test/pricing/load-product.test.js": {
+    "mtime": 1794295374.3904626,
+    "seen": 1794295542.2170758,
+    "ast_hash": "b42c032e58043dfcbed5f407e99e792c",
+    "semantic_hash": ""
+  },
+  "docs/PLAN.md": {
+    "mtime": 1794295472.1685803,
+    "seen": 1794295542.2170758,
+    "ast_hash": "f58764a8b78f3d9ecd677cb340cd4528",
+    "semantic_hash": ""
+  },
   "package-lock.json": {
     "mtime": 1794217185.4163122,
     "seen": 1794227747.4838262,

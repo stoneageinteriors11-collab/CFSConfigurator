@@ -21,7 +21,7 @@
   "29": "b10a-unpublished-automatic.js",
   "30": "CFS configurator: small-step plan",
   "31": "graphql-config@^5.1.1",
-  "32": "@types/react@^18.3.25",
+  "32": "eslint-import-resolver-typescript@^3.10.1",
   "33": "eslint-plugin-react-hooks@^4.6.2",
-  "34": "@typescript-eslint/eslint-plugin@^6.21.0"
+  "34": "@shopify/api-codegen-preset"
 }

@@ -33,3 +33,38 @@ model Session {
   refreshToken        String?
   refreshTokenExpires DateTime?
 }
+
+// A shopper's basket. The shopper holds a secret token; only its hash is stored here.
+// Version goes up on every change, so a checkout can be tied to one exact basket state.
+model Basket {
+  id        String       @id @default(uuid())
+  shop      String
+  tokenHash String
+  version   Int          @default(1)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  lines     BasketLine[]
+
+  @@unique([shop, tokenHash])
+}
+
+// One item in a basket. An ordinary product is a line with an empty selection.
+// configurationKey identifies the variant and its choices: identical copies share one
+// line and use quantity, while different configurations of a variant stay separate.
+model BasketLine {
+  id               String   @id @default(uuid())
+  basketId         String
+  basket           Basket   @relation(fields: [basketId], references: [id], onDelete: Cascade)
+  configurationKey String
+  productId        String
+  variantId        String
+  sku              String
+  quantity         Int
+  baseCents        Int
+  unitCents        Int
+  selection        Json     @default("[]")
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@unique([basketId, configurationKey])
+}
