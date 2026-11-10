@@ -44,6 +44,7 @@ model Basket {
   createdAt DateTime     @default(now())
   updatedAt DateTime     @updatedAt
   lines     BasketLine[]
+  attempts  CheckoutAttempt[]
 
   @@unique([shop, tokenHash])
 }
@@ -71,4 +72,25 @@ model BasketLine {
   updatedAt        DateTime @updatedAt
 
   @@unique([basketId, configurationKey])
+}
+
+// One checkout for one exact basket version, saved before Shopify is called, so repeat
+// clicks reuse it. Kept when its basket is deleted, because a paid order still needs it.
+// lines and totalCents record what was priced, since the basket can change afterwards.
+// status is creating, ready or failed; ready requires the draft order and its checkout link.
+model CheckoutAttempt {
+  id            String   @id @default(uuid())
+  shop          String
+  basketId      String?
+  basket        Basket?  @relation(fields: [basketId], references: [id], onDelete: SetNull)
+  basketVersion Int
+  status        String   @default("creating")
+  lines         Json
+  totalCents    Int
+  draftOrderId  String?  @unique
+  invoiceUrl    String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@unique([basketId, basketVersion])
 }
