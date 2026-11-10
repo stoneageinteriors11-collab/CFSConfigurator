@@ -66,22 +66,16 @@
     "semantic_hash": "dbf344f5edf5932a4320c32ebc8e4d23"
   },
   "app/routes/app._index.jsx": {
-    "mtime": 1794216932.3882246,
-    "seen": 1794219410.4212792,
-    "ast_hash": "ddc63b1b1e344368a33b852d3c6655f5",
-    "semantic_hash": "ddc63b1b1e344368a33b852d3c6655f5"
-  },
-  "app/routes/app.additional.jsx": {
-    "mtime": 1794216932.3882246,
-    "seen": 1794219410.4212792,
-    "ast_hash": "0e42343f624d7e99961d8867304f47c6",
-    "semantic_hash": "0e42343f624d7e99961d8867304f47c6"
+    "mtime": 1794293846.6733632,
+    "seen": 1794293889.092757,
+    "ast_hash": "235d4e222f9815602b38915444c633e7",
+    "semantic_hash": ""
   },
   "app/routes/app.jsx": {
-    "mtime": 1794216932.3882246,
-    "seen": 1794219410.4212792,
-    "ast_hash": "6253dc16e1bda4cd5d41ccb9698ee63a",
-    "semantic_hash": "6253dc16e1bda4cd5d41ccb9698ee63a"
+    "mtime": 1794293846.7520285,
+    "seen": 1794293889.092757,
+    "ast_hash": "c895c64273330b7a9e94c02be242fd23",
+    "semantic_hash": ""
   },
   "app/routes/auth.$.jsx": {
     "mtime": 1794216932.3892255,
@@ -112,12 +106,6 @@
     "seen": 1794219410.4212792,
     "ast_hash": "6dc33e05a8816d3392d9b78be6e38832",
     "semantic_hash": "6dc33e05a8816d3392d9b78be6e38832"
-  },
-  "app/routes/webhooks.products.update.jsx": {
-    "mtime": 1794216932.3902245,
-    "seen": 1794219410.4212792,
-    "ast_hash": "dc6fcebae82b4007b692db48aff3b717",
-    "semantic_hash": "dc6fcebae82b4007b692db48aff3b717"
   },
   "app/shopify.server.js": {
     "mtime": 1794289719.4902508,
@@ -297,6 +285,12 @@
     "mtime": 1794289708.8383012,
     "seen": 1794291619.2663114,
     "ast_hash": "51e29b419861ae75f7e4e772c616321e",
+    "semantic_hash": ""
+  },
+  "prisma/migrations/20261109123000_create_session_table/migration.sql": {
+    "mtime": 1794228753.4757001,
+    "seen": 1794293889.092757,
+    "ast_hash": "194e02af763b6635beed840370375760",
     "semantic_hash": ""
   },
   "package-lock.json": {

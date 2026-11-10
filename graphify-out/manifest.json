@@ -114,10 +114,10 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1794216933.167057,
-    "seen": 1794219410.4212792,
-    "ast_hash": "99426508f0a407f5cbcf593cae3e825f",
-    "semantic_hash": "99426508f0a407f5cbcf593cae3e825f"
+    "mtime": 1794295016.2925837,
+    "seen": 1794295145.3253446,
+    "ast_hash": "8e757d98031477ac622cf60c30932f9c",
+    "semantic_hash": ""
   },
   "pnpm-workspace.yaml": {
     "mtime": 1794216932.392224,
@@ -291,6 +291,30 @@
     "mtime": 1794228753.4757001,
     "seen": 1794293889.092757,
     "ast_hash": "194e02af763b6635beed840370375760",
+    "semantic_hash": ""
+  },
+  "app/pricing/quote.server.js": {
+    "mtime": 1794295041.6892188,
+    "seen": 1794295145.3253446,
+    "ast_hash": "bae7c69038d73ce2917e60e5710c2207",
+    "semantic_hash": ""
+  },
+  "test/fixtures/natural-gold-price-checks.json": {
+    "mtime": 1794295011.8711295,
+    "seen": 1794295145.3253446,
+    "ast_hash": "b5be56186f0f41f53bc3ee6d42ca3f93",
+    "semantic_hash": ""
+  },
+  "test/fixtures/natural-gold.json": {
+    "mtime": 1794295011.868081,
+    "seen": 1794295145.3253446,
+    "ast_hash": "0f82e767b57c5894fb7c4498d9d26032",
+    "semantic_hash": ""
+  },
+  "test/pricing/quote.test.js": {
+    "mtime": 1794295041.7973285,
+    "seen": 1794295145.3253446,
+    "ast_hash": "93c8137e022f0a48df577a21ae10a19f",
     "semantic_hash": ""
   },
   "package-lock.json": {
