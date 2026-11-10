@@ -36,11 +36,12 @@
   "42": "e4c-signed-basket.js",
   "43": "e4f-display-check.js",
   "44": "ref_node_crypto",
-  "45": "graphql-config@^5.1.1",
-  "46": "typescript@^5.9.3",
-  "47": "@typescript-eslint/parser@^6.21.0",
+  "45": "e5f-signed-cart-copy.js",
+  "46": "copy-cart.test.js",
+  "47": "react-router",
   "48": "e3a-live-quote.js",
   "49": "start-checkout.server.js",
   "50": "e5d-signed-checkout.js",
-  "51": "checkout-request.test.js"
+  "51": "eslint-import-resolver-typescript@^3.10.1",
+  "52": "eslint-plugin-react-hooks@^4.6.2"
 }

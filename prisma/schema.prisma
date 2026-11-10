@@ -91,6 +91,28 @@ model CheckoutAttempt {
   invoiceUrl    String?
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
+  snapshot      OrderSnapshot?
 
   @@unique([basketId, basketVersion])
+}
+
+// The permanent record of one Shopify order, for staff and fulfilment. One per order, however
+// often Shopify repeats the webhook. A database trigger refuses any change to specification,
+// so later catalogue edits cannot alter an old order. financialStatus and cancelledAt follow
+// Shopify. matchStatus is matched, no_attempt (not from an app checkout) or price_mismatch.
+model OrderSnapshot {
+  id              String           @id @default(uuid())
+  shop            String
+  orderId         String
+  orderName       String
+  attemptId       String?          @unique
+  attempt         CheckoutAttempt? @relation(fields: [attemptId], references: [id], onDelete: Restrict)
+  matchStatus     String
+  specification   Json
+  financialStatus String
+  cancelledAt     DateTime?
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+
+  @@unique([shop, orderId])
 }
