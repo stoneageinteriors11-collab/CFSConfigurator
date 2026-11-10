@@ -93,7 +93,7 @@ Check Supabase's current connection guidance at D2 and D6, since Render's networ
 
 1. Delete spike code and template demo routes.
 2. JavaScript config engine, independent of UI: validator and pre-discount quote in integer pennies, using `cfs_import.*` metafields and `source_mappings`. Fails closed on missing or ambiguous mappings. Natural Gold first.
-3. Quote endpoint connected to the preview theme `211243106643`, keeping purchase guards until the controlled flow replaces them. **E3a done 10 November 2026:** Natural Gold is read live from the dev store and gives £1,089.98. Next is the endpoint itself.
+3. Quote endpoint connected to the preview theme `211243106643`, keeping purchase guards until the controlled flow replaces them. **E3a done 10 November 2026:** Natural Gold is read live from the dev store and gives £1,089.98. **E3b built 10 November 2026:** price check at `/apps/cfs/quote` (app proxy), tested locally with signed requests. Next is deploying it and checking it on the real storefront URL, then connecting the theme.
 4. Persistent basket.
 5. Checkout attempts tied to basket version.
 6. Webhooks and immutable order snapshot.

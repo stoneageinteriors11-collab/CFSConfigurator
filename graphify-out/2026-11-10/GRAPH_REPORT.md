@@ -1,17 +1,17 @@
 # Graph Report - cfs-configurator  (2026-11-10)
 
 ## Corpus Check
-- 49 files · ~14,822 words
+- 53 files · ~20,293 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 14 file(s) not represented in the graph (top: (none) 8, .toml 3, .css 1)
 
 ## Summary
-- 374 nodes · 554 edges · 34 communities (27 shown, 7 thin omitted)
+- 388 nodes · 574 edges · 34 communities (29 shown, 5 thin omitted)
 - Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 15 edges (avg confidence: 0.9)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `10aacca4`
+- Built from commit: `ab34baf0`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -43,18 +43,18 @@
 - devDependencies
 - @react-router/dev
 - overrides
-- @shopify/api-codegen-preset
-- @typescript-eslint/eslint-plugin@^6.21.0
+- quote.test.js
+- b10a-unpublished-automatic.js
 - eslint-plugin-react@^7.37.5
+- graphql-config@^5.1.1
+- @types/react@^18.3.25
 - prettier@^3.6.2
-- @types/node@^22.18.8
-- @types/react-dom@^18.3.7
 
 ## God Nodes (most connected - your core abstractions)
-1. `loadResults()` - 18 edges
-2. `compilerOptions` - 18 edges
-3. `write()` - 17 edges
-4. `scripts` - 17 edges
+1. `scripts` - 18 edges
+2. `loadResults()` - 18 edges
+3. `compilerOptions` - 18 edges
+4. `write()` - 17 edges
 5. `Shopify App Template - React Router README` - 17 edges
 6. `saveResult()` - 15 edges
 7. `variantPrice()` - 14 edges
@@ -63,6 +63,8 @@
 10. `NATURAL_GOLD_VARIANT` - 12 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `quote()` --calls--> `quoteConfiguration()`  [EXTRACTED]
+  test/pricing/quote.test.js → app/pricing/quote.server.js
 - `Shopify AI Toolkit` --semantically_similar_to--> `Shopify Dev MCP`  [INFERRED] [semantically similar]
   AGENTS.md → README.md
 - `@shopify/shopify-app-template-remix` --conceptually_related_to--> `Shopify Remix app template`  [INFERRED]
@@ -70,8 +72,6 @@
 - `Polaris web components 2.x (polaris-2.js)` --conceptually_related_to--> `Polaris Web Components`  [INFERRED]
   CHANGELOG.md → README.md
 - `Global Shopify CLI installation` --conceptually_related_to--> `Shopify CLI`  [INFERRED]
-  CHANGELOG.md → README.md
-- `openssl in Docker image for Prisma` --conceptually_related_to--> `Prisma session storage`  [INFERRED]
   CHANGELOG.md → README.md
 
 ## Import Cycles
@@ -82,11 +82,11 @@
 - **Production hosting options** — readme_google_cloud_run_deployment, readme_fly_io_deployment, readme_render_deployment, readme_manual_deployment_guide [EXTRACTED 1.00]
 - **Webhook subscription pitfalls and remedy** — readme_app_specific_webhooks, readme_afterauth_shop_specific_webhooks, readme_admin_created_webhook_hmac_failure, readme_cli_webhook_admin_undefined [INFERRED 0.85]
 
-## Communities (34 total, 7 thin omitted)
+## Communities (34 total, 5 thin omitted)
 
 ### Community 0 - "package.json"
-Cohesion: 0.15
-Nodes (12): author, @shopify/polaris-types@^2.0.0, engines, node, name, private, resolutions, qs (+4 more)
+Cohesion: 0.13
+Nodes (14): author, @typescript-eslint/eslint-plugin@^6.21.0, @typescript-eslint/parser@^6.21.0, engines, node, name, private, resolutions (+6 more)
 
 ### Community 1 - "Template Security Changelog"
 Cohesion: 0.05
@@ -101,12 +101,12 @@ Cohesion: 0.11
 Nodes (18): dependencies, prisma@^6.16.3, @prisma/client@^6.16.3, react@^18.3.1, @react-router/fs-routes@7.18.2, @react-router/serve@7.18.2, @shopify/app-bridge-react@^4.2.4, @shopify/cli@4.9.3 (+10 more)
 
 ### Community 4 - "lib.js"
-Cohesion: 0.18
+Cohesion: 0.19
 Nodes (9): { draftOrder }, { draftOrder }, { draftOrder }, execute(), NATURAL_GOLD_VARIANT, read(), RESULTS, STORE (+1 more)
 
 ### Community 5 - "loadResults"
-Cohesion: 0.17
-Nodes (13): after, before, { draftOrderCreate }, input, { draftOrder }, { draftOrder: after }, { draftOrderDelete: r }, input (+5 more)
+Cohesion: 0.20
+Nodes (9): { draftOrder }, { draftOrder: after }, { draftOrderDelete: r }, input, { productSet: created }, { publishablePublish: published }, loadResults(), saveResult() (+1 more)
 
 ### Community 6 - "Shopify Platform Upgrades"
 Cohesion: 0.10
@@ -117,8 +117,8 @@ Cohesion: 0.10
 Nodes (19): compilerOptions, allowJs, allowSyntheticDefaultImports, baseUrl, forceConsistentCasingInFileNames, isolatedModules, jsx, lib (+11 more)
 
 ### Community 8 - "NPM Scripts"
-Cohesion: 0.12
-Nodes (17): scripts, build, config:link, config:use, deploy, dev, docker-start, env (+9 more)
+Cohesion: 0.11
+Nodes (18): scripts, build, config:link, config:use, deploy, dev, docker-start, env (+10 more)
 
 ### Community 9 - "PNPM Build Allowlist"
 Cohesion: 0.20
@@ -129,8 +129,8 @@ Cohesion: 0.25
 Nodes (8): attempt(), { draftOrders }, drafts, input, key, keyed, result, write()
 
 ### Community 11 - "b10b-unpublished-code.js"
-Cohesion: 0.22
-Nodes (5): after, before, { draftOrderCreate }, input, DRAFT_FIELDS
+Cohesion: 0.40
+Nodes (4): after, before, { draftOrderCreate }, input
 
 ### Community 12 - "Cursor MCP Config"
 Cohesion: 0.50
@@ -181,8 +181,8 @@ Cohesion: 0.15
 Nodes (6): decrypt(), encrypt(), EncryptedSessionStorage, parseKey(), original, storage
 
 ### Community 25 - "devDependencies"
-Cohesion: 0.10
-Nodes (21): devDependencies, eslint@^8.57.1, eslint-import-resolver-typescript@^3.10.1, eslint-plugin-import@^2.32.0, eslint-plugin-jsx-a11y@^6.10.2, eslint-plugin-react-hooks@^4.6.2, graphql-config@^5.1.1, @types/eslint@^9.6.1 (+13 more)
+Cohesion: 0.09
+Nodes (23): devDependencies, eslint@^8.57.1, eslint-import-resolver-typescript@^3.10.1, eslint-plugin-import@^2.32.0, eslint-plugin-jsx-a11y@^6.10.2, eslint-plugin-react-hooks@^4.6.2, @shopify/api-codegen-preset@^1.2.0, @shopify/polaris-types@^2.0.0 (+15 more)
 
 ### Community 26 - "@react-router/dev"
 Cohesion: 0.29
@@ -192,25 +192,33 @@ Nodes (6): @react-router/dev@7.18.2, vite-tsconfig-paths@^5.1.4, vite@^6.3.6, @r
 Cohesion: 0.40
 Nodes (5): overrides, p-map, qs, pnpm, overrides
 
+### Community 28 - "quote.test.js"
+Cohesion: 0.20
+Nodes (6): quoteConfiguration(), resolveAssignment(), toPennies(), naturalGold, priceChecks, quote()
+
+### Community 29 - "b10a-unpublished-automatic.js"
+Cohesion: 0.33
+Nodes (5): after, before, { draftOrderCreate }, input, DRAFT_FIELDS
+
 ## Knowledge Gaps
 - **28 isolated node(s):** `npx`, `@shopify/dev-mcp`, `npx`, `@shopify/dev-mcp`, `CVE-2026-82417` (+23 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 195 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 201 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `@shopify/shopify-app-react-router` connect `Admin Demo Routes` to `EncryptedSessionStorage`, `package.json`, `Server Rendering Runtime`?**
-  _High betweenness centrality (0.200) - this node is a cross-community bridge._
+  _High betweenness centrality (0.201) - this node is a cross-community bridge._
 - **What connects `npx`, `@shopify/dev-mcp`, `npx` to the rest of the system?**
   _28 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `package.json` be split into smaller, more focused modules?**
+  _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
+- **Why does `scripts` connect `NPM Scripts` to `package.json`?**
+  _High betweenness centrality (0.060) - this node is a cross-community bridge._
 - **Should `Template Security Changelog` be split into smaller, more focused modules?**
   _Cohesion score 0.048625792811839326 - nodes in this community are weakly interconnected._
-- **Why does `scripts` connect `NPM Scripts` to `package.json`?**
-  _High betweenness centrality (0.058) - this node is a cross-community bridge._
+- **Why does `loadResults()` connect `loadResults` to `lib.js`, `write`, `b10b-unpublished-code.js`, `b4b-combinable.js`, `b1-draft-price-override.js`, `b2-automatic-discount.js`, `b3-discount-code.js`, `b4a-non-combinable.js`, `b5-rejected-codes.js`, `b6-mixed-basket.js`, `b10a-unpublished-automatic.js`?**
+  _High betweenness centrality (0.034) - this node is a cross-community bridge._
 - **Should `Admin Demo Routes` be split into smaller, more focused modules?**
   _Cohesion score 0.06567992599444958 - nodes in this community are weakly interconnected._
-- **Why does `loadResults()` connect `loadResults` to `lib.js`, `write`, `b10b-unpublished-code.js`, `b4b-combinable.js`, `b1-draft-price-override.js`, `b2-automatic-discount.js`, `b3-discount-code.js`, `b4a-non-combinable.js`, `b5-rejected-codes.js`, `b6-mixed-basket.js`?**
-  _High betweenness centrality (0.036) - this node is a cross-community bridge._
-- **Should `Server Rendering Runtime` be split into smaller, more focused modules?**
-  _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._

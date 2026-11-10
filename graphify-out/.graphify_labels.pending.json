@@ -17,10 +17,11 @@
   "25": "devDependencies",
   "26": "@react-router/dev",
   "27": "overrides",
-  "28": "quote.test.js",
+  "28": "e3a-live-quote.js",
   "29": "b10a-unpublished-automatic.js",
-  "30": "eslint-plugin-react@^7.37.5",
+  "30": "CFS configurator: small-step plan",
   "31": "graphql-config@^5.1.1",
   "32": "@types/react@^18.3.25",
-  "33": "prettier@^3.6.2"
+  "33": "eslint-plugin-react-hooks@^4.6.2",
+  "34": "@typescript-eslint/eslint-plugin@^6.21.0"
 }

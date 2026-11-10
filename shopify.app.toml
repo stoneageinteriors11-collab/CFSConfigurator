@@ -7,7 +7,12 @@ embedded = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "read_products,write_products,read_metaobjects,read_inventory,write_draft_orders,read_orders,read_discounts,write_discounts"
+scopes = "read_products,write_products,read_metaobjects,read_inventory,write_draft_orders,read_orders,read_discounts,write_discounts,write_app_proxy"
+
+[app_proxy]
+url = "/proxy"
+prefix = "apps"
+subpath = "cfs"
 
 [webhooks]
 api_version = "2026-10"
