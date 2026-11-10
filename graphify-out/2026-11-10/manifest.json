@@ -294,9 +294,9 @@
     "semantic_hash": ""
   },
   "app/pricing/quote.server.js": {
-    "mtime": 1794304744.8924873,
-    "seen": 1794304928.7122679,
-    "ast_hash": "6ec02ddc9c0a035fbf995d121609da7f",
+    "mtime": 1794305870.0142374,
+    "seen": 1794305995.6882732,
+    "ast_hash": "6139a8926e7572220b03694f738ff69c",
     "semantic_hash": ""
   },
   "test/fixtures/natural-gold-price-checks.json": {
@@ -318,9 +318,9 @@
     "semantic_hash": ""
   },
   "app/pricing/load-product.server.js": {
-    "mtime": 1794304744.844182,
-    "seen": 1794304928.7122679,
-    "ast_hash": "b6213821878c9b53d79d6a92f4641815",
+    "mtime": 1794305869.8888495,
+    "seen": 1794305995.6882732,
+    "ast_hash": "83a08a45a56506ec0af9ee7ccb165a56",
     "semantic_hash": ""
   },
   "spike/e3a-live-quote.js": {
@@ -330,15 +330,15 @@
     "semantic_hash": ""
   },
   "test/pricing/load-product.test.js": {
-    "mtime": 1794304745.024818,
-    "seen": 1794304928.7132678,
-    "ast_hash": "4541797e3e88c0cbeea3b9884ff06930",
+    "mtime": 1794305870.1999302,
+    "seen": 1794305995.693275,
+    "ast_hash": "2f547097e44fada285512c99a138e535",
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1794304831.504779,
-    "seen": 1794304928.7132678,
-    "ast_hash": "b063f954eb2df9b0b4ad792c97e51c24",
+    "mtime": 1794305900.5360188,
+    "seen": 1794305995.6942723,
+    "ast_hash": "53d8f3080cd8c01e00ba63e892cad3bb",
     "semantic_hash": ""
   },
   "app/pricing/quote-request.server.js": {
@@ -372,15 +372,15 @@
     "semantic_hash": ""
   },
   "app/basket/basket-request.server.js": {
-    "mtime": 1794303082.9368448,
-    "seen": 1794303603.1590686,
-    "ast_hash": "1e5c3f3ce3f73bca6819c98517000957",
+    "mtime": 1794305870.107109,
+    "seen": 1794305995.6882732,
+    "ast_hash": "97b2f45f1d981ee98432a2ec8383ee8d",
     "semantic_hash": ""
   },
   "app/basket/basket.server.js": {
-    "mtime": 1794303082.820612,
-    "seen": 1794303603.1590686,
-    "ast_hash": "2770cc3e73013d1571d6e5af7196557f",
+    "mtime": 1794305870.0565865,
+    "seen": 1794305995.6882732,
+    "ast_hash": "ce3a2265e8575df454e65e232c536462",
     "semantic_hash": ""
   },
   "app/routes/proxy.basket.jsx": {
@@ -426,9 +426,15 @@
     "semantic_hash": ""
   },
   "test/pricing/quote-ordinary.test.js": {
-    "mtime": 1794304745.1041448,
-    "seen": 1794304928.7132678,
-    "ast_hash": "8ccdd112aa4999f21f27f23d4e16ffe4",
+    "mtime": 1794305870.283489,
+    "seen": 1794305995.693275,
+    "ast_hash": "daf3d71b059cae8ef1ded4f69952b2b4",
+    "semantic_hash": ""
+  },
+  "spike/e4f-display-check.js": {
+    "mtime": 1794305870.3180015,
+    "seen": 1794305995.693275,
+    "ast_hash": "40ae25331103489ee706289cb42f50b5",
     "semantic_hash": ""
   },
   "package-lock.json": {

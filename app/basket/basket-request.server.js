@@ -11,7 +11,7 @@ import {
 } from "./basket.server.js";
 
 const MAX_BODY_LENGTH = 4096;
-const TOKEN = /^[\w-]{43}$/;
+export const TOKEN = /^[\w-]{43}$/;
 const LINE_ID = /^[0-9a-f-]{36}$/;
 const NOT_FOUND = new Set(["basket_not_found", "line_not_found"]);
 
@@ -19,7 +19,7 @@ const refuse = (status, code) => ({ status, body: { ok: false, errors: [{ code }
 const matches = (pattern, value) => typeof value === "string" && pattern.test(value);
 const numericId = (gid) => gid.split("/").pop();
 
-function publicBasket(basket) {
+export function publicBasket(basket) {
   const lines = (basket?.lines ?? []).map((line) => ({
     id: line.id,
     productId: line.productId,

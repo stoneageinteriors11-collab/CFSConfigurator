@@ -11,7 +11,7 @@ const PRODUCT_QUERY = `#graphql
       featuredMedia { preview { image { url } } }
       variants(first: 250) {
         pageInfo { hasNextPage }
-        nodes { id sku title price inventoryQuantity availableForSale }
+        nodes { id sku title price inventoryQuantity inventoryPolicy availableForSale inventoryItem { tracked } }
       }
       modelCards: metafield(namespace: "cfs_import", key: "model_cards") { value }
       workflow: metafield(namespace: "cfs_import", key: "workflow") { value }

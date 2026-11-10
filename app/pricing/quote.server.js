@@ -138,3 +138,7 @@ export function quoteConfiguration(product, { variantId, choiceIds }) {
     totalCents: lines.reduce((sum, line) => sum + line.cents, baseCents),
   };
 }
+
+/** Prices a product loaded by loadConfigurableProduct, whichever kind it is. */
+export const priceProduct = (product, request) =>
+  product.ordinary ? quoteOrdinaryProduct(product, request) : quoteConfiguration(product, request);
