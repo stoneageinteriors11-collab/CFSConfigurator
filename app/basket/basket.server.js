@@ -120,6 +120,29 @@ export async function setLineQuantity(db, ref, lineId, quantity, quote) {
   });
 }
 
+/**
+ * After payment, takes the paid quantities out of the basket the checkout came from.
+ * tx must be the transaction that saves the order record, so this runs exactly once per order.
+ * Anything added after checkout started stays. Returns the number of lines changed.
+ */
+export async function removePaidLines(tx, attempt) {
+  if (!attempt.basketId) return 0;
+  // Raising the version locks the basket and tells any open checkout that the basket changed.
+  const { count } = await tx.basket.updateMany({ where: { id: attempt.basketId }, data: { version: { increment: 1 } } });
+  if (count === 0) return 0;
+
+  let changed = 0;
+  for (const paid of attempt.lines) {
+    const where = { id: paid.lineId, basketId: attempt.basketId };
+    const { count: removed } = await tx.basketLine.deleteMany({ where: { ...where, quantity: { lte: paid.quantity } } });
+    const { count: reduced } = removed
+      ? { count: 0 }
+      : await tx.basketLine.updateMany({ where, data: { quantity: { decrement: paid.quantity } } });
+    changed += removed + reduced;
+  }
+  return changed;
+}
+
 export async function removeLine(db, ref, lineId) {
   return changeBasket(db, ref, async (tx, owned) => {
     const { count } = await tx.basketLine.deleteMany({ where: { id: lineId, basket: owned } });

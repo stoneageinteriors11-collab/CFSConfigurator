@@ -336,9 +336,9 @@
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1794317546.8838496,
-    "seen": 1794380363.0858665,
-    "ast_hash": "de29631fc22c430e21ebc92e8bdb2e27",
+    "mtime": 1794381284.944572,
+    "seen": 1794381361.840554,
+    "ast_hash": "71c28d70a38d5f67a530302efb9daddc",
     "semantic_hash": ""
   },
   "app/pricing/quote-request.server.js": {
@@ -462,9 +462,9 @@
     "semantic_hash": ""
   },
   "app/checkout/start-checkout.server.js": {
-    "mtime": 1794308516.024643,
-    "seen": 1794308931.6373653,
-    "ast_hash": "119256ffa7c68f4e440ba2d1862a3860",
+    "mtime": 1794380828.6135683,
+    "seen": 1794381361.840554,
+    "ast_hash": "941fb72bbe02e045bea06f878ebfb34b",
     "semantic_hash": ""
   },
   "app/routes/proxy.checkout.jsx": {
@@ -543,6 +543,48 @@
     "mtime": 1794317295.653419,
     "seen": 1794380363.0858665,
     "ast_hash": "fd864ffab57153cf9be7f5f369f8cf31",
+    "semantic_hash": ""
+  },
+  "app/orders/save-snapshot.server.js": {
+    "mtime": 1794381162.40158,
+    "seen": 1794381361.840554,
+    "ast_hash": "2289fdc1842ecb0d2c60080c38664e3f",
+    "semantic_hash": ""
+  },
+  "app/orders/specification.server.js": {
+    "mtime": 1794380853.905515,
+    "seen": 1794381361.840554,
+    "ast_hash": "f5b6b54b4d86c5e9020adc7f16400c85",
+    "semantic_hash": ""
+  },
+  "app/routes/webhooks.orders.paid.jsx": {
+    "mtime": 1794381170.9879355,
+    "seen": 1794381361.840554,
+    "ast_hash": "73dff08079c15d953ef5ea57d262eee0",
+    "semantic_hash": ""
+  },
+  "spike/e6b-specification-check.js": {
+    "mtime": 1794380940.118585,
+    "seen": 1794381361.840554,
+    "ast_hash": "178cb6cceccf46e26d10f85b1ed2cd69",
+    "semantic_hash": ""
+  },
+  "spike/e6c-webhook-check.js": {
+    "mtime": 1794381260.6012785,
+    "seen": 1794381361.840554,
+    "ast_hash": "debd9a2d3f6f805c0cc90ef9a9f61223",
+    "semantic_hash": ""
+  },
+  "test/orders/save-snapshot.test.js": {
+    "mtime": 1794381195.919887,
+    "seen": 1794381361.840554,
+    "ast_hash": "f1578e7c4a21ef29907013d8204fd3ff",
+    "semantic_hash": ""
+  },
+  "test/orders/specification.test.js": {
+    "mtime": 1794380893.935153,
+    "seen": 1794381361.840554,
+    "ast_hash": "3614b8a7ec2b16de4528e02f12dbb0e4",
     "semantic_hash": ""
   },
   "package-lock.json": {

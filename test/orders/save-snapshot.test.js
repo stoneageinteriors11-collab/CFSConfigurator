@@ -44,10 +44,11 @@ const order = (id = ORDER_ID) => ({
 const attempt = (snapshot = null) => ({
   id: "attempt-1",
   shop: SHOP,
+  basketId: "basket-1",
   basketVersion: 1,
   createdAt: new Date("2026-11-10T10:00:00Z"),
   totalCents: 14900,
-  lines: [{ variantId: MATTRESS, sku: "M", title: "Mattress", variantTitle: "Single", quantity: 1, baseCents: 14900, unitCents: 14900, selection: [] }],
+  lines: [{ lineId: "line-1", variantId: MATTRESS, sku: "M", title: "Mattress", variantTitle: "Single", quantity: 1, baseCents: 14900, unitCents: 14900, selection: [] }],
   snapshot,
 });
 
@@ -65,10 +66,38 @@ const clash = () => Object.assign(new Error("Unique constraint failed"), { code:
 function fakeDatabase({ saved = [], checkout = attempt(), failFirstCreate = null } = {}) {
   const rows = [...saved];
   const lookups = [];
+  const basketChanges = [];
   let creates = 0;
-  return {
+  const db = {
     rows,
     lookups,
+    basketChanges,
+    // Undoes only what the transaction wrote; rows standing in for other requests stay.
+    $transaction: async (work) => {
+      const created = [];
+      const before = basketChanges.length;
+      db.created = created;
+      try {
+        return await work(db);
+      } catch (error) {
+        for (const row of created) rows.splice(rows.indexOf(row), 1);
+        basketChanges.length = before;
+        throw error;
+      }
+    },
+    basket: {
+      updateMany: async ({ where }) => {
+        basketChanges.push(["version", where.id]);
+        return { count: 1 };
+      },
+    },
+    basketLine: {
+      deleteMany: async ({ where }) => {
+        basketChanges.push(["remove", where.id]);
+        return { count: 1 };
+      },
+      updateMany: async () => assert.fail("a fully paid line is removed, not reduced"),
+    },
     checkoutAttempt: {
       findFirst: async ({ where }) => {
         lookups.push(where);
@@ -84,10 +113,12 @@ function fakeDatabase({ saved = [], checkout = attempt(), failFirstCreate = null
         if (rows.some((row) => row.shop === data.shop && row.orderId === data.orderId)) throw clash();
         if (data.attemptId && rows.some((row) => row.attemptId === data.attemptId)) throw clash();
         rows.push(data);
+        db.created?.push(data);
         return { id: `row-${rows.length}` };
       },
     },
   };
+  return db;
 }
 
 const save = (db, graphql) => saveOrderSnapshot({ db, graphql, shop: SHOP, orderId: ORDER_ID });
@@ -104,6 +135,29 @@ test("a paid order is saved once, linked to its checkout", async () => {
   assert.equal(db.rows[0].attemptId, "attempt-1");
   assert.equal(db.rows[0].orderName, "#1099");
   assert.equal(db.rows[0].specification.totals.totalCents, 14900);
+  assert.deepEqual(db.basketChanges, [["version", "basket-1"], ["remove", "line-1"]]);
+});
+
+test("the paid items leave the basket only once, however often Shopify repeats", async () => {
+  const db = fakeDatabase();
+  await save(db, shopify().graphql);
+  await save(db, shopify().graphql);
+  assert.equal(db.basketChanges.filter(([kind]) => kind === "remove").length, 1);
+});
+
+test("an order not linked to its checkout leaves every basket alone", async () => {
+  const db = fakeDatabase({ checkout: attempt({ orderId: "gid://shopify/Order/1" }) });
+  await save(db, shopify().graphql);
+  assert.deepEqual(db.basketChanges, []);
+});
+
+test("if the record cannot be saved, the basket is not changed either", async () => {
+  const db = fakeDatabase();
+  db.basketLine.deleteMany = async () => {
+    throw new Error("connection lost");
+  };
+  await assert.rejects(save(db, shopify().graphql), /connection lost/);
+  assert.equal(db.rows.length, 0);
 });
 
 test("a repeated notification changes nothing and does not ask Shopify again", async () => {

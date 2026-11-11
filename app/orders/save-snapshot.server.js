@@ -1,6 +1,9 @@
 // Saves the permanent record of a paid order, once. Shopify can send the same paid
 // notification more than once, so a repeat finds the saved record and changes nothing.
+import { removePaidLines } from "../basket/basket.server.js";
 import { attemptIdOf, buildSnapshot, readOrder } from "./specification.server.js";
+
+const TRANSACTION_LIMITS = { maxWait: 10000, timeout: 20000 };
 
 const isUniqueClash = (error) => error?.code === "P2002";
 
@@ -26,7 +29,12 @@ export async function saveOrderSnapshot({ db, graphql, shop, orderId }) {
   // A checkout is paid for once. A second order naming it is not linked, so it is flagged instead.
   if (attempt?.snapshot && attempt.snapshot.orderId !== order.id) attempt = null;
 
-  const save = (snapshot) => db.orderSnapshot.create({ data: { shop, ...snapshot }, select: { id: true } });
+  // The record and the basket change are saved together, so a repeat cannot remove items twice.
+  const save = (snapshot) =>
+    db.$transaction(async (tx) => {
+      await tx.orderSnapshot.create({ data: { shop, ...snapshot }, select: { id: true } });
+      if (snapshot.attemptId) await removePaidLines(tx, attempt);
+    }, TRANSACTION_LIMITS);
   let snapshot = buildSnapshot(order, attempt);
   // An order of ordinary products from Shopify's own checkout is not the app's to keep.
   // One with a configurable product but no app checkout is kept, so staff can see it.
