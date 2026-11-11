@@ -336,9 +336,9 @@
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1794382004.5170646,
-    "seen": 1794382092.3064816,
-    "ast_hash": "87f0d534077c49cffa6b4bcc7501ee03",
+    "mtime": 1794382564.0076952,
+    "seen": 1794382641.1775246,
+    "ast_hash": "7c3fbb407cad171a76177fd94228c27b",
     "semantic_hash": ""
   },
   "app/pricing/quote-request.server.js": {
@@ -378,9 +378,9 @@
     "semantic_hash": ""
   },
   "app/basket/basket.server.js": {
-    "mtime": 1794305870.0565865,
-    "seen": 1794305995.6882732,
-    "ast_hash": "ce3a2265e8575df454e65e232c536462",
+    "mtime": 1794382468.3234365,
+    "seen": 1794382641.1775246,
+    "ast_hash": "673c8d37315385f41b13bf62eab8478b",
     "semantic_hash": ""
   },
   "app/routes/proxy.basket.jsx": {
@@ -546,9 +546,9 @@
     "semantic_hash": ""
   },
   "app/orders/save-snapshot.server.js": {
-    "mtime": 1794381909.335493,
-    "seen": 1794382092.3064816,
-    "ast_hash": "caaa5839bf3f646fdfedbe0840b8b73c",
+    "mtime": 1794382474.8075147,
+    "seen": 1794382641.1775246,
+    "ast_hash": "40940af7cad77e0ec50579a3acd2ad16",
     "semantic_hash": ""
   },
   "app/orders/specification.server.js": {
@@ -576,9 +576,9 @@
     "semantic_hash": ""
   },
   "test/orders/save-snapshot.test.js": {
-    "mtime": 1794381937.755216,
-    "seen": 1794382092.3064816,
-    "ast_hash": "b6f76468167619cbc54441d0bc66e1bb",
+    "mtime": 1794382518.452804,
+    "seen": 1794382641.1775246,
+    "ast_hash": "bd2277523dcb1bbaa4e01b58ff1749cd",
     "semantic_hash": ""
   },
   "test/orders/specification.test.js": {
@@ -609,6 +609,12 @@
     "mtime": 1794381937.7927356,
     "seen": 1794382092.3064816,
     "ast_hash": "e156bd86320ec7d3a54d36e636c315ed",
+    "semantic_hash": ""
+  },
+  "spike/e6e-basket-clear-check.js": {
+    "mtime": 1794382563.9291716,
+    "seen": 1794382641.1775246,
+    "ast_hash": "30273909778a1f1b9b00d38bc8752296",
     "semantic_hash": ""
   },
   "package-lock.json": {
