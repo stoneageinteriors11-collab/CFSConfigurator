@@ -110,7 +110,7 @@ Check Supabase's current connection guidance at D2 and D6, since Render's networ
 6. Webhooks and immutable order snapshot. Shopify's payment webhook is the only proof of payment, never a redirect or a draft's state.
    - **E6a:** table of order snapshots, one per order, with a database rule refusing any change to a saved specification.
    - **E6b:** build the specification from a Shopify order and its checkout attempt: SKU, supplier codes, names, quantities, price breakdown, Shopify's discount allocations and final totals. Tested against real orders #1029 and #1030, reading only.
-   - **E6c (you, then me):** save "Protected customer data access" in the Partner Dashboard, then add the verified, repeat-safe `orders/paid` webhook and save the snapshot. You run `shopify app deploy`. One paid test.
+   - **E6c:** add the verified, repeat-safe `orders/paid` webhook and save the snapshot. You run `shopify app deploy`. One paid test, with delivery checked in the Dev Dashboard's Logs. Shopify's docs place the "Protected customer data access" request in the Partner Dashboard, which we do not use, and list this data as always available to custom apps, so we test first and only look for that setting if order data is withheld.
    - **E6d:** follow cancelled, refunded, pending and failed orders on the snapshot, and flag an order that has no matching app checkout or a different price.
    - **E6e:** after payment, empty the app basket and remove the ordinary items from Shopify's cart.
    - **E6f:** recover webhooks that were missed while the app was down.
