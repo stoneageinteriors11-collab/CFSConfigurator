@@ -155,11 +155,19 @@ test("adds up different configurations of the same size against its stock", asyn
   assert.equal((await check([bedLine({ quantity: 2 }), caramel])).ok, true);
 });
 
-test("does not limit quantity when Shopify allows overselling or does not track stock", async () => {
+test("an ordinary product follows Shopify: no limit when it allows overselling or does not track stock", async () => {
   const quantity = 50;
   for (const variant of [{ inventoryPolicy: "CONTINUE" }, { inventoryItem: { tracked: false } }]) {
-    assert.equal((await check([bedLine({ quantity })], { [BED]: shopifyBed({ variant }) })).ok, true);
+    assert.equal((await check([mattressLine({ quantity })], { [MATTRESS]: shopifyMattress(variant) })).ok, true);
   }
+});
+
+test("a configured size is always held to its stock, and refused if its stock is not tracked", async () => {
+  const overselling = await check([bedLine({ quantity: 6 })], { [BED]: shopifyBed({ variant: { inventoryPolicy: "CONTINUE" } }) });
+  assert.deepEqual(overselling.problems, [{ lineId: "bed-line", code: "insufficient_stock", available: 5 }]);
+
+  const untracked = await check([bedLine()], { [BED]: shopifyBed({ variant: { inventoryItem: { tracked: false } } }) });
+  assert.equal(untracked.problems[0].code, "variant_unavailable");
 });
 
 test("refuses when stock data is missing rather than assuming there is stock", async () => {

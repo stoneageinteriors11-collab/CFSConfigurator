@@ -85,6 +85,14 @@ test("refuses an unknown or sold-out variant", () => {
   assert.deepEqual(codes(quote([TWO_DRAWERS, CARLTON_BLACK], VARIANT_2FT6, product)), ["variant_unavailable"]);
 });
 
+test("refuses a size whose stock is not tracked, even with a stock number", () => {
+  for (const inventoryItem of [{ tracked: false }, undefined]) {
+    const product = copy();
+    product.variants[0].inventoryItem = inventoryItem;
+    assert.deepEqual(codes(quote([TWO_DRAWERS, CARLTON_BLACK], VARIANT_2FT6, product)), ["variant_unavailable"]);
+  }
+});
+
 test("ignores prices sent by the browser", () => {
   const result = quoteConfiguration(naturalGold, {
     variantId: VARIANT_2FT6,

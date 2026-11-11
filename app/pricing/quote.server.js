@@ -134,7 +134,10 @@ export function quoteConfiguration(product, { variantId, choiceIds, quantities =
 
   const variant = product.variants.find((v) => v.id === variantId);
   if (!variant) return fail({ code: "unknown_variant" });
-  if (!(variant.inventoryQuantity > 0)) return fail({ code: "variant_unavailable" });
+  // CFS tracks stock on every configured size and does not oversell, so an untracked size is refused too.
+  if (variant.inventoryItem?.tracked !== true || !(variant.inventoryQuantity > 0)) {
+    return fail({ code: "variant_unavailable" });
+  }
 
   const modelId = product.modelCards?.[variant.sku]?.source_id;
   const baseCents = toPennies(variant.price);

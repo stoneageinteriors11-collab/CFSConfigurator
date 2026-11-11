@@ -16,7 +16,9 @@ function quantityByVariant(lines) {
   return totals;
 }
 
-const stockIsLimited = (variant) => variant.inventoryPolicy !== "CONTINUE" && variant.inventoryItem?.tracked !== false;
+// Configured sizes are always held to their stock, as the price check requires. Ordinary products follow Shopify's own setting.
+const stockIsLimited = (product, variant) =>
+  !product.ordinary || (variant.inventoryPolicy !== "CONTINUE" && variant.inventoryItem?.tracked !== false);
 
 function checkLine(line, product, wanted) {
   const lineId = line.id;
@@ -30,7 +32,7 @@ function checkLine(line, product, wanted) {
 
   const variant = product.variants.find((v) => v.id === line.variantId);
   // Written so that missing stock data is refused too.
-  if (stockIsLimited(variant) && !(wanted <= variant.inventoryQuantity)) {
+  if (stockIsLimited(product, variant) &&!(wanted <= variant.inventoryQuantity)) {
     return { problem: { lineId, code: "insufficient_stock", available: Math.max(variant.inventoryQuantity ?? 0, 0) } };
   }
 

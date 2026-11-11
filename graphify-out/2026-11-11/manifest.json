@@ -318,9 +318,9 @@
     "semantic_hash": ""
   },
   "app/pricing/load-product.server.js": {
-    "mtime": 1794308223.409238,
-    "seen": 1794308931.6373653,
-    "ast_hash": "7a3f6fa0e080f6ad780a23f14f44357a",
+    "mtime": 1794398416.56362,
+    "seen": 1794398564.2483714,
+    "ast_hash": "67d5b143eb6e13b11e9117b799ecc3fd",
     "semantic_hash": ""
   },
   "spike/e3a-live-quote.js": {
@@ -330,9 +330,9 @@
     "semantic_hash": ""
   },
   "test/pricing/load-product.test.js": {
-    "mtime": 1794305870.1999302,
-    "seen": 1794305995.693275,
-    "ast_hash": "2f547097e44fada285512c99a138e535",
+    "mtime": 1794398502.8709738,
+    "seen": 1794398564.2483714,
+    "ast_hash": "bf46680699e6856ba0476359ce03eb99",
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
@@ -678,9 +678,9 @@
     "semantic_hash": ""
   },
   "app/pricing/product-check.server.js": {
-    "mtime": 1794393447.5521498,
-    "seen": 1794393658.8819044,
-    "ast_hash": "1fbed014442afc84e8a3afd6cd7858b9",
+    "mtime": 1794398502.9463809,
+    "seen": 1794398564.2483714,
+    "ast_hash": "e1c6c220bf7cbba2a36fea1ee2bb772c",
     "semantic_hash": ""
   },
   "app/routes/app.products.jsx": {

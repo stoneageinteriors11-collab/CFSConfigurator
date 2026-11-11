@@ -6,37 +6,55 @@
    "id": "gid://shopify/ProductVariant/55773143433555",
    "sku": "CFS-TYPE-146477-17019157",
    "price": "999.99",
-   "inventoryQuantity": 100
+   "inventoryQuantity": 100,
+   "inventoryItem": {
+    "tracked": true
+   }
   },
   {
    "id": "gid://shopify/ProductVariant/55773143466323",
    "sku": "CFS-TYPE-146477-17019158",
    "price": "999.99",
-   "inventoryQuantity": 100
+   "inventoryQuantity": 100,
+   "inventoryItem": {
+    "tracked": true
+   }
   },
   {
    "id": "gid://shopify/ProductVariant/55773143499091",
    "sku": "CFS-TYPE-146477-17019159",
    "price": "1209.99",
-   "inventoryQuantity": 100
+   "inventoryQuantity": 100,
+   "inventoryItem": {
+    "tracked": true
+   }
   },
   {
    "id": "gid://shopify/ProductVariant/55773143531859",
    "sku": "CFS-TYPE-146477-17019160",
    "price": "1209.99",
-   "inventoryQuantity": 100
+   "inventoryQuantity": 100,
+   "inventoryItem": {
+    "tracked": true
+   }
   },
   {
    "id": "gid://shopify/ProductVariant/55773143564627",
    "sku": "CFS-TYPE-146477-17019161",
    "price": "1399.99",
-   "inventoryQuantity": 100
+   "inventoryQuantity": 100,
+   "inventoryItem": {
+    "tracked": true
+   }
   },
   {
    "id": "gid://shopify/ProductVariant/55773143597395",
    "sku": "CFS-TYPE-146477-17019162",
    "price": "1849.99",
-   "inventoryQuantity": 100
+   "inventoryQuantity": 100,
+   "inventoryItem": {
+    "tracked": true
+   }
   }
  ],
  "modelCards": {
