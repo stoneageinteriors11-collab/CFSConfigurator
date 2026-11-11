@@ -294,9 +294,9 @@
     "semantic_hash": ""
   },
   "app/pricing/quote.server.js": {
-    "mtime": 1794391702.974048,
-    "seen": 1794391885.8182812,
-    "ast_hash": "1c317904caed37f68df241f0b8af3fc7",
+    "mtime": 1794393447.433753,
+    "seen": 1794393658.8819044,
+    "ast_hash": "2059e5a2531b74958a1b154d3ad2105f",
     "semantic_hash": ""
   },
   "test/fixtures/natural-gold-price-checks.json": {
@@ -312,9 +312,9 @@
     "semantic_hash": ""
   },
   "test/pricing/quote.test.js": {
-    "mtime": 1794295041.7973285,
-    "seen": 1794295145.3253446,
-    "ast_hash": "93c8137e022f0a48df577a21ae10a19f",
+    "mtime": 1794393474.708017,
+    "seen": 1794393658.8819044,
+    "ast_hash": "f453f5af8e3a93f4e8f3014dca403749",
     "semantic_hash": ""
   },
   "app/pricing/load-product.server.js": {
@@ -336,9 +336,9 @@
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1794391795.8533983,
-    "seen": 1794391885.8182812,
-    "ast_hash": "c8d07ab6c33e02c54983b3853751645a",
+    "mtime": 1794393578.5969,
+    "seen": 1794393658.8819044,
+    "ast_hash": "091cedffbbf220426082713f23f3ee9a",
     "semantic_hash": ""
   },
   "app/pricing/quote-request.server.js": {
@@ -678,9 +678,9 @@
     "semantic_hash": ""
   },
   "app/pricing/product-check.server.js": {
-    "mtime": 1794391712.002114,
-    "seen": 1794391885.8182812,
-    "ast_hash": "243f510d1d54349e37238d67bda5d057",
+    "mtime": 1794393447.5521498,
+    "seen": 1794393658.8819044,
+    "ast_hash": "1fbed014442afc84e8a3afd6cd7858b9",
     "semantic_hash": ""
   },
   "app/routes/app.products.jsx": {
@@ -690,9 +690,51 @@
     "semantic_hash": ""
   },
   "test/pricing/product-check.test.js": {
-    "mtime": 1794391785.2213504,
-    "seen": 1794391885.8182812,
-    "ast_hash": "edae23d8f19713b7e5acfc95b24db063",
+    "mtime": 1794393474.7678545,
+    "seen": 1794393658.8819044,
+    "ast_hash": "6b0b16c11fadf1f6b4555ca634b7a88e",
+    "semantic_hash": ""
+  },
+  "test/fixtures/fargo.json": {
+    "mtime": 1794392623.5321424,
+    "seen": 1794393658.8819044,
+    "ast_hash": "e86bfce34ad90193f2cb7d78d2e85ca9",
+    "semantic_hash": ""
+  },
+  "test/fixtures/mayfair.json": {
+    "mtime": 1794393454.766213,
+    "seen": 1794393658.8819044,
+    "ast_hash": "9f2b37cb6cbd90a7e70610987edfc17c",
+    "semantic_hash": ""
+  },
+  "test/fixtures/moreno.json": {
+    "mtime": 1794393454.847456,
+    "seen": 1794393658.8819044,
+    "ast_hash": "3fd9531c5be76fbfd6869c6b9d461190",
+    "semantic_hash": ""
+  },
+  "test/fixtures/paris.json": {
+    "mtime": 1794393454.8093393,
+    "seen": 1794393658.8819044,
+    "ast_hash": "d28e799a83c0050144494effa8230f22",
+    "semantic_hash": ""
+  },
+  "test/pricing/quote-fargo.test.js": {
+    "mtime": 1794392686.6416745,
+    "seen": 1794393658.8819044,
+    "ast_hash": "ed7637ec0617e18b3f42a0f09a8a4241",
+    "semantic_hash": ""
+  },
+  "test/pricing/quote-live-cfs.test.js": {
+    "mtime": 1794393488.1281412,
+    "seen": 1794393658.8819044,
+    "ast_hash": "e7f65e95e92034d18026b51cda2b3e8d",
+    "semantic_hash": ""
+  },
+  "test/pricing/supported-rules.test.js": {
+    "mtime": 1794393474.8221583,
+    "seen": 1794393658.8819044,
+    "ast_hash": "7cc93d7b460affd42b8b7b6d9227b0dd",
     "semantic_hash": ""
   },
   "package-lock.json": {

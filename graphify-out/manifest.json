@@ -294,9 +294,9 @@
     "semantic_hash": ""
   },
   "app/pricing/quote.server.js": {
-    "mtime": 1794393447.433753,
-    "seen": 1794393658.8819044,
-    "ast_hash": "2059e5a2531b74958a1b154d3ad2105f",
+    "mtime": 1794394338.0439458,
+    "seen": 1794394641.9201558,
+    "ast_hash": "f50b8d75114ebb6f35995ea67ba5a854",
     "semantic_hash": ""
   },
   "test/fixtures/natural-gold-price-checks.json": {
@@ -312,9 +312,9 @@
     "semantic_hash": ""
   },
   "test/pricing/quote.test.js": {
-    "mtime": 1794393474.708017,
-    "seen": 1794393658.8819044,
-    "ast_hash": "f453f5af8e3a93f4e8f3014dca403749",
+    "mtime": 1794394242.8602788,
+    "seen": 1794394641.9201558,
+    "ast_hash": "40ff0db02785e925b7409f6c7ba61061",
     "semantic_hash": ""
   },
   "app/pricing/load-product.server.js": {
@@ -336,15 +336,15 @@
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1794393578.5969,
-    "seen": 1794393658.8819044,
-    "ast_hash": "091cedffbbf220426082713f23f3ee9a",
+    "mtime": 1794393955.9698467,
+    "seen": 1794394641.9201558,
+    "ast_hash": "843df3c1c94d30ac2d60e23a085643ca",
     "semantic_hash": ""
   },
   "app/pricing/quote-request.server.js": {
-    "mtime": 1794308223.5616474,
-    "seen": 1794308931.6373653,
-    "ast_hash": "4e191f2f1eedf90c5bdf078f1f5c3025",
+    "mtime": 1794394351.8652163,
+    "seen": 1794394641.9201558,
+    "ast_hash": "e1d895061a182e69b12d0f999d363708",
     "semantic_hash": ""
   },
   "app/routes/proxy.quote.jsx": {
@@ -372,15 +372,15 @@
     "semantic_hash": ""
   },
   "app/basket/basket-request.server.js": {
-    "mtime": 1794308843.5497053,
-    "seen": 1794308931.6373653,
-    "ast_hash": "87f85e70feef5f4f981682194726c830",
+    "mtime": 1794394364.3403728,
+    "seen": 1794394641.9201558,
+    "ast_hash": "e0feaae95e334e49be02b899daa10cd3",
     "semantic_hash": ""
   },
   "app/basket/basket.server.js": {
-    "mtime": 1794382468.3234365,
-    "seen": 1794382641.1775246,
-    "ast_hash": "673c8d37315385f41b13bf62eab8478b",
+    "mtime": 1794394364.402458,
+    "seen": 1794394641.9201558,
+    "ast_hash": "5c2b7634b9979c02258e953fd76cad95",
     "semantic_hash": ""
   },
   "app/routes/proxy.basket.jsx": {
@@ -450,9 +450,9 @@
     "semantic_hash": ""
   },
   "app/checkout/check-basket.server.js": {
-    "mtime": 1794308843.4544694,
-    "seen": 1794308931.6373653,
-    "ast_hash": "209fbe04e8437fede787913a03bd3e6d",
+    "mtime": 1794394375.5049343,
+    "seen": 1794394641.9201558,
+    "ast_hash": "0946e8cce269ad821b83119de10e6716",
     "semantic_hash": ""
   },
   "app/checkout/checkout-request.server.js": {
@@ -462,9 +462,9 @@
     "semantic_hash": ""
   },
   "app/checkout/start-checkout.server.js": {
-    "mtime": 1794380828.6135683,
-    "seen": 1794381361.840554,
-    "ast_hash": "941fb72bbe02e045bea06f878ebfb34b",
+    "mtime": 1794394375.5637655,
+    "seen": 1794394641.9201558,
+    "ast_hash": "54c07d9d1a7ae1e02c7932cbe133348c",
     "semantic_hash": ""
   },
   "app/routes/proxy.checkout.jsx": {
@@ -552,9 +552,9 @@
     "semantic_hash": ""
   },
   "app/orders/specification.server.js": {
-    "mtime": 1794381888.9762304,
-    "seen": 1794382092.3064816,
-    "ast_hash": "9f30c14e29d18b60f6de16d710b28482",
+    "mtime": 1794394375.6322885,
+    "seen": 1794394641.9201558,
+    "ast_hash": "4268c280b315f1395a886a9b8205ad6d",
     "semantic_hash": ""
   },
   "app/routes/webhooks.orders.paid.jsx": {
@@ -582,9 +582,9 @@
     "semantic_hash": ""
   },
   "test/orders/specification.test.js": {
-    "mtime": 1794381937.707555,
-    "seen": 1794382092.3064816,
-    "ast_hash": "fe2dc88e0ae4448fbde12e41580acbf3",
+    "mtime": 1794394423.7024248,
+    "seen": 1794394641.9201558,
+    "ast_hash": "f367dc8258eb63d67415cbbec52dc40d",
     "semantic_hash": ""
   },
   "app/orders/order-status.server.js": {
@@ -654,9 +654,9 @@
     "semantic_hash": ""
   },
   "app/routes/app.orders.$id.jsx": {
-    "mtime": 1794391242.6389515,
-    "seen": 1794391350.9701893,
-    "ast_hash": "768097053012571a7826418d90ad3738",
+    "mtime": 1794394380.048107,
+    "seen": 1794394641.9201558,
+    "ast_hash": "e1a6543e16fda00981753568c1293cd4",
     "semantic_hash": ""
   },
   "app/routes/app.orders._index.jsx": {
@@ -690,9 +690,9 @@
     "semantic_hash": ""
   },
   "test/pricing/product-check.test.js": {
-    "mtime": 1794393474.7678545,
-    "seen": 1794393658.8819044,
-    "ast_hash": "6b0b16c11fadf1f6b4555ca634b7a88e",
+    "mtime": 1794394264.9787984,
+    "seen": 1794394641.9201558,
+    "ast_hash": "e119aff00d170fd77d4e06dfcd91afea",
     "semantic_hash": ""
   },
   "test/fixtures/fargo.json": {
@@ -732,9 +732,33 @@
     "semantic_hash": ""
   },
   "test/pricing/supported-rules.test.js": {
-    "mtime": 1794393474.8221583,
-    "seen": 1794393658.8819044,
-    "ast_hash": "7cc93d7b460affd42b8b7b6d9227b0dd",
+    "mtime": 1794394249.6533272,
+    "seen": 1794394641.9201558,
+    "ast_hash": "659ddbbfcc2df2f47df7b51b7623d6c2",
+    "semantic_hash": ""
+  },
+  "test/checkout/accessories-flow.test.js": {
+    "mtime": 1794394415.9791007,
+    "seen": 1794394641.9201558,
+    "ast_hash": "87f91fafddb3dca912b3242cb627d5a6",
+    "semantic_hash": ""
+  },
+  "test/fixtures/loft.json": {
+    "mtime": 1794394157.8685324,
+    "seen": 1794394641.9201558,
+    "ast_hash": "e2ee3b23ce31b16c07a8e8fbc866c764",
+    "semantic_hash": ""
+  },
+  "test/fixtures/zenaya.json": {
+    "mtime": 1794394153.0617495,
+    "seen": 1794394641.9201558,
+    "ast_hash": "1e2c96c786629eca0c2c117ced4f94ca",
+    "semantic_hash": ""
+  },
+  "test/pricing/quote-accessories.test.js": {
+    "mtime": 1794394260.5107222,
+    "seen": 1794394641.9201558,
+    "ast_hash": "433f32da075c084a9ffb0b8a9595fdd5",
     "semantic_hash": ""
   },
   "package-lock.json": {
