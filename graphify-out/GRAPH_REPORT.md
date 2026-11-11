@@ -1,26 +1,26 @@
-# Graph Report - cfs-configurator  (2026-11-10)
+# Graph Report - cfs-configurator  (2026-11-11)
 
 ## Corpus Check
-- 91 files · ~39,336 words
+- 98 files · ~43,592 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 14 file(s) not represented in the graph (top: (none) 8, .toml 3, .css 1)
 
 ## Summary
-- 652 nodes · 1139 edges · 58 communities (52 shown, 6 thin omitted)
-- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 25 edges (avg confidence: 0.88)
+- 703 nodes · 1253 edges · 59 communities (49 shown, 10 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 28 edges (avg confidence: 0.88)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `cf26a13e`
+- Built from commit: `875a2b78`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - package.json
 - Shopify App Template - React Router README
-- Admin Demo Routes
+- shopify.server.js
 - Server Rendering Runtime
-- lib.js
+- b5-rejected-codes.js
 - loadResults
 - Prisma session storage
 - TypeScript Editor Config
@@ -37,7 +37,7 @@
 - b2-automatic-discount.js
 - b3-discount-code.js
 - b4a-non-combinable.js
-- quote.server.js
+- e6c-webhook-check.js
 - b6-mixed-basket.js
 - EncryptedSessionStorage
 - devDependencies
@@ -62,41 +62,41 @@
 - ref_node_crypto
 - e5f-signed-cart-copy.js
 - copy-cart.test.js
-- e3a-live-quote.js
+- app.jsx
 - e3a-live-quote.js
 - start-checkout.server.js
 - e5d-signed-checkout.js
-- checkout-request.test.js
-- ref_node_test
-- quote.test.js
-- basket-request.test.js
+- @shopify/shopify-app-react-router
+- auth.login/route.jsx
+- _index/route.jsx
+- b10a-unpublished-automatic.js
 - graphql-config@^5.1.1
 - typescript@^5.9.3
 - @typescript-eslint/parser@^6.21.0
 
 ## God Nodes (most connected - your core abstractions)
-1. `write()` - 19 edges
-2. `addLine()` - 18 edges
-3. `loadResults()` - 18 edges
-4. `compilerOptions` - 18 edges
-5. `scripts` - 18 edges
-6. `read()` - 17 edges
+1. `read()` - 21 edges
+2. `write()` - 19 edges
+3. `addLine()` - 18 edges
+4. `loadResults()` - 18 edges
+5. `compilerOptions` - 18 edges
+6. `scripts` - 18 edges
 7. `Shopify App Template - React Router README` - 17 edges
 8. `saveResult()` - 15 edges
-9. `SPIKE_TAG` - 15 edges
-10. `getBasket()` - 14 edges
+9. `@prisma/client` - 15 edges
+10. `SPIKE_TAG` - 15 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `start()` --calls--> `startCheckout()`  [EXTRACTED]
+  test/checkout/start-checkout.test.js → app/checkout/start-checkout.server.js
 - `priced()` --calls--> `quoteConfiguration()`  [EXTRACTED]
   spike/e4b-basket-check.js → app/pricing/quote.server.js
-- `quote()` --calls--> `quoteConfiguration()`  [EXTRACTED]
-  test/pricing/quote.test.js → app/pricing/quote.server.js
-- `send()` --calls--> `handleCheckoutRequest()`  [EXTRACTED]
-  test/checkout/checkout-request.test.js → app/checkout/checkout-request.server.js
 - `send()` --calls--> `handleBasketRequest()`  [EXTRACTED]
   test/basket/basket-request.test.js → app/basket/basket-request.server.js
-- `load()` --calls--> `loadConfigurableProduct()`  [EXTRACTED]
-  test/pricing/load-product.test.js → app/pricing/load-product.server.js
+- `copy()` --calls--> `copyCartItems()`  [EXTRACTED]
+  test/checkout/copy-cart.test.js → app/checkout/copy-cart.server.js
+- `save()` --calls--> `saveOrderSnapshot()`  [EXTRACTED]
+  test/orders/save-snapshot.test.js → app/orders/save-snapshot.server.js
 
 ## Import Cycles
 - None detected.
@@ -106,7 +106,7 @@
 - **Production hosting options** — readme_google_cloud_run_deployment, readme_fly_io_deployment, readme_render_deployment, readme_manual_deployment_guide [EXTRACTED 1.00]
 - **Webhook subscription pitfalls and remedy** — readme_app_specific_webhooks, readme_afterauth_shop_specific_webhooks, readme_admin_created_webhook_hmac_failure, readme_cli_webhook_admin_undefined [INFERRED 0.85]
 
-## Communities (58 total, 6 thin omitted)
+## Communities (59 total, 10 thin omitted)
 
 ### Community 0 - "package.json"
 Cohesion: 0.12
@@ -116,17 +116,17 @@ Nodes (16): author, eslint@^8.57.1, prettier@^3.6.2, @shopify/api-codegen-preset
 Cohesion: 0.15
 Nodes (14): Shopify AI Toolkit, Shopify app development agent guide, Shopify Dev MCP added to template, CLAUDE.md agent instructions, app/routes/app._index.tsx example route, Fly.io deployment, Google Cloud Run deployment, .graphqlrc.ts GraphQL hints config (+6 more)
 
-### Community 2 - "Admin Demo Routes"
-Cohesion: 0.06
-Nodes (20): loginErrorMessage(), action(), loader(), loginErrorMessage(), action(), action(), reply(), action() (+12 more)
+### Community 2 - "shopify.server.js"
+Cohesion: 0.20
+Nodes (8): action(), reply(), apiVersion, authenticate, registerWebhooks, sessionStorage, shopify, unauthenticated
 
 ### Community 3 - "Server Rendering Runtime"
 Cohesion: 0.12
 Nodes (16): dependencies, prisma@^6.16.3, react@^18.3.1, @react-router/fs-routes@7.18.2, @react-router/serve@7.18.2, @shopify/app-bridge-react@^4.2.4, @shopify/cli@4.9.3, @shopify/shopify-app-react-router@^4.0.0 (+8 more)
 
-### Community 4 - "lib.js"
-Cohesion: 0.18
-Nodes (9): { draftOrder }, { draftOrder }, after, before, { draftOrderCreate }, input, { draftOrder }, NATURAL_GOLD_VARIANT (+1 more)
+### Community 4 - "b5-rejected-codes.js"
+Cohesion: 0.40
+Nodes (4): after, before, { draftOrderCreate }, input
 
 ### Community 5 - "loadResults"
 Cohesion: 0.20
@@ -153,8 +153,8 @@ Cohesion: 0.25
 Nodes (8): attempt(), { draftOrders }, drafts, input, key, keyed, result, write()
 
 ### Community 11 - "lib.js"
-Cohesion: 0.19
-Nodes (6): graphql(), { shop }, execute(), read(), RESULTS, STORE
+Cohesion: 0.15
+Nodes (10): { draftOrder }, { draftOrder }, { draftOrder }, graphql(), { shop }, execute(), NATURAL_GOLD_VARIANT, read() (+2 more)
 
 ### Community 12 - "Cursor MCP Config"
 Cohesion: 0.50
@@ -192,16 +192,16 @@ Nodes (4): after, before, { draftOrderCreate }, input
 Cohesion: 0.40
 Nodes (4): after, before, { draftOrderCreate }, input
 
-### Community 22 - "quote.server.js"
-Cohesion: 0.32
-Nodes (8): displayOf(), priceProduct(), quoteConfiguration(), quoteOrdinaryProduct(), resolveAssignment(), toPennies(), quote(), variant
+### Community 22 - "e6c-webhook-check.js"
+Cohesion: 0.07
+Nodes (39): findAttempt(), isUniqueClash(), saveOrderSnapshot(), attemptIdOf(), buildSnapshot(), configurationOf(), ORDER_QUERY, pairLines() (+31 more)
 
 ### Community 23 - "b6-mixed-basket.js"
 Cohesion: 0.40
 Nodes (4): after, before, { draftOrderCreate }, input
 
 ### Community 24 - "EncryptedSessionStorage"
-Cohesion: 0.20
+Cohesion: 0.22
 Nodes (4): decrypt(), encrypt(), EncryptedSessionStorage, parseKey()
 
 ### Community 25 - "devDependencies"
@@ -217,12 +217,12 @@ Cohesion: 0.40
 Nodes (5): overrides, p-map, qs, pnpm, overrides
 
 ### Community 28 - "quote-request.server.js"
-Cohesion: 0.23
-Nodes (9): handleQuoteRequest(), matches(), quoteSelection(), refuse(), loader(), reply(), ask(), saved (+1 more)
+Cohesion: 0.27
+Nodes (6): handleQuoteRequest(), loader(), reply(), ask(), saved, shopifyProduct
 
 ### Community 29 - "b10a-unpublished-automatic.js"
-Cohesion: 0.18
-Nodes (9): after, before, { draftOrderCreate }, input, after, before, { draftOrderCreate }, input (+1 more)
+Cohesion: 0.33
+Nodes (5): after, before, { draftOrderCreate }, input, DRAFT_FIELDS
 
 ### Community 30 - "CFS configurator: small-step plan"
 Cohesion: 0.17
@@ -241,8 +241,8 @@ Cohesion: 0.14
 Nodes (13): add(), BED, BED_CHOICES, DRAFT, firstVariant(), MATTRESS, OTHER_BED, post() (+5 more)
 
 ### Community 34 - "e4b-basket-check.js"
-Cohesion: 0.09
-Nodes (52): add(), changed(), changeQuantity(), handleBasketRequest(), matches(), NOT_FOUND, numericId(), publicBasket() (+44 more)
+Cohesion: 0.06
+Nodes (66): add(), changed(), changeQuantity(), handleBasketRequest(), matches(), NOT_FOUND, numericId(), publicBasket() (+58 more)
 
 ### Community 35 - "Polaris web components 2.x (polaris-2.js)"
 Cohesion: 0.25
@@ -281,60 +281,48 @@ Cohesion: 0.20
 Nodes (7): BED, MATTRESS, post(), prisma, results, signedUrl(), tokens
 
 ### Community 46 - "copy-cart.test.js"
-Cohesion: 0.24
-Nodes (6): BED, product(), ref, savedMattress, shopify(), variantGid()
-
-### Community 47 - "e3a-live-quote.js"
-Cohesion: 0.20
-Nodes (4): checks, graphql(), quote, saved
+Cohesion: 0.22
+Nodes (7): BED, copy(), product(), ref, savedMattress, shopify(), variantGid()
 
 ### Community 48 - "e3a-live-quote.js"
-Cohesion: 0.20
-Nodes (12): checkBasket(), checkLine(), loadProducts(), quantityByVariant(), stockIsLimited(), check(), everything(), fixture (+4 more)
+Cohesion: 0.05
+Nodes (35): checkBasket(), checkLine(), loadProducts(), quantityByVariant(), stockIsLimited(), loadConfigurableProduct(), parseJson(), displayOf() (+27 more)
 
 ### Community 49 - "start-checkout.server.js"
-Cohesion: 0.14
-Nodes (18): newBasketToken(), attemptTag(), createDraft(), draftInput(), draftLine(), findDraft(), finishAttempt(), shopify() (+10 more)
+Cohesion: 0.19
+Nodes (13): attemptTag(), createDraft(), draftInput(), draftLine(), findDraft(), finishAttempt(), lineAttributes(), shopify() (+5 more)
 
 ### Community 50 - "e5d-signed-checkout.js"
 Cohesion: 0.24
 Nodes (7): checkout(), FAKE_TOKEN, post(), prisma, results, signedUrl(), tokens
 
-### Community 51 - "checkout-request.test.js"
-Cohesion: 0.25
-Nodes (4): fakeShopify(), product(), send(), TOKEN
+### Community 52 - "auth.login/route.jsx"
+Cohesion: 0.52
+Nodes (4): loginErrorMessage(), action(), loader(), login
 
-### Community 52 - "ref_node_test"
-Cohesion: 0.39
-Nodes (5): loadConfigurableProduct(), parseJson(), load(), plainProduct(), shopifyProduct()
-
-### Community 53 - "quote.test.js"
-Cohesion: 0.25
-Nodes (3): naturalGold, priceChecks, quote()
-
-### Community 54 - "basket-request.test.js"
-Cohesion: 0.29
-Nodes (3): ADD, send(), TOKEN
+### Community 54 - "b10a-unpublished-automatic.js"
+Cohesion: 0.40
+Nodes (4): after, before, { draftOrderCreate }, input
 
 ## Knowledge Gaps
 - **28 isolated node(s):** `npx`, `@shopify/dev-mcp`, `npx`, `@shopify/dev-mcp`, `Shopify Dev MCP added to template` (+23 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 324 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **6 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 340 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **10 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `@prisma/client` connect `@prisma/client` to `package.json`, `e4d-signed-mixed-basket.js`, `Admin Demo Routes`, `e4b-basket-check.js`, `e4c-signed-basket.js`, `e4f-display-check.js`, `e5f-signed-cart-copy.js`, `start-checkout.server.js`, `e5d-signed-checkout.js`, `ref_node_assert`?**
-  _High betweenness centrality (0.192) - this node is a cross-community bridge._
+- **Why does `@prisma/client` connect `@prisma/client` to `package.json`, `e4d-signed-mixed-basket.js`, `shopify.server.js`, `e4b-basket-check.js`, `e4c-signed-basket.js`, `e4f-display-check.js`, `e5f-signed-cart-copy.js`, `e5d-signed-checkout.js`, `e6c-webhook-check.js`, `ref_node_assert`?**
+  _High betweenness centrality (0.191) - this node is a cross-community bridge._
 - **What connects `npx`, `@shopify/dev-mcp`, `npx` to the rest of the system?**
   _28 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `package.json` be split into smaller, more focused modules?**
   _Cohesion score 0.11764705882352941 - nodes in this community are weakly interconnected._
-- **Why does `@shopify/shopify-app-react-router` connect `Admin Demo Routes` to `EncryptedSessionStorage`, `package.json`, `Server Rendering Runtime`, `ref_node_assert`?**
-  _High betweenness centrality (0.048) - this node is a cross-community bridge._
-- **Should `Admin Demo Routes` be split into smaller, more focused modules?**
-  _Cohesion score 0.0602322206095791 - nodes in this community are weakly interconnected._
-- **Why does `scripts` connect `NPM Scripts` to `package.json`?**
-  _High betweenness centrality (0.042) - this node is a cross-community bridge._
+- **Why does `@shopify/shopify-app-react-router` connect `@shopify/shopify-app-react-router` to `package.json`, `shopify.server.js`, `Server Rendering Runtime`, `app.jsx`, `auth.login/route.jsx`, `_index/route.jsx`, `EncryptedSessionStorage`, `app._index.jsx`, `ref_node_assert`?**
+  _High betweenness centrality (0.043) - this node is a cross-community bridge._
 - **Should `Server Rendering Runtime` be split into smaller, more focused modules?**
   _Cohesion score 0.11764705882352941 - nodes in this community are weakly interconnected._
+- **Why does `scripts` connect `NPM Scripts` to `package.json`?**
+  _High betweenness centrality (0.039) - this node is a cross-community bridge._
+- **Should `TypeScript Editor Config` be split into smaller, more focused modules?**
+  _Cohesion score 0.1 - nodes in this community are weakly interconnected._

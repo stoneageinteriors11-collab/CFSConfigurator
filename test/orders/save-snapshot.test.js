@@ -154,6 +154,25 @@ test("a checkout from another shop is never looked up", async () => {
   assert.deepEqual(await save(db, shopify().graphql), { outcome: "saved", matchStatus: "no_attempt" });
 });
 
+test("an ordinary order from Shopify's own checkout is not saved", async () => {
+  const ordinary = { ...order(), customAttributes: [] };
+  const db = fakeDatabase();
+
+  assert.deepEqual(await save(db, shopify(ordinary).graphql), { outcome: "not_app_order" });
+  assert.equal(db.rows.length, 0);
+  assert.deepEqual(db.lookups, []);
+});
+
+test("a configurable product bought without an app checkout is saved for staff", async () => {
+  const bypass = { ...order(), customAttributes: [] };
+  bypass.lineItems.nodes[0].product = { id: "gid://shopify/Product/2", cfsWorkflow: { id: "m1" } };
+  const db = fakeDatabase();
+
+  assert.deepEqual(await save(db, shopify(bypass).graphql), { outcome: "saved", matchStatus: "no_attempt" });
+  assert.equal(db.rows[0].attemptId, null);
+  assert.equal(db.rows[0].specification.lines[0].configurable, true);
+});
+
 test("database failures are passed on, so Shopify tries again", async () => {
   const db = fakeDatabase();
   db.orderSnapshot.create = async () => {

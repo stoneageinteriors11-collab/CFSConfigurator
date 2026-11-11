@@ -49,7 +49,12 @@ export const ORDER_QUERY = `#graphql
           sku
           quantity
           variant { id }
-          product { id }
+          product {
+            id
+            cfsWorkflow: metafield(namespace: "cfs_import", key: "workflow") { id }
+            cfsModelCards: metafield(namespace: "cfs_import", key: "model_cards") { id }
+            cfsOptions: metafield(namespace: "cfs_import", key: "options") { id }
+          }
           originalUnitPriceSet { ${MONEY} }
           customAttributes { key value }
           discountAllocations {
@@ -141,6 +146,8 @@ function readLine(node, currency) {
   return {
     lineItemId: node.id,
     productId: node.product?.id ?? null,
+    // Same rule as the pricing engine: any CFS data makes a product configurable.
+    configurable: Boolean(node.product?.cfsWorkflow || node.product?.cfsModelCards || node.product?.cfsOptions),
     variantId: node.variant?.id ?? null,
     sku: node.sku ?? "",
     title: node.title,

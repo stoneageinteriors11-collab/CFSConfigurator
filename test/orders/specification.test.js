@@ -242,6 +242,17 @@ test("a cancelled order keeps its cancellation time", () => {
   assert.equal(snapshot.cancelledAt.toISOString(), "2026-11-11T09:00:00.000Z");
 });
 
+test("each line says whether its product is a CFS configurable product", () => {
+  const configured = orderLine(BED, "999.99", { id: "a" });
+  configured.product = { id: "gid://shopify/Product/10", cfsWorkflow: { id: "m1" }, cfsModelCards: null, cfsOptions: null };
+  const plain = orderLine(MATTRESS, "149.0", { id: "b" });
+  plain.product = { id: "gid://shopify/Product/2", cfsWorkflow: null, cfsModelCards: null, cfsOptions: null };
+  const custom = { ...orderLine(MATTRESS, "10.0", { id: "c" }), product: null, variant: null };
+
+  const lines = buildSnapshot(order([configured, plain, custom], { attemptId: null }), null).specification.lines;
+  assert.deepEqual(lines.map((line) => line.configurable), [true, false, false]);
+});
+
 test("attemptIdOf reads only the app's own note", () => {
   assert.equal(attemptIdOf(order([], { attemptId: "abc" })), "abc");
   assert.equal(attemptIdOf(order([], { attemptId: null })), null);

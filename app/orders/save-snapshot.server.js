@@ -11,7 +11,8 @@ async function findAttempt(db, shop, order) {
 }
 
 /**
- * Returns { outcome: "saved" | "already_saved" | "order_not_found", matchStatus? }.
+ * Returns { outcome: "saved" | "already_saved" | "order_not_found" | "not_app_order", matchStatus? }.
+ * A saved matchStatus other than "matched" means the order needs staff attention.
  * Throws when Shopify or the database cannot be reached, so Shopify sends the notification again.
  */
 export async function saveOrderSnapshot({ db, graphql, shop, orderId }) {
@@ -27,6 +28,12 @@ export async function saveOrderSnapshot({ db, graphql, shop, orderId }) {
 
   const save = (snapshot) => db.orderSnapshot.create({ data: { shop, ...snapshot }, select: { id: true } });
   let snapshot = buildSnapshot(order, attempt);
+  // An order of ordinary products from Shopify's own checkout is not the app's to keep.
+  // One with a configurable product but no app checkout is kept, so staff can see it.
+  const { specification } = snapshot;
+  if (!specification.checkout && !specification.claimedAttemptId && !specification.lines.some((l) => l.configurable)) {
+    return { outcome: "not_app_order" };
+  }
   try {
     await save(snapshot);
   } catch (error) {

@@ -17,6 +17,9 @@ export const action = async ({ request }) => {
   try {
     const result = await saveOrderSnapshot({ db, graphql: admin.graphql, shop, orderId });
     console.log(`Webhook ${topic} for ${shop}: ${orderId} ${result.outcome} ${result.matchStatus ?? ""}`.trim());
+    if (result.outcome === "saved" && result.matchStatus !== "matched") {
+      console.warn(`Order needs attention: ${orderId} ${result.matchStatus}`);
+    }
     return new Response();
   } catch (error) {
     // Shopify sends it again later, and the repeat is safe.

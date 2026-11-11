@@ -29,6 +29,10 @@ api_version = "2026-10"
   uri = "/webhooks/orders/paid"
   topics = [ "orders/paid" ]
 
+  [[webhooks.subscriptions]]
+  uri = "/webhooks/orders/status"
+  topics = [ "orders/cancelled", "refunds/create" ]
+
 [auth]
 redirect_urls = [ "https://cfsconfigurator.onrender.com/api/auth" ]
 
