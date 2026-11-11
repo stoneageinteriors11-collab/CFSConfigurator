@@ -17,7 +17,8 @@ const MATCH = {
 /** The badge for how an order compares with the checkout the app priced. */
 export const matchBadge = (status) => MATCH[status] ?? { label: status, tone: "warning" };
 
-export const needsAttention = (status) => status !== "matched";
+/** Not matched to its checkout, and not cancelled: a cancelled order will not be fulfilled. */
+export const needsAttention = ({ matchStatus, cancelledAt }) => matchStatus !== "matched" && !cancelledAt;
 
 /** PARTIALLY_REFUNDED becomes "Partially refunded". */
 export function paymentLabel(status) {

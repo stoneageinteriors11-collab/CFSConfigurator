@@ -1,4 +1,5 @@
 // Reads saved order records for the admin screens. Every read is limited to one shop.
+import { Prisma } from "@prisma/client";
 
 export const PAGE_SIZE = 25;
 const MAX_PAGE = 1000;
@@ -9,12 +10,21 @@ export function pageOf(url) {
   return Number.isSafeInteger(page) && page >= 1 && page <= MAX_PAGE ? page : 1;
 }
 
+/** "attention" when the address asks for orders needing attention, otherwise "all". */
+export const viewOf = (url) => (new URL(url).searchParams.get("view") === "attention" ? "attention" : "all");
+
+// Same rule as needsAttention in format.js: not matched to its checkout, and not cancelled.
+const NEEDS_ATTENTION = { matchStatus: { not: "matched" }, cancelledAt: null };
+
+export const countNeedingAttention = (db, shop) => db.orderSnapshot.count({ where: { shop, ...NEEDS_ATTENTION } });
+
 /**
  * One page of a shop's orders, newest order first. Records are sorted by when the order was
  * placed, because an order recovered later is saved later.
  */
-export async function listOrders(db, shop, page) {
+export async function listOrders(db, shop, page, { attentionOnly = false } = {}) {
   const offset = (page - 1) * PAGE_SIZE;
+  const filter = attentionOnly ? Prisma.sql`AND "matchStatus" <> 'matched' AND "cancelledAt" IS NULL` : Prisma.empty;
   const rows = await db.$queryRaw`
     SELECT
       "id",
@@ -28,7 +38,7 @@ export async function listOrders(db, shop, page) {
       ("specification"->'totals'->>'totalCents')::bigint AS "totalCents",
       (SELECT COALESCE(SUM((line->>'quantity')::int), 0) FROM jsonb_array_elements("specification"->'lines') AS line)::int AS "itemCount"
     FROM "OrderSnapshot"
-    WHERE "shop" = ${shop}
+    WHERE "shop" = ${shop} ${filter}
     ORDER BY "orderedAt" DESC, "id" DESC
     LIMIT ${PAGE_SIZE + 1} OFFSET ${offset}`;
   return {

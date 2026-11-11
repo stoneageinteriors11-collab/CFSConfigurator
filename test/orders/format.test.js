@@ -1,7 +1,20 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { adminOrderUrl, dateTime, discountText, groupName, matchBadge, money, paymentLabel } from "../../app/orders/format.js";
-import { pageOf } from "../../app/orders/order-list.server.js";
+import { adminOrderUrl, dateTime, discountText, groupName, matchBadge, money, needsAttention, paymentLabel } from "../../app/orders/format.js";
+import { pageOf, viewOf } from "../../app/orders/order-list.server.js";
+
+test("an order needs attention when it did not match its checkout and is not cancelled", () => {
+  assert.equal(needsAttention({ matchStatus: "matched", cancelledAt: null }), false);
+  assert.equal(needsAttention({ matchStatus: "no_attempt", cancelledAt: null }), true);
+  assert.equal(needsAttention({ matchStatus: "price_mismatch", cancelledAt: null }), true);
+  assert.equal(needsAttention({ matchStatus: "no_attempt", cancelledAt: new Date() }), false);
+});
+
+test("only the attention view is recognised in the address", () => {
+  assert.equal(viewOf("https://app.test/app/orders?view=attention"), "attention");
+  assert.equal(viewOf("https://app.test/app/orders?view=other"), "all");
+  assert.equal(viewOf("https://app.test/app/orders"), "all");
+});
 
 test("amounts are shown in pounds", () => {
   assert.equal(money(108998, "GBP"), "£1,089.98");

@@ -72,9 +72,9 @@
     "semantic_hash": ""
   },
   "app/routes/app.jsx": {
-    "mtime": 1794293846.7520285,
-    "seen": 1794293889.092757,
-    "ast_hash": "c895c64273330b7a9e94c02be242fd23",
+    "mtime": 1794390681.4110558,
+    "seen": 1794390852.5219464,
+    "ast_hash": "505a7431a1c66578242876a88bf8c550",
     "semantic_hash": ""
   },
   "app/routes/auth.$.jsx": {
@@ -336,9 +336,9 @@
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1794389727.2288127,
-    "seen": 1794390281.0498207,
-    "ast_hash": "1c3717ec0e97eea80db2edf71d7ac425",
+    "mtime": 1794390730.822714,
+    "seen": 1794390852.5219464,
+    "ast_hash": "5c5d0700befd8412c33699806f2bd226",
     "semantic_hash": ""
   },
   "app/pricing/quote-request.server.js": {
@@ -639,6 +639,42 @@
     "mtime": 1794389615.1741047,
     "seen": 1794390281.0488205,
     "ast_hash": "950d3c4304f266e4e0705d5a0d9422e7",
+    "semantic_hash": ""
+  },
+  "app/orders/format.js": {
+    "mtime": 1794390631.3812242,
+    "seen": 1794390852.5219464,
+    "ast_hash": "cb717254ee8cae046160918a8aac9559",
+    "semantic_hash": ""
+  },
+  "app/orders/order-list.server.js": {
+    "mtime": 1794390631.4375868,
+    "seen": 1794390852.5219464,
+    "ast_hash": "6d72eb7c635a896b90de4dde817cb434",
+    "semantic_hash": ""
+  },
+  "app/routes/app.orders.$id.jsx": {
+    "mtime": 1794390681.357309,
+    "seen": 1794390852.5219464,
+    "ast_hash": "64e2d89e656086524745dec2bc15d744",
+    "semantic_hash": ""
+  },
+  "app/routes/app.orders._index.jsx": {
+    "mtime": 1794390641.140376,
+    "seen": 1794390852.5219464,
+    "ast_hash": "13b758cd832ca938ce7281f92c89121f",
+    "semantic_hash": ""
+  },
+  "prisma/migrations/20261111120000_create_order_recovery/migration.sql": {
+    "mtime": 1794389572.713648,
+    "seen": 1794390852.5219464,
+    "ast_hash": "312156ed378573c996cff92c763a5ea2",
+    "semantic_hash": ""
+  },
+  "test/orders/format.test.js": {
+    "mtime": 1794390710.0798118,
+    "seen": 1794390852.5219464,
+    "ast_hash": "123ef08d81bb018edb2dcb09470369e2",
     "semantic_hash": ""
   },
   "package-lock.json": {

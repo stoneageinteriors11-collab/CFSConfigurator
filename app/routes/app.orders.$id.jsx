@@ -115,9 +115,14 @@ export default function OrderDetail() {
         View in Shopify
       </s-button>
 
-      {needsAttention(record.matchStatus) && (
+      {needsAttention(record) && (
         <s-banner tone="critical" heading="Needs attention">
           {ATTENTION[record.matchStatus] ?? "This order needs checking before fulfilling."}
+        </s-banner>
+      )}
+      {record.matchStatus !== "matched" && record.cancelledAt && (
+        <s-banner tone="info" heading="Cancelled">
+          This order did not match a checkout, but it has been cancelled, so nothing needs doing.
         </s-banner>
       )}
 
@@ -156,7 +161,7 @@ export default function OrderDetail() {
               {discountText(discount, currency)}
             </s-text>
           ))}
-          <Amount label="Discounts" cents={-totals.discountCents} currency={currency} />
+          <Amount label="Discounts" cents={totals.discountCents ? -totals.discountCents : 0} currency={currency} />
           <Amount label="Subtotal" cents={totals.subtotalCents} currency={currency} />
           <Amount label="Shipping" cents={totals.shippingCents} currency={currency} />
           <Amount

@@ -2,23 +2,57 @@ import { useLoaderData } from "react-router";
 import { boundary } from "@shopify/shopify-app-react-router/server";
 import { authenticate } from "../shopify.server";
 import db from "../db.server";
-import { listOrders, pageOf } from "../orders/order-list.server.js";
+import { countNeedingAttention, listOrders, pageOf, viewOf } from "../orders/order-list.server.js";
 import { dateTime, matchBadge, money, paymentLabel } from "../orders/format.js";
 
 export const loader = async ({ request }) => {
   const { session } = await authenticate.admin(request);
-  return listOrders(db, session.shop, pageOf(request.url));
+  const view = viewOf(request.url);
+  const [list, attentionCount] = await Promise.all([
+    listOrders(db, session.shop, pageOf(request.url), { attentionOnly: view === "attention" }),
+    countNeedingAttention(db, session.shop),
+  ]);
+  return { ...list, view, attentionCount };
+};
+
+const pageUrl = (view, page) => {
+  const params = new URLSearchParams();
+  if (view === "attention") params.set("view", "attention");
+  if (page > 1) params.set("page", String(page));
+  const query = params.toString();
+  return query ? `/app/orders?${query}` : "/app/orders";
 };
 
 export default function Orders() {
-  const { orders, page, hasNextPage, hasPreviousPage } = useLoaderData();
+  const { orders, page, hasNextPage, hasPreviousPage, view, attentionCount } = useLoaderData();
+  const attention = view === "attention";
 
   return (
-    <s-page heading="Orders">
-      <s-section padding="none" accessibilityLabel="Saved orders">
+    <s-page heading={attention ? "Orders needing attention" : "Orders"}>
+      <s-stack direction="inline" gap="small-200" paddingBlockEnd="base">
+        <s-button href={pageUrl("all", 1)} variant={attention ? "secondary" : "primary"}>
+          All orders
+        </s-button>
+        <s-button href={pageUrl("attention", 1)} variant={attention ? "primary" : "secondary"}>
+          Needs attention ({attentionCount})
+        </s-button>
+      </s-stack>
+
+      {attention && orders.length > 0 && (
+        <s-banner tone="critical">
+          These orders have a configurable product that the app did not price, or that differs from what it priced.
+          Open each one and check it before fulfilling. Cancelled orders are left out.
+        </s-banner>
+      )}
+
+      <s-section padding="none" accessibilityLabel={attention ? "Orders needing attention" : "Saved orders"}>
         {orders.length === 0 ? (
           <s-box padding="base">
-            <s-paragraph>No orders yet. Paid orders appear here a few seconds after payment.</s-paragraph>
+            <s-paragraph>
+              {attention
+                ? "Nothing needs attention. Every open order matches the checkout the app priced."
+                : "No orders yet. Paid orders appear here a few seconds after payment."}
+            </s-paragraph>
           </s-box>
         ) : (
           <s-table>
@@ -58,8 +92,8 @@ export default function Orders() {
       </s-section>
       {(hasPreviousPage || hasNextPage) && (
         <s-stack direction="inline" gap="base" justifyContent="center" padding="base">
-          {hasPreviousPage && <s-button href={`/app/orders?page=${page - 1}`}>Newer orders</s-button>}
-          {hasNextPage && <s-button href={`/app/orders?page=${page + 1}`}>Older orders</s-button>}
+          {hasPreviousPage && <s-button href={pageUrl(view, page - 1)}>Newer orders</s-button>}
+          {hasNextPage && <s-button href={pageUrl(view, page + 1)}>Older orders</s-button>}
         </s-stack>
       )}
     </s-page>
