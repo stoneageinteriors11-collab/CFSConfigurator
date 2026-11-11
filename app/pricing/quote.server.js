@@ -2,7 +2,7 @@
 // Independent of Shopify and the theme. Anything it cannot match exactly is refused.
 // Only Natural Gold's product type is supported so far; other types are refused.
 
-const SUPPORTED_MODE = "multipleDropDownWithMapping";
+export const SUPPORTED_MODE = "multipleDropDownWithMapping";
 
 function toPennies(value) {
   if (typeof value !== "string" || !/^\d+(\.\d{1,2})?$/.test(value)) return null;
@@ -11,7 +11,7 @@ function toPennies(value) {
 }
 
 /** Finds a choice's price for this model. Returns "incompatible", "invalid" or the assignment. */
-function resolveAssignment(option, modelId) {
+export function resolveAssignment(option, modelId) {
   const assignments = option.mappings?.assignments;
   if (!Array.isArray(assignments)) return "invalid";
 
