@@ -336,9 +336,9 @@
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1794381284.944572,
-    "seen": 1794381361.840554,
-    "ast_hash": "71c28d70a38d5f67a530302efb9daddc",
+    "mtime": 1794382004.5170646,
+    "seen": 1794382092.3064816,
+    "ast_hash": "87f0d534077c49cffa6b4bcc7501ee03",
     "semantic_hash": ""
   },
   "app/pricing/quote-request.server.js": {
@@ -546,21 +546,21 @@
     "semantic_hash": ""
   },
   "app/orders/save-snapshot.server.js": {
-    "mtime": 1794381162.40158,
-    "seen": 1794381361.840554,
-    "ast_hash": "2289fdc1842ecb0d2c60080c38664e3f",
+    "mtime": 1794381909.335493,
+    "seen": 1794382092.3064816,
+    "ast_hash": "caaa5839bf3f646fdfedbe0840b8b73c",
     "semantic_hash": ""
   },
   "app/orders/specification.server.js": {
-    "mtime": 1794380853.905515,
-    "seen": 1794381361.840554,
-    "ast_hash": "f5b6b54b4d86c5e9020adc7f16400c85",
+    "mtime": 1794381888.9762304,
+    "seen": 1794382092.3064816,
+    "ast_hash": "9f30c14e29d18b60f6de16d710b28482",
     "semantic_hash": ""
   },
   "app/routes/webhooks.orders.paid.jsx": {
-    "mtime": 1794381170.9879355,
-    "seen": 1794381361.840554,
-    "ast_hash": "73dff08079c15d953ef5ea57d262eee0",
+    "mtime": 1794381937.6483126,
+    "seen": 1794382092.3064816,
+    "ast_hash": "33bd4d321b6140662d56a1c900bbe5ba",
     "semantic_hash": ""
   },
   "spike/e6b-specification-check.js": {
@@ -576,15 +576,39 @@
     "semantic_hash": ""
   },
   "test/orders/save-snapshot.test.js": {
-    "mtime": 1794381195.919887,
-    "seen": 1794381361.840554,
-    "ast_hash": "f1578e7c4a21ef29907013d8204fd3ff",
+    "mtime": 1794381937.755216,
+    "seen": 1794382092.3064816,
+    "ast_hash": "b6f76468167619cbc54441d0bc66e1bb",
     "semantic_hash": ""
   },
   "test/orders/specification.test.js": {
-    "mtime": 1794380893.935153,
-    "seen": 1794381361.840554,
-    "ast_hash": "3614b8a7ec2b16de4528e02f12dbb0e4",
+    "mtime": 1794381937.707555,
+    "seen": 1794382092.3064816,
+    "ast_hash": "fe2dc88e0ae4448fbde12e41580acbf3",
+    "semantic_hash": ""
+  },
+  "app/orders/order-status.server.js": {
+    "mtime": 1794381909.39796,
+    "seen": 1794382092.3064816,
+    "ast_hash": "df7a0498b6488351a484041412527f44",
+    "semantic_hash": ""
+  },
+  "app/routes/webhooks.orders.status.jsx": {
+    "mtime": 1794381909.4420772,
+    "seen": 1794382092.3064816,
+    "ast_hash": "e0b956219f5af940808cdbfc42781c92",
+    "semantic_hash": ""
+  },
+  "spike/e6d-status-check.js": {
+    "mtime": 1794381970.8018556,
+    "seen": 1794382092.3064816,
+    "ast_hash": "9f0fc8b27619538637a1f3c2f9158ceb",
+    "semantic_hash": ""
+  },
+  "test/orders/order-status.test.js": {
+    "mtime": 1794381937.7927356,
+    "seen": 1794382092.3064816,
+    "ast_hash": "e156bd86320ec7d3a54d36e636c315ed",
     "semantic_hash": ""
   },
   "package-lock.json": {

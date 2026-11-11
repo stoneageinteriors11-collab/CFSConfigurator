@@ -4,8 +4,12 @@ import { ServerRouter } from "react-router";
 import { createReadableStreamFromReadable } from "@react-router/node";
 import { isbot } from "isbot";
 import { addDocumentResponseHeaders } from "./shopify.server";
+import { startOrderRecovery } from "./orders/recovery-schedule.server";
 
 export const streamTimeout = 5000;
+
+// The server loads this file once at start-up.
+if (process.env.NODE_ENV === "production") startOrderRecovery();
 
 export default async function handleRequest(
   request,

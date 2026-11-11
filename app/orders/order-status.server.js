@@ -37,7 +37,11 @@ export async function updateOrderStatus({ db, graphql, shop, orderId }) {
   const { data } = await response.json();
   const order = data?.order;
   if (!order) return { outcome: "order_not_found" };
+  return copyStatus(db, record, order);
+}
 
+/** Writes Shopify's status onto a record only when it differs. order has displayFinancialStatus and cancelledAt. */
+export async function copyStatus(db, record, order) {
   const financialStatus = order.displayFinancialStatus;
   const cancelledAt = order.cancelledAt ? new Date(order.cancelledAt) : null;
   if (financialStatus === record.financialStatus && cancelledAt?.getTime() === record.cancelledAt?.getTime()) {

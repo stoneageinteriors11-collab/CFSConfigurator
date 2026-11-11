@@ -116,3 +116,10 @@ model OrderSnapshot {
 
   @@unique([shop, orderId])
 }
+
+// How far the catch-up on missed order notifications has got, per shop.
+model OrderRecovery {
+  shop         String   @id
+  checkedUntil DateTime
+  updatedAt    DateTime @updatedAt
+}
