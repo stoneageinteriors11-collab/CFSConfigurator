@@ -1,7 +1,7 @@
 # Graph Report - cfs-configurator  (2026-11-11)
 
 ## Corpus Check
-- 116 files · ~52,664 words
+- 116 files · ~52,669 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 14 file(s) not represented in the graph (top: (none) 8, .toml 3, .css 1)
 
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `39481a44`
+- Built from commit: `f0893eba`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -94,16 +94,16 @@
 10. `saveResult()` - 15 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `priced()` --calls--> `quoteConfiguration()`  [EXTRACTED]
-  spike/e4b-basket-check.js → app/pricing/quote.server.js
 - `copy()` --calls--> `copyCartItems()`  [EXTRACTED]
   test/checkout/copy-cart.test.js → app/checkout/copy-cart.server.js
-- `send()` --calls--> `handleBasketRequest()`  [EXTRACTED]
-  test/basket/basket-request.test.js → app/basket/basket-request.server.js
 - `start()` --calls--> `startCheckout()`  [EXTRACTED]
   test/checkout/start-checkout.test.js → app/checkout/start-checkout.server.js
-- `quote()` --calls--> `quoteOrdinaryProduct()`  [EXTRACTED]
-  test/pricing/quote-ordinary.test.js → app/pricing/quote.server.js
+- `send()` --calls--> `handleBasketRequest()`  [EXTRACTED]
+  test/basket/basket-request.test.js → app/basket/basket-request.server.js
+- `priced()` --calls--> `quoteConfiguration()`  [EXTRACTED]
+  spike/e4b-basket-check.js → app/pricing/quote.server.js
+- `update()` --calls--> `updateOrderStatus()`  [EXTRACTED]
+  test/orders/order-status.test.js → app/orders/order-status.server.js
 
 ## Import Cycles
 - None detected.

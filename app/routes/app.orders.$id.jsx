@@ -54,7 +54,8 @@ function Line({ line, currency, discounts }) {
             <s-unordered-list>
               {configuration.options.map((option) => (
                 <s-list-item key={option.assignmentId ?? option.cfsId}>
-                  {groupName(option.group)}: {option.label}
+                  {groupName(option.group)}: {option.quantity > 1 ? `${option.quantity} × ` : ""}
+                  {option.label}
                   {option.cents > 0 ? ` (+${money(option.cents, currency)})` : ""} · CFS option {option.cfsId}, assignment{" "}
                   {option.assignmentId}
                 </s-list-item>

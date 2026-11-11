@@ -170,6 +170,7 @@ const configurationOf = (line) => ({
     label: choice.label,
     cfsId: choice.choiceId,
     assignmentId: choice.assignmentId,
+    quantity: choice.quantity ?? 1,
     cents: choice.cents,
   })),
 });

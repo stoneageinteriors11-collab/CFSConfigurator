@@ -1,7 +1,7 @@
 // Re-checks a saved basket against live Shopify data just before checkout. Reads only.
 // A line passes only if it can still be sold, in that quantity, at the price the shopper saw.
 import { loadConfigurableProduct } from "../pricing/load-product.server.js";
-import { priceProduct } from "../pricing/quote.server.js";
+import { priceProduct, selectionRequest } from "../pricing/quote.server.js";
 
 async function loadProducts(graphql, lines) {
   const ids = [...new Set(lines.map((line) => line.productId))];
@@ -24,7 +24,7 @@ function checkLine(line, product, wanted) {
 
   const quote = priceProduct(product, {
     variantId: line.variantId,
-    choiceIds: line.selection.map((choice) => choice.choiceId),
+    ...selectionRequest(line.selection),
   });
   if (!quote.ok) return { problem: { lineId, code: quote.errors[0].code } };
 

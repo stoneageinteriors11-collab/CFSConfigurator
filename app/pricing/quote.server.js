@@ -6,13 +6,23 @@
 
 // Every field the app understands. mode, model_label, ordered, filters and pricing are for
 // display only: the shopper picks an exact size, and discounts come from Shopify.
+// The one exception is pricing.accessory_max_quantity, the most of one accessory per item.
 const WORKFLOW_FIELDS = new Set(["mode", "model_label", "ordered", "filters", "groups", "pricing"]);
 const GROUP_FIELDS = new Set(["name", "optional", "requires"]);
-const CHOICE_KINDS = new Set(["option"]);
+// An "option" is picked once, one per group. An "accessory" can be picked with others in its
+// group, each in a quantity from 1 to accessory_max_quantity, and is priced per item.
+const CHOICE_KINDS = new Set(["option", "accessory"]);
+const MAX_ACCESSORY_LIMIT = 99;
 const MAPPING_FIELDS = new Set(["kind", "dimensions", "inside_color", "assignments"]);
 const ASSIGNMENT_FIELDS = new Set(["id", "parent", "parent2", "raw_price"]);
 
 const unknownField = (object, known) => Object.keys(object).find((key) => !known.has(key));
+
+/** The most of one accessory a shopper can add to one item, or null if the data does not say clearly. */
+function accessoryLimit(workflow) {
+  const limit = workflow?.pricing?.accessory_max_quantity;
+  return Number.isInteger(limit) && limit >= 1 && limit <= MAX_ACCESSORY_LIMIT ? limit : null;
+}
 
 /** Why the app cannot price this product, or null when every rule in its data is one it understands. */
 export function unsupportedReason(product) {
@@ -38,10 +48,17 @@ export function unsupportedReason(product) {
   }
 
   // Unreadable choice data is refused when that choice is picked, and listed by the product check.
+  const groupKinds = new Map();
   for (const option of product.options ?? []) {
     const mappings = option.mappings;
     if (!mappings || typeof mappings !== "object") continue;
     if (!CHOICE_KINDS.has(mappings.kind)) return `Choice "${option.label}" is a kind the app does not price yet: "${mappings.kind}"`;
+    const kind = groupKinds.get(option.groupName);
+    if (kind && kind !== mappings.kind) return `Group "${option.groupName}" mixes options and accessories`;
+    groupKinds.set(option.groupName, mappings.kind);
+    if (mappings.kind === "accessory" && accessoryLimit(workflow) === null) {
+      return "It has accessories but no valid most-per-item quantity (pricing.accessory_max_quantity)";
+    }
     const setting = unknownField(mappings, MAPPING_FIELDS);
     if (setting) return `Choice "${option.label}" has a setting the app does not know: "${setting}"`;
     for (const assignment of Array.isArray(mappings.assignments) ? mappings.assignments : []) {
@@ -105,7 +122,11 @@ export function quoteOrdinaryProduct(product, { variantId, choiceIds }) {
   };
 }
 
-export function quoteConfiguration(product, { variantId, choiceIds }) {
+/**
+ * quantities maps an accessory's choice ID to how many the shopper wants. A missing entry means 1.
+ * An option can only ever be 1.
+ */
+export function quoteConfiguration(product, { variantId, choiceIds, quantities = {} }) {
   const fail = (...errors) => ({ ok: false, errors });
 
   if (unsupportedReason(product)) return fail({ code: "unsupported_product" });
@@ -120,10 +141,14 @@ export function quoteConfiguration(product, { variantId, choiceIds }) {
   if (!modelId || baseCents === null) return fail({ code: "invalid_product_data" });
 
   if (new Set(choiceIds).size !== choiceIds.length) return fail({ code: "duplicate_choice" });
+  if (!quantities || typeof quantities !== "object") return fail({ code: "invalid_quantity" });
+  const extra = Object.keys(quantities).find((id) => !choiceIds.includes(id));
+  if (extra) return fail({ code: "invalid_quantity", choiceId: extra });
 
   const groupNames = new Set(workflow.groups.map((g) => g.name));
   const errors = [];
   const picked = new Map();
+  const limit = accessoryLimit(workflow);
 
   for (const choiceId of choiceIds) {
     const option = product.options.find((o) => o.cfsId === choiceId);
@@ -135,19 +160,22 @@ export function quoteConfiguration(product, { variantId, choiceIds }) {
       errors.push({ code: "invalid_choice_data", choiceId });
       continue;
     }
-    if (option.mappings.kind !== "option") {
-      errors.push({ code: "unsupported_choice", choiceId });
+    const accessory = option.mappings.kind === "accessory";
+    const quantity = Object.hasOwn(quantities, choiceId) ? quantities[choiceId] : 1;
+    if (!Number.isInteger(quantity) || quantity < 1 || quantity > (accessory ? limit : 1)) {
+      errors.push({ code: "invalid_quantity", choiceId });
       continue;
     }
     const assignment = resolveAssignment(option, modelId);
+    const inGroup = picked.get(option.groupName) ?? [];
     if (assignment === "incompatible") {
       errors.push({ code: "incompatible_choice", choiceId });
     } else if (assignment === "invalid") {
       errors.push({ code: "invalid_choice_data", choiceId });
-    } else if (picked.has(option.groupName)) {
+    } else if (!accessory && inGroup.length) {
       errors.push({ code: "too_many_in_group", group: option.groupName });
     } else {
-      picked.set(option.groupName, { option, assignment });
+      picked.set(option.groupName, [...inGroup, { option, assignment, quantity }]);
     }
   }
 
@@ -164,13 +192,19 @@ export function quoteConfiguration(product, { variantId, choiceIds }) {
     if (group.requires && group.requires !== "$model" && !picked.has(group.requires)) {
       errors.push({ code: "prerequisite_missing", group: group.name, requires: group.requires });
     }
-    lines.push({
-      choiceId: selected.option.cfsId,
-      assignmentId: selected.assignment.id,
-      group: group.name,
-      label: selected.option.label,
-      cents: selected.assignment.cents,
-    });
+    // Same order as the product's own choices, whatever order the shopper picked them in.
+    selected.sort((a, b) => product.options.indexOf(a.option) - product.options.indexOf(b.option));
+    for (const { option, assignment, quantity } of selected) {
+      lines.push({
+        choiceId: option.cfsId,
+        assignmentId: assignment.id,
+        group: group.name,
+        label: option.label,
+        quantity,
+        unitCents: assignment.cents,
+        cents: assignment.cents * quantity,
+      });
+    }
   }
 
   if (errors.length) return fail(...errors);
@@ -185,6 +219,16 @@ export function quoteConfiguration(product, { variantId, choiceIds }) {
     lines,
     totalCents: lines.reduce((sum, line) => sum + line.cents, baseCents),
   };
+}
+
+/**
+ * Rebuilds the choices and quantities of a saved quote's lines, to price it again.
+ * Lines saved before accessories were priced have no quantity, which means 1.
+ */
+export function selectionRequest(selection) {
+  const quantities = {};
+  for (const line of selection) if (line.quantity !== undefined) quantities[line.choiceId] = line.quantity;
+  return { choiceIds: selection.map((line) => line.choiceId), quantities };
 }
 
 /** Prices a product loaded by loadConfigurableProduct, whichever kind it is. */

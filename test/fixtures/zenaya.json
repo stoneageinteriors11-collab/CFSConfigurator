@@ -1,0 +1,2452 @@
+{
+  "productId": "gid://shopify/Product/11067853046099",
+  "title": "CFS TEST - Zenaya Gloss Wardrobe - Sizes Available",
+  "handle": "cfs-type-test-70427",
+  "imageUrl": "https://cdn.shopify.com/s/files/1/1096/3579/7331/files/Rauch-Zenaya-Gloss-Wardrobe-Variation-Available_b3692fa3-e8a3-4b09-b092-467e29648e52.jpg?v=1794035155",
+  "variants": [
+    {
+      "id": "gid://shopify/ProductVariant/55773143794003",
+      "sku": "CFS-TYPE-70427-4748476",
+      "title": "4S01 : 2 High Polish Door Wardrobe",
+      "price": "559.99",
+      "inventoryQuantity": 100,
+      "inventoryPolicy": "DENY",
+      "availableForSale": true,
+      "inventoryItem": {
+        "tracked": true
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/55773143826771",
+      "sku": "CFS-TYPE-70427-4748478",
+      "title": "55H3 : 2 Door Wardrobe with 1 High Polish Door and 1 Mirror Door",
+      "price": "559.99",
+      "inventoryQuantity": 100,
+      "inventoryPolicy": "DENY",
+      "availableForSale": true,
+      "inventoryItem": {
+        "tracked": true
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/55773143859539",
+      "sku": "CFS-TYPE-70427-4748481",
+      "title": "4S14 : 3 High Polish Door Wardrobe",
+      "price": "969.99",
+      "inventoryQuantity": 100,
+      "inventoryPolicy": "DENY",
+      "availableForSale": true,
+      "inventoryItem": {
+        "tracked": true
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/55773143892307",
+      "sku": "CFS-TYPE-70427-4748482",
+      "title": "5S15 : 3 Door Wardrobe with 2 High Polish Door and 1 Mirror Door",
+      "price": "969.99",
+      "inventoryQuantity": 100,
+      "inventoryPolicy": "DENY",
+      "availableForSale": true,
+      "inventoryItem": {
+        "tracked": true
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/55773143925075",
+      "sku": "CFS-TYPE-70427-4748485",
+      "title": "4S13 : 4 High Polish Door Wardrobe",
+      "price": "1329.99",
+      "inventoryQuantity": 100,
+      "inventoryPolicy": "DENY",
+      "availableForSale": true,
+      "inventoryItem": {
+        "tracked": true
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/55773143957843",
+      "sku": "CFS-TYPE-70427-4748486",
+      "title": "5S57 : 4 Door Wardrobe with 2 High Polish Door and 2 Mirror Door",
+      "price": "1329.99",
+      "inventoryQuantity": 100,
+      "inventoryPolicy": "DENY",
+      "availableForSale": true,
+      "inventoryItem": {
+        "tracked": true
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/55773143990611",
+      "sku": "CFS-TYPE-70427-4748489",
+      "title": "4S17 : 5 High Polish Door Wardrobe",
+      "price": "1689.99",
+      "inventoryQuantity": 100,
+      "inventoryPolicy": "DENY",
+      "availableForSale": true,
+      "inventoryItem": {
+        "tracked": true
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/55773144023379",
+      "sku": "CFS-TYPE-70427-4748490",
+      "title": "5S67 : 5 Door Wardrobe with 2 High Polish Door and 3 Mirror Door",
+      "price": "1689.99",
+      "inventoryQuantity": 100,
+      "inventoryPolicy": "DENY",
+      "availableForSale": true,
+      "inventoryItem": {
+        "tracked": true
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/55773144056147",
+      "sku": "CFS-TYPE-70427-15514214",
+      "title": "4900 : 2 Door 90 Degree High Polish Corner Wardrobe",
+      "price": "1239.99",
+      "inventoryQuantity": 100,
+      "inventoryPolicy": "DENY",
+      "availableForSale": true,
+      "inventoryItem": {
+        "tracked": true
+      }
+    }
+  ],
+  "modelCards": {
+    "CFS-TYPE-70427-4748476": {
+      "source_id": "4748476",
+      "image": "https://images.choicefurnituresuperstore.co.uk/images2/Bedrooms/Wardrobes/V-70427-4S01-2-High-Polish-Door-Wardrobe.jpg",
+      "dimensions": "W 101cm x H 223cm x D 60cm",
+      "height": "H 223cm",
+      "width": "W 101cm (2 Door)"
+    },
+    "CFS-TYPE-70427-4748478": {
+      "source_id": "4748478",
+      "image": "https://images.choicefurnituresuperstore.co.uk/images2/Bedrooms/Wardrobes/V-70427-55H3-2-Door-Wardrobe-with-1-High-Polish-Door-and-1-Mirror-Door.jpg",
+      "dimensions": "W 101cm x H 223cm x D 60cm",
+      "height": "H 223cm",
+      "width": "W 101cm (2 Door)"
+    },
+    "CFS-TYPE-70427-4748481": {
+      "source_id": "4748481",
+      "image": "https://images.choicefurnituresuperstore.co.uk/images2/Bedrooms/Wardrobes/V-70427-4S14-3-High-Polish-Door-Wardrobe.jpg",
+      "dimensions": "W 151cm x H 223cm x D 60cm",
+      "height": "H 223cm",
+      "width": "W 151cm (3 Door)"
+    },
+    "CFS-TYPE-70427-4748482": {
+      "source_id": "4748482",
+      "image": "https://images.choicefurnituresuperstore.co.uk/images2/Bedrooms/Wardrobes/V-70427-5S15-3-Door-Wardrobe-with-2-High-Polish-Door-and-1-Mirror-Door.jpg",
+      "dimensions": "W 151cm x H 223cm x D 60cm",
+      "height": "H 223cm",
+      "width": "W 151cm (3 Door)"
+    },
+    "CFS-TYPE-70427-4748485": {
+      "source_id": "4748485",
+      "image": "https://images.choicefurnituresuperstore.co.uk/images2/Bedrooms/Wardrobes/V-70427-4S13-4-High-Polish-Door-Wardrobe.jpg",
+      "dimensions": "W 201cm x H 223cm x D 60cm",
+      "height": "H 223cm",
+      "width": "W 201cm (4 Door)"
+    },
+    "CFS-TYPE-70427-4748486": {
+      "source_id": "4748486",
+      "image": "https://images.choicefurnituresuperstore.co.uk/images2/Bedrooms/Wardrobes/V-70427-5S57-4-Door-Wardrobe-with-2-High-Polish-Door-and-2-Mirror-Door.jpg",
+      "dimensions": "W 201cm x H 223cm x D 60cm",
+      "height": "H 223cm",
+      "width": "W 201cm (4 Door)"
+    },
+    "CFS-TYPE-70427-4748489": {
+      "source_id": "4748489",
+      "image": "https://images.choicefurnituresuperstore.co.uk/images2/Bedrooms/Wardrobes/V-70427-4S17-5-High-Polish-Door-Wardrobe.jpg",
+      "dimensions": "W 251cm x H 223cm x D 60cm",
+      "height": "H 223cm",
+      "width": "W 251cm (5 Door)"
+    },
+    "CFS-TYPE-70427-4748490": {
+      "source_id": "4748490",
+      "image": "https://images.choicefurnituresuperstore.co.uk/images2/Bedrooms/Wardrobes/V-70427-5S67-5-Door-Wardrobe-with-2-High-Polish-Door-and-3-Mirror-Door.jpg",
+      "dimensions": "W 251cm x H 223cm x D 60cm",
+      "height": "H 223cm",
+      "width": "W 251cm (5 Door)"
+    },
+    "CFS-TYPE-70427-15514214": {
+      "source_id": "15514214",
+      "image": "https://images.choicefurnituresuperstore.co.uk/images2/Bedrooms/Wardrobes/V-70427-4900-2-Door-90-Degree-High-Polish-Corner-Wardrobe.jpg",
+      "dimensions": "W 110cm/112.5cm x H 223cm",
+      "height": "H 223cm",
+      "width": "W 110cm (2 Door)"
+    }
+  },
+  "workflow": {
+    "mode": "multipleDropDownWithMappingImperial",
+    "model_label": "Option",
+    "ordered": true,
+    "filters": [
+      "height",
+      "width"
+    ],
+    "groups": [
+      {
+        "name": "Select Color",
+        "optional": false,
+        "requires": "$model"
+      },
+      {
+        "name": "Select Internal Accessories for Compartment Width 50cm",
+        "optional": true,
+        "requires": "Select Color"
+      },
+      {
+        "name": "Select Internal Accessories for Compartment Width 100cm",
+        "optional": true,
+        "requires": "Select Color"
+      },
+      {
+        "name": "Select Internal Accessories for All Compartment",
+        "optional": true,
+        "requires": "Select Color"
+      },
+      {
+        "name": "Select Lightings",
+        "optional": true,
+        "requires": "Select Color"
+      }
+    ],
+    "pricing": {
+      "basis_points": 7700,
+      "independent_subtotal": false,
+      "verified_date": "2026-11-07",
+      "source_url": "https://www.choicefurnituresuperstore.co.uk/p/zenaya-gloss-wardrobe-sizes-available",
+      "accessory_max_quantity": 5
+    }
+  },
+  "options": [
+    {
+      "cfsId": "15514565",
+      "label": "A150B : Alpine White Carcase with High Polish White Front",
+      "groupName": "Select Color",
+      "mappings": {
+        "kind": "option",
+        "dimensions": "",
+        "inside_color": "",
+        "assignments": [
+          {
+            "id": "15514565",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "15514566",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "15514567",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "15514568",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "15514569",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "15514570",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "15514571",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "15514572",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "15514573",
+            "parent": "15514214",
+            "parent2": "0",
+            "raw_price": "0.00"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "15514574",
+      "label": "A156B : Silk Grey Carcase with High Polish White Front",
+      "groupName": "Select Color",
+      "mappings": {
+        "kind": "option",
+        "dimensions": "",
+        "inside_color": "",
+        "assignments": [
+          {
+            "id": "15514574",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "15514575",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "15514576",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "15514577",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "15514578",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "15514579",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "15514580",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "15514581",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "15514582",
+            "parent": "15514214",
+            "parent2": "0",
+            "raw_price": "0.00"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "15514583",
+      "label": "A158B : Graphite Carcase with High Polish White Front",
+      "groupName": "Select Color",
+      "mappings": {
+        "kind": "option",
+        "dimensions": "",
+        "inside_color": "",
+        "assignments": [
+          {
+            "id": "15514583",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "15514584",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "15514585",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "15514586",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "15514587",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "15514588",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "15514589",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "15514590",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "15514591",
+            "parent": "15514214",
+            "parent2": "0",
+            "raw_price": "0.00"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "17365890",
+      "label": "A316B : Artisan Oak Carcase with High Polish White Front",
+      "groupName": "Select Color",
+      "mappings": {
+        "kind": "option",
+        "dimensions": "",
+        "inside_color": "",
+        "assignments": [
+          {
+            "id": "17365890",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17365891",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17365892",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17365893",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17365894",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17365895",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17365896",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17365897",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17365898",
+            "parent": "15514214",
+            "parent2": "0",
+            "raw_price": "0.00"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "272786",
+      "label": "9643 : Shelf - Single",
+      "groupName": "Select Internal Accessories for Compartment Width 50cm",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 48cm x H 2cm x D 50cm",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "272786",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "69.99"
+          },
+          {
+            "id": "272791",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "69.99"
+          },
+          {
+            "id": "272797",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "69.99"
+          },
+          {
+            "id": "272803",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "69.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "272809",
+      "label": "9633 : Shelves - 3 Packs",
+      "groupName": "Select Internal Accessories for Compartment Width 50cm",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 48cm x H 2cm x D 50cm",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "272809",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "129.99"
+          },
+          {
+            "id": "272817",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "129.99"
+          },
+          {
+            "id": "272837",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "129.99"
+          },
+          {
+            "id": "272844",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "129.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "272849",
+      "label": "9739 : Hanging Rail",
+      "groupName": "Select Internal Accessories for Compartment Width 50cm",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 48cm x H 3cm x D 2cm",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "272849",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "49.99"
+          },
+          {
+            "id": "272855",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "49.99"
+          },
+          {
+            "id": "272862",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "49.99"
+          },
+          {
+            "id": "272865",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "49.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "272869",
+      "label": "9S86 : Interior 3 Drawer Unit",
+      "groupName": "Select Internal Accessories for Compartment Width 50cm",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 48cm x H 64cm x D 50cm",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "272869",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "379.99"
+          },
+          {
+            "id": "272873",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "379.99"
+          },
+          {
+            "id": "272876",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "379.99"
+          },
+          {
+            "id": "272880",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "379.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "272886",
+      "label": "9641 : Shelf - Single",
+      "groupName": "Select Internal Accessories for Compartment Width 100cm",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 98cm x H 2cm x D 50cm",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "272886",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "79.99"
+          },
+          {
+            "id": "272892",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "79.99"
+          },
+          {
+            "id": "272897",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "79.99"
+          },
+          {
+            "id": "272903",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "79.99"
+          },
+          {
+            "id": "272909",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "79.99"
+          },
+          {
+            "id": "272935",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "79.99"
+          },
+          {
+            "id": "272939",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "79.99"
+          },
+          {
+            "id": "272947",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "79.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "272955",
+      "label": "9631 : Shelves - 3 Packs",
+      "groupName": "Select Internal Accessories for Compartment Width 100cm",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 98cm x H 2cm x D 50cm",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "272955",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "139.99"
+          },
+          {
+            "id": "272961",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "139.99"
+          },
+          {
+            "id": "272966",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "139.99"
+          },
+          {
+            "id": "272972",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "139.99"
+          },
+          {
+            "id": "272984",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "139.99"
+          },
+          {
+            "id": "272989",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "139.99"
+          },
+          {
+            "id": "272994",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "139.99"
+          },
+          {
+            "id": "272998",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "139.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "273003",
+      "label": "9738 : Hanging Rail",
+      "groupName": "Select Internal Accessories for Compartment Width 100cm",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 98cm x H 3cm x D 2cm",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "273003",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "49.99"
+          },
+          {
+            "id": "273006",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "49.99"
+          },
+          {
+            "id": "273014",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "49.99"
+          },
+          {
+            "id": "273020",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "49.99"
+          },
+          {
+            "id": "273026",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "49.99"
+          },
+          {
+            "id": "273031",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "49.99"
+          },
+          {
+            "id": "273036",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "49.99"
+          },
+          {
+            "id": "273040",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "49.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "273045",
+      "label": "9SJ6 : Interior Division",
+      "groupName": "Select Internal Accessories for Compartment Width 100cm",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 98cm x H 148cm x D 51cm<br>with 3 Shelves and Clothes Rail",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "273045",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "169.99"
+          },
+          {
+            "id": "273050",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "169.99"
+          },
+          {
+            "id": "273052",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "169.99"
+          },
+          {
+            "id": "273057",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "169.99"
+          },
+          {
+            "id": "273062",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "169.99"
+          },
+          {
+            "id": "273069",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "169.99"
+          },
+          {
+            "id": "273074",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "169.99"
+          },
+          {
+            "id": "273078",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "169.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "273082",
+      "label": "9S88 : Interior 3 Drawer Unit",
+      "groupName": "Select Internal Accessories for Compartment Width 100cm",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 98cm x H 64cm x D 50cm",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "273082",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "489.99"
+          },
+          {
+            "id": "273084",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "489.99"
+          },
+          {
+            "id": "273088",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "489.99"
+          },
+          {
+            "id": "273092",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "489.99"
+          },
+          {
+            "id": "273097",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "489.99"
+          },
+          {
+            "id": "273103",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "489.99"
+          },
+          {
+            "id": "273110",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "489.99"
+          },
+          {
+            "id": "273115",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "489.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "273119",
+      "label": "9768 : Swivelling Tie Rack",
+      "groupName": "Select Internal Accessories for All Compartment",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 32cm x H 27cm x D 6cm",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "273119",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "89.99"
+          },
+          {
+            "id": "273478",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "89.99"
+          },
+          {
+            "id": "273479",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "89.99"
+          },
+          {
+            "id": "273480",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "89.99"
+          },
+          {
+            "id": "273481",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "89.99"
+          },
+          {
+            "id": "273482",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "89.99"
+          },
+          {
+            "id": "273483",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "89.99"
+          },
+          {
+            "id": "273484",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "89.99"
+          },
+          {
+            "id": "273485",
+            "parent": "15514214",
+            "parent2": "0",
+            "raw_price": "89.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "273486",
+      "label": "990K : Tie/Belt Rack",
+      "groupName": "Select Internal Accessories for All Compartment",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 10cm x H 13cm x D 46cm",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "273486",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "129.99"
+          },
+          {
+            "id": "273487",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "129.99"
+          },
+          {
+            "id": "273488",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "129.99"
+          },
+          {
+            "id": "273489",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "129.99"
+          },
+          {
+            "id": "273490",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "129.99"
+          },
+          {
+            "id": "273491",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "129.99"
+          },
+          {
+            "id": "273492",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "129.99"
+          },
+          {
+            "id": "273493",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "129.99"
+          },
+          {
+            "id": "273494",
+            "parent": "15514214",
+            "parent2": "0",
+            "raw_price": "129.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "273495",
+      "label": "9GK1 : Pull-Out Tie/Belt Rack",
+      "groupName": "Select Internal Accessories for All Compartment",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 9cm x H 6cm x D 45cm",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "273495",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "109.99"
+          },
+          {
+            "id": "273496",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "109.99"
+          },
+          {
+            "id": "273497",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "109.99"
+          },
+          {
+            "id": "273498",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "109.99"
+          },
+          {
+            "id": "273499",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "109.99"
+          },
+          {
+            "id": "273500",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "109.99"
+          },
+          {
+            "id": "273501",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "109.99"
+          },
+          {
+            "id": "273502",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "109.99"
+          },
+          {
+            "id": "273503",
+            "parent": "15514214",
+            "parent2": "0",
+            "raw_price": "109.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "273504",
+      "label": "9760 : Extending Rail Holder",
+      "groupName": "Select Internal Accessories for All Compartment",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 4cm x H 6cm x D 31cm",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "273504",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "49.99"
+          },
+          {
+            "id": "273505",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "49.99"
+          },
+          {
+            "id": "273506",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "49.99"
+          },
+          {
+            "id": "273507",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "49.99"
+          },
+          {
+            "id": "273508",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "49.99"
+          },
+          {
+            "id": "273509",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "49.99"
+          },
+          {
+            "id": "273510",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "49.99"
+          },
+          {
+            "id": "273511",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "49.99"
+          },
+          {
+            "id": "273512",
+            "parent": "15514214",
+            "parent2": "0",
+            "raw_price": "49.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "273513",
+      "label": "9HL1 : Hooks",
+      "groupName": "Select Internal Accessories for All Compartment",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 35cm x H 5cm x D 5cm",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "273513",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "59.99"
+          },
+          {
+            "id": "273514",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "59.99"
+          },
+          {
+            "id": "273515",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "59.99"
+          },
+          {
+            "id": "273516",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "59.99"
+          },
+          {
+            "id": "273517",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "59.99"
+          },
+          {
+            "id": "273518",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "59.99"
+          },
+          {
+            "id": "273519",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "59.99"
+          },
+          {
+            "id": "273520",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "59.99"
+          },
+          {
+            "id": "273521",
+            "parent": "15514214",
+            "parent2": "0",
+            "raw_price": "59.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "273522",
+      "label": "990H : Trouser Holder",
+      "groupName": "Select Internal Accessories for All Compartment",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 25cm x H 7cm x D 46cm",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "273522",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "129.99"
+          },
+          {
+            "id": "273523",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "129.99"
+          },
+          {
+            "id": "273524",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "129.99"
+          },
+          {
+            "id": "273525",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "129.99"
+          },
+          {
+            "id": "273526",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "129.99"
+          },
+          {
+            "id": "273527",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "129.99"
+          },
+          {
+            "id": "273528",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "129.99"
+          },
+          {
+            "id": "273529",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "129.99"
+          },
+          {
+            "id": "273530",
+            "parent": "15514214",
+            "parent2": "0",
+            "raw_price": "129.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "273531",
+      "label": "9767 : Coat Hanger Rail",
+      "groupName": "Select Internal Accessories for All Compartment",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 7cm x H 52cm x D 28cm",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "273531",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "139.99"
+          },
+          {
+            "id": "273532",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "139.99"
+          },
+          {
+            "id": "273533",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "139.99"
+          },
+          {
+            "id": "273534",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "139.99"
+          },
+          {
+            "id": "273535",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "139.99"
+          },
+          {
+            "id": "273536",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "139.99"
+          },
+          {
+            "id": "273537",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "139.99"
+          },
+          {
+            "id": "273538",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "139.99"
+          },
+          {
+            "id": "273539",
+            "parent": "15514214",
+            "parent2": "0",
+            "raw_price": "139.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "273540",
+      "label": "9769 : Swivelling Coat Hanger Rail",
+      "groupName": "Select Internal Accessories for All Compartment",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 20cm x H 35cm x D 3cm",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "273540",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "69.99"
+          },
+          {
+            "id": "273541",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "69.99"
+          },
+          {
+            "id": "273542",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "69.99"
+          },
+          {
+            "id": "273543",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "69.99"
+          },
+          {
+            "id": "273544",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "69.99"
+          },
+          {
+            "id": "273545",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "69.99"
+          },
+          {
+            "id": "273546",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "69.99"
+          },
+          {
+            "id": "273547",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "69.99"
+          },
+          {
+            "id": "273548",
+            "parent": "15514214",
+            "parent2": "0",
+            "raw_price": "69.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "273549",
+      "label": "9AZ5 : Set of 3 Metal Basket",
+      "groupName": "Select Internal Accessories for All Compartment",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 35cm x H 62cm x D 50cm<br>Can only be mounted on the outer or middle panels. Maximum load per basket 11kg.",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "273549",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "229.99"
+          },
+          {
+            "id": "273550",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "229.99"
+          },
+          {
+            "id": "273551",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "229.99"
+          },
+          {
+            "id": "273552",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "229.99"
+          },
+          {
+            "id": "273553",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "229.99"
+          },
+          {
+            "id": "273554",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "229.99"
+          },
+          {
+            "id": "273555",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "229.99"
+          },
+          {
+            "id": "273556",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "229.99"
+          },
+          {
+            "id": "273557",
+            "parent": "15514214",
+            "parent2": "0",
+            "raw_price": "229.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "273558",
+      "label": "9AZ6 : Set of 3 Shoe Rack",
+      "groupName": "Select Internal Accessories for All Compartment",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 26cm x H 66cm x D 50cm<br>Can only be mounted on the outer or middle panels. Maximum load per shoe rack 4kg.",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "273558",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "199.99"
+          },
+          {
+            "id": "273559",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "199.99"
+          },
+          {
+            "id": "273560",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "199.99"
+          },
+          {
+            "id": "273561",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "199.99"
+          },
+          {
+            "id": "273562",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "199.99"
+          },
+          {
+            "id": "273563",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "199.99"
+          },
+          {
+            "id": "273564",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "199.99"
+          },
+          {
+            "id": "273565",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "199.99"
+          },
+          {
+            "id": "273566",
+            "parent": "15514214",
+            "parent2": "0",
+            "raw_price": "199.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "273567",
+      "label": "9WK1 : Laundry Basket with Pull-Out",
+      "groupName": "Select Internal Accessories for All Compartment",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 30cm x H 55cm x D 50cm<br>Maximum load 7kg.",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "273567",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "209.99"
+          },
+          {
+            "id": "274077",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "209.99"
+          },
+          {
+            "id": "274080",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "209.99"
+          },
+          {
+            "id": "274082",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "209.99"
+          },
+          {
+            "id": "274083",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "209.99"
+          },
+          {
+            "id": "274085",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "209.99"
+          },
+          {
+            "id": "274086",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "209.99"
+          },
+          {
+            "id": "274088",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "209.99"
+          },
+          {
+            "id": "274089",
+            "parent": "15514214",
+            "parent2": "0",
+            "raw_price": "209.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "274091",
+      "label": "98S8 : Interior Mirror",
+      "groupName": "Select Internal Accessories for All Compartment",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 29cm x H 130cm",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "274091",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "149.99"
+          },
+          {
+            "id": "274093",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "149.99"
+          },
+          {
+            "id": "274094",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "149.99"
+          },
+          {
+            "id": "274096",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "149.99"
+          },
+          {
+            "id": "274098",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "149.99"
+          },
+          {
+            "id": "274099",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "149.99"
+          },
+          {
+            "id": "274101",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "149.99"
+          },
+          {
+            "id": "274102",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "149.99"
+          },
+          {
+            "id": "274104",
+            "parent": "15514214",
+            "parent2": "0",
+            "raw_price": "149.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "274106",
+      "label": "9T1B : LED Interior Lighting",
+      "groupName": "Select Lightings",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 23cm x H 2cm x D 11cm<br>with Motion Sensor LED Light",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "274106",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "129.99"
+          },
+          {
+            "id": "274107",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "129.99"
+          },
+          {
+            "id": "274109",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "129.99"
+          },
+          {
+            "id": "274110",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "129.99"
+          },
+          {
+            "id": "274112",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "129.99"
+          },
+          {
+            "id": "274114",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "129.99"
+          },
+          {
+            "id": "274115",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "129.99"
+          },
+          {
+            "id": "274117",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "129.99"
+          },
+          {
+            "id": "274119",
+            "parent": "15514214",
+            "parent2": "0",
+            "raw_price": "129.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "274121",
+      "label": "99FB : Lighting Control",
+      "groupName": "Select Lightings",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "with Handheld Transmitter",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "274121",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "109.99"
+          },
+          {
+            "id": "274128",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "109.99"
+          },
+          {
+            "id": "274132",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "109.99"
+          },
+          {
+            "id": "274135",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "109.99"
+          },
+          {
+            "id": "274139",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "109.99"
+          },
+          {
+            "id": "274519",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "109.99"
+          },
+          {
+            "id": "274526",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "109.99"
+          },
+          {
+            "id": "274528",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "109.99"
+          },
+          {
+            "id": "274532",
+            "parent": "15514214",
+            "parent2": "0",
+            "raw_price": "109.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "274537",
+      "label": "9W1L : Baleno White LED Bar Lamp",
+      "groupName": "Select Lightings",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 90cm x H 6cm x D 19cm",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "274537",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "309.99"
+          },
+          {
+            "id": "274538",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "309.99"
+          },
+          {
+            "id": "274540",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "309.99"
+          },
+          {
+            "id": "274542",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "309.99"
+          },
+          {
+            "id": "274544",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "309.99"
+          },
+          {
+            "id": "274545",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "309.99"
+          },
+          {
+            "id": "274547",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "309.99"
+          },
+          {
+            "id": "274548",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "309.99"
+          },
+          {
+            "id": "274550",
+            "parent": "15514214",
+            "parent2": "0",
+            "raw_price": "309.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "274551",
+      "label": "9S1L : Baleno Black LED Bar Lamp",
+      "groupName": "Select Lightings",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 90cm x H 6cm x D 19cm",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "274551",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "309.99"
+          },
+          {
+            "id": "274553",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "309.99"
+          },
+          {
+            "id": "274554",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "309.99"
+          },
+          {
+            "id": "274556",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "309.99"
+          },
+          {
+            "id": "274557",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "309.99"
+          },
+          {
+            "id": "274559",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "309.99"
+          },
+          {
+            "id": "274561",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "309.99"
+          },
+          {
+            "id": "274562",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "309.99"
+          },
+          {
+            "id": "274564",
+            "parent": "15514214",
+            "parent2": "0",
+            "raw_price": "309.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "274566",
+      "label": "9L42 : Lucido Chrome Colour Lighting - LED (Set of 2)",
+      "groupName": "Select Lightings",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 27cm x H 7cm x D 14cm",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "274566",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "429.99"
+          },
+          {
+            "id": "274567",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "429.99"
+          },
+          {
+            "id": "274570",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "429.99"
+          },
+          {
+            "id": "274572",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "429.99"
+          },
+          {
+            "id": "274574",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "429.99"
+          },
+          {
+            "id": "274576",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "429.99"
+          },
+          {
+            "id": "274578",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "429.99"
+          },
+          {
+            "id": "274580",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "429.99"
+          },
+          {
+            "id": "274583",
+            "parent": "15514214",
+            "parent2": "0",
+            "raw_price": "429.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "274585",
+      "label": "9L43 : Lucido Chrome Colour Lighting - LED (Set of 3)",
+      "groupName": "Select Lightings",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 27cm x H 7cm x D 14cm",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "274585",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "609.99"
+          },
+          {
+            "id": "274587",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "609.99"
+          },
+          {
+            "id": "274589",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "609.99"
+          },
+          {
+            "id": "274591",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "609.99"
+          },
+          {
+            "id": "274593",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "609.99"
+          },
+          {
+            "id": "274607",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "609.99"
+          },
+          {
+            "id": "274609",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "609.99"
+          },
+          {
+            "id": "274611",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "609.99"
+          },
+          {
+            "id": "274612",
+            "parent": "15514214",
+            "parent2": "0",
+            "raw_price": "609.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "274614",
+      "label": "9L62 : Neela Aluminium Colour Lighting - LED (Set of 2)",
+      "groupName": "Select Lightings",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 89cm x H 6cm x D 18cm",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "274614",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "439.99"
+          },
+          {
+            "id": "274615",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "439.99"
+          },
+          {
+            "id": "274617",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "439.99"
+          },
+          {
+            "id": "274618",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "439.99"
+          },
+          {
+            "id": "274620",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "439.99"
+          },
+          {
+            "id": "274622",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "439.99"
+          },
+          {
+            "id": "274627",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "439.99"
+          },
+          {
+            "id": "274629",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "439.99"
+          },
+          {
+            "id": "274631",
+            "parent": "15514214",
+            "parent2": "0",
+            "raw_price": "439.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "274632",
+      "label": "94L2 : Luna Chrome Colour Lighting - LED (Set of 2)",
+      "groupName": "Select Lightings",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 21cm x H 9cm x D 33cm",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "274632",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "269.99"
+          },
+          {
+            "id": "274634",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "269.99"
+          },
+          {
+            "id": "274636",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "269.99"
+          },
+          {
+            "id": "274637",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "269.99"
+          },
+          {
+            "id": "274639",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "269.99"
+          },
+          {
+            "id": "274640",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "269.99"
+          },
+          {
+            "id": "274642",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "269.99"
+          },
+          {
+            "id": "274643",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "269.99"
+          },
+          {
+            "id": "274645",
+            "parent": "15514214",
+            "parent2": "0",
+            "raw_price": "269.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "274646",
+      "label": "94L3 : Luna Chrome Colour Lighting - LED (Set of 3)",
+      "groupName": "Select Lightings",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 21cm x H 9cm x D 33cm",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "274646",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "379.99"
+          },
+          {
+            "id": "274648",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "379.99"
+          },
+          {
+            "id": "274650",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "379.99"
+          },
+          {
+            "id": "274651",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "379.99"
+          },
+          {
+            "id": "274653",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "379.99"
+          },
+          {
+            "id": "274654",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "379.99"
+          },
+          {
+            "id": "274656",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "379.99"
+          },
+          {
+            "id": "274657",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "379.99"
+          },
+          {
+            "id": "274659",
+            "parent": "15514214",
+            "parent2": "0",
+            "raw_price": "379.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "274660",
+      "label": "9C74 : Loft Aluminium Colour Lighting - LED (Set of 2)",
+      "groupName": "Select Lightings",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 33cm x H 5cm x D 18cm",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "274660",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "219.99"
+          },
+          {
+            "id": "274662",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "219.99"
+          },
+          {
+            "id": "274663",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "219.99"
+          },
+          {
+            "id": "274665",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "219.99"
+          },
+          {
+            "id": "274666",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "219.99"
+          },
+          {
+            "id": "274668",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "219.99"
+          },
+          {
+            "id": "274670",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "219.99"
+          },
+          {
+            "id": "274672",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "219.99"
+          },
+          {
+            "id": "274673",
+            "parent": "15514214",
+            "parent2": "0",
+            "raw_price": "219.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "274674",
+      "label": "9C76 : Loft Aluminium Colour Lighting - LED (Set of 3)",
+      "groupName": "Select Lightings",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 33cm x H 5cm x D 18cm",
+        "inside_color": "Texline (Natural Color Linen Look) A0066",
+        "assignments": [
+          {
+            "id": "274674",
+            "parent": "4748476",
+            "parent2": "0",
+            "raw_price": "289.99"
+          },
+          {
+            "id": "274676",
+            "parent": "4748478",
+            "parent2": "0",
+            "raw_price": "289.99"
+          },
+          {
+            "id": "274678",
+            "parent": "4748481",
+            "parent2": "0",
+            "raw_price": "289.99"
+          },
+          {
+            "id": "274679",
+            "parent": "4748482",
+            "parent2": "0",
+            "raw_price": "289.99"
+          },
+          {
+            "id": "274681",
+            "parent": "4748485",
+            "parent2": "0",
+            "raw_price": "289.99"
+          },
+          {
+            "id": "274683",
+            "parent": "4748486",
+            "parent2": "0",
+            "raw_price": "289.99"
+          },
+          {
+            "id": "274685",
+            "parent": "4748489",
+            "parent2": "0",
+            "raw_price": "289.99"
+          },
+          {
+            "id": "274686",
+            "parent": "4748490",
+            "parent2": "0",
+            "raw_price": "289.99"
+          },
+          {
+            "id": "274688",
+            "parent": "15514214",
+            "parent2": "0",
+            "raw_price": "289.99"
+          }
+        ]
+      }
+    }
+  ]
+}

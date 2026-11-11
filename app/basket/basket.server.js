@@ -22,10 +22,13 @@ export const newBasketToken = () => randomBytes(32).toString("base64url");
 
 export const hashToken = (token) => createHash("sha256").update(token).digest("hex");
 
-/** Identical copies of a configuration share this key; any different choice gives a new one. */
+/**
+ * Identical copies of a configuration share this key; any different choice or accessory quantity
+ * gives a new one. A choice taken once is written as before, so existing baskets keep their keys.
+ */
 export function configurationKey(quote) {
-  const choiceIds = quote.lines.map((line) => line.choiceId).sort();
-  return `${quote.variantId}:${choiceIds.join(",")}`;
+  const choices = quote.lines.map(({ choiceId, quantity = 1 }) => (quantity === 1 ? choiceId : `${choiceId}*${quantity}`));
+  return `${quote.variantId}:${choices.sort().join(",")}`;
 }
 
 export const validQuantity = (quantity) =>

@@ -6,16 +6,16 @@ import { test } from "node:test";
 import { unsupportedReason } from "../../app/pricing/quote.server.js";
 
 const load = (name) => JSON.parse(readFileSync(new URL(`../fixtures/${name}.json`, import.meta.url), "utf8"));
-const FIXTURES = ["natural-gold", "fargo", "moreno", "paris", "mayfair"];
+const FIXTURES = ["natural-gold", "fargo", "moreno", "paris", "mayfair", "zenaya", "loft"];
 
-test("all five test products of five different CFS types use only rules the app understands", () => {
+test("all seven test products of seven different CFS types use only rules the app understands", () => {
   const types = new Set();
   for (const name of FIXTURES) {
     const product = load(name);
     types.add(product.workflow.mode);
     assert.equal(unsupportedReason(product), null, name);
   }
-  assert.equal(types.size, 5);
+  assert.equal(types.size, 7);
 });
 
 test("an unknown setting, group rule, choice setting or price setting is refused", () => {

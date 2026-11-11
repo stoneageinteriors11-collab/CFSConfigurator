@@ -127,10 +127,10 @@ test("the CFS type name does not change the price", () => {
 });
 
 test("a product with a kind of choice the app does not price yet is refused whole", () => {
-  const accessory = copy();
-  option(accessory, FOUR_DRAWERS).mappings.kind = "accessory";
+  const measured = copy();
+  option(measured, FOUR_DRAWERS).mappings.kind = "measured";
   // Refused even when that choice is not picked, so the shopper never meets a choice that cannot be bought.
-  assert.deepEqual(codes(quote([TWO_DRAWERS, CARLTON_BLACK], VARIANT_2FT6, accessory)), ["unsupported_product"]);
+  assert.deepEqual(codes(quote([TWO_DRAWERS, CARLTON_BLACK], VARIANT_2FT6, measured)), ["unsupported_product"]);
 });
 
 test("refuses a later choice when its optional prerequisite is not selected", () => {

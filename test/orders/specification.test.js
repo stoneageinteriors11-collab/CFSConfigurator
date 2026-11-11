@@ -95,8 +95,8 @@ test("a mixed order matching its checkout keeps the bed's options and the mattre
     baseCents: 99999,
     unitCents: 108998,
     options: [
-      { group: "Select Drawer", label: "with 2 Drawer", cfsId: "17020886", assignmentId: "17020886", cents: 8999 },
-      { group: "Select Fabric", label: "Carlton Caramel", cfsId: "17020909", assignmentId: "17020909", cents: 0 },
+      { group: "Select Drawer", label: "with 2 Drawer", cfsId: "17020886", assignmentId: "17020886", quantity: 1, cents: 8999 },
+      { group: "Select Fabric", label: "Carlton Caramel", cfsId: "17020909", assignmentId: "17020909", quantity: 1, cents: 0 },
     ],
   });
   assert.equal(bedLine.totalCents, 108998);

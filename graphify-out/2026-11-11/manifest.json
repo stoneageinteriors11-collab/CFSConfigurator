@@ -684,9 +684,9 @@
     "semantic_hash": ""
   },
   "app/routes/app.products.jsx": {
-    "mtime": 1794391767.937138,
-    "seen": 1794391885.8182812,
-    "ast_hash": "030fe8850d1d472ba548d0b9cf845302",
+    "mtime": 1794392083.0942867,
+    "seen": 1794392304.6040485,
+    "ast_hash": "9326156b96cd23045952f777e01ecc9a",
     "semantic_hash": ""
   },
   "test/pricing/product-check.test.js": {

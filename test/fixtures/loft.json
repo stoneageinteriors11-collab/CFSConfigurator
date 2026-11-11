@@ -1,0 +1,874 @@
+{
+  "productId": "gid://shopify/Product/11067853078867",
+  "title": "CFS TEST - Loft Bed - Sizes Available",
+  "handle": "cfs-type-test-69733",
+  "imageUrl": "https://cdn.shopify.com/s/files/1/1096/3579/7331/files/1792145722Loft-Bed-Sizes-Available.jpg?v=1794035159",
+  "variants": [
+    {
+      "id": "gid://shopify/ProductVariant/55773144252755",
+      "sku": "CFS-TYPE-69733-1840531",
+      "title": "206/106 340 : King Size Bed with Trim Headboard - 150cm x 200cm",
+      "price": "969.99",
+      "inventoryQuantity": 100,
+      "inventoryPolicy": "DENY",
+      "availableForSale": true,
+      "inventoryItem": {
+        "tracked": true
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/55773144285523",
+      "sku": "CFS-TYPE-69733-1840532",
+      "title": "271/106 350 : King Size Bed with Trim Headboard - 160cm x 200cm",
+      "price": "969.99",
+      "inventoryQuantity": 100,
+      "inventoryPolicy": "DENY",
+      "availableForSale": true,
+      "inventoryItem": {
+        "tracked": true
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/55773144318291",
+      "sku": "CFS-TYPE-69733-1840533",
+      "title": "275/106 360 : Queen Size Bed with Trim Headboard - 180cm x 200cm",
+      "price": "969.99",
+      "inventoryQuantity": 100,
+      "inventoryPolicy": "DENY",
+      "availableForSale": true,
+      "inventoryItem": {
+        "tracked": true
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/55773144351059",
+      "sku": "CFS-TYPE-69733-1840534",
+      "title": "215/106 340 : King Size Bed with Trim Headboard - 150cm x 200cm",
+      "price": "1049.99",
+      "inventoryQuantity": 100,
+      "inventoryPolicy": "DENY",
+      "availableForSale": true,
+      "inventoryItem": {
+        "tracked": true
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/55773144383827",
+      "sku": "CFS-TYPE-69733-1840535",
+      "title": "221/106 350 : King Size Bed with Trim Headboard - 160cm x 200cm",
+      "price": "1049.99",
+      "inventoryQuantity": 100,
+      "inventoryPolicy": "DENY",
+      "availableForSale": true,
+      "inventoryItem": {
+        "tracked": true
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/55773144416595",
+      "sku": "CFS-TYPE-69733-1840536",
+      "title": "223/106 360 : Queen Size Bed with Trim Headboard - 180cm x 200cm",
+      "price": "1049.99",
+      "inventoryQuantity": 100,
+      "inventoryPolicy": "DENY",
+      "availableForSale": true,
+      "inventoryItem": {
+        "tracked": true
+      }
+    }
+  ],
+  "modelCards": {
+    "CFS-TYPE-69733-1840531": {
+      "source_id": "1840531",
+      "image": "https://images.choicefurnituresuperstore.co.uk/images2/Bedrooms/Beds/V-69733-206106-340-King-Size-Bed-with-Trim-Headboard-150cm-x-200cm.jpg",
+      "dimensions": "Bed Surface : W 150cm x L 200cm<br>Surface : W 169cm x L 217cm<br>Headboard Height : 92cm<br>Footboard Height : 43cm<br>Height to Bedside Top Edge : 43cm",
+      "height": "Footboard Height : 44cm",
+      "width": "W 150cm"
+    },
+    "CFS-TYPE-69733-1840532": {
+      "source_id": "1840532",
+      "image": "https://images.choicefurnituresuperstore.co.uk/images2/Bedrooms/Beds/V-69733-271106-350-King-Size-Bed-with-Trim-Headboard-160cm-x-200cm.jpg",
+      "dimensions": "Bed Surface : W 160cm x L 200cm<br>Surface : W 171cm x L 218cm<br>Headboard Height : 92cm<br>Footboard Height : 43cm<br>Height to Bedside Top Edge : 43cm",
+      "height": "Footboard Height : 44cm",
+      "width": "W 160cm"
+    },
+    "CFS-TYPE-69733-1840533": {
+      "source_id": "1840533",
+      "image": "https://images.choicefurnituresuperstore.co.uk/images2/Bedrooms/Beds/V-69733-275106-360-Queen-Size-Bed-with-Trim-Headboard-180cm-x-200cm.jpg",
+      "dimensions": "Bed Surface : W 180cm x L 200cm<br>Surface : W 191cm x L 218cm<br>Headboard Height : 92cm<br>Footboard Height : 43cm<br>Height to Bedside Top Edge : 43cm",
+      "height": "Footboard Height : 44cm",
+      "width": "W 180cm"
+    },
+    "CFS-TYPE-69733-1840534": {
+      "source_id": "1840534",
+      "image": "https://images.choicefurnituresuperstore.co.uk/images2/Bedrooms/Beds/V-69733-215106-340-King-Size-Bed-with-Trim-Headboard-150cm-x-200cm.jpg",
+      "dimensions": "Bed Surface : W 150cm x L 200cm<br>Surface : W 169cm x L 217cm<br>Headboard Height : 97cm<br>Footboard Height : 48cm<br>Height to Bedside Top Edge : 48cm",
+      "height": "Footboard Height : 48cm",
+      "width": "W 150cm"
+    },
+    "CFS-TYPE-69733-1840535": {
+      "source_id": "1840535",
+      "image": "https://images.choicefurnituresuperstore.co.uk/images2/Bedrooms/Beds/V-69733-221106-350-King-Size-Bed-with-Trim-Headboard-160cm-x-200cm.jpg",
+      "dimensions": "Bed Surface : W 160cm x L 200cm<br>Surface : W 171cm x L 218cm<br>Headboard Height : 97cm<br>Footboard Height : 48cm<br>Height to Bedside Top Edge : 48cm",
+      "height": "Footboard Height : 48cm",
+      "width": "W 160cm"
+    },
+    "CFS-TYPE-69733-1840536": {
+      "source_id": "1840536",
+      "image": "https://images.choicefurnituresuperstore.co.uk/images2/Bedrooms/Beds/V-69733-223106-360-Queen-Size-Bed-with-Trim-Headboard-180cm-x-200cm.jpg",
+      "dimensions": "Bed Surface : W 180cm x L 200cm<br>Surface : W 191cm x L 218cm<br>Headboard Height : 97cm<br>Footboard Height : 48cm<br>Height to Bedside Top Edge : 48cm",
+      "height": "Footboard Height : 48cm",
+      "width": "W 180cm"
+    }
+  },
+  "workflow": {
+    "mode": "rauchPopup",
+    "model_label": "Option",
+    "ordered": true,
+    "filters": [
+      "height",
+      "width"
+    ],
+    "groups": [
+      {
+        "name": "Select Color",
+        "optional": false,
+        "requires": "$model"
+      },
+      {
+        "name": "Select Lightings",
+        "optional": true,
+        "requires": "Select Color"
+      }
+    ],
+    "pricing": {
+      "basis_points": 7700,
+      "independent_subtotal": false,
+      "verified_date": "2026-11-07",
+      "source_url": "https://www.choicefurnituresuperstore.co.uk/p/loft-bed-sizes-available",
+      "accessory_max_quantity": 5
+    }
+  },
+  "options": [
+    {
+      "cfsId": "17244961",
+      "label": "White with Chrome Angled Feet and Trims 310",
+      "groupName": "Select Color",
+      "mappings": {
+        "kind": "option",
+        "dimensions": "",
+        "inside_color": "",
+        "assignments": [
+          {
+            "id": "17244961",
+            "parent": "1840531",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244962",
+            "parent": "1840532",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244963",
+            "parent": "1840533",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244964",
+            "parent": "1840534",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244965",
+            "parent": "1840535",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244966",
+            "parent": "1840536",
+            "parent2": "0",
+            "raw_price": "0.00"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "17244967",
+      "label": "Rustic Oak with Chrome Angled Feet and Trims 313",
+      "groupName": "Select Color",
+      "mappings": {
+        "kind": "option",
+        "dimensions": "",
+        "inside_color": "",
+        "assignments": [
+          {
+            "id": "17244967",
+            "parent": "1840531",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244968",
+            "parent": "1840532",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244969",
+            "parent": "1840533",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244970",
+            "parent": "1840534",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244971",
+            "parent": "1840535",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244972",
+            "parent": "1840536",
+            "parent2": "0",
+            "raw_price": "0.00"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "17244973",
+      "label": "Dark Rustic Oak with Chrome Angled Feet and Trims 314",
+      "groupName": "Select Color",
+      "mappings": {
+        "kind": "option",
+        "dimensions": "",
+        "inside_color": "",
+        "assignments": [
+          {
+            "id": "17244973",
+            "parent": "1840531",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244974",
+            "parent": "1840532",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244975",
+            "parent": "1840533",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244976",
+            "parent": "1840534",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244977",
+            "parent": "1840535",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244978",
+            "parent": "1840536",
+            "parent2": "0",
+            "raw_price": "0.00"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "17244979",
+      "label": "Havanna with Chrome Angled Feet and Trims 315",
+      "groupName": "Select Color",
+      "mappings": {
+        "kind": "option",
+        "dimensions": "",
+        "inside_color": "",
+        "assignments": [
+          {
+            "id": "17244979",
+            "parent": "1840531",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244980",
+            "parent": "1840532",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244981",
+            "parent": "1840533",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244982",
+            "parent": "1840534",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244983",
+            "parent": "1840535",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244984",
+            "parent": "1840536",
+            "parent2": "0",
+            "raw_price": "0.00"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "17244985",
+      "label": "Pebble Grey with Chrome Angled Feet and Trims 316",
+      "groupName": "Select Color",
+      "mappings": {
+        "kind": "option",
+        "dimensions": "",
+        "inside_color": "",
+        "assignments": [
+          {
+            "id": "17244985",
+            "parent": "1840531",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244986",
+            "parent": "1840532",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244987",
+            "parent": "1840533",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244988",
+            "parent": "1840534",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244989",
+            "parent": "1840535",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244990",
+            "parent": "1840536",
+            "parent2": "0",
+            "raw_price": "0.00"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "17244991",
+      "label": "Bianco Oak with Chrome Angled Feet and Trims 329",
+      "groupName": "Select Color",
+      "mappings": {
+        "kind": "option",
+        "dimensions": "",
+        "inside_color": "",
+        "assignments": [
+          {
+            "id": "17244991",
+            "parent": "1840531",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244992",
+            "parent": "1840532",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244993",
+            "parent": "1840533",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244994",
+            "parent": "1840534",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244995",
+            "parent": "1840535",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244996",
+            "parent": "1840536",
+            "parent2": "0",
+            "raw_price": "0.00"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "17244997",
+      "label": "White with Slate Angled Feet and Trims A92",
+      "groupName": "Select Color",
+      "mappings": {
+        "kind": "option",
+        "dimensions": "",
+        "inside_color": "",
+        "assignments": [
+          {
+            "id": "17244997",
+            "parent": "1840531",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244998",
+            "parent": "1840532",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17244999",
+            "parent": "1840533",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17245000",
+            "parent": "1840534",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17245001",
+            "parent": "1840535",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17245002",
+            "parent": "1840536",
+            "parent2": "0",
+            "raw_price": "0.00"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "17245003",
+      "label": "Rustic Oak with Slate Angled Feet and Trims A93",
+      "groupName": "Select Color",
+      "mappings": {
+        "kind": "option",
+        "dimensions": "",
+        "inside_color": "",
+        "assignments": [
+          {
+            "id": "17245003",
+            "parent": "1840531",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17245004",
+            "parent": "1840532",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17245005",
+            "parent": "1840533",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17245006",
+            "parent": "1840534",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17245007",
+            "parent": "1840535",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17245008",
+            "parent": "1840536",
+            "parent2": "0",
+            "raw_price": "0.00"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "17245009",
+      "label": "Dark Rustic Oak with Slate Angled Feet and Trims A94",
+      "groupName": "Select Color",
+      "mappings": {
+        "kind": "option",
+        "dimensions": "",
+        "inside_color": "",
+        "assignments": [
+          {
+            "id": "17245009",
+            "parent": "1840531",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17245010",
+            "parent": "1840532",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17245011",
+            "parent": "1840533",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17245012",
+            "parent": "1840534",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17245013",
+            "parent": "1840535",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17245014",
+            "parent": "1840536",
+            "parent2": "0",
+            "raw_price": "0.00"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "17245015",
+      "label": "Havanna with Slate Angled Feet and Trims A95",
+      "groupName": "Select Color",
+      "mappings": {
+        "kind": "option",
+        "dimensions": "",
+        "inside_color": "",
+        "assignments": [
+          {
+            "id": "17245015",
+            "parent": "1840531",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17245016",
+            "parent": "1840532",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17245017",
+            "parent": "1840533",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17245018",
+            "parent": "1840534",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17245019",
+            "parent": "1840535",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17245020",
+            "parent": "1840536",
+            "parent2": "0",
+            "raw_price": "0.00"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "17245021",
+      "label": "Pebble Grey with Slate Angled Feet and Trims A96",
+      "groupName": "Select Color",
+      "mappings": {
+        "kind": "option",
+        "dimensions": "",
+        "inside_color": "",
+        "assignments": [
+          {
+            "id": "17245021",
+            "parent": "1840531",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17245022",
+            "parent": "1840532",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17245023",
+            "parent": "1840533",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17245024",
+            "parent": "1840534",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17245025",
+            "parent": "1840535",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17245026",
+            "parent": "1840536",
+            "parent2": "0",
+            "raw_price": "0.00"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "17245027",
+      "label": "Bianco Oak with Slate Angled Feet and Trims 332",
+      "groupName": "Select Color",
+      "mappings": {
+        "kind": "option",
+        "dimensions": "",
+        "inside_color": "",
+        "assignments": [
+          {
+            "id": "17245027",
+            "parent": "1840531",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17245028",
+            "parent": "1840532",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17245029",
+            "parent": "1840533",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17245030",
+            "parent": "1840534",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17245031",
+            "parent": "1840535",
+            "parent2": "0",
+            "raw_price": "0.00"
+          },
+          {
+            "id": "17245032",
+            "parent": "1840536",
+            "parent2": "0",
+            "raw_price": "0.00"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "217067",
+      "label": "102 : Lighting for Footboard",
+      "groupName": "Select Lightings",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 60cm x H 9cm x D 9cm",
+        "inside_color": "",
+        "assignments": [
+          {
+            "id": "217067",
+            "parent": "1840531",
+            "parent2": "0",
+            "raw_price": "209.99"
+          },
+          {
+            "id": "217068",
+            "parent": "1840532",
+            "parent2": "0",
+            "raw_price": "209.99"
+          },
+          {
+            "id": "217069",
+            "parent": "1840533",
+            "parent2": "0",
+            "raw_price": "209.99"
+          },
+          {
+            "id": "217070",
+            "parent": "1840534",
+            "parent2": "0",
+            "raw_price": "209.99"
+          },
+          {
+            "id": "217071",
+            "parent": "1840535",
+            "parent2": "0",
+            "raw_price": "209.99"
+          },
+          {
+            "id": "217072",
+            "parent": "1840536",
+            "parent2": "0",
+            "raw_price": "209.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "217093",
+      "label": "100 : LED Curved Light in Chrome Effect (Pair)",
+      "groupName": "Select Lightings",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 50cm x H 2cm x D 4cm",
+        "inside_color": "",
+        "assignments": [
+          {
+            "id": "217093",
+            "parent": "1840531",
+            "parent2": "0",
+            "raw_price": "139.99"
+          },
+          {
+            "id": "217094",
+            "parent": "1840532",
+            "parent2": "0",
+            "raw_price": "139.99"
+          },
+          {
+            "id": "217095",
+            "parent": "1840533",
+            "parent2": "0",
+            "raw_price": "139.99"
+          },
+          {
+            "id": "217096",
+            "parent": "1840534",
+            "parent2": "0",
+            "raw_price": "139.99"
+          },
+          {
+            "id": "217097",
+            "parent": "1840535",
+            "parent2": "0",
+            "raw_price": "139.99"
+          },
+          {
+            "id": "217098",
+            "parent": "1840536",
+            "parent2": "0",
+            "raw_price": "139.99"
+          }
+        ]
+      }
+    },
+    {
+      "cfsId": "217099",
+      "label": "101 : Flexi-light with Power-LED (Pair)",
+      "groupName": "Select Lightings",
+      "mappings": {
+        "kind": "accessory",
+        "dimensions": "W 50cm x H 2cm x D 4cm",
+        "inside_color": "",
+        "assignments": [
+          {
+            "id": "217099",
+            "parent": "1840531",
+            "parent2": "0",
+            "raw_price": "139.99"
+          },
+          {
+            "id": "217100",
+            "parent": "1840532",
+            "parent2": "0",
+            "raw_price": "139.99"
+          },
+          {
+            "id": "217101",
+            "parent": "1840533",
+            "parent2": "0",
+            "raw_price": "139.99"
+          },
+          {
+            "id": "217102",
+            "parent": "1840534",
+            "parent2": "0",
+            "raw_price": "139.99"
+          },
+          {
+            "id": "217103",
+            "parent": "1840535",
+            "parent2": "0",
+            "raw_price": "139.99"
+          },
+          {
+            "id": "217104",
+            "parent": "1840536",
+            "parent2": "0",
+            "raw_price": "139.99"
+          }
+        ]
+      }
+    }
+  ]
+}

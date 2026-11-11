@@ -1,6 +1,7 @@
 // Turns a storefront basket request into a basket change. The body is not covered by Shopify's
 // signature, so nothing in it is trusted: the token proves ownership and prices are worked out here.
 import { quoteSelection } from "../pricing/quote-request.server.js";
+import { selectionRequest } from "../pricing/quote.server.js";
 import {
   addLine,
   getBasket,
@@ -32,7 +33,13 @@ export function publicBasket(basket) {
     quantity: line.quantity,
     baseCents: line.baseCents,
     unitCents: line.unitCents,
-    selection: line.selection.map(({ choiceId, group, label, cents }) => ({ choiceId, group, label, cents })),
+    selection: line.selection.map(({ choiceId, group, label, quantity = 1, cents }) => ({
+      choiceId,
+      group,
+      label,
+      quantity,
+      cents,
+    })),
   }));
   return {
     version: basket?.version ?? 0,
@@ -51,11 +58,11 @@ async function view(db, ref) {
 }
 
 async function add(db, graphql, shop, request) {
-  const { token, product: productId, variant: variantId, choices: choiceIds, quantity = 1 } = request;
+  const { token, product: productId, variant: variantId, choices: choiceIds, quantities, quantity = 1 } = request;
   if (token !== undefined && !matches(TOKEN, token)) return refuse(400, "bad_request");
   if (!validQuantity(quantity)) return refuse(422, "invalid_quantity");
 
-  const { quote, refusal } = await quoteSelection(graphql, { productId, variantId, choiceIds });
+  const { quote, refusal } = await quoteSelection(graphql, { productId, variantId, choiceIds, quantities });
   if (refusal) return refusal;
 
   const issued = token === undefined ? newBasketToken() : undefined;
@@ -75,7 +82,7 @@ async function changeQuantity(db, graphql, ref, { line: lineId, quantity }) {
   const { quote, refusal } = await quoteSelection(graphql, {
     productId: line.productId,
     variantId: numericId(line.variantId),
-    choiceIds: line.selection.map((s) => s.choiceId),
+    ...selectionRequest(line.selection),
   });
   if (refusal) return refusal;
 

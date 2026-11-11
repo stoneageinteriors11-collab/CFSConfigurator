@@ -57,10 +57,10 @@ test("a renamed type is still ready, but an unknown kind of choice is named", ()
   assert.equal(checkProduct(renamed).ready, true);
 
   const accessory = copy();
-  accessory.options[0].mappings.kind = "accessory";
+  accessory.options[0].mappings.kind = "measured";
   const result = checkProduct(accessory);
   assert.equal(result.ready, false);
-  assert.deepEqual(result.problems, [`Choice "${accessory.options[0].label}" is a kind the app does not price yet: "accessory"`]);
+  assert.deepEqual(result.problems, [`Choice "${accessory.options[0].label}" is a kind the app does not price yet: "measured"`]);
 });
 
 test("missing, partial or plain products are not ready", () => {

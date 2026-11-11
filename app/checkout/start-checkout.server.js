@@ -36,9 +36,22 @@ async function shopify(graphql, query, variables) {
   return data;
 }
 
-/** The option notes shown on a configured line in Shopify, such as "Fabric: Carlton Caramel". */
-export const lineAttributes = (selection) =>
-  selection.map((choice) => ({ key: choice.group.replace(/^Select /, ""), value: choice.label }));
+/**
+ * The option notes shown on a configured line in Shopify, such as "Fabric: Carlton Caramel".
+ * Several accessories from one group share one note, such as "Lightings: 2 × 102 : Lighting for
+ * Footboard; 100 : LED Curved Light", so Shopify never sees the same note name twice.
+ */
+export function lineAttributes(selection) {
+  const attributes = [];
+  for (const { group, label, quantity = 1 } of selection) {
+    const key = group.replace(/^Select /, "");
+    const value = quantity === 1 ? label : `${quantity} × ${label}`;
+    const previous = attributes.at(-1);
+    if (previous?.key === key) previous.value += `; ${value}`;
+    else attributes.push({ key, value });
+  }
+  return attributes;
+}
 
 function draftLine(line, currencyCode) {
   // An ordinary product has no options, so it keeps Shopify's own price.
