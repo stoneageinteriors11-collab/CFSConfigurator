@@ -1,0 +1,913 @@
+{
+ "productId": "gid://shopify/Product/11067852947795",
+ "title": "CFS TEST - Fargo Oak Type A Dining Table - Sizes Available",
+ "handle": "cfs-type-test-1253441",
+ "imageUrl": "https://cdn.shopify.com/s/files/1/1096/3579/7331/files/Florin-Dining-Table-Type-A-Oak-Variation-Available-17045131_e29f7d6d-7c6e-4481-99d7-2cf4fff52320.jpg?v=1794035139",
+ "variants": [
+  {
+   "id": "gid://shopify/ProductVariant/55773142909267",
+   "sku": "CFS-TYPE-1253441-17229814",
+   "title": "140cm x 90cm",
+   "price": "1459.99",
+   "inventoryQuantity": 100,
+   "inventoryPolicy": "DENY",
+   "availableForSale": true,
+   "inventoryItem": {
+    "tracked": true
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55773142942035",
+   "sku": "CFS-TYPE-1253441-17229815",
+   "title": "160cm x 90cm",
+   "price": "1649.99",
+   "inventoryQuantity": 100,
+   "inventoryPolicy": "DENY",
+   "availableForSale": true,
+   "inventoryItem": {
+    "tracked": true
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55773142974803",
+   "sku": "CFS-TYPE-1253441-17229816",
+   "title": "180cm x 90cm",
+   "price": "1829.99",
+   "inventoryQuantity": 100,
+   "inventoryPolicy": "DENY",
+   "availableForSale": true,
+   "inventoryItem": {
+    "tracked": true
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55773143007571",
+   "sku": "CFS-TYPE-1253441-17229817",
+   "title": "180cm x 100cm",
+   "price": "2009.99",
+   "inventoryQuantity": 100,
+   "inventoryPolicy": "DENY",
+   "availableForSale": true,
+   "inventoryItem": {
+    "tracked": true
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55773143040339",
+   "sku": "CFS-TYPE-1253441-17229818",
+   "title": "200cm x 100cm",
+   "price": "2279.99",
+   "inventoryQuantity": 100,
+   "inventoryPolicy": "DENY",
+   "availableForSale": true,
+   "inventoryItem": {
+    "tracked": true
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55773143073107",
+   "sku": "CFS-TYPE-1253441-17229819",
+   "title": "220cm x 100cm",
+   "price": "2519.99",
+   "inventoryQuantity": 100,
+   "inventoryPolicy": "DENY",
+   "availableForSale": true,
+   "inventoryItem": {
+    "tracked": true
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55773143105875",
+   "sku": "CFS-TYPE-1253441-17229820",
+   "title": "240cm x 100cm",
+   "price": "2819.99",
+   "inventoryQuantity": 100,
+   "inventoryPolicy": "DENY",
+   "availableForSale": true,
+   "inventoryItem": {
+    "tracked": true
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55773143138643",
+   "sku": "CFS-TYPE-1253441-17229821",
+   "title": "220cm x 110cm",
+   "price": "2739.99",
+   "inventoryQuantity": 100,
+   "inventoryPolicy": "DENY",
+   "availableForSale": true,
+   "inventoryItem": {
+    "tracked": true
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55773143171411",
+   "sku": "CFS-TYPE-1253441-17229822",
+   "title": "240cm x 110cm",
+   "price": "3069.99",
+   "inventoryQuantity": 100,
+   "inventoryPolicy": "DENY",
+   "availableForSale": true,
+   "inventoryItem": {
+    "tracked": true
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55773143204179",
+   "sku": "CFS-TYPE-1253441-17229823",
+   "title": "260cm x 110cm",
+   "price": "3409.99",
+   "inventoryQuantity": 100,
+   "inventoryPolicy": "DENY",
+   "availableForSale": true,
+   "inventoryItem": {
+    "tracked": true
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55773143236947",
+   "sku": "CFS-TYPE-1253441-17229824",
+   "title": "280cm x 110cm",
+   "price": "4059.99",
+   "inventoryQuantity": 100,
+   "inventoryPolicy": "DENY",
+   "availableForSale": true,
+   "inventoryItem": {
+    "tracked": true
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55773143269715",
+   "sku": "CFS-TYPE-1253441-17229825",
+   "title": "220cm x 120cm",
+   "price": "3139.99",
+   "inventoryQuantity": 100,
+   "inventoryPolicy": "DENY",
+   "availableForSale": true,
+   "inventoryItem": {
+    "tracked": true
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55773143302483",
+   "sku": "CFS-TYPE-1253441-17229826",
+   "title": "240cm x 120cm",
+   "price": "3489.99",
+   "inventoryQuantity": 100,
+   "inventoryPolicy": "DENY",
+   "availableForSale": true,
+   "inventoryItem": {
+    "tracked": true
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55773143335251",
+   "sku": "CFS-TYPE-1253441-17229827",
+   "title": "260cm x 120cm",
+   "price": "3869.99",
+   "inventoryQuantity": 100,
+   "inventoryPolicy": "DENY",
+   "availableForSale": true,
+   "inventoryItem": {
+    "tracked": true
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55773143368019",
+   "sku": "CFS-TYPE-1253441-17229828",
+   "title": "280cm x 120cm",
+   "price": "4359.99",
+   "inventoryQuantity": 100,
+   "inventoryPolicy": "DENY",
+   "availableForSale": true,
+   "inventoryItem": {
+    "tracked": true
+   }
+  }
+ ],
+ "modelCards": {
+  "CFS-TYPE-1253441-17229814": {
+   "source_id": "17229814",
+   "image": "",
+   "dimensions": "",
+   "height": "",
+   "width": ""
+  },
+  "CFS-TYPE-1253441-17229815": {
+   "source_id": "17229815",
+   "image": "",
+   "dimensions": "",
+   "height": "",
+   "width": ""
+  },
+  "CFS-TYPE-1253441-17229816": {
+   "source_id": "17229816",
+   "image": "",
+   "dimensions": "",
+   "height": "",
+   "width": ""
+  },
+  "CFS-TYPE-1253441-17229817": {
+   "source_id": "17229817",
+   "image": "",
+   "dimensions": "",
+   "height": "",
+   "width": ""
+  },
+  "CFS-TYPE-1253441-17229818": {
+   "source_id": "17229818",
+   "image": "",
+   "dimensions": "",
+   "height": "",
+   "width": ""
+  },
+  "CFS-TYPE-1253441-17229819": {
+   "source_id": "17229819",
+   "image": "",
+   "dimensions": "",
+   "height": "",
+   "width": ""
+  },
+  "CFS-TYPE-1253441-17229820": {
+   "source_id": "17229820",
+   "image": "",
+   "dimensions": "",
+   "height": "",
+   "width": ""
+  },
+  "CFS-TYPE-1253441-17229821": {
+   "source_id": "17229821",
+   "image": "",
+   "dimensions": "",
+   "height": "",
+   "width": ""
+  },
+  "CFS-TYPE-1253441-17229822": {
+   "source_id": "17229822",
+   "image": "",
+   "dimensions": "",
+   "height": "",
+   "width": ""
+  },
+  "CFS-TYPE-1253441-17229823": {
+   "source_id": "17229823",
+   "image": "",
+   "dimensions": "",
+   "height": "",
+   "width": ""
+  },
+  "CFS-TYPE-1253441-17229824": {
+   "source_id": "17229824",
+   "image": "",
+   "dimensions": "",
+   "height": "",
+   "width": ""
+  },
+  "CFS-TYPE-1253441-17229825": {
+   "source_id": "17229825",
+   "image": "",
+   "dimensions": "",
+   "height": "",
+   "width": ""
+  },
+  "CFS-TYPE-1253441-17229826": {
+   "source_id": "17229826",
+   "image": "",
+   "dimensions": "",
+   "height": "",
+   "width": ""
+  },
+  "CFS-TYPE-1253441-17229827": {
+   "source_id": "17229827",
+   "image": "",
+   "dimensions": "",
+   "height": "",
+   "width": ""
+  },
+  "CFS-TYPE-1253441-17229828": {
+   "source_id": "17229828",
+   "image": "",
+   "dimensions": "",
+   "height": "",
+   "width": ""
+  }
+ },
+ "workflow": {
+  "mode": "normalDropDown",
+  "model_label": "Option",
+  "ordered": false,
+  "filters": [],
+  "groups": [
+   {
+    "name": "Select Edge",
+    "optional": false,
+    "requires": ""
+   },
+   {
+    "name": "Select Filler",
+    "optional": false,
+    "requires": ""
+   },
+   {
+    "name": "Select Finish",
+    "optional": false,
+    "requires": ""
+   },
+   {
+    "name": "Select Steel",
+    "optional": false,
+    "requires": ""
+   },
+   {
+    "name": "Select Table Top",
+    "optional": false,
+    "requires": ""
+   }
+  ],
+  "pricing": {
+   "basis_points": 8500,
+   "independent_subtotal": true,
+   "verified_date": "2026-11-07",
+   "source_url": "https://www.choicefurnituresuperstore.co.uk/p/fargo-oak-type-a-dining-table-sizes-available",
+   "accessory_max_quantity": 5
+  }
+ },
+ "options": [
+  {
+   "cfsId": "17229829",
+   "label": "F01 Natural Edge",
+   "groupName": "Select Edge",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229829",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229830",
+   "label": "F02 Straight Edge",
+   "groupName": "Select Edge",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229830",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229831",
+   "label": "F03 Reversed Natural Edge",
+   "groupName": "Select Edge",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229831",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229832",
+   "label": "F04 Chamfered Edge",
+   "groupName": "Select Edge",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229832",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229833",
+   "label": "F10 Bullnose Edge",
+   "groupName": "Select Edge",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229833",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229834",
+   "label": "F13 Rounded Swiss Edge",
+   "groupName": "Select Edge",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229834",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229835",
+   "label": "F15 Bullnose Around Perimeter",
+   "groupName": "Select Edge",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229835",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229836",
+   "label": "Black",
+   "groupName": "Select Filler",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229836",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229837",
+   "label": "Dark Brown",
+   "groupName": "Select Filler",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229837",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229838",
+   "label": "Light Brown",
+   "groupName": "Select Filler",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229838",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229839",
+   "label": "Open Knots & Cracks",
+   "groupName": "Select Filler",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229839",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229840",
+   "label": "Transparent",
+   "groupName": "Select Filler",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229840",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229841",
+   "label": "Crystal",
+   "groupName": "Select Filler",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229841",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "269.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229842",
+   "label": "Metal",
+   "groupName": "Select Filler",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229842",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "269.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229843",
+   "label": "Natural Oiled Ash",
+   "groupName": "Select Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229843",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229844",
+   "label": "Bianco Oiled Ash",
+   "groupName": "Select Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229844",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229845",
+   "label": "Taupe Oiled Ash",
+   "groupName": "Select Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229845",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229846",
+   "label": "Charcoal Oiled Ash",
+   "groupName": "Select Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229846",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229847",
+   "label": "Oiled Blonde Oiled Oak",
+   "groupName": "Select Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229847",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229848",
+   "label": "White Oiled Oak",
+   "groupName": "Select Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229848",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229849",
+   "label": "Raucher Oiled Oak Smoked",
+   "groupName": "Select Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229849",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229850",
+   "label": "Grey Oiled Oak",
+   "groupName": "Select Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229850",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229851",
+   "label": "Lacquered Oak",
+   "groupName": "Select Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229851",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "429.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229852",
+   "label": "Black Brown Oiled Oak",
+   "groupName": "Select Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229852",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229853",
+   "label": "Black Matt Stained and Lacquered Oak",
+   "groupName": "Select Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229853",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "569.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229854",
+   "label": "Oiled Lacquered Walnut",
+   "groupName": "Select Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229854",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "1179.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229855",
+   "label": "Anthracite Black Powder Coated",
+   "groupName": "Select Steel",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229855",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "419.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229856",
+   "label": "Industrial Steel Lacquered",
+   "groupName": "Select Steel",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229856",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "419.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229857",
+   "label": "Stainless Steel Polished",
+   "groupName": "Select Steel",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229857",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "709.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229858",
+   "label": "Standard",
+   "groupName": "Select Table Top",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229858",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229859",
+   "label": "Diagonal 5mm Gap Along the Length of the Table Top",
+   "groupName": "Select Table Top",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229859",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17229860",
+   "label": "Vertical 5mm Gap Along the Length of the Table Top",
+   "groupName": "Select Table Top",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17229860",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  }
+ ]
+}

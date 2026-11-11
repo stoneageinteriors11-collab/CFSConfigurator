@@ -1,0 +1,215 @@
+{
+ "productId": "gid://shopify/Product/11067853013331",
+ "title": "CFS TEST - Moreno Oak Bed - Sizes Available",
+ "handle": "cfs-type-test-36134",
+ "imageUrl": "https://cdn.shopify.com/s/files/1/1096/3579/7331/files/1769698736Clemence-Richard-Moreno-Oak-Bed.jpg?v=1794035149",
+ "variants": [
+  {
+   "id": "gid://shopify/ProductVariant/55773143662931",
+   "sku": "CFS-TYPE-36134-12883042",
+   "title": "4ft 6in Double",
+   "price": "3069.99",
+   "inventoryQuantity": 100,
+   "inventoryPolicy": "DENY",
+   "availableForSale": true,
+   "inventoryItem": {
+    "tracked": true
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55773143695699",
+   "sku": "CFS-TYPE-36134-12883043",
+   "title": "5ft King Size",
+   "price": "3179.99",
+   "inventoryQuantity": 100,
+   "inventoryPolicy": "DENY",
+   "availableForSale": true,
+   "inventoryItem": {
+    "tracked": true
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55773143728467",
+   "sku": "CFS-TYPE-36134-12883044",
+   "title": "6ft Queen Size",
+   "price": "3349.99",
+   "inventoryQuantity": 100,
+   "inventoryPolicy": "DENY",
+   "availableForSale": true,
+   "inventoryItem": {
+    "tracked": true
+   }
+  }
+ ],
+ "modelCards": {
+  "CFS-TYPE-36134-12883042": {
+   "source_id": "12883042",
+   "image": "",
+   "dimensions": "",
+   "height": "",
+   "width": ""
+  },
+  "CFS-TYPE-36134-12883043": {
+   "source_id": "12883043",
+   "image": "",
+   "dimensions": "",
+   "height": "",
+   "width": ""
+  },
+  "CFS-TYPE-36134-12883044": {
+   "source_id": "12883044",
+   "image": "",
+   "dimensions": "",
+   "height": "",
+   "width": ""
+  }
+ },
+ "workflow": {
+  "mode": "multipleDropDownWithoutMapping",
+  "model_label": "Size",
+  "ordered": false,
+  "filters": [],
+  "groups": [
+   {
+    "name": "Select Finish",
+    "optional": false,
+    "requires": ""
+   }
+  ],
+  "pricing": {
+   "basis_points": 7700,
+   "independent_subtotal": true,
+   "verified_date": "2026-11-07",
+   "source_url": "https://www.choicefurnituresuperstore.co.uk/p/moreno-oak-bed-sizes-available",
+   "accessory_max_quantity": 5
+  }
+ },
+ "options": [
+  {
+   "cfsId": "12883045",
+   "label": "Natural Lacquer",
+   "groupName": "Select Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "12883045",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "12883046",
+   "label": "White Oil L010",
+   "groupName": "Select Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "12883046",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "12883047",
+   "label": "Grey Oil L088",
+   "groupName": "Select Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "12883047",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "12883048",
+   "label": "Oiled GA 932",
+   "groupName": "Select Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "12883048",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "12883049",
+   "label": "Smoked Oil L086",
+   "groupName": "Select Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "12883049",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "12883050",
+   "label": "White Oil 9001",
+   "groupName": "Select Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "12883050",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "12883051",
+   "label": "Super White",
+   "groupName": "Select Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "12883051",
+      "parent": "0",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  }
+ ]
+}

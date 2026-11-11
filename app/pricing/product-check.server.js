@@ -1,7 +1,7 @@
 // Checks whether the app can price and sell each CFS product right now, using the same
 // pricing code as the shop. Read only: nothing in Shopify is changed.
 import { loadConfigurableProduct } from "./load-product.server.js";
-import { SUPPORTED_MODE, quoteConfiguration, resolveAssignment } from "./quote.server.js";
+import { quoteConfiguration, resolveAssignment, unsupportedReason } from "./quote.server.js";
 
 // The products in scope for now: the seven CFS configuration test products.
 export const CHECKED_PRODUCTS_QUERY = `#graphql
@@ -73,12 +73,8 @@ export function checkProduct(product) {
     choices: product.options.length,
     fromCents: null,
   };
-  if (!Array.isArray(workflow?.groups)) {
-    return { ...summary, ready: false, problems: ["Its option setup (workflow) is missing or unreadable"] };
-  }
-  if (workflow.mode !== SUPPORTED_MODE) {
-    return { ...summary, ready: false, problems: [`Product type "${workflow.mode}" is not supported yet`] };
-  }
+  const unsupported = unsupportedReason(product);
+  if (unsupported) return { ...summary, ready: false, problems: [unsupported] };
 
   const problems = new Set();
   const note = (problem) => problems.add(problem);

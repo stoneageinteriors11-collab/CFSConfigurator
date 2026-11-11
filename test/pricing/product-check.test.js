@@ -51,12 +51,16 @@ test("a product with nothing in stock is not ready", () => {
   assert.ok(hasProblem(result, /No size is in stock/));
 });
 
-test("a product type the app does not price yet is named", () => {
-  const product = copy();
-  product.workflow.mode = "rauchPopup";
-  const result = checkProduct(product);
+test("a renamed type is still ready, but an unknown kind of choice is named", () => {
+  const renamed = copy();
+  renamed.workflow.mode = "rauchPopup";
+  assert.equal(checkProduct(renamed).ready, true);
+
+  const accessory = copy();
+  accessory.options[0].mappings.kind = "accessory";
+  const result = checkProduct(accessory);
   assert.equal(result.ready, false);
-  assert.deepEqual(result.problems, ['Product type "rauchPopup" is not supported yet']);
+  assert.deepEqual(result.problems, [`Choice "${accessory.options[0].label}" is a kind the app does not price yet: "accessory"`]);
 });
 
 test("missing, partial or plain products are not ready", () => {

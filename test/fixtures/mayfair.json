@@ -1,0 +1,1090 @@
+{
+ "productId": "gid://shopify/Product/11067853177171",
+ "title": "CFS TEST - Mayfair Marble Pedestal Dining Table - Sizes Available",
+ "handle": "cfs-type-test-115274",
+ "imageUrl": "https://cdn.shopify.com/s/files/1/1096/3579/7331/files/Mayfair-Marble-Pedestal-Dining-Table-Variation-Available-1812.jpg?v=1794035169",
+ "variants": [
+  {
+   "id": "gid://shopify/ProductVariant/55773144744275",
+   "sku": "CFS-TYPE-115274-12947529",
+   "title": "5506/PR : Rounded Corner Dining Table with 2cm Thin Beveled Edge",
+   "price": "2309.99",
+   "inventoryQuantity": 100,
+   "inventoryPolicy": "DENY",
+   "availableForSale": true,
+   "inventoryItem": {
+    "tracked": true
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55773144777043",
+   "sku": "CFS-TYPE-115274-12947530",
+   "title": "5506/MR : Rounded Corner Dining Table with 2cm Thin Beveled Edge",
+   "price": "2919.99",
+   "inventoryQuantity": 100,
+   "inventoryPolicy": "DENY",
+   "availableForSale": true,
+   "inventoryItem": {
+    "tracked": true
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55773144809811",
+   "sku": "CFS-TYPE-115274-12947531",
+   "title": "5506/LR : Rounded Corner Dining Table with 2cm Thin Beveled Edge",
+   "price": "3079.99",
+   "inventoryQuantity": 100,
+   "inventoryPolicy": "DENY",
+   "availableForSale": true,
+   "inventoryItem": {
+    "tracked": true
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55773144842579",
+   "sku": "CFS-TYPE-115274-15280390",
+   "title": "5506/SR : Rounded Corner Dining Table with 2cm Thin Beveled Edge",
+   "price": "3169.99",
+   "inventoryQuantity": 100,
+   "inventoryPolicy": "DENY",
+   "availableForSale": true,
+   "inventoryItem": {
+    "tracked": true
+   }
+  }
+ ],
+ "modelCards": {
+  "CFS-TYPE-115274-12947529": {
+   "source_id": "12947529",
+   "image": "https://images.choicefurnituresuperstore.co.uk/images2/Dining/Dining-Tables/V-115274-5506PR-Rounded-Corner-Dining-Table-with-2cm-Thin-Beveled-Edge.jpg",
+   "dimensions": "W 170cm x D 90cm x H 75cm",
+   "height": "",
+   "width": ""
+  },
+  "CFS-TYPE-115274-12947530": {
+   "source_id": "12947530",
+   "image": "https://images.choicefurnituresuperstore.co.uk/images2/Dining/Dining-Tables/V-115274-5506MR-Rounded-Corner-Dining-Table-with-2cm-Thin-Beveled-Edge.jpg",
+   "dimensions": "W 180cm x D 106cm x H 75cm",
+   "height": "",
+   "width": ""
+  },
+  "CFS-TYPE-115274-12947531": {
+   "source_id": "12947531",
+   "image": "https://images.choicefurnituresuperstore.co.uk/images2/Dining/Dining-Tables/V-115274-5506LR-Rounded-Corner-Dining-Table-with-2cm-Thin-Beveled-Edge.jpg",
+   "dimensions": "W 200cm x D 106cm x H 75cm",
+   "height": "",
+   "width": ""
+  },
+  "CFS-TYPE-115274-15280390": {
+   "source_id": "15280390",
+   "image": "https://images.choicefurnituresuperstore.co.uk/images2/Dining/Dining-Tables/V-115274-5506SR-Rounded-Corner-Dining-Table-with-2cm-Thin-Beveled-Edge.jpg",
+   "dimensions": "W 220cm x D 106 x H 75cm",
+   "height": "",
+   "width": ""
+  }
+ },
+ "workflow": {
+  "mode": "rauchPopupXtend",
+  "model_label": "Option",
+  "ordered": true,
+  "filters": [],
+  "groups": [
+   {
+    "name": "Select Marble Finish",
+    "optional": false,
+    "requires": "$model"
+   },
+   {
+    "name": "Select Wood Finish",
+    "optional": false,
+    "requires": "Select Marble Finish"
+   },
+   {
+    "name": "Select Base Frame Finish",
+    "optional": false,
+    "requires": "Select Wood Finish"
+   }
+  ],
+  "pricing": {
+   "basis_points": 8500,
+   "independent_subtotal": false,
+   "verified_date": "2026-11-07",
+   "source_url": "https://www.choicefurnituresuperstore.co.uk/p/mayfair-marble-pedestal-dining-table-sizes-available",
+   "accessory_max_quantity": 5
+  }
+ },
+ "options": [
+  {
+   "cfsId": "17008154",
+   "label": "TG : Unfilled/ Unpolished Travertine",
+   "groupName": "Select Marble Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17008154",
+      "parent": "12947529",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008200",
+      "parent": "12947530",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008246",
+      "parent": "12947531",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008292",
+      "parent": "15280390",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17008158",
+   "label": "LUB : Lubna Bay",
+   "groupName": "Select Marble Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17008158",
+      "parent": "12947529",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008204",
+      "parent": "12947530",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008250",
+      "parent": "12947531",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008296",
+      "parent": "15280390",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17008164",
+   "label": "AS : Apuan Storm",
+   "groupName": "Select Marble Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17008164",
+      "parent": "12947529",
+      "parent2": "0",
+      "raw_price": "269.99"
+     },
+     {
+      "id": "17008210",
+      "parent": "12947530",
+      "parent2": "0",
+      "raw_price": "249.99"
+     },
+     {
+      "id": "17008256",
+      "parent": "12947531",
+      "parent2": "0",
+      "raw_price": "229.99"
+     },
+     {
+      "id": "17008302",
+      "parent": "15280390",
+      "parent2": "0",
+      "raw_price": "339.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17008165",
+   "label": "CW : Cortina White",
+   "groupName": "Select Marble Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17008165",
+      "parent": "12947529",
+      "parent2": "0",
+      "raw_price": "269.99"
+     },
+     {
+      "id": "17008211",
+      "parent": "12947530",
+      "parent2": "0",
+      "raw_price": "249.99"
+     },
+     {
+      "id": "17008257",
+      "parent": "12947531",
+      "parent2": "0",
+      "raw_price": "229.99"
+     },
+     {
+      "id": "17008303",
+      "parent": "15280390",
+      "parent2": "0",
+      "raw_price": "339.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17008167",
+   "label": "GT : Glam Travertine",
+   "groupName": "Select Marble Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17008167",
+      "parent": "12947529",
+      "parent2": "0",
+      "raw_price": "439.99"
+     },
+     {
+      "id": "17008213",
+      "parent": "12947530",
+      "parent2": "0",
+      "raw_price": "389.99"
+     },
+     {
+      "id": "17008259",
+      "parent": "12947531",
+      "parent2": "0",
+      "raw_price": "519.99"
+     },
+     {
+      "id": "17008305",
+      "parent": "15280390",
+      "parent2": "0",
+      "raw_price": "559.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17008170",
+   "label": "GB : Garmish Black",
+   "groupName": "Select Marble Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17008170",
+      "parent": "12947529",
+      "parent2": "0",
+      "raw_price": "439.99"
+     },
+     {
+      "id": "17008216",
+      "parent": "12947530",
+      "parent2": "0",
+      "raw_price": "389.99"
+     },
+     {
+      "id": "17008262",
+      "parent": "12947531",
+      "parent2": "0",
+      "raw_price": "519.99"
+     },
+     {
+      "id": "17008308",
+      "parent": "15280390",
+      "parent2": "0",
+      "raw_price": "559.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17008171",
+   "label": "IMP : Imperador",
+   "groupName": "Select Marble Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17008171",
+      "parent": "12947529",
+      "parent2": "0",
+      "raw_price": "439.99"
+     },
+     {
+      "id": "17008217",
+      "parent": "12947530",
+      "parent2": "0",
+      "raw_price": "389.99"
+     },
+     {
+      "id": "17008263",
+      "parent": "12947531",
+      "parent2": "0",
+      "raw_price": "519.99"
+     },
+     {
+      "id": "17008309",
+      "parent": "15280390",
+      "parent2": "0",
+      "raw_price": "559.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17008174",
+   "label": "FB : Forest Brunello",
+   "groupName": "Select Marble Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17008174",
+      "parent": "12947529",
+      "parent2": "0",
+      "raw_price": "439.99"
+     },
+     {
+      "id": "17008220",
+      "parent": "12947530",
+      "parent2": "0",
+      "raw_price": "389.99"
+     },
+     {
+      "id": "17008266",
+      "parent": "12947531",
+      "parent2": "0",
+      "raw_price": "519.99"
+     },
+     {
+      "id": "17008312",
+      "parent": "15280390",
+      "parent2": "0",
+      "raw_price": "559.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17008175",
+   "label": "FG : Forest Green",
+   "groupName": "Select Marble Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17008175",
+      "parent": "12947529",
+      "parent2": "0",
+      "raw_price": "439.99"
+     },
+     {
+      "id": "17008221",
+      "parent": "12947530",
+      "parent2": "0",
+      "raw_price": "389.99"
+     },
+     {
+      "id": "17008267",
+      "parent": "12947531",
+      "parent2": "0",
+      "raw_price": "519.99"
+     },
+     {
+      "id": "17008313",
+      "parent": "15280390",
+      "parent2": "0",
+      "raw_price": "559.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17008176",
+   "label": "MG : Midnight Grey",
+   "groupName": "Select Marble Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17008176",
+      "parent": "12947529",
+      "parent2": "0",
+      "raw_price": "439.99"
+     },
+     {
+      "id": "17008222",
+      "parent": "12947530",
+      "parent2": "0",
+      "raw_price": "389.99"
+     },
+     {
+      "id": "17008268",
+      "parent": "12947531",
+      "parent2": "0",
+      "raw_price": "519.99"
+     },
+     {
+      "id": "17008314",
+      "parent": "15280390",
+      "parent2": "0",
+      "raw_price": "559.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17008177",
+   "label": "BF : Beige Fantasy",
+   "groupName": "Select Marble Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17008177",
+      "parent": "12947529",
+      "parent2": "0",
+      "raw_price": "439.99"
+     },
+     {
+      "id": "17008223",
+      "parent": "12947530",
+      "parent2": "0",
+      "raw_price": "389.99"
+     },
+     {
+      "id": "17008269",
+      "parent": "12947531",
+      "parent2": "0",
+      "raw_price": "519.99"
+     },
+     {
+      "id": "17008315",
+      "parent": "15280390",
+      "parent2": "0",
+      "raw_price": "559.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17008179",
+   "label": "GS : Grey Spyder",
+   "groupName": "Select Marble Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17008179",
+      "parent": "12947529",
+      "parent2": "0",
+      "raw_price": "439.99"
+     },
+     {
+      "id": "17008225",
+      "parent": "12947530",
+      "parent2": "0",
+      "raw_price": "389.99"
+     },
+     {
+      "id": "17008271",
+      "parent": "12947531",
+      "parent2": "0",
+      "raw_price": "519.99"
+     },
+     {
+      "id": "17008317",
+      "parent": "15280390",
+      "parent2": "0",
+      "raw_price": "559.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17008183",
+   "label": "CA : Calacatta",
+   "groupName": "Select Marble Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17008183",
+      "parent": "12947529",
+      "parent2": "0",
+      "raw_price": "669.99"
+     },
+     {
+      "id": "17008229",
+      "parent": "12947530",
+      "parent2": "0",
+      "raw_price": "769.99"
+     },
+     {
+      "id": "17008275",
+      "parent": "12947531",
+      "parent2": "0",
+      "raw_price": "849.99"
+     },
+     {
+      "id": "17008321",
+      "parent": "15280390",
+      "parent2": "0",
+      "raw_price": "909.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17008184",
+   "label": "BG : Absolute Black Granite",
+   "groupName": "Select Marble Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17008184",
+      "parent": "12947529",
+      "parent2": "0",
+      "raw_price": "669.99"
+     },
+     {
+      "id": "17008230",
+      "parent": "12947530",
+      "parent2": "0",
+      "raw_price": "769.99"
+     },
+     {
+      "id": "17008276",
+      "parent": "12947531",
+      "parent2": "0",
+      "raw_price": "849.99"
+     },
+     {
+      "id": "17008322",
+      "parent": "15280390",
+      "parent2": "0",
+      "raw_price": "909.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17008185",
+   "label": "OF : Fantastic Onyx",
+   "groupName": "Select Marble Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17008185",
+      "parent": "12947529",
+      "parent2": "0",
+      "raw_price": "1499.99"
+     },
+     {
+      "id": "17008231",
+      "parent": "12947530",
+      "parent2": "0",
+      "raw_price": "1739.99"
+     },
+     {
+      "id": "17008277",
+      "parent": "12947531",
+      "parent2": "0",
+      "raw_price": "1919.99"
+     },
+     {
+      "id": "17008323",
+      "parent": "15280390",
+      "parent2": "0",
+      "raw_price": "2149.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17008187",
+   "label": "OG : Green Onyx",
+   "groupName": "Select Marble Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17008187",
+      "parent": "12947529",
+      "parent2": "0",
+      "raw_price": "1499.99"
+     },
+     {
+      "id": "17008233",
+      "parent": "12947530",
+      "parent2": "0",
+      "raw_price": "1739.99"
+     },
+     {
+      "id": "17008279",
+      "parent": "12947531",
+      "parent2": "0",
+      "raw_price": "1919.99"
+     },
+     {
+      "id": "17008325",
+      "parent": "15280390",
+      "parent2": "0",
+      "raw_price": "2149.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17008188",
+   "label": "OR : Red Onyx",
+   "groupName": "Select Marble Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17008188",
+      "parent": "12947529",
+      "parent2": "0",
+      "raw_price": "1499.99"
+     },
+     {
+      "id": "17008234",
+      "parent": "12947530",
+      "parent2": "0",
+      "raw_price": "1739.99"
+     },
+     {
+      "id": "17008280",
+      "parent": "12947531",
+      "parent2": "0",
+      "raw_price": "1919.99"
+     },
+     {
+      "id": "17008326",
+      "parent": "15280390",
+      "parent2": "0",
+      "raw_price": "2149.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17008189",
+   "label": "OB : Brown Onyx",
+   "groupName": "Select Marble Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17008189",
+      "parent": "12947529",
+      "parent2": "0",
+      "raw_price": "1499.99"
+     },
+     {
+      "id": "17008235",
+      "parent": "12947530",
+      "parent2": "0",
+      "raw_price": "1739.99"
+     },
+     {
+      "id": "17008281",
+      "parent": "12947531",
+      "parent2": "0",
+      "raw_price": "1919.99"
+     },
+     {
+      "id": "17008327",
+      "parent": "15280390",
+      "parent2": "0",
+      "raw_price": "2149.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17008190",
+   "label": "OW : White Onyx",
+   "groupName": "Select Marble Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17008190",
+      "parent": "12947529",
+      "parent2": "0",
+      "raw_price": "2659.99"
+     },
+     {
+      "id": "17008236",
+      "parent": "12947530",
+      "parent2": "0",
+      "raw_price": "3069.99"
+     },
+     {
+      "id": "17008282",
+      "parent": "12947531",
+      "parent2": "0",
+      "raw_price": "3299.99"
+     },
+     {
+      "id": "17008328",
+      "parent": "15280390",
+      "parent2": "0",
+      "raw_price": "3609.99"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17008191",
+   "label": "BK : Black Matte",
+   "groupName": "Select Wood Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17008191",
+      "parent": "12947529",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008237",
+      "parent": "12947530",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008283",
+      "parent": "12947531",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008329",
+      "parent": "15280390",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17008192",
+   "label": "WE : Wenge Matte",
+   "groupName": "Select Wood Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17008192",
+      "parent": "12947529",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008238",
+      "parent": "12947530",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008284",
+      "parent": "12947531",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008330",
+      "parent": "15280390",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17008193",
+   "label": "WGO : Grey Oak",
+   "groupName": "Select Wood Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17008193",
+      "parent": "12947529",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008239",
+      "parent": "12947530",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008285",
+      "parent": "12947531",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008331",
+      "parent": "15280390",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17008194",
+   "label": "WOT : Oak Truffle",
+   "groupName": "Select Wood Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17008194",
+      "parent": "12947529",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008240",
+      "parent": "12947530",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008286",
+      "parent": "12947531",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008332",
+      "parent": "15280390",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17008195",
+   "label": "WWA : Wenge Amazon",
+   "groupName": "Select Wood Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17008195",
+      "parent": "12947529",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008241",
+      "parent": "12947530",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008287",
+      "parent": "12947531",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008333",
+      "parent": "15280390",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17008197",
+   "label": "TK : Teak Amazon",
+   "groupName": "Select Wood Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17008197",
+      "parent": "12947529",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008243",
+      "parent": "12947530",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008289",
+      "parent": "12947531",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008335",
+      "parent": "15280390",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17008198",
+   "label": "PS : Polished Steel",
+   "groupName": "Select Base Frame Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17008198",
+      "parent": "12947529",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008244",
+      "parent": "12947530",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008290",
+      "parent": "12947531",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008336",
+      "parent": "15280390",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  },
+  {
+   "cfsId": "17008199",
+   "label": "SB : Satin Brass",
+   "groupName": "Select Base Frame Finish",
+   "mappings": {
+    "kind": "option",
+    "dimensions": "",
+    "inside_color": "",
+    "assignments": [
+     {
+      "id": "17008199",
+      "parent": "12947529",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008245",
+      "parent": "12947530",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008291",
+      "parent": "12947531",
+      "parent2": "0",
+      "raw_price": "0.00"
+     },
+     {
+      "id": "17008337",
+      "parent": "15280390",
+      "parent2": "0",
+      "raw_price": "0.00"
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -120,14 +120,17 @@ test("refuses bad data instead of treating it as free", () => {
   assert.deepEqual(codes(quote([TWO_DRAWERS, CARLTON_BLACK], VARIANT_2FT6, badBase)), ["invalid_product_data"]);
 });
 
-test("refuses product types and choice kinds it does not support yet", () => {
-  const otherMode = copy();
-  otherMode.workflow.mode = "normalDropDown";
-  assert.deepEqual(codes(quote([TWO_DRAWERS, CARLTON_BLACK], VARIANT_2FT6, otherMode)), ["unsupported_product"]);
+test("the CFS type name does not change the price", () => {
+  const renamed = copy();
+  renamed.workflow.mode = "aTypeNobodyHasSeen";
+  assert.equal(quote([TWO_DRAWERS, CARLTON_BLACK], VARIANT_2FT6, renamed).totalCents, 108998);
+});
 
+test("a product with a kind of choice the app does not price yet is refused whole", () => {
   const accessory = copy();
-  option(accessory, TWO_DRAWERS).mappings.kind = "accessory";
-  assert.ok(codes(quote([TWO_DRAWERS, CARLTON_BLACK], VARIANT_2FT6, accessory)).includes("unsupported_choice"));
+  option(accessory, FOUR_DRAWERS).mappings.kind = "accessory";
+  // Refused even when that choice is not picked, so the shopper never meets a choice that cannot be bought.
+  assert.deepEqual(codes(quote([TWO_DRAWERS, CARLTON_BLACK], VARIANT_2FT6, accessory)), ["unsupported_product"]);
 });
 
 test("refuses a later choice when its optional prerequisite is not selected", () => {
