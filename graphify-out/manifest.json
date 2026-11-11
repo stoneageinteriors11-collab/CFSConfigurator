@@ -72,9 +72,9 @@
     "semantic_hash": ""
   },
   "app/routes/app.jsx": {
-    "mtime": 1794390681.4110558,
-    "seen": 1794390852.5219464,
-    "ast_hash": "505a7431a1c66578242876a88bf8c550",
+    "mtime": 1794391763.5488117,
+    "seen": 1794391885.8182812,
+    "ast_hash": "4cc7a5a7deb144380b69a438bc230b6e",
     "semantic_hash": ""
   },
   "app/routes/auth.$.jsx": {
@@ -294,9 +294,9 @@
     "semantic_hash": ""
   },
   "app/pricing/quote.server.js": {
-    "mtime": 1794308223.462013,
-    "seen": 1794308931.6373653,
-    "ast_hash": "1ca2e17dc2113e25c9ce5884eb7e431f",
+    "mtime": 1794391702.974048,
+    "seen": 1794391885.8182812,
+    "ast_hash": "1c317904caed37f68df241f0b8af3fc7",
     "semantic_hash": ""
   },
   "test/fixtures/natural-gold-price-checks.json": {
@@ -336,9 +336,9 @@
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1794391266.1558135,
-    "seen": 1794391350.9711895,
-    "ast_hash": "9f871f8c56852c6a0b1c69ca84d6071f",
+    "mtime": 1794391795.8533983,
+    "seen": 1794391885.8182812,
+    "ast_hash": "c8d07ab6c33e02c54983b3853751645a",
     "semantic_hash": ""
   },
   "app/pricing/quote-request.server.js": {
@@ -675,6 +675,24 @@
     "mtime": 1794391254.8722312,
     "seen": 1794391350.9711895,
     "ast_hash": "1f41378349af8d74d148c8a06d224f71",
+    "semantic_hash": ""
+  },
+  "app/pricing/product-check.server.js": {
+    "mtime": 1794391712.002114,
+    "seen": 1794391885.8182812,
+    "ast_hash": "243f510d1d54349e37238d67bda5d057",
+    "semantic_hash": ""
+  },
+  "app/routes/app.products.jsx": {
+    "mtime": 1794391767.937138,
+    "seen": 1794391885.8182812,
+    "ast_hash": "030fe8850d1d472ba548d0b9cf845302",
+    "semantic_hash": ""
+  },
+  "test/pricing/product-check.test.js": {
+    "mtime": 1794391785.2213504,
+    "seen": 1794391885.8182812,
+    "ast_hash": "edae23d8f19713b7e5acfc95b24db063",
     "semantic_hash": ""
   },
   "package-lock.json": {

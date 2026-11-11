@@ -38,7 +38,6 @@ export default function ProductCheck() {
               <s-table-header listSlot="labeled" format="numeric">Option groups</s-table-header>
               <s-table-header listSlot="labeled" format="numeric">Choices</s-table-header>
               <s-table-header listSlot="labeled" format="currency">From</s-table-header>
-              <s-table-header listSlot="secondary">Problems</s-table-header>
             </s-table-header-row>
             <s-table-body>
               {products.map((product) => (
@@ -56,24 +55,31 @@ export default function ProductCheck() {
                   <s-table-cell>{product.groups ?? "–"}</s-table-cell>
                   <s-table-cell>{product.choices ?? "–"}</s-table-cell>
                   <s-table-cell>{product.fromCents == null ? "–" : money(product.fromCents, "GBP")}</s-table-cell>
-                  <s-table-cell>
-                    {product.problems.length === 0 ? (
-                      "None"
-                    ) : (
-                      <s-stack direction="block" gap="small-300">
-                        {product.problems.slice(0, 5).map((problem) => (
-                          <s-text key={problem}>{problem}</s-text>
-                        ))}
-                        {product.problems.length > 5 && <s-text color="subdued">and {product.problems.length - 5} more</s-text>}
-                      </s-stack>
-                    )}
-                  </s-table-cell>
                 </s-table-row>
               ))}
             </s-table-body>
           </s-table>
         )}
       </s-section>
+
+      {products.some((product) => !product.ready) && (
+        <s-section heading="Why products are not ready">
+          <s-stack direction="block" gap="base">
+            {products
+              .filter((product) => !product.ready)
+              .map((product) => (
+                <s-stack key={product.id} direction="block" gap="small-300">
+                  <s-text type="strong">{product.title}</s-text>
+                  <s-unordered-list>
+                    {product.problems.map((problem) => (
+                      <s-list-item key={problem}>{problem}</s-list-item>
+                    ))}
+                  </s-unordered-list>
+                </s-stack>
+              ))}
+          </s-stack>
+        </s-section>
+      )}
     </s-page>
   );
 }
