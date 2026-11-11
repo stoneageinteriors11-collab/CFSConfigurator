@@ -11,6 +11,7 @@ const CHOICE_FIELDS = `
     label: field(key: "label") { value }
     groupName: field(key: "group_name") { value }
     mappings: field(key: "source_mappings") { value }
+    imageUrl: field(key: "image_url") { value }
   }`;
 
 const MORE_CHOICES_QUERY = `#graphql
@@ -117,6 +118,7 @@ export async function loadConfigurableProduct(graphql, productId) {
       label: node.label?.value,
       groupName: node.groupName?.value,
       mappings: parseJson(node.mappings?.value),
+      imageUrl: node.imageUrl?.value ?? null,
     })),
   };
 }

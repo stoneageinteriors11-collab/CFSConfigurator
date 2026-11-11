@@ -40,7 +40,7 @@ test("converts Shopify's response for the pricing engine", async () => {
     variants: [{ id: "v1", sku: "A", price: "10.00", inventoryQuantity: 1 }],
     modelCards: { A: { source_id: "1" } },
     workflow: { mode: "m" },
-    options: [{ cfsId: "c1", label: "Label", groupName: "Group", mappings: { kind: "option", assignments: [] } }],
+    options: [{ cfsId: "c1", label: "Label", groupName: "Group", mappings: { kind: "option", assignments: [] }, imageUrl: null }],
   });
 });
 
