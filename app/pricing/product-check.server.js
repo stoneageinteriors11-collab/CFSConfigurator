@@ -62,7 +62,7 @@ function cheapestSelection(product, modelId, note) {
  * Ready means every size in stock can be priced, at least one is in stock, and no choice data is broken.
  */
 export function checkProduct(product) {
-  if (!product) return { ready: false, problems: ["Shopify returned only part of this product (over 250 sizes or choices)"] };
+  if (!product) return { ready: false, problems: ["Shopify returned only part of this product (over 250 sizes, or its choices could not all be read)"] };
   if (product.ordinary) return { ready: false, problems: ["Has no CFS option data"] };
 
   const { workflow } = product;

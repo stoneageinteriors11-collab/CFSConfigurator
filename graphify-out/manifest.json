@@ -336,9 +336,9 @@
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1794396695.1607327,
-    "seen": 1794397004.0884423,
-    "ast_hash": "8b4036869c05ea0478ed6e5a5fafb781",
+    "mtime": 1794397278.8685527,
+    "seen": 1794397477.2140532,
+    "ast_hash": "52ccf4a19925274a36d5847c26473451",
     "semantic_hash": ""
   },
   "app/pricing/quote-request.server.js": {
@@ -759,12 +759,6 @@
     "mtime": 1794394260.5107222,
     "seen": 1794394641.9201558,
     "ast_hash": "433f32da075c084a9ffb0b8a9595fdd5",
-    "semantic_hash": ""
-  },
-  ".github/workflows/keep-render-awake.yml": {
-    "mtime": 1794396953.2638848,
-    "seen": 1794397004.0884423,
-    "ast_hash": "2f0c5c7d2855e62ace3c2fa65dc8adb3",
     "semantic_hash": ""
   },
   "package-lock.json": {

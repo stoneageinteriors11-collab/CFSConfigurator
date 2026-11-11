@@ -90,6 +90,58 @@ test("refuses a partial list, which could hide required choices", async () => {
   assert.equal(await load(moreOptions), null);
 });
 
+const choiceNode = (n) => ({
+  cfsId: { value: `c${n}` },
+  label: { value: `Choice ${n}` },
+  groupName: { value: "Group" },
+  mappings: { value: '{"kind":"option","assignments":[]}' },
+});
+const choicePage = (from, count, endCursor) => ({
+  pageInfo: { hasNextPage: Boolean(endCursor), endCursor },
+  nodes: Array.from({ length: count }, (_, i) => choiceNode(from + i)),
+});
+
+/** Shopify answering the product request, then each further page of choices by its cursor. */
+function pagedShop(firstPage, laterPages) {
+  const requests = [];
+  const graphql = async (query, { variables }) => {
+    requests.push(variables);
+    if (!variables.after) {
+      return { json: async () => ({ data: { product: { ...shopifyProduct(), options: { references: firstPage } } } }) };
+    }
+    const references = laterPages[variables.after];
+    return { json: async () => ({ data: { product: references === undefined ? null : { options: { references } } } }) };
+  };
+  return { graphql, requests };
+}
+
+test("reads every choice of a product with more than 250, page by page", async () => {
+  const { graphql, requests } = pagedShop(choicePage(1, 250, "p2"), { p2: choicePage(251, 50, null) });
+  const loaded = await loadConfigurableProduct(graphql, "gid://shopify/Product/1");
+  assert.equal(loaded.options.length, 300);
+  assert.equal(new Set(loaded.options.map((o) => o.cfsId)).size, 300);
+  assert.equal(loaded.options[299].cfsId, "c300");
+  assert.deepEqual(requests, [{ id: "gid://shopify/Product/1" }, { id: "gid://shopify/Product/1", after: "p2" }]);
+});
+
+test("reads Shopify's largest list of 1,024 choices", async () => {
+  const later = { p2: choicePage(251, 250, "p3"), p3: choicePage(501, 250, "p4"), p4: choicePage(751, 250, "p5"), p5: choicePage(1001, 24, null) };
+  const { graphql } = pagedShop(choicePage(1, 250, "p2"), later);
+  assert.equal((await loadConfigurableProduct(graphql, "id")).options.length, 1024);
+});
+
+test("refuses the product if a later page of choices cannot be read", async () => {
+  const { graphql } = pagedShop(choicePage(1, 250, "p2"), {});
+  assert.equal(await loadConfigurableProduct(graphql, "id"), null);
+});
+
+test("refuses a list that never ends rather than reading forever", async () => {
+  const endless = new Proxy({}, { get: (_, cursor) => choicePage(1, 250, `${cursor}+`) });
+  const { graphql, requests } = pagedShop(choicePage(1, 250, "p2"), endless);
+  assert.equal(await loadConfigurableProduct(graphql, "id"), null);
+  assert.equal(requests.length, 5);
+});
+
 test("leaves bad JSON undefined so the engine refuses it", async () => {
   const product = shopifyProduct();
   product.workflow.value = "{bad";

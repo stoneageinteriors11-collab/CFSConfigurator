@@ -1,5 +1,30 @@
 // Reads a configurable product from Shopify in the shape the pricing engine expects.
 
+// Shopify gives at most 250 choices per request, and a product's list holds at most 1,024,
+// so 5 requests read any complete list. Anything still unread after that is refused.
+const CHOICES_PER_PAGE = 250;
+const MAX_CHOICE_PAGES = 5;
+
+const CHOICE_FIELDS = `
+  ... on Metaobject {
+    cfsId: field(key: "cfs_id") { value }
+    label: field(key: "label") { value }
+    groupName: field(key: "group_name") { value }
+    mappings: field(key: "source_mappings") { value }
+  }`;
+
+const MORE_CHOICES_QUERY = `#graphql
+  query CfsMoreChoices($id: ID!, $after: String!) {
+    product(id: $id) {
+      options: metafield(namespace: "cfs_import", key: "options") {
+        references(first: ${CHOICES_PER_PAGE}, after: $after) {
+          pageInfo { hasNextPage endCursor }
+          nodes { ${CHOICE_FIELDS} }
+        }
+      }
+    }
+  }`;
+
 const PRODUCT_QUERY = `#graphql
   query CfsConfigurableProduct($id: ID!) {
     product(id: $id) {
@@ -16,16 +41,9 @@ const PRODUCT_QUERY = `#graphql
       modelCards: metafield(namespace: "cfs_import", key: "model_cards") { value }
       workflow: metafield(namespace: "cfs_import", key: "workflow") { value }
       options: metafield(namespace: "cfs_import", key: "options") {
-        references(first: 250) {
-          pageInfo { hasNextPage }
-          nodes {
-            ... on Metaobject {
-              cfsId: field(key: "cfs_id") { value }
-              label: field(key: "label") { value }
-              groupName: field(key: "group_name") { value }
-              mappings: field(key: "source_mappings") { value }
-            }
-          }
+        references(first: ${CHOICES_PER_PAGE}) {
+          pageInfo { hasNextPage endCursor }
+          nodes { ${CHOICE_FIELDS} }
         }
       }
     }
@@ -37,6 +55,23 @@ function parseJson(value) {
   } catch {
     return undefined;
   }
+}
+
+/** Every choice in the product's list, reading further pages as needed, or null if any page is missing. */
+async function readAllChoices(graphql, productId, firstPage) {
+  if (!firstPage) return null;
+  const nodes = [...firstPage.nodes];
+  let { pageInfo } = firstPage;
+  for (let page = 1; pageInfo.hasNextPage; page += 1) {
+    if (page >= MAX_CHOICE_PAGES || !pageInfo.endCursor) return null;
+    const response = await graphql(MORE_CHOICES_QUERY, { variables: { id: productId, after: pageInfo.endCursor } });
+    const { data } = await response.json();
+    const next = data?.product?.options?.references;
+    if (!next) return null;
+    nodes.push(...next.nodes);
+    pageInfo = next.pageInfo;
+  }
+  return nodes;
 }
 
 /**
@@ -69,15 +104,15 @@ export async function loadConfigurableProduct(graphql, productId) {
     };
   }
 
-  const references = product.options?.references;
-  if (!references || references.pageInfo.hasNextPage) return null;
+  const nodes = await readAllChoices(graphql, productId, product.options?.references);
+  if (!nodes) return null;
 
   return {
     ...shared,
     variants: product.variants.nodes,
     modelCards: parseJson(product.modelCards?.value),
     workflow: parseJson(product.workflow?.value),
-    options: references.nodes.map((node) => ({
+    options: nodes.map((node) => ({
       cfsId: node.cfsId?.value,
       label: node.label?.value,
       groupName: node.groupName?.value,
