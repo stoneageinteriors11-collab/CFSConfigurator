@@ -36,6 +36,10 @@ async function shopify(graphql, query, variables) {
   return data;
 }
 
+/** The option notes shown on a configured line in Shopify, such as "Fabric: Carlton Caramel". */
+export const lineAttributes = (selection) =>
+  selection.map((choice) => ({ key: choice.group.replace(/^Select /, ""), value: choice.label }));
+
 function draftLine(line, currencyCode) {
   // An ordinary product has no options, so it keeps Shopify's own price.
   if (line.selection.length === 0) return { variantId: line.variantId, quantity: line.quantity };
@@ -43,10 +47,7 @@ function draftLine(line, currencyCode) {
     variantId: line.variantId,
     quantity: line.quantity,
     priceOverride: { amount: toAmount(line.unitCents), currencyCode },
-    customAttributes: line.selection.map((choice) => ({
-      key: choice.group.replace(/^Select /, ""),
-      value: choice.label,
-    })),
+    customAttributes: lineAttributes(line.selection),
   };
 }
 
