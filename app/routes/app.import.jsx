@@ -122,9 +122,20 @@ function ProductPreview({ product }) {
             {product.removed.join(", ")}
           </s-banner>
         )}
-        {product.groups.map((group) => (
-          <GroupTable key={group.name} group={group} />
-        ))}
+        <s-scroll-box
+          maxBlockSize="480px"
+          overflow="auto"
+          border="base"
+          borderRadius="base"
+          padding="small"
+          accessibilityLabel={`Choices and prices for ${product.title}`}
+        >
+          <s-stack direction="block" gap="base">
+            {product.groups.map((group) => (
+              <GroupTable key={group.name} group={group} />
+            ))}
+          </s-stack>
+        </s-scroll-box>
       </s-stack>
     </s-section>
   );
