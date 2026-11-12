@@ -207,10 +207,6 @@ test("refuses what the shop could not sell", () => {
     ["CFS choice ID 17020903 is used twice in product 146477"],
   );
 
-  const many = Array.from({ length: 1251 }, (_, i) => choice({ row: i + 2, label: `Fabric ${i}` }));
-  assert.deepEqual(messages(build([group()], many)), [
-    "Product 146477 has 1,251 choices; the most the app can read is 1,250",
-  ]);
 
   const noSizes = { ...naturalGold, variants: naturalGold.variants.map((v) => ({ ...v, sku: "CFSDB-070" })) };
   assert.deepEqual(messages(build([group()], [choice()], noSizes)), [
@@ -247,4 +243,28 @@ test("a product with no option data yet gets simple defaults", () => {
   });
   assert.equal(product.options[0].optionCode, "FAB-CARLTON-BLACK");
   assert.equal(checkProduct(product).ready, true);
+});
+
+test("names each size whose SKU does not follow the pattern", () => {
+  const odd = {
+    ...naturalGold,
+    variants: naturalGold.variants.map((v, i) =>
+      i === 5 ? { ...v, sku: "CFS-146477-XL", inventoryQuantity: 0 } : i === 4 ? { ...v, sku: "" } : v,
+    ),
+  };
+  const result = build([group()], [choice()], odd);
+  assert.equal(result.product, null);
+  assert.deepEqual(messages(result), [
+    `Size "${naturalGold.variants[4].title}" has no SKU; it must look like CFS-146477-<size ID>`,
+    `Size "${naturalGold.variants[5].title}" has SKU "CFS-146477-XL", which is not like CFS-146477-<size ID>`,
+  ]);
+});
+
+test("refuses more choices than a product's list can hold (1,024)", () => {
+  const many = Array.from({ length: 1025 }, (_, i) => choice({ row: i + 2, label: `Fabric ${i}` }));
+  assert.deepEqual(messages(build([group()], many)), [
+    "Product 146477 has 1,025 choices; the most a product can hold is 1,024",
+  ]);
+  const most = Array.from({ length: 1024 }, (_, i) => choice({ row: i + 2, label: `Fabric ${i}` }));
+  assert.deepEqual(build([group()], most).errors, []);
 });

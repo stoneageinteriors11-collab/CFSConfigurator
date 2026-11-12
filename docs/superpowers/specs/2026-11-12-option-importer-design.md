@@ -113,8 +113,9 @@ Choices:
 - A `Required` group with no choice on some size.
 - `Max quantity` missing on an add-on group, or given on a `Choose one` group.
 - Image URL not starting with `https://`.
-- More choices on one product than the app can read (1,250).
-- File too large: limit 5 MB, enough for many products.
+- More choices on one product than Shopify lets a product list hold (1,024; corrected from 1,250 after review, 12 November 2026).
+- A Shopify size whose SKU does not follow the pattern, or an Excel error cell or formula with no saved result.
+- File too large: limit 5 MB, enough for many products; a file that unpacks to more than 50 MB; more than 100 products in one sheet.
 
 ## Shared options
 

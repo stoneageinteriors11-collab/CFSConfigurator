@@ -89,3 +89,14 @@ test("looks up each product once, in order", async () => {
   assert.deepEqual([...found.keys()], ["1", "2"]);
   assert.equal(calls.length, 4);
 });
+
+test("a Shopify error on one product is reported on that product only", async () => {
+  const { graphql } = fakeShopify({ skus: { 2: [["CFS-2-9", P2]] }, products: { [P2]: productData(P2) } });
+  const flaky = async (query, options) => {
+    if (options.variables.query?.includes("CFS-1-")) throw new Error("Throttled");
+    return graphql(query, options);
+  };
+  const found = await findProducts(flaky, ["1", "2"]);
+  assert.deepEqual(found.get("1"), { error: "Shopify could not be read for this product just now; try again" });
+  assert.equal(found.get("2").product.productId, P2);
+});

@@ -197,3 +197,16 @@ test("a product the shop would not sell is an error", async () => {
     loft.variants = saved;
   }
 });
+
+test("refuses more than 100 products in one sheet", async () => {
+  const groups = Array.from({ length: 101 }, (_, i) => ({
+    "CFS product ID": String(i + 1), Group: "G", "Display order": "1", Required: "No", Type: "Choose one",
+  }));
+  const neverCalled = async () => assert.fail("Shopify should not be called");
+  const result = await previewImport(neverCalled, await writeWorkbook(groups, []));
+  assert.deepEqual(result, {
+    importable: false,
+    errors: [{ sheet: null, row: null, message: "The sheet has 101 products; preview at most 100 at a time" }],
+    products: [],
+  });
+});

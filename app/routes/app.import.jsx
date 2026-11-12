@@ -19,13 +19,14 @@ const refused = (message) => ({
 
 export const action = async ({ request }) => {
   const { admin } = await authenticate.admin(request);
-  // Refuse a very large upload before reading it into memory.
-  if (
-    Number(request.headers.get("content-length")) >
-    MAX_FILE_BYTES + 64 * 1024
-  ) {
+  // Refuse a very large upload before reading it into memory. The request must state its size:
+  // Node's HTTP server never reads more body than the stated length, and browsers always state it
+  // for a file upload.
+  const length = Number(request.headers.get("content-length"));
+  if (!Number.isInteger(length) || length <= 0)
+    return refused("Choose an Excel (.xlsx) file first");
+  if (length > MAX_FILE_BYTES + 64 * 1024)
     return refused("The file is larger than 5 MB");
-  }
   const file = (await request.formData()).get("file");
   if (!file || typeof file === "string" || file.size === 0)
     return refused("Choose an Excel (.xlsx) file first");

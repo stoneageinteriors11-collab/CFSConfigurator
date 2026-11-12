@@ -107,3 +107,53 @@ test("the sample reads back without errors", async () => {
   assert.equal(choices.length, 4);
   assert.equal(choices[2].values["Option code"], "FAB-CARLTON-BLACK");
 });
+
+test("refuses Excel error cells and formulas with no saved result, naming the cell", async () => {
+  const bytes = await workbook({
+    Groups: [GROUP_COLUMNS],
+    Choices: [
+      CHOICE_COLUMNS,
+      choiceRow({ Choice: "A", "Price (£)": 1, "Size prices": { error: "#N/A" } }),
+      choiceRow({ Choice: "B", "Price (£)": 1, Sizes: { formula: "VLOOKUP(1,X,2)", result: { error: "#REF!" } } }),
+      choiceRow({ Choice: "C", "Price (£)": { formula: "1+1" } }),
+    ],
+  });
+  const { errors } = await readWorkbook(bytes);
+  assert.deepEqual(errors, [
+    { sheet: "Choices", row: 2, message: '"Size prices" shows the Excel error #N/A; fix the cell' },
+    { sheet: "Choices", row: 3, message: '"Sizes" shows the Excel error #REF!; fix the cell' },
+    {
+      sheet: "Choices",
+      row: 4,
+      message: '"Price (£)" is a formula with no saved result; open the file in Excel and save it again',
+    },
+  ]);
+});
+
+test("cleans float noise from numbers but keeps real extra decimals so the checks can refuse them", async () => {
+  const bytes = await workbook({
+    Groups: [GROUP_COLUMNS],
+    Choices: [
+      CHOICE_COLUMNS,
+      choiceRow({ "CFS product ID": 146477.004, "Price (£)": 89.999 }),
+      choiceRow({ "Price (£)": 0.0000001 }),
+      choiceRow({ "Price (£)": 0.1 + 0.2 }),
+    ],
+  });
+  const { choices } = await readWorkbook(bytes);
+  assert.equal(choices[0].values["CFS product ID"], "146477.004");
+  assert.equal(choices[0].values["Price (£)"], "89.999");
+  assert.notEqual(choices[1].values["Price (£)"], "0");
+  assert.equal(choices[2].values["Price (£)"], "0.3");
+});
+
+test("refuses a file that would unpack to more than 50 MB, before opening it", async () => {
+  const bytes = await sampleWorkbook();
+  // Claim a huge unpacked size for the first file in the zip's directory.
+  const directory = bytes.indexOf(Buffer.from([0x50, 0x4b, 0x01, 0x02]));
+  bytes.writeUInt32LE(60 * 1024 * 1024, directory + 24);
+  const { errors } = await readWorkbook(bytes);
+  assert.deepEqual(errors, [
+    { sheet: null, row: null, message: "The file unpacks to more than 50 MB; split it into smaller files" },
+  ]);
+});
