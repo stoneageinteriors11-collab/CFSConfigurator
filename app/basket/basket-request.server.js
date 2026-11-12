@@ -7,6 +7,7 @@ import {
   getBasket,
   newBasketToken,
   removeLine,
+  replaceLine,
   setLineQuantity,
   validQuantity,
 } from "./basket.server.js";
@@ -89,6 +90,21 @@ async function changeQuantity(db, graphql, ref, { line: lineId, quantity }) {
   return changed(await setLineQuantity(db, ref, lineId, quantity, quote));
 }
 
+// The product comes from the saved line, never the request, so an edit cannot swap in another product.
+async function replace(db, graphql, ref, { line: lineId, variant: variantId, choices: choiceIds, quantities }) {
+  if (!matches(LINE_ID, lineId)) return refuse(400, "bad_request");
+
+  const basket = await getBasket(db, ref);
+  if (!basket) return refuse(404, "basket_not_found");
+  const line = basket.lines.find((l) => l.id === lineId);
+  if (!line) return refuse(404, "line_not_found");
+
+  const { quote, refusal } = await quoteSelection(graphql, { productId: line.productId, variantId, choiceIds, quantities });
+  if (refusal) return refusal;
+
+  return changed(await replaceLine(db, ref, lineId, quote));
+}
+
 async function remove(db, ref, { line: lineId }) {
   if (!matches(LINE_ID, lineId)) return refuse(400, "bad_request");
   return changed(await removeLine(db, ref, lineId));
@@ -114,6 +130,7 @@ export async function handleBasketRequest({ db, graphql, shop, rawBody }) {
     if (action === "view") return await view(db, ref);
     if (action === "add") return await add(db, graphql, shop, request);
     if (action === "set_quantity") return await changeQuantity(db, graphql, ref, request);
+    if (action === "replace") return await replace(db, graphql, ref, request);
     if (action === "remove") return await remove(db, ref, request);
   } catch (error) {
     console.error("Basket: request failed", action, error?.code);

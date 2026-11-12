@@ -66,7 +66,7 @@ Only if B9 fails: test a Validation Function. Custom apps containing Functions a
 
 **Done on the preview theme, tested 9 November 2026:** product page message for missing options, and product cards and basket suggestions link to the product page. Scope is the CFS test products only, so the mattress add-on, bundle sets and quiz are left unchanged. Theme files go in the `Theme files` folder for the user to install, never pushed.
 
-**Flagged for the end of the build:** whether to close that gap with a published zero-stock display product plus a hidden, unpublished purchase product (zero-stock refusal proven by B15), and what happens to an order with no matching app checkout (staff flag, or automatic cancel and refund, which needs `write_orders`). The bullets below are superseded until then.
+**Decided 11 November 2026 (option 4):** products stay published and direct cart links remain a known, accepted gap for now. An order with no matching app checkout is saved and shown to staff as needing attention; nothing is cancelled automatically, so `write_orders` is not needed. Options considered and not chosen for now: a published zero-stock display product plus a hidden, unpublished purchase product (zero-stock refusal proven by B15), the app serving pages for unpublished products, and automatic cancel and refund. The bullets below are superseded.
 
 - **Discounts, payment and unpublished blocking all pass:** use unpublished configurable products plus draft checkout. Then choose how the product page works, since an unpublished product has no native page: an app-served page, or a published display product paired with a hidden purchase product.
 - **Unpublished blocking fails:** evaluate the Validation Function and App Store requirement.

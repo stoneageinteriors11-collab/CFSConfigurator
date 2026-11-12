@@ -38,6 +38,8 @@ test("refuses malformed requests before reaching Shopify or the database", async
     { ...ADD, choices: ["bad id"] },
     { action: "set_quantity", token: TOKEN, line: "bad", quantity: 1 },
     { action: "remove", token: TOKEN },
+    { action: "replace", token: TOKEN, line: "bad", variant: "2", choices: [] },
+    { action: "replace", line: LINE, variant: "2", choices: [] },
   ];
   for (const body of bad) {
     const result = await send(body);
@@ -80,4 +82,24 @@ test("a database failure is reported without details", async () => {
   const { status, body } = await send({ action: "view", token: TOKEN }, { db });
   assert.equal(status, 503);
   assert.deepEqual(body, { ok: false, errors: [{ code: "unavailable" }] });
+});
+
+test("an edit prices the saved line's product, whatever product the request names", async () => {
+  const saved = { id: LINE, productId: "111", variantId: "gid://shopify/ProductVariant/2", selection: [] };
+  const db = { basket: { findUnique: async () => ({ version: 1, lines: [saved] }) } };
+  let asked;
+  const graphql = async (_query, { variables }) => {
+    asked = variables.id;
+    throw new Error("stop here");
+  };
+  const result = await send({ action: "replace", token: TOKEN, line: LINE, product: "999", variant: "2", choices: [] }, { db, graphql });
+  assert.equal(asked, "gid://shopify/Product/111");
+  assert.equal(codeOf(result), "unavailable");
+});
+
+test("an edit of a line that is not in the basket is refused before asking Shopify", async () => {
+  const db = { basket: { findUnique: async () => ({ version: 1, lines: [] }) } };
+  const result = await send({ action: "replace", token: TOKEN, line: LINE, variant: "2", choices: [] }, { db });
+  assert.equal(result.status, 404);
+  assert.equal(codeOf(result), "line_not_found");
 });

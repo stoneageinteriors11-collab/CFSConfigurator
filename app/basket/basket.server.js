@@ -146,6 +146,36 @@ export async function removePaidLines(tx, attempt) {
   return changed;
 }
 
+/**
+ * Puts a newly quoted configuration in place of a line, keeping its quantity and place in the basket.
+ * If the new configuration is already in the basket, the two lines join into one.
+ */
+export async function replaceLine(db, ref, lineId, quote) {
+  if (!quote?.ok) return { ok: false, code: "invalid_quote" };
+  const key = configurationKey(quote);
+
+  return changeBasket(db, ref, async (tx, owned) => {
+    const line = await tx.basketLine.findFirst({
+      where: { id: lineId, basket: owned },
+      select: { basketId: true, quantity: true },
+    });
+    if (!line) throw new Refused("line_not_found");
+
+    const twin = await tx.basketLine.findUnique({
+      where: { basketId_configurationKey: { basketId: line.basketId, configurationKey: key } },
+      select: { id: true, quantity: true },
+    });
+    if (twin && twin.id !== lineId) {
+      const combined = twin.quantity + line.quantity;
+      if (combined > MAX_LINE_QUANTITY) throw new Refused("invalid_quantity");
+      await tx.basketLine.update({ where: { id: twin.id }, data: { quantity: combined, ...pricedFields(quote) } });
+      await tx.basketLine.delete({ where: { id: lineId } });
+      return;
+    }
+    await tx.basketLine.update({ where: { id: lineId }, data: { configurationKey: key, ...pricedFields(quote) } });
+  });
+}
+
 export async function removeLine(db, ref, lineId) {
   return changeBasket(db, ref, async (tx, owned) => {
     const { count } = await tx.basketLine.deleteMany({ where: { id: lineId, basket: owned } });
