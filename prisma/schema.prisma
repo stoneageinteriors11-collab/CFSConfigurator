@@ -123,3 +123,39 @@ model OrderRecovery {
   checkedUntil DateTime
   updatedAt    DateTime @updatedAt
 }
+
+// One option import or restore. results holds { planned, done }: the products it set out to
+// write, and the result for each one finished. status is running, done or stopped (a run whose
+// server went away is marked stopped). A database rule allows only one running run per shop.
+model ImportRun {
+  id        String         @id @default(uuid())
+  shop      String
+  kind      String
+  createdBy String?
+  fileName  String?
+  status    String         @default("running")
+  total     Int
+  results   Json           @default("{}")
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+  backups   ImportBackup[]
+
+  @@index([shop, createdAt])
+}
+
+// A product's options exactly as they were just before a run changed them, for Restore.
+// data is { options, workflow, modelCards }; options is null when the product had none.
+model ImportBackup {
+  id            String    @id @default(uuid())
+  runId         String
+  run           ImportRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+  shop          String
+  productId     String
+  cfsProductId  String
+  title         String    @default("")
+  data          Json
+  restoredAt    DateTime?
+  createdAt     DateTime  @default(now())
+
+  @@index([shop, productId, createdAt])
+}

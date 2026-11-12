@@ -702,9 +702,9 @@
     "semantic_hash": ""
   },
   "docs/superpowers/plans/2026-11-12-option-importer-write.md": {
-    "mtime": 1794486112.4035966,
-    "seen": 1794486446.213103,
-    "ast_hash": "7241cbf5e6c41de3fbaabc8d2ceb6b50",
+    "mtime": 1794488964.738766,
+    "seen": 1794489015.9862974,
+    "ast_hash": "7c26442154e888e467f7a3cbfbfb6b1f",
     "semantic_hash": ""
   },
   "docs/superpowers/specs/2026-11-12-option-importer-write-design.md": {
@@ -735,6 +735,18 @@
     "mtime": 1794488395.097577,
     "seen": 1794488822.9242995,
     "ast_hash": "2bd4edab6acc273bbfb6bbbd4ee516c7",
+    "semantic_hash": ""
+  },
+  "app/import/shopify-writes.server.js": {
+    "mtime": 1794488938.5015879,
+    "seen": 1794489015.9862974,
+    "ast_hash": "57dca7eb52903ca84bc4bc9033d9392c",
+    "semantic_hash": ""
+  },
+  "test/import/shopify-writes.test.js": {
+    "mtime": 1794488938.0835958,
+    "seen": 1794489015.9862974,
+    "ast_hash": "8ba56a21d11623401feb2dd499806ab9",
     "semantic_hash": ""
   },
   "package-lock.json": {

@@ -749,6 +749,24 @@
     "ast_hash": "8ba56a21d11623401feb2dd499806ab9",
     "semantic_hash": ""
   },
+  "app/import/write-product.server.js": {
+    "mtime": 1794489171.615833,
+    "seen": 1794489273.2293139,
+    "ast_hash": "3968efab4136c6fd31a851c35c31e8ab",
+    "semantic_hash": ""
+  },
+  "test/import/fake-store.js": {
+    "mtime": 1794489157.3520818,
+    "seen": 1794489273.2293139,
+    "ast_hash": "356e1af6412dfa8919c754265b61c373",
+    "semantic_hash": ""
+  },
+  "test/import/write-product.test.js": {
+    "mtime": 1794489198.832731,
+    "seen": 1794489273.2293139,
+    "ast_hash": "7dfffb62bf26b246de29514318e0afd4",
+    "semantic_hash": ""
+  },
   "package-lock.json": {
     "mtime": 1794478625.944232,
     "seen": 1794478892.3144212,
