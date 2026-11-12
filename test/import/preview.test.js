@@ -96,7 +96,13 @@ test("one bad product still shows the others but blocks the import", async () =>
   assert.deepEqual(result.errors, [
     { sheet: "Choices", row: badRow, product: LOFT, message: "Size 99999999 is not a size of this product in Shopify" },
   ]);
-  assert.deepEqual(result.products.map((p) => p.cfsProductId), [NG]);
+  // Both products keep their place; only Loft is marked as having problems.
+  assert.deepEqual(result.products.map((p) => [p.cfsProductId, p.problems.length]), [[NG, 0], [LOFT, 1]]);
+  const bad = result.products[1];
+  assert.equal(bad.title, loft.title);
+  assert.equal(bad.check, null);
+  assert.deepEqual(bad.groups, []);
+  assert.equal(bad.problems[0].row, badRow);
 });
 
 test("a product not in Shopify is an error naming it", async () => {
@@ -111,6 +117,11 @@ test("a product not in Shopify is an error naming it", async () => {
   assert.deepEqual(result.errors, [
     { sheet: null, row: null, product: "999999", message: "No Shopify product has sizes with SKUs like CFS-999999-<size ID>" },
   ]);
+  const missing = result.products.at(-1);
+  assert.deepEqual(
+    [missing.cfsProductId, missing.title, missing.productId, missing.problems.length],
+    ["999999", null, null, 1],
+  );
 });
 
 test("row errors block the import and name the row", async () => {
@@ -124,8 +135,24 @@ test("row errors block the import and name the row", async () => {
   assert.deepEqual(result.errors[0], {
     sheet: "Choices",
     row: 2,
+    product: NG,
     message: '"Price (£)" must be pounds with up to two decimals, like 89.99',
   });
+  // The product still gets a tab, showing its problem, even though the rest of its rows are fine.
+  assert.equal(result.products[0].cfsProductId, NG);
+  assert.equal(result.products[0].problems.length, 1);
+});
+
+test("a product whose every row is wrong still gets a tab", async () => {
+  const result = await previewImport(
+    graphql,
+    await sheet((rows) => {
+      rows.groups.push({ "CFS product ID": "555", Group: "", "Display order": "1", Required: "No", Type: "Choose one" });
+    }),
+  );
+  const bad = result.products.find((p) => p.cfsProductId === "555");
+  assert.deepEqual(bad.problems.map((e) => e.message), ['"Group" is empty']);
+  assert.equal(bad.title, null);
 });
 
 test("warns about choices the sheet removes", async () => {

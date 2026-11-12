@@ -201,21 +201,39 @@ function GroupTable({ group, sizes }) {
   );
 }
 
+/** Ready only when the product has no problems in the sheet and the shop could sell it. */
+const isReady = (product) =>
+  product.problems.length === 0 && product.check?.ready === true;
+
 function ProductPreview({ product }) {
   const sizes = sizesOf(product);
+  const ready = isReady(product);
   return (
     <s-stack direction="block" gap="base">
       <s-heading>
-        {product.title} (CFS {product.cfsProductId})
+        {product.title ?? "Not found in Shopify"} (CFS {product.cfsProductId})
       </s-heading>
       <s-stack direction="inline" gap="small-200">
-        <s-badge tone={product.check.ready ? "success" : "critical"}>
-          {product.check.ready ? "Ready to sell" : "Not ready"}
+        <s-badge tone={ready ? "success" : "critical"}>
+          {ready
+            ? "Ready to import"
+            : `${product.problems.length} problem${product.problems.length === 1 ? "" : "s"}`}
         </s-badge>
-        {product.check.fromCents != null && (
+        {product.check?.fromCents != null && (
           <s-text>From {money(product.check.fromCents, "GBP")}</s-text>
         )}
       </s-stack>
+      {product.problems.length > 0 && (
+        <s-banner tone="critical" heading="Fix these rows for this product">
+          <s-unordered-list>
+            {product.problems.map((problem, i) => (
+              <s-list-item key={i}>
+                {place(problem)}: {problem.message}
+              </s-list-item>
+            ))}
+          </s-unordered-list>
+        </s-banner>
+      )}
       {product.removed.length > 0 && (
         <s-banner
           tone="warning"
@@ -225,27 +243,30 @@ function ProductPreview({ product }) {
         </s-banner>
       )}
       {/* A scrolling area must be focusable so it can be scrolled from the keyboard. */}
-      <div
-        role="region"
-        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-        tabIndex={0}
-        aria-label={`Choices and prices for ${product.title}`}
-        style={{
-          maxHeight: "480px",
-          overflow: "auto",
-          border: "1px solid #e3e3e3",
-          borderRadius: "8px",
-        }}
-      >
-        {product.groups.map((group) => (
-          <GroupTable key={group.name} group={group} sizes={sizes} />
-        ))}
-      </div>
+      {product.groups.length > 0 && (
+        <div
+          role="region"
+          // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+          tabIndex={0}
+          aria-label={`Choices and prices for ${product.title}`}
+          style={{
+            maxHeight: "480px",
+            overflow: "auto",
+            border: "1px solid #e3e3e3",
+            borderRadius: "8px",
+          }}
+        >
+          {product.groups.map((group) => (
+            <GroupTable key={group.name} group={group} sizes={sizes} />
+          ))}
+        </div>
+      )}
     </s-stack>
   );
 }
 
 const shortTitle = (title) => {
+  if (!title) return "Not found";
   const plain = title
     .replace(/^CFS TEST - /, "")
     .replace(/ - Sizes Available$/, "");
@@ -254,11 +275,20 @@ const shortTitle = (title) => {
 
 /** One tab per product; the tab strip scrolls sideways so any number of products fit. */
 function ProductTabs({ products }) {
-  const [picked, setPicked] = useState(0);
+  // Open on the first product with a problem, if any.
+  const [picked, setPicked] = useState(() =>
+    Math.max(
+      0,
+      products.findIndex((p) => !isReady(p)),
+    ),
+  );
+  const withProblems = products.filter((p) => !isReady(p)).length;
   const index = Math.min(picked, products.length - 1);
   const product = products[index];
   return (
-    <s-section heading={`Products (${products.length})`}>
+    <s-section
+      heading={`Products (${products.length})${withProblems ? ` · ${withProblems} with problems` : ""}`}
+    >
       <s-stack direction="block" gap="base">
         <div
           role="tablist"
@@ -278,13 +308,17 @@ function ProductTabs({ products }) {
                 type="button"
                 role="tab"
                 aria-selected={selected}
-                title={p.title}
+                title={p.title ?? `CFS ${p.cfsProductId}`}
                 onClick={() => setPicked(i)}
                 style={{
                   flex: "0 0 auto",
                   padding: "6px 12px",
                   borderRadius: "8px",
-                  border: selected ? "1px solid #303030" : "1px solid #d4d4d4",
+                  border: selected
+                    ? "1px solid #303030"
+                    : isReady(p)
+                      ? "1px solid #d4d4d4"
+                      : "1px solid #e8a39a",
                   background: selected ? "#303030" : "#fff",
                   color: selected ? "#fff" : "#303030",
                   cursor: "pointer",
@@ -292,8 +326,20 @@ function ProductTabs({ products }) {
                   whiteSpace: "nowrap",
                 }}
               >
-                {p.check.ready ? "✓" : "✗"} {shortTitle(p.title)} ·{" "}
-                {p.cfsProductId}
+                <span
+                  style={{
+                    color: isReady(p)
+                      ? selected
+                        ? "#fff"
+                        : "#0c7a3e"
+                      : selected
+                        ? "#ffb3b3"
+                        : "#c5280c",
+                  }}
+                >
+                  {isReady(p) ? "✓" : `✗ ${p.problems.length}`}
+                </span>{" "}
+                {shortTitle(p.title)} · {p.cfsProductId}
               </button>
             );
           })}

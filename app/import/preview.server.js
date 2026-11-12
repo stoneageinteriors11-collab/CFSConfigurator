@@ -48,21 +48,34 @@ export async function previewImport(graphql, bytes) {
   if (sheet.errors.length) return { importable: false, errors: sheet.errors, products: [] };
   if (!sheet.groups.length && !sheet.choices.length) return refused("The file has no rows to import");
 
-  const { products: rows, errors } = checkRows(sheet);
-  // Products in the order of their first row, Groups sheet first.
-  const ids = [...new Set([...sheet.groups, ...sheet.choices].map((r) => r.values["CFS product ID"]))].filter((id) =>
-    rows.has(id),
-  );
-  const found = await findProducts(graphql, ids);
+  const { products: rows, errors: rowErrors } = checkRows(sheet);
+  // Every row problem is tagged with its product, so each product's tab can list its own problems.
+  const productOfRow = new Map();
+  for (const [name, list] of [["Groups", sheet.groups], ["Choices", sheet.choices]]) {
+    for (const raw of list) productOfRow.set(`${name}:${raw.row}`, raw.values["CFS product ID"]);
+  }
+  const errors = rowErrors.map((e) => {
+    const product = productOfRow.get(`${e.sheet}:${e.row}`);
+    return product ? { ...e, product } : e;
+  });
+
+  // Every product in the sheet, in the order of its first row, Groups sheet first.
+  const ids = [...new Set([...sheet.groups, ...sheet.choices].map((r) => r.values["CFS product ID"]))].filter(Boolean);
+  const found = await findProducts(graphql, ids.filter((id) => rows.has(id)));
 
   const products = [];
   for (const id of ids) {
+    const entry = { cfsProductId: id, title: null, productId: null, check: null, groups: [], removed: [] };
+    products.push(entry);
     const lookup = found.get(id);
+    if (!lookup) continue; // every row of this product has a problem
     if (lookup.error) {
       errors.push({ sheet: null, row: null, product: id, message: lookup.error });
       continue;
     }
     const current = lookup.product;
+    entry.title = current.title;
+    entry.productId = current.productId;
     const { groups, choices } = rows.get(id);
     const built = buildProduct({ cfsProductId: id, groups, choices }, current);
     errors.push(...built.errors.map((e) => ({ ...e, product: id })));
@@ -73,18 +86,14 @@ export async function previewImport(graphql, bytes) {
     for (const problem of problems) {
       errors.push({ sheet: null, row: null, product: id, message: `Not ready to sell: ${problem}` });
     }
-    products.push({
-      cfsProductId: id,
-      title: current.title,
-      productId: current.productId,
-      check: { ready, problems, fromCents },
-      groups: groupsPreview(built.product, groups),
-      removed: (current.options ?? []).filter((o) => !keptIds.has(o.cfsId)).map((o) => o.label),
-    });
+    entry.check = { ready, problems, fromCents };
+    entry.groups = groupsPreview(built.product, groups);
+    entry.removed = (current.options ?? []).filter((o) => !keptIds.has(o.cfsId)).map((o) => o.label);
   }
+  for (const entry of products) entry.problems = errors.filter((e) => e.product === entry.cfsProductId);
 
   return {
-    importable: errors.length === 0 && products.length > 0 && products.every((p) => p.check.ready),
+    importable: errors.length === 0 && products.length > 0 && products.every((p) => p.check?.ready),
     errors,
     products,
   };
