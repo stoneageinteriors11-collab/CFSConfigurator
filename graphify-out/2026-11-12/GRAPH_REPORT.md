@@ -1,7 +1,7 @@
 # Graph Report - cfs-configurator  (2026-11-12)
 
 ## Corpus Check
-- 97 files · ~62,264 words
+- 97 files · ~62,266 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 14 file(s) not represented in the graph (top: (none) 8, .toml 3, .css 1)
 
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `0ca80fcc`
+- Built from commit: `8c2e5c0f`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 

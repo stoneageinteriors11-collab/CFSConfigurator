@@ -114,9 +114,9 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1794295016.2925837,
-    "seen": 1794295145.3253446,
-    "ast_hash": "8e757d98031477ac622cf60c30932f9c",
+    "mtime": 1794478625.7162392,
+    "seen": 1794478892.3144212,
+    "ast_hash": "60aacc2115a035247322c2c5a62bd78a",
     "semantic_hash": ""
   },
   "pnpm-workspace.yaml": {
@@ -570,21 +570,45 @@
     "semantic_hash": ""
   },
   "docs/acceptance-results.json": {
-    "mtime": 1794466277.5530553,
-    "seen": 1794466531.1508179,
-    "ast_hash": "0669a50ff8d25816c49f39f97f890600",
+    "mtime": 1794467132.039182,
+    "seen": 1794478892.3144212,
+    "ast_hash": "651d46801ae98bd935115e2cc2df002e",
     "semantic_hash": ""
   },
   "docs/ACCEPTANCE.md": {
-    "mtime": 1794466277.5570562,
-    "seen": 1794466531.1508179,
-    "ast_hash": "090372eb8ab66c6f9f3c1dc35213cfb8",
+    "mtime": 1794467132.0431912,
+    "seen": 1794478892.3144212,
+    "ast_hash": "0d4bf219e0fa813532dc9c05ff5d994d",
+    "semantic_hash": ""
+  },
+  "app/import/spreadsheet.server.js": {
+    "mtime": 1794478805.4789846,
+    "seen": 1794478892.3144212,
+    "ast_hash": "9bf9a9f407beef267f7d5e39fafb926b",
+    "semantic_hash": ""
+  },
+  "test/import/spreadsheet.test.js": {
+    "mtime": 1794478812.702609,
+    "seen": 1794478892.3144212,
+    "ast_hash": "c83e6359c73e7dfa335b7d9b88f8cab8",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/plans/2026-11-12-option-importer-preview.md": {
+    "mtime": 1794478456.464129,
+    "seen": 1794478892.3144212,
+    "ast_hash": "d11281cc9837ac7207a433f1a8cfea2b",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/specs/2026-11-12-option-importer-design.md": {
+    "mtime": 1794478445.3842132,
+    "seen": 1794478892.3144212,
+    "ast_hash": "e7f95fcd29e51ae8aa8bbebf7c345c29",
     "semantic_hash": ""
   },
   "package-lock.json": {
-    "mtime": 1794217185.4163122,
-    "seen": 1794227747.4838262,
-    "ast_hash": "a111c8424c7d3186708fa9bf2b9f8a55",
+    "mtime": 1794478625.944232,
+    "seen": 1794478892.3144212,
+    "ast_hash": "31b29c36f87ba2d85f093422aceb5390",
     "semantic_hash": ""
   }
 }
