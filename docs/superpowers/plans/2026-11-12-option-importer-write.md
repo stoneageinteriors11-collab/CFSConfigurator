@@ -141,7 +141,7 @@
     - `sleep` defaults to a real timer; tests pass a no-op.
   - `entryHandle(productId, cfsId, runId) -> string`, following the handle rule in Global Constraints.
   - `createEntries(graphql, productId, options, runId, { sleep }) -> { ids: string[] } | { ids: string[], error: string }`. Creates entries one at a time, in order, with `metaobjectCreate`. It stops at the first `userErrors` and returns the IDs it did create.
-  - `switchProduct(graphql, productId, entryIds, product) -> { error?: string }`. One `metafieldsSet` with three inputs on `cfs_import`:
+  - `switchProduct(graphql, productId, entryIds, product) -> { error?: string, uncertain?: true }`. `uncertain` is set only when Shopify's answer was never seen. One `metafieldsSet` with three inputs on `cfs_import`:
     - `options`, type `list.metaobject_reference`, value `JSON.stringify(entryIds)`;
     - `workflow`, type `json`;
     - `model_cards`, type `json`.
@@ -155,7 +155,6 @@
   - `throws Shopify's message on other errors`
   - `creates entries with the right fields and stops at the first refusal`: asserts `image_url` and `option_code` are left out when empty, and that `source_mappings` is a JSON string.
   - `switches all three values in one call`
-  - `reports userErrors from the switch`
   - `deletes and reports failures`
 - [ ] **Step 3:** Run them. Expected: FAIL, because the module is not found.
 - [ ] **Step 4: Implement**, then validate the four operations with validate.mjs.
@@ -175,7 +174,8 @@
   - `checkProduct(product) -> { ready, problems }`.
 - Produces: `writeProduct({ graphql, product, current, runId, sleep }) -> { ok: true, ready, problems } | { ok: false, error }`.
   - Steps, in order: create entries, then switch, then read back and check, then delete each old `current.options[].entryId` for which `isListed` is false.
-  - If creation or the switch fails, it deletes the IDs created so far and returns `ok: false`. Error copy: `Not changed: {Shopify's message}`.
+  - If creation fails, or the switch is refused, it deletes the IDs created so far and returns `ok: false`. Error copy: `Not changed: {Shopify's message}`.
+  - If `switchProduct` returns `uncertain: true` (its answer was never seen), it reads the product back first. Only if the product still lists its old entries does it delete the new ones and return `ok: false`. If the product lists the new entries, it carries on as a success. If the product cannot be read back, it deletes nothing and returns `ok: false` with `Check this product: Shopify did not confirm the change`.
   - A read-back or clean-up failure after the switch does not undo the switch. It returns `ok: true` with `ready: false` and the problem, or, for clean-up, adds a problem: `{n} old options could not be removed`.
 
 - [ ] **Step 1: Write the failing tests:**
@@ -184,6 +184,9 @@
   - `leaves the product unchanged when the switch is refused`
   - `keeps an old entry another product still lists`
   - `reports a product that is written but not ready`
+  - `keeps the new entries when an unconfirmed switch did apply`
+  - `deletes the new entries when an unconfirmed switch did not apply`
+  - `deletes nothing when an unconfirmed switch cannot be read back`
 - [ ] **Step 2:** Run them. Expected: FAIL.
 - [ ] **Step 3: Implement.**
 - [ ] **Step 4:** Run `npm test`. Expected: all pass.

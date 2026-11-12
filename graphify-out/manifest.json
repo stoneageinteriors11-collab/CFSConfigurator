@@ -648,21 +648,21 @@
     "semantic_hash": ""
   },
   "app/import/preview.server.js": {
-    "mtime": 1794486800.190001,
-    "seen": 1794488091.5827372,
-    "ast_hash": "86473d5267bd8d129db73ae1f74b1473",
+    "mtime": 1794488448.2516184,
+    "seen": 1794488822.9242995,
+    "ast_hash": "c7bedac896416966c365baca3727cd37",
     "semantic_hash": ""
   },
   "test/import/preview.test.js": {
-    "mtime": 1794486784.529814,
-    "seen": 1794488091.5827372,
-    "ast_hash": "15966d9ac545612346a089658f24c9cb",
+    "mtime": 1794488440.00157,
+    "seen": 1794488822.9242995,
+    "ast_hash": "3569b117035e040e20533491098742fd",
     "semantic_hash": ""
   },
   "app/routes/app.import.jsx": {
-    "mtime": 1794486822.881364,
-    "seen": 1794488091.5827372,
-    "ast_hash": "2d2f816959e4a30583adc6ef0151df8a",
+    "mtime": 1794488457.0171256,
+    "seen": 1794488822.9242995,
+    "ast_hash": "b21eb44511ac715f53e323685a1ecb55",
     "semantic_hash": ""
   },
   "app/routes/app.import.sample.jsx": {
@@ -684,9 +684,9 @@
     "semantic_hash": ""
   },
   "test/import/fake-shop.js": {
-    "mtime": 1794486268.3991318,
-    "seen": 1794486446.213103,
-    "ast_hash": "777e123a9ea3f79c455fc77dd1759e35",
+    "mtime": 1794488395.032728,
+    "seen": 1794488822.9242995,
+    "ast_hash": "241245aff9d0967b1874d3f692019c11",
     "semantic_hash": ""
   },
   "docs/superpowers/plans/2026-11-12-option-importer-download-current.md": {
@@ -723,6 +723,18 @@
     "mtime": 1794486736.276549,
     "seen": 1794488091.5827372,
     "ast_hash": "3e986703d7040c82f2790559a92eafca",
+    "semantic_hash": ""
+  },
+  "app/import/shared-options.server.js": {
+    "mtime": 1794488412.828807,
+    "seen": 1794488822.9242995,
+    "ast_hash": "66f30b6ff47b93f79756bf1aea7f0aba",
+    "semantic_hash": ""
+  },
+  "test/import/shared-options.test.js": {
+    "mtime": 1794488395.097577,
+    "seen": 1794488822.9242995,
+    "ast_hash": "2bd4edab6acc273bbfb6bbbd4ee516c7",
     "semantic_hash": ""
   },
   "package-lock.json": {
