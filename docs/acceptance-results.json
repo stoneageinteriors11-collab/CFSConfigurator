@@ -31,7 +31,7 @@
     { "area": 2, "case": "two different configurations of one size", "result": "pass-automated-only", "evidence": ["test/checkout/check-basket.test.js", "test/orders/specification.test.js"] },
     { "area": 2, "case": "quantity above one", "result": "pass", "evidence": ["#1029"] },
     { "area": 2, "case": "change quantity and remove", "result": "pass", "evidence": ["E4f browser check"] },
-    { "area": 2, "case": "edit a configuration in place", "result": "open", "evidence": ["not built; remove and configure again"] },
+    { "area": 2, "case": "edit a configuration in place", "result": "pass", "evidence": ["E9: preview theme, 12 Nov 2026: fabric changed in place (quantity 2 and position kept); edited into an existing configuration joined to one line of 3; stale Edit link falls back to Add to basket", "test/basket/basket.test.js", "test/basket/basket-request.test.js"] },
     { "area": 2, "case": "options at no cost", "result": "pass", "evidence": ["#1034"] },
     { "area": 2, "case": "size-specific charges", "result": "pass", "evidence": ["all seven products; recorded live CFS prices"] },
     { "area": 2, "case": "accessory quantities", "result": "pass", "evidence": ["#1033"] },

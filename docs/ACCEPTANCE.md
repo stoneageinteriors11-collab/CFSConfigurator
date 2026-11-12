@@ -9,7 +9,7 @@ Checked 11 November 2026 against section 8 of `CLAUDE_MVP_HANDOFF.md`, on the de
 | # | Area | Result |
 |---|---|---|
 | 1 | Identifiers, price breakdown, discounts, expected against actual | Pass |
-| 2 | Basket cases | Pass, one gap |
+| 2 | Basket cases | Pass |
 | 3 | Shopify discounts | Pass for percentage discounts; real promotion types not supplied |
 | 4 | Stock and duplicates | Pass, zero stock not tried live through the app |
 | 5 | Saved order record | Pass, dimensions and pricing version not recorded |
@@ -41,7 +41,7 @@ Breakdown example (#1034): base £999.99 (2ft 6in Small Single) + "with 2 Drawer
 
 Every app order record holds the Shopify order and line IDs, variant ID, SKU, CFS choice and assignment IDs, base and option charges, Shopify's discount allocations and the final totals, and links to its checkout attempt and basket version. Prices are kept apart from shipping and tax in the record, but shipping and tax were never charged on the development store (see 6).
 
-## 2. Basket cases: Pass, one gap
+## 2. Basket cases: Pass
 
 | Case | Result | Evidence |
 |---|---|---|
@@ -51,7 +51,7 @@ Every app order record holds the Shopify order and line IDs, variant ID, SKU, CF
 | Two different configurations of one size | Pass in automated tests | Kept as separate lines and share the size's stock (`test/checkout/check-basket.test.js`, `test/orders/specification.test.js`). Not yet in a paid order |
 | Quantity above one | Pass | #1029, three copies of one configuration |
 | Change quantity and remove | Pass | Checked in the browser on the preview theme (E4f) |
-| Edit a configuration in place | **Open** | Not built. The shopper removes the line and configures again |
+| Edit a configuration in place | Pass | Edit link in the basket opens the product page with the line's choices picked; Update item re-prices it and saves over the same line, keeping quantity and place. Editing into a configuration already in the basket joins the two lines. Checked on the preview theme 12 November 2026 (E9) |
 | Options at no cost | Pass | Carlton Black £0 in #1034; "without Drawer" included |
 | Size-specific charges | Pass | All seven test products; tests match every recorded live CFS price (Fargo all 32 choices on all 15 sizes, plus Moreno, Paris, Mayfair, Natural Gold, Zenaya, Loft) |
 | Accessory quantities | Pass | #1033; a quantity over the product's limit (5) is refused |
