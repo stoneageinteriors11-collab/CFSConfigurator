@@ -81,7 +81,7 @@ function assignmentsFor(choice, cfsId, existing) {
   return choice.sizes.map((size) => assignment(size, choice.sizePrices[size] ?? choice.price, `${cfsId}-${size}`));
 }
 
-function workflowFor(groups, kept) {
+function workflowFor(kept, groups) {
   const sorted = [...groups].sort((a, b) => a.order - b.order);
   const addOn = groups.find((g) => g.kind === "accessory");
   const pricing = { ...(kept?.pricing ?? {}) };
@@ -152,8 +152,9 @@ export function buildProduct({ cfsProductId, groups, choices }, shopifyProduct) 
     modelCards[variant.sku] = { image: "", dimensions: "", height: "", width: "", ...kept, source_id: sizeId };
   }
 
-  const { options: _old, modelCards: _cards, workflow: kept, ordinary: _ordinary, ...rest } = shopifyProduct;
-  const product = { ...rest, modelCards, workflow: workflowFor(groups, kept), options };
+  const rest = { ...shopifyProduct };
+  for (const key of ["options", "modelCards", "workflow", "ordinary"]) delete rest[key];
+  const product = { ...rest, modelCards, workflow: workflowFor(shopifyProduct.workflow, groups), options };
 
   const reason = unsupportedReason(product);
   if (reason) return { product: null, errors: [{ sheet: null, row: null, message: `Product ${cfsProductId}: ${reason}` }] };
