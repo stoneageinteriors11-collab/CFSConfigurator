@@ -44,3 +44,32 @@ export function exportRows(cfsProductId, product) {
 
   return { groups, choices };
 }
+
+const TYPE_NAMES = { option: "Choose one", accessory: "Add-on with quantity" };
+
+/** exportRows' result as spreadsheet rows ({ columnName: text }), for writeWorkbook. */
+export function sheetValues(cfsProductId, { groups, choices }) {
+  return {
+    groups: groups.map((g) => ({
+      "CFS product ID": cfsProductId,
+      Group: g.name,
+      "Display order": String(g.order),
+      Required: g.required ? "Yes" : "No",
+      "Choose after": g.after,
+      Type: TYPE_NAMES[g.kind],
+      "Max quantity": g.maxQuantity === null ? "" : String(g.maxQuantity),
+    })),
+    choices: choices.map((c) => ({
+      "CFS product ID": cfsProductId,
+      Group: c.group,
+      Choice: c.label,
+      "Price (£)": c.price,
+      Sizes: c.sizes.join("; "),
+      "Size prices": Object.entries(c.sizePrices).map(([size, price]) => `${size}=${price}`).join("; "),
+      "CFS choice ID": c.cfsId,
+      "Option code": c.optionCode,
+      "Image URL": c.imageUrl,
+      Details: c.details,
+    })),
+  };
+}

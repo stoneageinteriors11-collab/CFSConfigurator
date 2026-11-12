@@ -109,6 +109,7 @@ export async function readWorkbook(bytes) {
   return result;
 }
 
+// Sample rows, in column order.
 const SAMPLE_GROUPS = [
   ["146477", "Select Drawer", 1, "Yes", "", "Choose one", ""],
   ["146477", "Select Fabric", 2, "Yes", "Select Drawer", "Choose one", ""],
@@ -133,16 +134,22 @@ const SAMPLE_CHOICES = [
   ["69733", "Select Lightings", "102 : Lighting for Footboard", 209.99, "", "", "217067", "", "", ""],
 ];
 
-export async function sampleWorkbook() {
+const asValues = (columns, rows) => rows.map((row) => Object.fromEntries(columns.map((c, i) => [c, row[i]])));
+
+/** A workbook with both sheets. Each row is { columnName: value }; missing columns are left blank. */
+export async function writeWorkbook(groups, choices) {
   const book = new ExcelJS.Workbook();
   for (const [name, columns, rows] of [
-    ["Groups", GROUP_COLUMNS, SAMPLE_GROUPS],
-    ["Choices", CHOICE_COLUMNS, SAMPLE_CHOICES],
+    ["Groups", GROUP_COLUMNS, groups],
+    ["Choices", CHOICE_COLUMNS, choices],
   ]) {
     const sheet = book.addWorksheet(name, { views: [{ state: "frozen", ySplit: 1 }] });
     sheet.columns = columns.map((header) => ({ header, width: Math.max(14, header.length + 4) }));
     sheet.getRow(1).font = { bold: true };
-    rows.forEach((row) => sheet.addRow(row));
+    for (const row of rows) sheet.addRow(columns.map((column) => row[column] ?? ""));
   }
   return Buffer.from(await book.xlsx.writeBuffer());
 }
+
+export const sampleWorkbook = () =>
+  writeWorkbook(asValues(GROUP_COLUMNS, SAMPLE_GROUPS), asValues(CHOICE_COLUMNS, SAMPLE_CHOICES));
