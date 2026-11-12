@@ -11,16 +11,24 @@ export const loader = async ({ request }) => {
   return null;
 };
 
-const refused = (message) => ({ importable: false, errors: [{ sheet: null, row: null, message }], products: [] });
+const refused = (message) => ({
+  importable: false,
+  errors: [{ sheet: null, row: null, message }],
+  products: [],
+});
 
 export const action = async ({ request }) => {
   const { admin } = await authenticate.admin(request);
   // Refuse a very large upload before reading it into memory.
-  if (Number(request.headers.get("content-length")) > MAX_FILE_BYTES + 64 * 1024) {
+  if (
+    Number(request.headers.get("content-length")) >
+    MAX_FILE_BYTES + 64 * 1024
+  ) {
     return refused("The file is larger than 5 MB");
   }
   const file = (await request.formData()).get("file");
-  if (!file || typeof file === "string" || file.size === 0) return refused("Choose an Excel (.xlsx) file first");
+  if (!file || typeof file === "string" || file.size === 0)
+    return refused("Choose an Excel (.xlsx) file first");
   // eslint-disable-next-line no-undef
   return previewImport(admin.graphql, Buffer.from(await file.arrayBuffer()));
 };
@@ -37,7 +45,10 @@ async function downloadSample() {
   URL.revokeObjectURL(url);
 }
 
-const place = (error) => [error.sheet, error.row ? `row ${error.row}` : null].filter(Boolean).join(", ") || "Whole file";
+const place = (error) =>
+  [error.sheet, error.row ? `row ${error.row}` : null]
+    .filter(Boolean)
+    .join(", ") || "Whole file";
 
 function Problems({ errors }) {
   return (
@@ -64,15 +75,31 @@ function Problems({ errors }) {
 
 // A plain table, so the product's one scroll box does all the scrolling: the Choice column and
 // the header row stay in view, and every group uses the same size columns.
-const CELL = { padding: "6px 10px", borderBottom: "1px solid #e3e3e3", textAlign: "right", whiteSpace: "nowrap" };
-const SIZE_HEADER = { ...CELL, width: "120px", minWidth: "120px", maxWidth: "120px", whiteSpace: "normal", verticalAlign: "bottom" };
-const STICKY_TOP = { position: "sticky", top: 0, background: "#f7f7f7", zIndex: 1 };
+const CHOICE_WIDTH = 240;
+const SIZE_WIDTH = 120;
+const CELL = {
+  padding: "6px 10px",
+  borderBottom: "1px solid #e3e3e3",
+  textAlign: "right",
+  whiteSpace: "nowrap",
+};
+const SIZE_HEADER = {
+  ...CELL,
+  width: `${SIZE_WIDTH}px`,
+  whiteSpace: "normal",
+  verticalAlign: "bottom",
+};
+const STICKY_TOP = {
+  position: "sticky",
+  top: 0,
+  background: "#f7f7f7",
+  zIndex: 1,
+};
 const CHOICE_CELL = {
   ...CELL,
   textAlign: "left",
   whiteSpace: "normal",
-  width: "240px",
-  minWidth: "240px",
+  width: `${CHOICE_WIDTH}px`,
   position: "sticky",
   left: 0,
   background: "#fff",
@@ -93,78 +120,187 @@ function sizesOf(product) {
 
 function GroupTable({ group, sizes }) {
   const rule = [
-    group.kind === "accessory" ? `Add-on, up to ${group.maxQuantity} each` : "Choose one",
+    group.kind === "accessory"
+      ? `Add-on, up to ${group.maxQuantity} each`
+      : "Choose one",
     group.required ? "required" : "optional",
     group.after ? `after "${group.after}"` : null,
   ]
     .filter(Boolean)
     .join(", ");
 
+  // The table's real width, so the box scrolls sideways instead of squeezing the columns.
+  const width = `${CHOICE_WIDTH + SIZE_WIDTH * sizes.length}px`;
   return (
-    <table style={{ borderCollapse: "separate", borderSpacing: 0, fontSize: "13px", tableLayout: "fixed" }}>
-      <caption style={{ textAlign: "left", fontWeight: 600, padding: "12px 10px 6px", position: "sticky", left: 0 }}>
+    <>
+      <div
+        style={{
+          display: "inline-block",
+          position: "sticky",
+          left: 0,
+          fontWeight: 600,
+          padding: "12px 10px 6px",
+        }}
+      >
         {group.name} ({rule})
-      </caption>
-      <thead>
-        <tr>
-          <th scope="col" style={{ ...CHOICE_CELL, ...STICKY_TOP, left: 0, zIndex: 2 }}>
-            Choice
-          </th>
-          {sizes.map((size) => (
-            <th key={size.sizeId} scope="col" style={{ ...SIZE_HEADER, ...STICKY_TOP }} title={size.sizeTitle}>
-              {size.sizeTitle}
+      </div>
+      <table
+        style={{
+          borderCollapse: "separate",
+          borderSpacing: 0,
+          fontSize: "13px",
+          tableLayout: "fixed",
+          width,
+          minWidth: width,
+        }}
+      >
+        <thead>
+          <tr>
+            <th
+              scope="col"
+              style={{ ...CHOICE_CELL, ...STICKY_TOP, left: 0, zIndex: 2 }}
+            >
+              Choice
             </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {group.choices.map((choice) => (
-          <tr key={choice.cfsId}>
-            <th scope="row" style={{ ...CHOICE_CELL, fontWeight: 400 }}>
-              {choice.label}
-            </th>
-            {sizes.map((size) => {
-              const price = choice.prices.find((p) => p.sizeId === size.sizeId);
-              return (
-                <td key={size.sizeId} style={{ ...CELL, color: price ? undefined : "#8a8a8a" }}>
-                  {price ? money(price.cents, "GBP") : "Not offered"}
-                </td>
-              );
-            })}
+            {sizes.map((size) => (
+              <th
+                key={size.sizeId}
+                scope="col"
+                style={{ ...SIZE_HEADER, ...STICKY_TOP }}
+                title={size.sizeTitle}
+              >
+                {size.sizeTitle}
+              </th>
+            ))}
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {group.choices.map((choice) => (
+            <tr key={choice.cfsId}>
+              <th scope="row" style={{ ...CHOICE_CELL, fontWeight: 400 }}>
+                {choice.label}
+              </th>
+              {sizes.map((size) => {
+                const price = choice.prices.find(
+                  (p) => p.sizeId === size.sizeId,
+                );
+                return (
+                  <td
+                    key={size.sizeId}
+                    style={{ ...CELL, color: price ? undefined : "#8a8a8a" }}
+                  >
+                    {price ? money(price.cents, "GBP") : "Not offered"}
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
   );
 }
 
 function ProductPreview({ product }) {
   const sizes = sizesOf(product);
   return (
-    <s-section heading={`${product.title} (CFS ${product.cfsProductId})`}>
-      <s-stack direction="block" gap="base">
-        <s-stack direction="inline" gap="small-200">
-          <s-badge tone={product.check.ready ? "success" : "critical"}>
-            {product.check.ready ? "Ready to sell" : "Not ready"}
-          </s-badge>
-          {product.check.fromCents != null && <s-text>From {money(product.check.fromCents, "GBP")}</s-text>}
-        </s-stack>
-        {product.removed.length > 0 && (
-          <s-banner tone="warning" heading={`Will remove ${product.removed.length} choices not in the sheet`}>
-            {product.removed.join(", ")}
-          </s-banner>
+    <s-stack direction="block" gap="base">
+      <s-heading>
+        {product.title} (CFS {product.cfsProductId})
+      </s-heading>
+      <s-stack direction="inline" gap="small-200">
+        <s-badge tone={product.check.ready ? "success" : "critical"}>
+          {product.check.ready ? "Ready to sell" : "Not ready"}
+        </s-badge>
+        {product.check.fromCents != null && (
+          <s-text>From {money(product.check.fromCents, "GBP")}</s-text>
         )}
-        <s-scroll-box
-          maxBlockSize="480px"
-          overflow="auto"
-          border="base"
-          borderRadius="base"
-          accessibilityLabel={`Choices and prices for ${product.title}`}
+      </s-stack>
+      {product.removed.length > 0 && (
+        <s-banner
+          tone="warning"
+          heading={`Will remove ${product.removed.length} choices not in the sheet`}
         >
-          {product.groups.map((group) => (
-            <GroupTable key={group.name} group={group} sizes={sizes} />
-          ))}
-        </s-scroll-box>
+          {product.removed.join(", ")}
+        </s-banner>
+      )}
+      {/* A scrolling area must be focusable so it can be scrolled from the keyboard. */}
+      <div
+        role="region"
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+        tabIndex={0}
+        aria-label={`Choices and prices for ${product.title}`}
+        style={{
+          maxHeight: "480px",
+          overflow: "auto",
+          border: "1px solid #e3e3e3",
+          borderRadius: "8px",
+        }}
+      >
+        {product.groups.map((group) => (
+          <GroupTable key={group.name} group={group} sizes={sizes} />
+        ))}
+      </div>
+    </s-stack>
+  );
+}
+
+const shortTitle = (title) => {
+  const plain = title
+    .replace(/^CFS TEST - /, "")
+    .replace(/ - Sizes Available$/, "");
+  return plain.length > 32 ? `${plain.slice(0, 31)}…` : plain;
+};
+
+/** One tab per product; the tab strip scrolls sideways so any number of products fit. */
+function ProductTabs({ products }) {
+  const [picked, setPicked] = useState(0);
+  const index = Math.min(picked, products.length - 1);
+  const product = products[index];
+  return (
+    <s-section heading={`Products (${products.length})`}>
+      <s-stack direction="block" gap="base">
+        <div
+          role="tablist"
+          aria-label="Products in the sheet"
+          style={{
+            display: "flex",
+            gap: "6px",
+            overflowX: "auto",
+            paddingBottom: "6px",
+          }}
+        >
+          {products.map((p, i) => {
+            const selected = i === index;
+            return (
+              <button
+                key={p.cfsProductId}
+                type="button"
+                role="tab"
+                aria-selected={selected}
+                title={p.title}
+                onClick={() => setPicked(i)}
+                style={{
+                  flex: "0 0 auto",
+                  padding: "6px 12px",
+                  borderRadius: "8px",
+                  border: selected ? "1px solid #303030" : "1px solid #d4d4d4",
+                  background: selected ? "#303030" : "#fff",
+                  color: selected ? "#fff" : "#303030",
+                  cursor: "pointer",
+                  fontSize: "13px",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {p.check.ready ? "✓" : "✗"} {shortTitle(p.title)} ·{" "}
+                {p.cfsProductId}
+              </button>
+            );
+          })}
+        </div>
+        <div role="tabpanel">
+          <ProductPreview key={product.cfsProductId} product={product} />
+        </div>
       </s-stack>
     </s-section>
   );
@@ -181,24 +317,39 @@ export default function OptionsImport() {
       <s-section>
         <s-stack direction="block" gap="base">
           <s-paragraph>
-            Upload an Excel sheet with a Groups sheet and a Choices sheet. For every product in the sheet, its options become
-            exactly what the sheet says. This page only shows a preview: nothing in the shop is changed yet.
+            Upload an Excel sheet with a Groups sheet and a Choices sheet. For
+            every product in the sheet, its options become exactly what the
+            sheet says. This page only shows a preview: nothing in the shop is
+            changed yet.
           </s-paragraph>
           <s-stack direction="inline" gap="base">
             <s-button
               onClick={() => {
                 setDownloadError(null);
-                downloadSample().catch((error) => setDownloadError(error.message));
+                downloadSample().catch((error) =>
+                  setDownloadError(error.message),
+                );
               }}
             >
               Download sample
             </s-button>
           </s-stack>
-          {downloadError && <s-banner tone="critical">{downloadError}</s-banner>}
+          {downloadError && (
+            <s-banner tone="critical">{downloadError}</s-banner>
+          )}
           <Form method="post" encType="multipart/form-data">
             <s-stack direction="inline" gap="base">
-              <input type="file" name="file" accept=".xlsx" aria-label="Option sheet (.xlsx)" />
-              <s-button type="submit" variant="primary" loading={busy || undefined}>
+              <input
+                type="file"
+                name="file"
+                accept=".xlsx"
+                aria-label="Option sheet (.xlsx)"
+              />
+              <s-button
+                type="submit"
+                variant="primary"
+                loading={busy || undefined}
+              >
                 Preview
               </s-button>
             </s-stack>
@@ -209,16 +360,30 @@ export default function OptionsImport() {
       {result && (
         <s-section>
           {result.importable ? (
-            <s-banner tone="success" heading={`Ready to import: ${result.products.length} products`}>
-              Every row is correct and every product would be ready to sell. Importing comes in the next stage.
+            <s-banner
+              tone="success"
+              heading={`Ready to import: ${result.products.length} products`}
+            >
+              Every row is correct and every product would be ready to sell.
+              Importing comes in the next stage.
             </s-banner>
           ) : (
-            <s-banner tone="critical" heading="Not ready: fix the problems below. Nothing has been changed." />
+            <s-banner
+              tone="critical"
+              heading="Not ready: fix the problems below. Nothing has been changed."
+            />
           )}
         </s-section>
       )}
-      {result && result.errors.length > 0 && <Problems errors={result.errors} />}
-      {result && result.products.map((product) => <ProductPreview key={product.cfsProductId} product={product} />)}
+      {result && result.errors.length > 0 && (
+        <Problems errors={result.errors} />
+      )}
+      {result && result.products.length > 0 && (
+        <ProductTabs
+          key={result.products.map((p) => p.cfsProductId).join()}
+          products={result.products}
+        />
+      )}
     </s-page>
   );
 }

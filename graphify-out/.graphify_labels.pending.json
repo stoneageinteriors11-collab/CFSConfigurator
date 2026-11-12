@@ -2,7 +2,7 @@
   "0": "package.json",
   "1": "Shopify App Template - React Router README",
   "2": "shopify.server.js",
-  "4": "copy-cart.test.js",
+  "4": "EncryptedSessionStorage",
   "5": "Option importer: design",
   "6": "Prisma session storage",
   "10": "build-product.test.js",
@@ -15,6 +15,7 @@
   "20": "quote.server.js",
   "21": "spreadsheet.server.js",
   "22": "app.orders.$id.jsx",
+  "23": "graphql-config@^5.1.1",
   "25": "devDependencies",
   "27": "overrides",
   "28": "accessories-flow.test.js",
@@ -29,7 +30,6 @@
   "39": "polarisUrl option",
   "40": "Shopify CLI",
   "41": "app/shopify.server.ts shopify const",
-  "43": "eslint-plugin-react-hooks@^4.6.2",
   "44": ".graphqlrc.js",
   "53": "e6d-status-check.js"
 }
