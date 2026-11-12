@@ -654,9 +654,9 @@
     "semantic_hash": ""
   },
   "test/import/preview.test.js": {
-    "mtime": 1794483602.7618954,
-    "seen": 1794484553.0290341,
-    "ast_hash": "24a6b180faed2dd6fe4d9fdaebf809ba",
+    "mtime": 1794484680.3309212,
+    "seen": 1794484841.9849508,
+    "ast_hash": "aebc82f61bcaa5072d20ee9f3414ec3a",
     "semantic_hash": ""
   },
   "app/routes/app.import.jsx": {
@@ -669,6 +669,30 @@
     "mtime": 1794480318.8947144,
     "seen": 1794480456.9297438,
     "ast_hash": "87b6490788f7c1873161bb100169870a",
+    "semantic_hash": ""
+  },
+  "app/import/current-options.server.js": {
+    "mtime": 1794484707.276314,
+    "seen": 1794484841.9849508,
+    "ast_hash": "cd818acc4027c2827155b9fa9a554816",
+    "semantic_hash": ""
+  },
+  "test/import/current-options.test.js": {
+    "mtime": 1794484695.8802092,
+    "seen": 1794484841.9849508,
+    "ast_hash": "a7dfca7a42d6a3483f86cb55503bbe97",
+    "semantic_hash": ""
+  },
+  "test/import/fake-shop.js": {
+    "mtime": 1794484680.2833462,
+    "seen": 1794484841.9849508,
+    "ast_hash": "979990cc81760bbbd7a2269dde41878f",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/plans/2026-11-12-option-importer-download-current.md": {
+    "mtime": 1794484635.4415672,
+    "seen": 1794484841.9849508,
+    "ast_hash": "ecadd9b57a74deed9b96e3c193caa256",
     "semantic_hash": ""
   },
   "package-lock.json": {

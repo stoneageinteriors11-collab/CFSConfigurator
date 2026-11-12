@@ -35,15 +35,55 @@ export const action = async ({ request }) => {
 };
 
 /** Fetches the sample through the app (so it is signed in) and saves it. */
-async function downloadSample() {
-  const response = await fetch("/app/import/sample");
-  if (!response.ok) throw new Error(`Download failed (${response.status})`);
+/**
+ * Fetches a file through the app (so it is signed in) and saves it under the name the server gives.
+ * Returns null, or the list of problems the server explained.
+ */
+async function downloadFile(path) {
+  const response = await fetch(path);
+  if (!response.ok) {
+    const body = await response.json().catch(() => null);
+    return body?.errors ?? [`Download failed (${response.status}); try again`];
+  }
+  const name = /filename="([^"]+)"/.exec(
+    response.headers.get("content-disposition") ?? "",
+  )?.[1];
   const url = URL.createObjectURL(await response.blob());
   const link = document.createElement("a");
   link.href = url;
-  link.download = "cfs-options-sample.xlsx";
+  link.download = name ?? "cfs-options.xlsx";
   link.click();
   URL.revokeObjectURL(url);
+  return null;
+}
+
+/** A button that downloads a file, showing the server's problems underneath when it refuses. */
+function useDownload() {
+  const [state, setState] = useState({ busy: false, errors: null });
+  const start = async (path) => {
+    setState({ busy: true, errors: null });
+    let errors;
+    try {
+      errors = await downloadFile(path);
+    } catch {
+      errors = ["Download failed; check the connection and try again"];
+    }
+    setState({ busy: false, errors });
+  };
+  return { ...state, start };
+}
+
+function DownloadProblems({ errors }) {
+  if (!errors) return null;
+  return (
+    <s-banner tone="critical" heading="Nothing was downloaded">
+      <s-unordered-list>
+        {errors.map((error) => (
+          <s-list-item key={error}>{error}</s-list-item>
+        ))}
+      </s-unordered-list>
+    </s-banner>
+  );
 }
 
 const place = (error) =>
@@ -357,7 +397,9 @@ export default function OptionsImport() {
   const result = useActionData();
   const navigation = useNavigation();
   const busy = navigation.state === "submitting";
-  const [downloadError, setDownloadError] = useState(null);
+  const sample = useDownload();
+  const current = useDownload();
+  const [ids, setIds] = useState("");
 
   return (
     <s-page heading="Options import">
@@ -371,19 +413,13 @@ export default function OptionsImport() {
           </s-paragraph>
           <s-stack direction="inline" gap="base">
             <s-button
-              onClick={() => {
-                setDownloadError(null);
-                downloadSample().catch((error) =>
-                  setDownloadError(error.message),
-                );
-              }}
+              loading={sample.busy || undefined}
+              onClick={() => sample.start("/app/import/sample")}
             >
               Download sample
             </s-button>
           </s-stack>
-          {downloadError && (
-            <s-banner tone="critical">{downloadError}</s-banner>
-          )}
+          <DownloadProblems errors={sample.errors} />
           <Form method="post" encType="multipart/form-data">
             <s-stack direction="inline" gap="base">
               <input
@@ -401,6 +437,46 @@ export default function OptionsImport() {
               </s-button>
             </s-stack>
           </Form>
+        </s-stack>
+      </s-section>
+
+      <s-section heading="Download current options">
+        <s-stack direction="block" gap="base">
+          <s-paragraph>
+            Get a sheet of products&apos; options as they are now, ready to edit
+            and upload above. Nothing is changed.
+          </s-paragraph>
+          <label style={{ display: "grid", gap: "4px", fontSize: "13px" }}>
+            <span>CFS product IDs</span>
+            <textarea
+              value={ids}
+              onChange={(event) => setIds(event.target.value)}
+              rows={3}
+              placeholder="146477, 69733"
+              style={{
+                font: "inherit",
+                padding: "6px 8px",
+                borderRadius: "8px",
+                border: "1px solid #8a8a8a",
+              }}
+            />
+            <span style={{ color: "#616161" }}>
+              One or more, separated by commas, spaces or new lines (up to 100)
+            </span>
+          </label>
+          <s-stack direction="inline" gap="base">
+            <s-button
+              loading={current.busy || undefined}
+              onClick={() =>
+                current.start(
+                  `/app/import/current?ids=${encodeURIComponent(ids)}`,
+                )
+              }
+            >
+              Download current options
+            </s-button>
+          </s-stack>
+          <DownloadProblems errors={current.errors} />
         </s-stack>
       </s-section>
 
