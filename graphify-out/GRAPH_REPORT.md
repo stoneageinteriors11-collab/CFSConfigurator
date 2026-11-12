@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `84489292`
+- Built from commit: `0ca80fcc`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -71,9 +71,9 @@
 4. `Shopify App Template - React Router README` - 17 edges
 5. `authenticate` - 15 edges
 6. `@shopify/shopify-app-react-router` - 14 edges
-7. `quoteSelection()` - 13 edges
-8. `getBasket()` - 13 edges
-9. `loadConfigurableProduct()` - 13 edges
+7. `loadConfigurableProduct()` - 13 edges
+8. `quoteSelection()` - 13 edges
+9. `getBasket()` - 13 edges
 10. `saveOrderSnapshot()` - 12 edges
 
 ## Surprising Connections (you probably didn't know these)
@@ -85,8 +85,8 @@
   test/checkout/checkout-request.test.js → app/checkout/checkout-request.server.js
 - `ask()` --calls--> `handleChoicesRequest()`  [EXTRACTED]
   test/pricing/choices-request.test.js → app/pricing/choices-request.server.js
-- `run()` --calls--> `recoverOrders()`  [EXTRACTED]
-  test/orders/recover-orders.test.js → app/orders/recover-orders.server.js
+- `quote()` --calls--> `quoteOrdinaryProduct()`  [EXTRACTED]
+  test/pricing/quote-ordinary.test.js → app/pricing/quote.server.js
 
 ## Import Cycles
 - None detected.
@@ -192,7 +192,7 @@ Nodes (30): removePaidLines(), lineAttributes(), findAttempt(), isUniqueClash(),
 
 ### Community 30 - "CFS configurator MVP: acceptance report"
 Cohesion: 0.06
-Nodes (29): 1. Identifiers and breakdowns: Pass, 2. Basket cases: Pass, one gap, 3. Shopify discounts: Pass for percentage discounts, 4. Stock and duplicates: Pass, 5. Saved order record: Pass, two fields missing, 6. Price bypass, shipping and VAT, payment methods: Open, CFS configurator MVP: acceptance report, Evidence orders (+21 more)
+Nodes (29): 1. Identifiers and breakdowns: Pass, 2. Basket cases: Pass, 3. Shopify discounts: Pass for percentage discounts, 4. Stock and duplicates: Pass, 5. Saved order record: Pass, two fields missing, 6. Price bypass, shipping and VAT, payment methods: Open, CFS configurator MVP: acceptance report, Evidence orders (+21 more)
 
 ### Community 31 - "@react-router/dev"
 Cohesion: 0.29

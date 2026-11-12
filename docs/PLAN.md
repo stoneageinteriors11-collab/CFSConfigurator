@@ -1,4 +1,4 @@
-# CFS configurator: small-step plan
+# CFS configurator: small-step plan plan edit
 
 ## Context
 
