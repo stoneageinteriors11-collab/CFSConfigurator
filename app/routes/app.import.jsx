@@ -62,13 +62,36 @@ function Problems({ errors }) {
   );
 }
 
-function GroupTable({ group }) {
+// A plain table, so the product's one scroll box does all the scrolling: the Choice column and
+// the header row stay in view, and every group uses the same size columns.
+const CELL = { padding: "6px 10px", borderBottom: "1px solid #e3e3e3", textAlign: "right", whiteSpace: "nowrap" };
+const SIZE_HEADER = { ...CELL, width: "120px", minWidth: "120px", maxWidth: "120px", whiteSpace: "normal", verticalAlign: "bottom" };
+const STICKY_TOP = { position: "sticky", top: 0, background: "#f7f7f7", zIndex: 1 };
+const CHOICE_CELL = {
+  ...CELL,
+  textAlign: "left",
+  whiteSpace: "normal",
+  width: "240px",
+  minWidth: "240px",
+  position: "sticky",
+  left: 0,
+  background: "#fff",
+};
+
+/** Every size offered anywhere on the product, in the order Shopify lists them. */
+function sizesOf(product) {
   const sizes = [];
-  for (const choice of group.choices) {
-    for (const price of choice.prices) {
-      if (!sizes.some((s) => s.sizeId === price.sizeId)) sizes.push(price);
+  for (const group of product.groups) {
+    for (const choice of group.choices) {
+      for (const price of choice.prices) {
+        if (!sizes.some((s) => s.sizeId === price.sizeId)) sizes.push(price);
+      }
     }
   }
+  return sizes;
+}
+
+function GroupTable({ group, sizes }) {
   const rule = [
     group.kind === "accessory" ? `Add-on, up to ${group.maxQuantity} each` : "Choose one",
     group.required ? "required" : "optional",
@@ -78,36 +101,45 @@ function GroupTable({ group }) {
     .join(", ");
 
   return (
-    <s-stack direction="block" gap="small-200">
-      <s-text type="strong">
+    <table style={{ borderCollapse: "separate", borderSpacing: 0, fontSize: "13px", tableLayout: "fixed" }}>
+      <caption style={{ textAlign: "left", fontWeight: 600, padding: "12px 10px 6px", position: "sticky", left: 0 }}>
         {group.name} ({rule})
-      </s-text>
-      <s-table>
-        <s-table-header-row>
-          <s-table-header listSlot="primary">Choice</s-table-header>
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col" style={{ ...CHOICE_CELL, ...STICKY_TOP, left: 0, zIndex: 2 }}>
+            Choice
+          </th>
           {sizes.map((size) => (
-            <s-table-header key={size.sizeId} listSlot="labeled" format="currency">
+            <th key={size.sizeId} scope="col" style={{ ...SIZE_HEADER, ...STICKY_TOP }} title={size.sizeTitle}>
               {size.sizeTitle}
-            </s-table-header>
+            </th>
           ))}
-        </s-table-header-row>
-        <s-table-body>
-          {group.choices.map((choice) => (
-            <s-table-row key={choice.cfsId}>
-              <s-table-cell>{choice.label}</s-table-cell>
-              {sizes.map((size) => {
-                const price = choice.prices.find((p) => p.sizeId === size.sizeId);
-                return <s-table-cell key={size.sizeId}>{price ? money(price.cents, "GBP") : "Not offered"}</s-table-cell>;
-              })}
-            </s-table-row>
-          ))}
-        </s-table-body>
-      </s-table>
-    </s-stack>
+        </tr>
+      </thead>
+      <tbody>
+        {group.choices.map((choice) => (
+          <tr key={choice.cfsId}>
+            <th scope="row" style={{ ...CHOICE_CELL, fontWeight: 400 }}>
+              {choice.label}
+            </th>
+            {sizes.map((size) => {
+              const price = choice.prices.find((p) => p.sizeId === size.sizeId);
+              return (
+                <td key={size.sizeId} style={{ ...CELL, color: price ? undefined : "#8a8a8a" }}>
+                  {price ? money(price.cents, "GBP") : "Not offered"}
+                </td>
+              );
+            })}
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 }
 
 function ProductPreview({ product }) {
+  const sizes = sizesOf(product);
   return (
     <s-section heading={`${product.title} (CFS ${product.cfsProductId})`}>
       <s-stack direction="block" gap="base">
@@ -127,14 +159,11 @@ function ProductPreview({ product }) {
           overflow="auto"
           border="base"
           borderRadius="base"
-          padding="small"
           accessibilityLabel={`Choices and prices for ${product.title}`}
         >
-          <s-stack direction="block" gap="base">
-            {product.groups.map((group) => (
-              <GroupTable key={group.name} group={group} />
-            ))}
-          </s-stack>
+          {product.groups.map((group) => (
+            <GroupTable key={group.name} group={group} sizes={sizes} />
+          ))}
         </s-scroll-box>
       </s-stack>
     </s-section>

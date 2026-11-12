@@ -660,9 +660,9 @@
     "semantic_hash": ""
   },
   "app/routes/app.import.jsx": {
-    "mtime": 1794480350.7213926,
-    "seen": 1794480456.9297438,
-    "ast_hash": "053f515a2be6e99b37c6d9d89b52035b",
+    "mtime": 1794480855.2018325,
+    "seen": 1794480942.4312983,
+    "ast_hash": "1ce6f790fd53d49701c62b94693f2222",
     "semantic_hash": ""
   },
   "app/routes/app.import.sample.jsx": {
