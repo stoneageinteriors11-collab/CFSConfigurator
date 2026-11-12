@@ -594,9 +594,9 @@
     "semantic_hash": ""
   },
   "docs/superpowers/plans/2026-11-12-option-importer-preview.md": {
-    "mtime": 1794478456.464129,
-    "seen": 1794478892.3144212,
-    "ast_hash": "d11281cc9837ac7207a433f1a8cfea2b",
+    "mtime": 1794479232.2414958,
+    "seen": 1794479385.8908615,
+    "ast_hash": "22691922547dcb8fe09c4138800106d2",
     "semantic_hash": ""
   },
   "docs/superpowers/specs/2026-11-12-option-importer-design.md": {
@@ -615,6 +615,24 @@
     "mtime": 1794478948.0152972,
     "seen": 1794479004.9692018,
     "ast_hash": "e2b9b5d1f61e0b29b0f6eb4c6be2e058",
+    "semantic_hash": ""
+  },
+  "app/import/build-product.js": {
+    "mtime": 1794479192.070152,
+    "seen": 1794479385.8908615,
+    "ast_hash": "acff4c5011848a4855aedce121414b2f",
+    "semantic_hash": ""
+  },
+  "app/import/export-rows.js": {
+    "mtime": 1794479203.859736,
+    "seen": 1794479385.8908615,
+    "ast_hash": "a8323469d04c33226485954e9d9daa95",
+    "semantic_hash": ""
+  },
+  "test/import/build-product.test.js": {
+    "mtime": 1794479223.1325252,
+    "seen": 1794479385.8908615,
+    "ast_hash": "a0a64c3d72b94bfd490436203fc9848d",
     "semantic_hash": ""
   },
   "package-lock.json": {

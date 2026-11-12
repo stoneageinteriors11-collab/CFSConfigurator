@@ -605,6 +605,18 @@
     "ast_hash": "e7f95fcd29e51ae8aa8bbebf7c345c29",
     "semantic_hash": ""
   },
+  "app/import/check-rows.js": {
+    "mtime": 1794478975.3346949,
+    "seen": 1794479004.9692018,
+    "ast_hash": "eca40580944f8a7c14030dcbf3a84e8b",
+    "semantic_hash": ""
+  },
+  "test/import/check-rows.test.js": {
+    "mtime": 1794478948.0152972,
+    "seen": 1794479004.9692018,
+    "ast_hash": "e2b9b5d1f61e0b29b0f6eb4c6be2e058",
+    "semantic_hash": ""
+  },
   "package-lock.json": {
     "mtime": 1794478625.944232,
     "seen": 1794478892.3144212,
