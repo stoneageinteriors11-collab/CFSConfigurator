@@ -242,6 +242,14 @@ function GroupTable({ group, sizes }) {
   );
 }
 
+/** "3 products", or "3 products; 2 unchanged, skipped". */
+function changedCount(products) {
+  const changed = products.filter((p) => !p.unchanged).length;
+  const same = products.length - changed;
+  const counted = `${changed} product${changed === 1 ? "" : "s"}`;
+  return same ? `${counted}; ${same} unchanged, skipped` : counted;
+}
+
 /** Ready only when the product has no problems in the sheet and the shop could sell it. */
 const isReady = (product) =>
   product.problems.length === 0 && product.check?.ready === true;
@@ -257,13 +265,21 @@ function ProductPreview({ product }) {
       <s-stack direction="inline" gap="small-200">
         <s-badge tone={ready ? "success" : "critical"}>
           {ready
-            ? "Ready to import"
+            ? product.unchanged
+              ? "No changes"
+              : "Ready to import"
             : `${product.problems.length} problem${product.problems.length === 1 ? "" : "s"}`}
         </s-badge>
         {product.check?.fromCents != null && (
           <s-text>From {money(product.check.fromCents, "GBP")}</s-text>
         )}
       </s-stack>
+      {product.unchanged && (
+        <s-banner
+          tone="info"
+          heading="No changes; this product will be skipped"
+        />
+      )}
       {product.problems.length > 0 && (
         <s-banner tone="critical" heading="Fix these rows for this product">
           <s-unordered-list>
@@ -378,7 +394,11 @@ function ProductTabs({ products }) {
                         : "#c5280c",
                   }}
                 >
-                  {isReady(p) ? "✓" : `✗ ${p.problems.length}`}
+                  {isReady(p)
+                    ? p.unchanged
+                      ? "="
+                      : "✓"
+                    : `✗ ${p.problems.length}`}
                 </span>{" "}
                 {shortTitle(p.title)} · {p.cfsProductId}
               </button>
@@ -482,10 +502,16 @@ export default function OptionsImport() {
 
       {result && (
         <s-section>
-          {result.importable ? (
+          {result.importable &&
+          result.products.every((p) => p.unchanged) ? (
+            <s-banner
+              tone="info"
+              heading="Nothing to import: the sheet matches the store"
+            />
+          ) : result.importable ? (
             <s-banner
               tone="success"
-              heading={`Ready to import: ${result.products.length} products`}
+              heading={`Ready to import: ${changedCount(result.products)}`}
             >
               Every row is correct and every product would be ready to sell.
               Importing comes in the next stage.

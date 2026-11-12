@@ -148,10 +148,16 @@ function workflowFor(kept, groups) {
   workflow.model_label = kept?.model_label ?? "Size";
   workflow.ordered = groups.some((g) => g.after);
   workflow.filters = kept?.filters ?? [];
+  // With no "Choose after", a group either opens at once ("") or waits for the size ("$model").
+  // The sheet cannot say which, so an existing group keeps its setting and a new one waits.
+  const keptRequires = new Map(
+    (kept?.groups ?? []).map((g) => [g.name, g.requires]),
+  );
   workflow.groups = sorted.map((g) => ({
     name: g.name,
     optional: !g.required,
-    requires: g.after || "$model",
+    requires:
+      g.after || (keptRequires.get(g.name) === "" ? "" : "$model"),
   }));
   if (Object.keys(pricing).length) workflow.pricing = pricing;
   return workflow;

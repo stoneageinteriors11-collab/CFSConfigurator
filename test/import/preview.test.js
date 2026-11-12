@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import { exportRows, sheetValues } from "../../app/import/export-rows.js";
-import { previewImport } from "../../app/import/preview.server.js";
+import { prepareImport, previewImport } from "../../app/import/preview.server.js";
 import { writeWorkbook } from "../../app/import/spreadsheet.server.js";
 import { fakeShop } from "./fake-shop.js";
 
@@ -176,4 +176,34 @@ test("refuses more than 100 products in one sheet", async () => {
     errors: [{ sheet: null, row: null, message: "The sheet has 101 products; preview at most 100 at a time" }],
     products: [],
   });
+});
+
+test("marks a re-uploaded product unchanged and plans nothing for it", async () => {
+  const { preview, plans } = await prepareImport(graphql, await sheet());
+  assert.equal(preview.importable, true);
+  assert.deepEqual(preview.products.map((p) => p.unchanged), [true, true]);
+  assert.deepEqual(plans, []);
+});
+
+test("plans a changed product with its built data", async () => {
+  const bytes = await sheet((rows) => {
+    rows.choices.find((c) => c["CFS product ID"] === NG && c.Choice === "with 2 Drawer")["Price (£)"] = "99.99";
+  });
+  const { preview, plans } = await prepareImport(graphql, bytes);
+  assert.equal(preview.importable, true);
+  assert.deepEqual(preview.products.map((p) => p.unchanged), [false, true]);
+  assert.deepEqual(plans.map((p) => [p.cfsProductId, p.productId, p.title]), [[NG, naturalGold.productId, "Natural Gold"]]);
+  assert.equal(plans[0].current.productId, naturalGold.productId);
+  const drawer = plans[0].product.options.find((o) => o.label === "with 2 Drawer");
+  assert.equal(drawer.mappings.assignments[0].raw_price, "99.99");
+  assert.equal(JSON.stringify(preview).includes("raw_price"), false, "the page is not sent the built data");
+});
+
+test("a product with problems is not unchanged and is not planned", async () => {
+  const bytes = await sheet((rows) => {
+    rows.choices.find((c) => c["CFS product ID"] === NG)["Price (£)"] = "abc";
+  });
+  const { preview, plans } = await prepareImport(graphql, bytes);
+  assert.equal(preview.products[0].unchanged, false);
+  assert.deepEqual(plans, []);
 });

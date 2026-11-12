@@ -146,6 +146,27 @@ test("a group with no Choose after waits only for the size", () => {
   assert.equal(chained.workflow.ordered, true);
 });
 
+test("a group with no Choose after keeps whether it is open before a size is picked", () => {
+  const current = {
+    ...naturalGold,
+    workflow: {
+      ...naturalGold.workflow,
+      groups: [
+        { name: "Select Fabric", optional: false, requires: "" },
+        { name: "Select Drawer", optional: false, requires: "Select Fabric" },
+      ],
+    },
+  };
+  const { product, errors } = build(
+    [group(), group({ row: 3, name: "Select Drawer", order: 2 }), group({ row: 4, name: "Select Feet", order: 3 })],
+    [choice(), choice({ row: 3, group: "Select Drawer", label: "None" }), choice({ row: 4, group: "Select Feet", label: "Chrome" })],
+    current,
+  );
+  assert.deepEqual(errors, []);
+  // Open at once as before; the sheet dropped the Choose after; a new group waits for the size.
+  assert.deepEqual(product.workflow.groups.map((g) => g.requires), ["", "$model", "$model"]);
+});
+
 test("groups follow Display order and add-ons set the most per item", () => {
   const { product, errors } = build(
     [

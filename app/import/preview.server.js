@@ -5,6 +5,7 @@ import { resolveAssignment } from "../pricing/quote.server.js";
 import { buildProduct } from "./build-product.js";
 import { checkRows } from "./check-rows.js";
 import { findProducts } from "./find-products.server.js";
+import { sameProduct } from "./same-product.js";
 import { readWorkbook } from "./spreadsheet.server.js";
 
 export const MAX_FILE_BYTES = 5 * 1024 * 1024;
@@ -49,18 +50,22 @@ function groupsPreview(product, sheetGroups) {
 }
 
 /**
- * Returns { importable, errors, products }. importable is true only when there are no errors
- * and every product would be ready to sell.
+ * Returns { preview, plans }. preview is { importable, errors, products } for the page:
+ * importable is true only when there are no errors and every product would be ready to sell,
+ * and each product says whether the sheet leaves it unchanged. plans lists every ready product
+ * the sheet would change: { cfsProductId, productId, title, current, product }, with the
+ * product as loaded from Shopify and as built from the sheet.
  */
-export async function previewImport(graphql, bytes) {
+export async function prepareImport(graphql, bytes) {
+  const nothing = (preview) => ({ preview, plans: [] });
   if (bytes.length > MAX_FILE_BYTES)
-    return refused("The file is larger than 5 MB");
+    return nothing(refused("The file is larger than 5 MB"));
 
   const sheet = await readWorkbook(bytes);
   if (sheet.errors.length)
-    return { importable: false, errors: sheet.errors, products: [] };
+    return nothing({ importable: false, errors: sheet.errors, products: [] });
   if (!sheet.groups.length && !sheet.choices.length)
-    return refused("The file has no rows to import");
+    return nothing(refused("The file has no rows to import"));
 
   const { products: rows, errors: rowErrors } = checkRows(sheet);
   // Every row problem is tagged with its product, so each product's tab can list its own problems.
@@ -86,8 +91,10 @@ export async function previewImport(graphql, bytes) {
     ),
   ].filter(Boolean);
   if (ids.length > MAX_PRODUCTS) {
-    return refused(
-      `The sheet has ${ids.length} products; preview at most ${MAX_PRODUCTS} at a time`,
+    return nothing(
+      refused(
+        `The sheet has ${ids.length} products; preview at most ${MAX_PRODUCTS} at a time`,
+      ),
     );
   }
   const found = await findProducts(
@@ -96,6 +103,7 @@ export async function previewImport(graphql, bytes) {
   );
 
   const products = [];
+  const builtOf = new Map();
   for (const id of ids) {
     const entry = {
       cfsProductId: id,
@@ -104,6 +112,7 @@ export async function previewImport(graphql, bytes) {
       check: null,
       groups: [],
       removed: [],
+      unchanged: false,
     };
     products.push(entry);
     const lookup = found.get(id);
@@ -124,6 +133,7 @@ export async function previewImport(graphql, bytes) {
     const built = buildProduct({ cfsProductId: id, groups, choices }, current);
     errors.push(...built.errors.map((e) => ({ ...e, product: id })));
     if (!built.product) continue;
+    builtOf.set(id, { current, product: built.product });
 
     const keptIds = new Set(built.product.options.map((o) => o.cfsId));
     const { ready, problems, fromCents } = checkProduct(built.product);
@@ -141,15 +151,33 @@ export async function previewImport(graphql, bytes) {
       .filter((o) => !keptIds.has(o.cfsId))
       .map((o) => o.label);
   }
-  for (const entry of products)
+  const plans = [];
+  for (const entry of products) {
     entry.problems = errors.filter((e) => e.product === entry.cfsProductId);
+    const built = builtOf.get(entry.cfsProductId);
+    if (!built || entry.problems.length || !entry.check?.ready) continue;
+    entry.unchanged = sameProduct(built.current, built.product);
+    if (!entry.unchanged) {
+      plans.push({
+        cfsProductId: entry.cfsProductId,
+        productId: entry.productId,
+        title: entry.title,
+        ...built,
+      });
+    }
+  }
 
+  const importable =
+    errors.length === 0 &&
+    products.length > 0 &&
+    products.every((p) => p.check?.ready);
   return {
-    importable:
-      errors.length === 0 &&
-      products.length > 0 &&
-      products.every((p) => p.check?.ready),
-    errors,
-    products,
+    preview: { importable, errors, products },
+    plans: importable ? plans : [],
   };
+}
+
+/** What the page shows: prepareImport's preview, without the built data. */
+export async function previewImport(graphql, bytes) {
+  return (await prepareImport(graphql, bytes)).preview;
 }
