@@ -18,10 +18,12 @@ const shopifyProduct = () => ({
       pageInfo: { hasNextPage: false },
       nodes: [
         {
+          entryId: "gid://shopify/Metaobject/9",
           cfsId: { value: "c1" },
           label: { value: "Label" },
           groupName: { value: "Group" },
           mappings: { value: '{"kind":"option","assignments":[]}' },
+          optionCode: { value: "FAB-OAK" },
         },
       ],
     },
@@ -40,7 +42,15 @@ test("converts Shopify's response for the pricing engine", async () => {
     variants: [{ id: "v1", sku: "A", price: "10.00", inventoryQuantity: 1 }],
     modelCards: { A: { source_id: "1" } },
     workflow: { mode: "m" },
-    options: [{ cfsId: "c1", label: "Label", groupName: "Group", mappings: { kind: "option", assignments: [] }, imageUrl: null }],
+    options: [{
+      entryId: "gid://shopify/Metaobject/9",
+      cfsId: "c1",
+      label: "Label",
+      groupName: "Group",
+      mappings: { kind: "option", assignments: [] },
+      imageUrl: null,
+      optionCode: "FAB-OAK",
+    }],
   });
 });
 

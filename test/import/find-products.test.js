@@ -100,3 +100,16 @@ test("a Shopify error on one product is reported on that product only", async ()
   assert.deepEqual(found.get("1"), { error: "Shopify could not be read for this product just now; try again" });
   assert.equal(found.get("2").product.productId, P2);
 });
+
+test("reads each choice's entry ID and option code", async () => {
+  const { readFileSync } = await import("node:fs");
+  const { fakeShop } = await import("./fake-shop.js");
+  const gold = JSON.parse(readFileSync(new URL("../fixtures/natural-gold.json", import.meta.url), "utf8"));
+  gold.options[0] = { ...gold.options[0], optionCode: "FAB-CARLTON-BLACK" };
+  const found = await findProducts(fakeShop([gold]), ["146477"]);
+  const { options } = found.get("146477").product;
+  assert.equal(options[0].optionCode, "FAB-CARLTON-BLACK");
+  assert.equal(options[1].optionCode, "");
+  assert.ok(options.every((o) => o.entryId.startsWith("gid://shopify/Metaobject/")));
+  assert.equal(new Set(options.map((o) => o.entryId)).size, options.length);
+});

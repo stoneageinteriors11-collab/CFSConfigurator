@@ -14,12 +14,14 @@ const asShopify = (p) => ({
     : {
         references: {
           pageInfo: { hasNextPage: false },
-          nodes: p.options.map((o) => ({
+          nodes: p.options.map((o, i) => ({
+            entryId: o.entryId ?? `gid://shopify/Metaobject/${p.productId.split("/").pop()}${i}`,
             cfsId: { value: o.cfsId },
             label: { value: o.label },
             groupName: { value: o.groupName },
             mappings: { value: JSON.stringify(o.mappings) },
             imageUrl: o.imageUrl ? { value: o.imageUrl } : null,
+            optionCode: o.optionCode ? { value: o.optionCode } : null,
           })),
         },
       },

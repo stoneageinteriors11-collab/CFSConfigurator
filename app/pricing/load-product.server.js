@@ -7,11 +7,13 @@ const MAX_CHOICE_PAGES = 5;
 
 const CHOICE_FIELDS = `
   ... on Metaobject {
+    entryId: id
     cfsId: field(key: "cfs_id") { value }
     label: field(key: "label") { value }
     groupName: field(key: "group_name") { value }
     mappings: field(key: "source_mappings") { value }
     imageUrl: field(key: "image_url") { value }
+    optionCode: field(key: "option_code") { value }
   }`;
 
 const MORE_CHOICES_QUERY = `#graphql
@@ -114,11 +116,13 @@ export async function loadConfigurableProduct(graphql, productId) {
     modelCards: parseJson(product.modelCards?.value),
     workflow: parseJson(product.workflow?.value),
     options: nodes.map((node) => ({
+      entryId: node.entryId,
       cfsId: node.cfsId?.value,
       label: node.label?.value,
       groupName: node.groupName?.value,
       mappings: parseJson(node.mappings?.value),
       imageUrl: node.imageUrl?.value ?? null,
+      optionCode: node.optionCode?.value ?? "",
     })),
   };
 }

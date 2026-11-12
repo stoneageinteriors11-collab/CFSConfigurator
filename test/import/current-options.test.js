@@ -72,3 +72,13 @@ test("refuses unknown products and products with no options, with no file", asyn
     errors: ['"abc" is not a CFS product ID (a number, like 146477)'],
   });
 });
+
+test("downloads each choice's option code", async () => {
+  const coded = structuredClone(naturalGold);
+  const option = coded.options.find((o) => o.label === "Carlton Black");
+  option.optionCode = "FAB-CARLTON-BLACK";
+  const { bytes } = await currentOptionsWorkbook(fakeShop([coded]), "146477", NOW);
+  const { choices } = await readWorkbook(bytes);
+  assert.equal(choices.find((c) => c.values.Choice === "Carlton Black").values["Option code"], "FAB-CARLTON-BLACK");
+  assert.equal(choices.find((c) => c.values.Choice === "with 2 Drawer").values["Option code"], "");
+});

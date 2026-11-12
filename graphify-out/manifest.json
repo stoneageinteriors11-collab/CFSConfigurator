@@ -660,9 +660,9 @@
     "semantic_hash": ""
   },
   "app/routes/app.import.jsx": {
-    "mtime": 1794483632.1941173,
-    "seen": 1794484553.0290341,
-    "ast_hash": "a38c8c2abc1ece021d4624af43eada7c",
+    "mtime": 1794485102.4108155,
+    "seen": 1794485133.2305553,
+    "ast_hash": "3b3270fdd4d883259db4e5df29a9a6a3",
     "semantic_hash": ""
   },
   "app/routes/app.import.sample.jsx": {
@@ -693,6 +693,12 @@
     "mtime": 1794484635.4415672,
     "seen": 1794484841.9849508,
     "ast_hash": "ecadd9b57a74deed9b96e3c193caa256",
+    "semantic_hash": ""
+  },
+  "app/routes/app.import.current.jsx": {
+    "mtime": 1794485102.422815,
+    "seen": 1794485133.2305553,
+    "ast_hash": "1d767867447c7a00e59bb1f1cbaddc39",
     "semantic_hash": ""
   },
   "package-lock.json": {
