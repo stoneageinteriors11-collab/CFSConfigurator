@@ -21,14 +21,15 @@
       "breakdownPence": { "base": 99999, "options": [{ "label": "with 2 Drawer", "assignmentId": "17020886", "pence": 8999 }, { "label": "Carlton Black", "assignmentId": "17020903", "pence": 0 }], "beforeDiscounts": 108998, "shopifyDiscount": 10899, "total": 98099 },
       "expectedTotalGBP": "980.99",
       "appRecord": "matched"
-    }
+    },
+    { "name": "#1035", "route": "app-checkout", "test": "E10a", "totalGBP": "2089.97", "discountGBP": "0.00", "taxGBP": "0.00", "shippingGBP": "0.00", "lines": [{ "sku": "CFS-TYPE-146477-17019157", "quantity": 1, "unitGBP": "1089.98", "note": "with 2 Drawer, Carlton Black" }, { "sku": "CFS-TYPE-146477-17019157", "quantity": 1, "unitGBP": "999.99", "note": "without Drawer, Carlton Caramel" }], "appRecord": "matched", "stock": "92 to 90" }
   ],
   "results": [
     { "area": 1, "case": "identifiers, breakdown, discounts, expected vs actual", "result": "pass", "evidence": ["#1029", "#1030", "#1031", "#1032", "#1033", "#1034"] },
     { "area": 2, "case": "configured item alone", "result": "pass", "evidence": ["#1031", "#1034"] },
     { "area": 2, "case": "ordinary item alone", "result": "pass", "evidence": ["design: ordinary-only baskets use Shopify's own checkout"] },
     { "area": 2, "case": "mixed basket", "result": "pass", "evidence": ["#1030", "#1032", "#1033"] },
-    { "area": 2, "case": "two different configurations of one size", "result": "pass-automated-only", "evidence": ["test/checkout/check-basket.test.js", "test/orders/specification.test.js"] },
+    { "area": 2, "case": "two different configurations of one size", "result": "pass", "evidence": ["#1035", "test/checkout/check-basket.test.js", "test/orders/specification.test.js"] },
     { "area": 2, "case": "quantity above one", "result": "pass", "evidence": ["#1029"] },
     { "area": 2, "case": "change quantity and remove", "result": "pass", "evidence": ["E4f browser check"] },
     { "area": 2, "case": "edit a configuration in place", "result": "pass", "evidence": ["E9: preview theme, 12 Nov 2026: fabric changed in place (quantity 2 and position kept); edited into an existing configuration joined to one line of 3; stale Edit link falls back to Add to basket", "test/basket/basket.test.js", "test/basket/basket-request.test.js"] },
@@ -47,7 +48,7 @@
     { "area": 4, "case": "stock re-checked at checkout", "result": "pass", "evidence": ["test/checkout/check-basket.test.js"] },
     { "area": 4, "case": "real Shopify stock changes", "result": "pass", "evidence": ["B7", "#1030"] },
     { "area": 4, "case": "configured sizes held to tracked stock", "result": "pass", "evidence": ["E8b"] },
-    { "area": 4, "case": "zero stock blocks checkout", "result": "pass-automated-only", "evidence": ["test/checkout/check-basket.test.js", "test/pricing/quote.test.js"] },
+    { "area": 4, "case": "zero stock blocks checkout", "result": "pass", "evidence": ["E10b: 12 Nov 2026, Natural Gold 4ft Small Double in basket, stock set 100 to 0, Checkout refused with the line flagged, no draft created, stock restored to 100", "test/checkout/check-basket.test.js", "test/pricing/quote.test.js"] },
     { "area": 4, "case": "repeated checkout clicks", "result": "pass", "evidence": ["E5c: 8 simultaneous clicks, one draft"] },
     { "area": 4, "case": "repeated paid notification", "result": "pass", "evidence": ["E6c"] },
     { "area": 4, "case": "missed notifications recovered", "result": "pass", "evidence": ["E6f"] },

@@ -228,9 +228,9 @@
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1794466481.5774674,
-    "seen": 1794466531.1508179,
-    "ast_hash": "fde3a79d637c1e16371db7a126fd4668",
+    "mtime": 1794466554.9697769,
+    "seen": 1794466566.1903872,
+    "ast_hash": "65fa476ef7258ab752695620eac53ace",
     "semantic_hash": ""
   },
   "app/pricing/quote-request.server.js": {

@@ -11,7 +11,7 @@ Checked 11 November 2026 against section 8 of `CLAUDE_MVP_HANDOFF.md`, on the de
 | 1 | Identifiers, price breakdown, discounts, expected against actual | Pass |
 | 2 | Basket cases | Pass |
 | 3 | Shopify discounts | Pass for percentage discounts; real promotion types not supplied |
-| 4 | Stock and duplicates | Pass, zero stock not tried live through the app |
+| 4 | Stock and duplicates | Pass |
 | 5 | Saved order record | Pass, dimensions and pricing version not recorded |
 | 6 | Price bypass, shipping and VAT, payment methods | Open or blocked |
 
@@ -34,6 +34,7 @@ All paid with the development store's test gateway. Shipping and tax were £0.00
 | #1032 | App checkout (E6e) | Natural Gold 2ft 6in × 1 at £1,089.98; 3ft × 1 at £1,059.98; TEST-EOC-S × 1 at £149.00 | £0 | £2,298.96 | Basket and Shopify cart emptied after payment |
 | #1033 | App checkout (E7d) | CFS-TYPE-69733-1840531 (Loft) × 1 at £1,389.97; TEST-EOC-S × 1 at £149.00 | £0 | £1,538.97 | Accessory quantity 2 ("Lightings: 2 × 102 : Lighting for Footboard") |
 | #1034 | App checkout (E8a) | Natural Gold × 1 at £1,089.98 | £108.99 | £980.99 | 10% automatic discount through the app's own checkout |
+| #1035 | App checkout (E10a) | Natural Gold 2ft 6in × 1 at £1,089.98 (2 drawers, Carlton Black); same size × 1 at £999.99 (no drawer, Carlton Caramel) | £0 | £2,089.97 | Two configurations of one size as separate lines; stock 92 to 90; record matched |
 
 Breakdown example (#1034): base £999.99 (2ft 6in Small Single) + "with 2 Drawer" £89.99 (CFS assignment 17020886) + Carlton Black £0.00 (17020903) = £1,089.98. Shopify's 10% automatic discount took £108.99, giving £980.99. Expected and actual match.
 
@@ -48,7 +49,7 @@ Every app order record holds the Shopify order and line IDs, variant ID, SKU, CF
 | Configured item alone | Pass | #1031, #1034 |
 | Ordinary item alone | Pass by design | Ordinary-only baskets use Shopify's own cart and checkout, so they keep selling if the app is down |
 | Mixed basket | Pass | #1030, #1032, #1033 |
-| Two different configurations of one size | Pass in automated tests | Kept as separate lines and share the size's stock (`test/checkout/check-basket.test.js`, `test/orders/specification.test.js`). Not yet in a paid order |
+| Two different configurations of one size | Pass | #1035: two 2ft 6in beds with different drawers and fabric, kept as separate lines with their own options and prices; stock fell by 2 |
 | Quantity above one | Pass | #1029, three copies of one configuration |
 | Change quantity and remove | Pass | Checked in the browser on the preview theme (E4f) |
 | Edit a configuration in place | Pass | Edit link in the basket opens the product page with the line's choices picked; Update item re-prices it and saves over the same line, keeping quantity and place. Editing into a configuration already in the basket joins the two lines. Checked on the preview theme 12 November 2026 (E9) |
@@ -77,7 +78,7 @@ Every app order record holds the Shopify order and line IDs, variant ID, SKU, CF
 | Stock is checked again at checkout | Pass | Automated tests: exact stock passes, one more is refused; configurations of one size add up against its stock |
 | Real Shopify stock changes | Pass | B7 and #1030: stock fell by one on each line |
 | Configured sizes always held to stock | Pass | Rule since E8b: an untracked or overselling configured size is refused or limited; ordinary products follow Shopify |
-| Zero stock blocks checkout | Pass in automated tests | Not yet tried live through the app's checkout |
+| Zero stock blocks checkout | Pass | E10b: a size in the basket was set to 0 stock; Checkout was refused, the line was flagged and no draft order was made. Stock restored to 100 straight after |
 | Repeated Checkout clicks | Pass | 8 simultaneous clicks made one draft (E5c) |
 | Repeated paid notification | Pass | One record kept (E6c) |
 | Missed notifications | Pass | Catch-up every 15 minutes rebuilt missing records (E6f) |
