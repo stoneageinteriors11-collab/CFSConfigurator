@@ -140,7 +140,7 @@
     - `modelCards`: one per variant whose `sizeIdOf` is not null, `{ source_id: sizeId, image: "", dimensions: "", height: "", width: "" }`, keeping an existing card's `image`, `dimensions`, `height`, `width`.
     - `options`: one per choice: `{ cfsId, label, groupName, optionCode, imageUrl: imageUrl || null, mappings: { kind, dimensions: details, inside_color: "", assignments } }`. Assignments: blank Sizes gives `{ id: cfsId, parent: "0", parent2: "0", raw_price: price }` plus one `{ id: \`${cfsId}-${sizeId}\`, parent: sizeId, parent2: "0", raw_price }` per Size prices entry; filled Sizes gives one assignment per listed size, priced from Size prices or Price.
   - `choiceIdFor(cfsProductId, group, label, cfsId) -> string`: `cfsId` when given, else `"imp-" +` the first 16 hex characters of SHA-256 of `` `${cfsProductId}\n${group}\n${label}` ``.
-  - `exportRows(cfsProductId, product) -> { groups: Group[], choices: Choice[] }` (no `row`): the inverse of `buildProduct`. For a choice whose assignments have no `parent: "0"`, `sizes` lists every parent, `price` is the most common price and `sizePrices` holds the others. `inside_color`, if present, is appended to `details` after `<br>`. `optionCode` is exported when the option has one, else `""` (today's products have none; storing codes in Shopify is stage 3).
+  - `exportRows(cfsProductId, product) -> { groups: Group[], choices: Choice[] }` (no `row`): the inverse of `buildProduct`. For a choice whose assignments have no `parent: "0"`, `sizes` lists every parent, `price` is the most common price and `sizePrices` holds the others. `inside_color` is not on the sheet; `buildProduct` keeps it from the product's current choice with the same ID (ruling, Task 3). `optionCode` is exported when the option has one, else `""` (today's products have none; storing codes in Shopify is stage 3).
 
 - [ ] **Step 1: Write the failing tests** (use the seven fixtures in `test/fixtures/`)
   - `reads the size ID from real and test SKUs`: `sizeIdOf("CFS-146477-17019157","146477") === "17019157"`, same for `UD-` and `CFS-TYPE-`; `sizeIdOf("CFS-146478-17019157","146477") === null`; `sizeIdOf("CFSDB-070","146477") === null`.
@@ -169,6 +169,8 @@
 - [ ] **Step 4: Run** `npm test`. Expected: all pass, including all existing pricing tests.
 
 - [ ] **Step 5:** give the commit message `git commit -m "feat:build product option data from import rows"`.
+
+**Rulings made while building (Task 3):** CFS's per-size reference (assignment `id`) is kept from the product's current data when the same choice is on the same size, so order records keep CFS's real numbers; only new sizes or choices get made-up IDs. `inside_color` is kept the same way instead of being folded into Details. The whole existing `pricing` object is kept, not only `source_url`. Two rows giving the same CFS choice ID in one product are refused.
 
 ---
 
