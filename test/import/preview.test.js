@@ -4,6 +4,7 @@ import { test } from "node:test";
 import { exportRows, sheetValues } from "../../app/import/export-rows.js";
 import { previewImport } from "../../app/import/preview.server.js";
 import { writeWorkbook } from "../../app/import/spreadsheet.server.js";
+import { fakeShop } from "./fake-shop.js";
 
 const load = (name) => JSON.parse(readFileSync(new URL(`../fixtures/${name}.json`, import.meta.url), "utf8"));
 const naturalGold = { ...load("natural-gold"), title: "Natural Gold" };
@@ -11,41 +12,7 @@ const loft = load("loft");
 const NG = "146477";
 const LOFT = "69733";
 
-// The fixture as Shopify's API returns it, for loadConfigurableProduct.
-const asShopify = (p) => ({
-  id: p.productId,
-  title: p.title,
-  handle: p.handle ?? "",
-  featuredMedia: null,
-  variants: { pageInfo: { hasNextPage: false }, nodes: p.variants },
-  modelCards: { value: JSON.stringify(p.modelCards) },
-  workflow: { value: JSON.stringify(p.workflow) },
-  options: {
-    references: {
-      pageInfo: { hasNextPage: false },
-      nodes: p.options.map((o) => ({
-        cfsId: { value: o.cfsId },
-        label: { value: o.label },
-        groupName: { value: o.groupName },
-        mappings: { value: JSON.stringify(o.mappings) },
-        imageUrl: o.imageUrl ? { value: o.imageUrl } : null,
-      })),
-    },
-  },
-});
-
-const shop = [naturalGold, loft];
-async function graphql(query, { variables }) {
-  let data;
-  if (query.includes("productVariants")) {
-    const nodes = shop.flatMap((p) => p.variants.map((v) => ({ sku: v.sku, product: { id: p.productId } })));
-    data = { productVariants: { pageInfo: { hasNextPage: false }, nodes } };
-  } else {
-    const product = shop.find((p) => p.productId === variables.id);
-    data = { product: product ? asShopify(product) : null };
-  }
-  return { json: async () => ({ data }) };
-}
+const graphql = fakeShop([naturalGold, loft]);
 
 // Both products' current options as sheet rows; change(rows) can edit them first.
 async function sheet(change = () => {}) {

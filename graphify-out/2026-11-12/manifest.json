@@ -648,21 +648,21 @@
     "semantic_hash": ""
   },
   "app/import/preview.server.js": {
-    "mtime": 1794479989.8926256,
-    "seen": 1794480220.8581455,
-    "ast_hash": "db59aa927e3064e728d19cfb8947fb8a",
+    "mtime": 1794482910.8982975,
+    "seen": 1794483050.2010486,
+    "ast_hash": "7b08700373396e73629cbef8b3d842f5",
     "semantic_hash": ""
   },
   "test/import/preview.test.js": {
-    "mtime": 1794479984.079897,
-    "seen": 1794480220.8591452,
-    "ast_hash": "7e108b9a1bb952e9aa222edde39e0191",
+    "mtime": 1794482896.036719,
+    "seen": 1794483050.2010486,
+    "ast_hash": "23ffaee4dce3df856ebf60846e521926",
     "semantic_hash": ""
   },
   "app/routes/app.import.jsx": {
-    "mtime": 1794481751.7066388,
-    "seen": 1794481879.1715229,
-    "ast_hash": "75cbd90d1942cbde314555569f53664c",
+    "mtime": 1794482938.9500234,
+    "seen": 1794483050.2010486,
+    "ast_hash": "85d14097c9dc439407818d9d2577de89",
     "semantic_hash": ""
   },
   "app/routes/app.import.sample.jsx": {
