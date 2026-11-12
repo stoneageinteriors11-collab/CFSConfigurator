@@ -27,11 +27,41 @@ const asShopify = (p) => ({
       },
 });
 
-/** graphql(query, { variables }) over these products. Products are read when called, so tests may change them. */
-export function fakeShop(products) {
+// A live option entry as the shared-option lookup sees it:
+// { id, label, imageUrl, details, code, products: [{ id, title }] }.
+const asEntry = (e) => ({
+  id: e.id,
+  label: { value: e.label },
+  imageUrl: e.imageUrl ? { value: e.imageUrl } : null,
+  mappings: { value: JSON.stringify({ dimensions: e.details ?? "" }) },
+  optionCode: e.code ? { value: e.code } : null,
+  referencedBy: { nodes: (e.products ?? []).map((p) => ({ referencer: p })) },
+});
+
+/** The metaobjects search: fields.option_code:CODE or fields.label:"NAME", pageSize entries at a time. */
+function searchEntries(entries, { query, after }, pageSize) {
+  const code = /^fields\.option_code:(.+)$/.exec(query)?.[1];
+  const label = /^fields\.label:"(.*)"$/.exec(query)?.[1]?.replace(/\\(.)/g, "$1");
+  const hits = entries.filter((e) => (code !== undefined ? e.code === code : e.label === label));
+  const start = after ? Number(after) : 0;
+  const page = hits.slice(start, start + pageSize);
+  const end = start + page.length;
+  return {
+    pageInfo: { hasNextPage: end < hits.length, endCursor: String(end) },
+    nodes: page.map(asEntry),
+  };
+}
+
+/**
+ * graphql(query, { variables }) over these products. Products are read when called, so tests may
+ * change them. entries are live option entries (see asEntry) for the shared-option lookup.
+ */
+export function fakeShop(products, entries = [], pageSize = 250) {
   return async function graphql(query, { variables }) {
     let data;
-    if (query.includes("productVariants")) {
+    if (query.includes("CfsSharedOptions")) {
+      data = { metaobjects: searchEntries(entries, variables, pageSize) };
+    } else if (query.includes("productVariants")) {
       const nodes = products.flatMap((p) => p.variants.map((v) => ({ sku: v.sku, product: { id: p.productId } })));
       data = { productVariants: { pageInfo: { hasNextPage: false }, nodes } };
     } else {

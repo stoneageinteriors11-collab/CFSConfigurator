@@ -5,6 +5,7 @@ import { resolveAssignment } from "../pricing/quote.server.js";
 import { buildProduct } from "./build-product.js";
 import { checkRows } from "./check-rows.js";
 import { findProducts } from "./find-products.server.js";
+import { checkSharedOptions } from "./shared-options.server.js";
 import { sameProduct } from "./same-product.js";
 import { readWorkbook } from "./spreadsheet.server.js";
 
@@ -102,6 +103,11 @@ export async function prepareImport(graphql, bytes) {
     ids.filter((id) => rows.has(id)),
   );
 
+  // Entries of the products in this sheet are about to be replaced, so they never count as "other".
+  const sheetProductIds = [...found.values()]
+    .filter((r) => r.product)
+    .map((r) => r.product.productId);
+  const sharedCache = new Map();
   const products = [];
   const builtOf = new Map();
   for (const id of ids) {
@@ -112,6 +118,7 @@ export async function prepareImport(graphql, bytes) {
       check: null,
       groups: [],
       removed: [],
+      warnings: [],
       unchanged: false,
     };
     products.push(entry);
@@ -134,6 +141,20 @@ export async function prepareImport(graphql, bytes) {
     errors.push(...built.errors.map((e) => ({ ...e, product: id })));
     if (!built.product) continue;
     builtOf.set(id, { current, product: built.product });
+
+    const shared = await checkSharedOptions(graphql, built.product.options, {
+      exceptProductIds: sheetProductIds,
+      cache: sharedCache,
+    });
+    entry.warnings = shared.warnings;
+    errors.push(
+      ...shared.errors.map((message) => ({
+        sheet: null,
+        row: null,
+        product: id,
+        message,
+      })),
+    );
 
     const keptIds = new Set(built.product.options.map((o) => o.cfsId));
     const { ready, problems, fromCents } = checkProduct(built.product);

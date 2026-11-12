@@ -207,3 +207,41 @@ test("a product with problems is not unchanged and is not planned", async () => 
   assert.equal(preview.products[0].unchanged, false);
   assert.deepEqual(plans, []);
 });
+
+const OTHER_BED = { id: "gid://shopify/Product/999", title: "Other Bed" };
+const withCode = (code) => (rows) => {
+  rows.choices.find((c) => c["CFS product ID"] === NG && c.Choice === "with 2 Drawer")["Option code"] = code;
+};
+
+test("a shared-option error blocks import and a warning does not", async () => {
+  const clash = fakeShop([naturalGold, loft], [
+    { id: "gid://shopify/Metaobject/1", label: "Two drawers", code: "DRAWER-2", products: [OTHER_BED] },
+  ]);
+  const blocked = await prepareImport(clash, await sheet(withCode("DRAWER-2")));
+  assert.equal(blocked.preview.importable, false);
+  assert.equal(blocked.preview.products[0].problems.length, 1);
+  assert.match(blocked.preview.products[0].problems[0].message, /Option code DRAWER-2 is "Two drawers" on Other Bed \(999\)/);
+  assert.equal(blocked.preview.products[0].problems[0].product, NG);
+  assert.deepEqual(blocked.plans, []);
+
+  const similar = fakeShop([naturalGold, loft], [
+    { id: "gid://shopify/Metaobject/2", label: "Carlton Black", code: "CB01", products: [OTHER_BED] },
+  ]);
+  const warned = await prepareImport(similar, await sheet());
+  assert.equal(warned.preview.importable, true);
+  assert.deepEqual(warned.preview.errors, []);
+  assert.deepEqual(warned.preview.products[0].warnings, [
+    '"Carlton Black" has the same name as option code CB01 on Other Bed; add the code if it is the same option',
+  ]);
+  assert.deepEqual(warned.preview.products[1].warnings, []);
+});
+
+test("a code that matches live products is allowed and plans the change", async () => {
+  const agree = fakeShop([naturalGold, loft], [
+    { id: "gid://shopify/Metaobject/3", label: "with 2 Drawer", code: "DRAWER-2", products: [OTHER_BED] },
+  ]);
+  const { preview, plans } = await prepareImport(agree, await sheet(withCode("DRAWER-2")));
+  assert.deepEqual(preview.errors, []);
+  assert.equal(preview.importable, true);
+  assert.deepEqual(plans.map((p) => p.cfsProductId), [NG]);
+});

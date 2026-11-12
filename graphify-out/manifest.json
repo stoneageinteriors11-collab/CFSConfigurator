@@ -618,9 +618,9 @@
     "semantic_hash": ""
   },
   "app/import/build-product.js": {
-    "mtime": 1794483632.2301447,
-    "seen": 1794484553.0290341,
-    "ast_hash": "51190fceab56396f8a3b2f0cdb3b9ec8",
+    "mtime": 1794486775.1184304,
+    "seen": 1794488091.5827372,
+    "ast_hash": "28493ca7560442c4ced0b24e808f1400",
     "semantic_hash": ""
   },
   "app/import/export-rows.js": {
@@ -630,9 +630,9 @@
     "semantic_hash": ""
   },
   "test/import/build-product.test.js": {
-    "mtime": 1794483588.6802914,
-    "seen": 1794484553.0290341,
-    "ast_hash": "ad25d07d3e19a0ee0b4079c26c8723a3",
+    "mtime": 1794486769.5582876,
+    "seen": 1794488091.5827372,
+    "ast_hash": "8363a690f97c4b79996703d8ff58688d",
     "semantic_hash": ""
   },
   "app/import/find-products.server.js": {
@@ -648,21 +648,21 @@
     "semantic_hash": ""
   },
   "app/import/preview.server.js": {
-    "mtime": 1794483632.279147,
-    "seen": 1794484553.0290341,
-    "ast_hash": "627f972ae6951f4419aa89689df21a80",
+    "mtime": 1794486800.190001,
+    "seen": 1794488091.5827372,
+    "ast_hash": "86473d5267bd8d129db73ae1f74b1473",
     "semantic_hash": ""
   },
   "test/import/preview.test.js": {
-    "mtime": 1794484680.3309212,
-    "seen": 1794484841.9849508,
-    "ast_hash": "aebc82f61bcaa5072d20ee9f3414ec3a",
+    "mtime": 1794486784.529814,
+    "seen": 1794488091.5827372,
+    "ast_hash": "15966d9ac545612346a089658f24c9cb",
     "semantic_hash": ""
   },
   "app/routes/app.import.jsx": {
-    "mtime": 1794485102.4108155,
-    "seen": 1794485133.2305553,
-    "ast_hash": "3b3270fdd4d883259db4e5df29a9a6a3",
+    "mtime": 1794486822.881364,
+    "seen": 1794488091.5827372,
+    "ast_hash": "2d2f816959e4a30583adc6ef0151df8a",
     "semantic_hash": ""
   },
   "app/routes/app.import.sample.jsx": {
@@ -711,6 +711,18 @@
     "mtime": 1794485856.092671,
     "seen": 1794486446.213103,
     "ast_hash": "77b08b71fa118b49580178d4b824da9b",
+    "semantic_hash": ""
+  },
+  "app/import/same-product.js": {
+    "mtime": 1794486740.780625,
+    "seen": 1794488091.5827372,
+    "ast_hash": "3fea20edf122799a1e1fbe818febc1e5",
+    "semantic_hash": ""
+  },
+  "test/import/same-product.test.js": {
+    "mtime": 1794486736.276549,
+    "seen": 1794488091.5827372,
+    "ast_hash": "3e986703d7040c82f2790559a92eafca",
     "semantic_hash": ""
   },
   "package-lock.json": {

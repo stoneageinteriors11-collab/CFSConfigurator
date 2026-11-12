@@ -291,6 +291,15 @@ function ProductPreview({ product }) {
           </s-unordered-list>
         </s-banner>
       )}
+      {product.warnings?.length > 0 && (
+        <s-banner tone="warning" heading="Check these">
+          <s-unordered-list>
+            {product.warnings.map((warning, i) => (
+              <s-list-item key={i}>{warning}</s-list-item>
+            ))}
+          </s-unordered-list>
+        </s-banner>
+      )}
       {product.removed.length > 0 && (
         <s-banner
           tone="warning"
