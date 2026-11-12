@@ -223,15 +223,23 @@ export async function startRestore({ db, graphql, shop, backupId, createdBy = nu
   };
 }
 
-/** A run for the page. A stopped run's unfinished products are shown as needing a check. */
-export function runView(run) {
+/**
+ * A run for the page. A run that has not moved for 10 minutes is shown as stopped, and a stopped
+ * run's unfinished products are shown as needing a check.
+ */
+export function runView(run, now = new Date()) {
   const { planned = [], done = [] } = run.results ?? {};
+  const stale =
+    run.status === "running" &&
+    run.updatedAt &&
+    now.getTime() - new Date(run.updatedAt).getTime() > STALE_AFTER_MS;
+  const status = stale ? "stopped" : run.status;
   const finished = new Set(done.map((d) => d.cfsProductId));
   const unfinished =
-    run.status === "stopped"
+    status === "stopped"
       ? planned
           .filter((p) => !finished.has(p.cfsProductId))
           .map((p) => ({ ...p, status: "stopped", message: STOPPED }))
       : [];
-  return { ...run, results: [...done, ...unfinished] };
+  return { ...run, status, results: [...done, ...unfinished] };
 }

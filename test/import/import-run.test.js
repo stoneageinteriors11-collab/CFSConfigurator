@@ -323,3 +323,14 @@ test("shows unfinished products of a stopped run", async () => {
   assert.equal(runView(finished).results.length, 1);
   assert.equal(runView({ ...stopped, results: {} }).results.length, 0);
 });
+
+test("shows a run that has not moved for 10 minutes as stopped", async () => {
+  const planned = [{ cfsProductId: NG, title: "Natural Gold" }];
+  const running = { id: "r1", status: "running", total: 1, updatedAt: new Date("2026-11-12T10:00:00Z"), results: { planned, done: [] } };
+  const soon = runView(running, new Date("2026-11-12T10:05:00Z"));
+  assert.equal(soon.status, "running");
+  assert.deepEqual(soon.results, []);
+  const late = runView(running, new Date("2026-11-12T10:11:00Z"));
+  assert.equal(late.status, "stopped");
+  assert.deepEqual(late.results.map((r) => r.status), ["stopped"]);
+});

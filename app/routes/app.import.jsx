@@ -1,9 +1,13 @@
-// Options import, stage 1: upload a sheet and preview it. Nothing is written to Shopify.
-import { useState } from "react";
-import { Form, useActionData, useNavigation } from "react-router";
+// Options import: upload a sheet, preview it, then import it into Shopify.
+import { useRef, useState } from "react";
+import { Form, useActionData, useFetcher, useNavigation } from "react-router";
 import { boundary } from "@shopify/shopify-app-react-router/server";
+import db from "../db.server";
 import { authenticate } from "../shopify.server";
+import { backgroundRunnerFor } from "../import/background.server.js";
 import { MAX_FILE_BYTES, previewImport } from "../import/preview.server.js";
+import { RunProgress } from "../import/run-progress.jsx";
+import { startImport } from "../import/start-import.server.js";
 import { money } from "../orders/format.js";
 
 export const loader = async ({ request }) => {
@@ -18,7 +22,8 @@ const refused = (message) => ({
 });
 
 export const action = async ({ request }) => {
-  const { admin } = await authenticate.admin(request);
+  const { admin, session, sessionToken } = await authenticate.admin(request);
+  const importing = new URL(request.url).searchParams.get("intent") === "import";
   // Refuse a very large upload before reading it into memory. The request must state its size:
   // Node's HTTP server never reads more body than the stated length, and browsers always state it
   // for a file upload.
@@ -31,8 +36,21 @@ export const action = async ({ request }) => {
   if (!file || typeof file === "string" || file.size === 0)
     return refused("Choose an Excel (.xlsx) file first");
   // eslint-disable-next-line no-undef
-  return previewImport(admin.graphql, Buffer.from(await file.arrayBuffer()));
+  const bytes = Buffer.from(await file.arrayBuffer());
+  if (!importing) return previewImport(admin.graphql, bytes);
+  // The file is checked again in full before anything is written.
+  return startImport({
+    db,
+    graphql: admin.graphql,
+    shop: session.shop,
+    bytes,
+    fileName: file.name,
+    createdBy: sessionToken?.sub ?? null,
+    runInBackground: backgroundRunnerFor(session.shop),
+  });
 };
+
+const messageOf = (problem) => problem.message ?? problem;
 
 /** Fetches the sample through the app (so it is signed in) and saves it. */
 /**
@@ -429,6 +447,34 @@ export default function OptionsImport() {
   const sample = useDownload();
   const current = useDownload();
   const [ids, setIds] = useState("");
+  // Import re-sends the file, so only the file that was previewed may be imported.
+  const fileInput = useRef(null);
+  const importer = useFetcher();
+  const [previewed, setPreviewed] = useState(null);
+  const [chosen, setChosen] = useState(null);
+  // Which preview Import was pressed for, so a new preview can be imported again.
+  const [previewCount, setPreviewCount] = useState(0);
+  const [startedFor, setStartedFor] = useState(null);
+  const answer = startedFor === previewCount ? importer.data : undefined;
+  const signature = (file) =>
+    file ? `${file.name}|${file.size}|${file.lastModified}` : null;
+  const importing = importer.state !== "idle";
+  const canImport =
+    result?.importable &&
+    result.products.some((p) => !p.unchanged) &&
+    previewed !== null &&
+    previewed === chosen &&
+    !answer?.runId;
+  const startImporting = () => {
+    setStartedFor(previewCount);
+    const data = new FormData();
+    data.set("file", fileInput.current.files[0]);
+    importer.submit(data, {
+      method: "post",
+      action: "/app/import?intent=import",
+      encType: "multipart/form-data",
+    });
+  };
 
   return (
     <s-page heading="Options import">
@@ -437,8 +483,8 @@ export default function OptionsImport() {
           <s-paragraph>
             Upload an Excel sheet with a Groups sheet and a Choices sheet. For
             every product in the sheet, its options become exactly what the
-            sheet says. This page only shows a preview: nothing in the shop is
-            changed yet.
+            sheet says. Preview first: nothing in the shop changes until you
+            press Import.
           </s-paragraph>
           <s-stack direction="inline" gap="base">
             <s-button
@@ -449,13 +495,24 @@ export default function OptionsImport() {
             </s-button>
           </s-stack>
           <DownloadProblems errors={sample.errors} />
-          <Form method="post" encType="multipart/form-data">
+          <Form
+            method="post"
+            encType="multipart/form-data"
+            onSubmit={() => {
+              setPreviewed(signature(fileInput.current?.files[0]));
+              setPreviewCount((count) => count + 1);
+            }}
+          >
             <s-stack direction="inline" gap="base">
               <input
+                ref={fileInput}
                 type="file"
                 name="file"
                 accept=".xlsx"
                 aria-label="Option sheet (.xlsx)"
+                onChange={(event) =>
+                  setChosen(signature(event.target.files[0]))
+                }
               />
               <s-button
                 type="submit"
@@ -523,7 +580,30 @@ export default function OptionsImport() {
               heading={`Ready to import: ${changedCount(result.products)}`}
             >
               Every row is correct and every product would be ready to sell.
-              Importing comes in the next stage.
+              {canImport ? (
+                <s-stack direction="block" gap="base">
+                  <s-text>
+                    Import writes the options to Shopify now. Each product is
+                    backed up first, and Import history can restore it.
+                  </s-text>
+                  <s-button
+                    variant="primary"
+                    loading={importing || undefined}
+                    onClick={startImporting}
+                  >
+                    Import {result.products.filter((p) => !p.unchanged).length}{" "}
+                    {result.products.filter((p) => !p.unchanged).length === 1
+                      ? "product"
+                      : "products"}
+                  </s-button>
+                </s-stack>
+              ) : (
+                !answer?.runId && (
+                  <s-text>
+                    Choose the file again and press Preview before importing.
+                  </s-text>
+                )
+              )}
             </s-banner>
           ) : (
             <s-banner
@@ -531,6 +611,22 @@ export default function OptionsImport() {
               heading="Not ready: fix the problems below. Nothing has been changed."
             />
           )}
+        </s-section>
+      )}
+      {answer?.errors && (
+        <s-section>
+          <s-banner tone="critical" heading="Not imported. Nothing has been changed.">
+            <s-unordered-list>
+              {answer.errors.map((problem, i) => (
+                <s-list-item key={i}>{messageOf(problem)}</s-list-item>
+              ))}
+            </s-unordered-list>
+          </s-banner>
+        </s-section>
+      )}
+      {answer?.runId && (
+        <s-section>
+          <RunProgress runId={answer.runId} />
         </s-section>
       )}
       {result && result.errors.length > 0 && (
