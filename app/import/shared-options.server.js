@@ -34,18 +34,31 @@ function detailsOf(mappings) {
   }
 }
 
+const ATTEMPTS = 3;
+const realSleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+/** One page of a search. Reading is safe to repeat, so a failed read is tried again, twice at most. */
+async function readPage(graphql, variables, sleep) {
+  for (let attempt = 1; ; attempt += 1) {
+    try {
+      const response = await graphql(LIVE_OPTIONS_QUERY, { variables });
+      const { data } = await response.json();
+      if (data?.metaobjects) return data.metaobjects;
+      throw new Error(UNREADABLE);
+    } catch (error) {
+      if (attempt >= ATTEMPTS) throw error;
+      await sleep(500 * attempt);
+    }
+  }
+}
+
 /** Every live entry matching a Shopify search, across all pages. Throws if Shopify's answer is unusable. */
-async function search(graphql, query, cache) {
+async function search(graphql, query, cache, sleep) {
   if (cache.has(query)) return cache.get(query);
   const entries = [];
   let after = null;
   for (;;) {
-    const response = await graphql(LIVE_OPTIONS_QUERY, {
-      variables: { query, after },
-    });
-    const { data } = await response.json();
-    const page = data?.metaobjects;
-    if (!page) throw new Error(UNREADABLE);
+    const page = await readPage(graphql, { query, after }, sleep);
     for (const node of page.nodes) {
       entries.push({
         label: node.label?.value ?? "",
@@ -84,7 +97,7 @@ function outside(entries, except) {
 export async function checkSharedOptions(
   graphql,
   options,
-  { exceptProductIds = [], cache = new Map() } = {},
+  { exceptProductIds = [], cache = new Map(), sleep = realSleep } = {},
 ) {
   const except = new Set(exceptProductIds);
   const errors = [];
@@ -96,7 +109,7 @@ export async function checkSharedOptions(
 
       if (code) {
         const live = (
-          await search(graphql, `fields.option_code:${code}`, cache)
+          await search(graphql, `fields.option_code:${code}`, cache, sleep)
         ).filter((e) => e.code === code && outside([e], except).length);
         const differing = live.filter(
           (e) =>
@@ -125,7 +138,7 @@ export async function checkSharedOptions(
       }
 
       const sameNamed = (
-        await search(graphql, `fields.label:"${quoted(option.label)}"`, cache)
+        await search(graphql, `fields.label:"${quoted(option.label)}"`, cache, sleep)
       ).filter(
         (e) =>
           e.code &&

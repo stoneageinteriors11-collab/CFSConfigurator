@@ -123,6 +123,27 @@ test("looks each code and name up once however often it is used", async () => {
 
 test("an unreadable answer from Shopify blocks the import", async () => {
   const broken = async () => ({ json: async () => ({ errors: [{ message: "boom" }] }) });
-  const { errors } = await checkSharedOptions(broken, [option()], { exceptProductIds: [IN_SHEET] });
+  const { errors } = await checkSharedOptions(broken, [option()], { exceptProductIds: [IN_SHEET], sleep: async () => {} });
   assert.deepEqual(errors, ["Shopify could not be asked about shared options just now; try again"]);
+});
+
+test("retries a search that fails once, but not for ever", async () => {
+  const shop = fakeShop([], [live()]);
+  let failures = 1;
+  const flaky = async (query, args) => {
+    if (failures-- > 0) throw new Error("socket hang up");
+    return shop(query, args);
+  };
+  const noWait = async () => {};
+  const once = await checkSharedOptions(flaky, [option()], { exceptProductIds: [IN_SHEET], sleep: noWait });
+  assert.deepEqual(once, { errors: [], warnings: [] });
+
+  let calls = 0;
+  const down = async () => {
+    calls += 1;
+    throw new Error("socket hang up");
+  };
+  const result = await checkSharedOptions(down, [option()], { exceptProductIds: [IN_SHEET], sleep: noWait });
+  assert.deepEqual(result.errors, ["Shopify could not be asked about shared options just now; try again"]);
+  assert.equal(calls, 3);
 });

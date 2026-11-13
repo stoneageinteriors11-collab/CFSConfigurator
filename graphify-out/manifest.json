@@ -72,9 +72,9 @@
     "semantic_hash": ""
   },
   "app/routes/app.jsx": {
-    "mtime": 1794480311.4131324,
-    "seen": 1794480456.9297438,
-    "ast_hash": "df57b465371f7d7c6172493b36f5c64b",
+    "mtime": 1794489837.9596436,
+    "seen": 1794490032.944918,
+    "ast_hash": "a9d7a3da5e3fb9d5193375a0d700f8a8",
     "semantic_hash": ""
   },
   "app/routes/auth.$.jsx": {
@@ -660,9 +660,9 @@
     "semantic_hash": ""
   },
   "app/routes/app.import.jsx": {
-    "mtime": 1794488457.0171256,
-    "seen": 1794488822.9242995,
-    "ast_hash": "b21eb44511ac715f53e323685a1ecb55",
+    "mtime": 1794489852.4846377,
+    "seen": 1794490032.944918,
+    "ast_hash": "8ec80c07c507440fa5760a0a58475206",
     "semantic_hash": ""
   },
   "app/routes/app.import.sample.jsx": {
@@ -768,15 +768,57 @@
     "semantic_hash": ""
   },
   "app/import/import-run.server.js": {
-    "mtime": 1794489469.2295883,
-    "seen": 1794489629.0826173,
-    "ast_hash": "61cb0b6313bd113a09e95a7f92d58351",
+    "mtime": 1794489757.5178905,
+    "seen": 1794490032.944918,
+    "ast_hash": "95ba7b1a3a4ea69a21743d20bf706313",
     "semantic_hash": ""
   },
   "test/import/import-run.test.js": {
-    "mtime": 1794489478.0965383,
-    "seen": 1794489629.0886216,
-    "ast_hash": "b374dbc0b428dd21217e486218f035c2",
+    "mtime": 1794489757.4752598,
+    "seen": 1794490032.944918,
+    "ast_hash": "7c3752aa341a81bbbbb9db93fa98dc9b",
+    "semantic_hash": ""
+  },
+  "app/import/background.server.js": {
+    "mtime": 1794489815.4695735,
+    "seen": 1794490032.944918,
+    "ast_hash": "92252a3980ba092f52c35a98f782017c",
+    "semantic_hash": ""
+  },
+  "app/import/run-progress.jsx": {
+    "mtime": 1794489800.2342815,
+    "seen": 1794490032.944918,
+    "ast_hash": "03608a2530a5deccff00b484ffb920d3",
+    "semantic_hash": ""
+  },
+  "app/import/start-import.server.js": {
+    "mtime": 1794489747.803052,
+    "seen": 1794490032.944918,
+    "ast_hash": "b89202477275e3abb53199aed5ef59b0",
+    "semantic_hash": ""
+  },
+  "app/routes/app.import.history.jsx": {
+    "mtime": 1794489822.4648638,
+    "seen": 1794490032.944918,
+    "ast_hash": "fa9d6671d7e079ed26ae7c39ca0e77df",
+    "semantic_hash": ""
+  },
+  "app/routes/app.import.runs.$id.jsx": {
+    "mtime": 1794489815.488579,
+    "seen": 1794490032.944918,
+    "ast_hash": "07c4f3ce3531e3eb1c980b8ecaf47a05",
+    "semantic_hash": ""
+  },
+  "prisma/migrations/20261112120000_create_import_runs/migration.sql": {
+    "mtime": 1794489405.616036,
+    "seen": 1794490032.944918,
+    "ast_hash": "d0001542929d6c9de6f7a2999bdbe203",
+    "semantic_hash": ""
+  },
+  "test/import/start-import.test.js": {
+    "mtime": 1794489747.7750165,
+    "seen": 1794490032.944918,
+    "ast_hash": "dc1256e457ceacea0f529118125c32cc",
     "semantic_hash": ""
   },
   "package-lock.json": {

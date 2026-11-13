@@ -441,9 +441,12 @@ function ProductTabs({ products }) {
 }
 
 export default function OptionsImport() {
-  const result = useActionData();
+  const previous = useActionData();
   const navigation = useNavigation();
   const busy = navigation.state === "submitting";
+  // The last preview is cleared the moment a new one starts, so nothing from the old file
+  // (its tabs, its banner, its Import button) is shown beside the new one.
+  const result = navigation.state === "idle" ? previous : undefined;
   const sample = useDownload();
   const current = useDownload();
   const [ids, setIds] = useState("");
