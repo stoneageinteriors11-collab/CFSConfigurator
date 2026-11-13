@@ -240,7 +240,7 @@
 - Modify: `shopify.app.toml` (add `write_metaobjects` to `scopes`)
 - Modify: `app/routes/app.import.jsx` (an `intent=import` action and the Import button)
 - Create: `app/routes/app.import.runs.$id.jsx` (loader returning JSON `runView` for this shop's run, or 404)
-- Create: `app/routes/app.import.history.jsx` (the last 50 runs with their results, a Restore button per backup, and an action with `intent=restore`)
+- Create: `app/routes/app.import_.history.jsx` (the trailing underscore keeps it from nesting inside the import page; the last 50 runs with their results, a Restore button per backup, and an action with `intent=restore`)
 - Create: `app/import/start-import.server.js`
 - Modify: `app/routes/app.jsx` (nav link "Import history")
 - Test: `test/import/start-import.test.js`
