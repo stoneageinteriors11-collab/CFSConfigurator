@@ -4,7 +4,7 @@ import { beginRun, runPlans } from "./import-run.server.js";
 import { prepareImport } from "./preview.server.js";
 
 /**
- * runInBackground(work) must call work(graphql) later, with a Shopify client that lasts beyond
+ * runInBackground(work, runId) must call work(graphql) later, with a Shopify client that lasts beyond
  * this request. Returns { runId } or { errors }.
  */
 export async function startImport({ db, graphql, shop, bytes, fileName, createdBy, createdByName, runInBackground }) {
@@ -26,8 +26,9 @@ export async function startImport({ db, graphql, shop, bytes, fileName, createdB
   });
   if (started.error) return { errors: [started.error] };
 
-  runInBackground((backgroundGraphql) =>
-    runPlans({ db, graphql: backgroundGraphql, run: started.run, plans }),
+  runInBackground(
+    (backgroundGraphql) => runPlans({ db, graphql: backgroundGraphql, run: started.run, plans }),
+    started.run.id,
   );
   return { runId: started.run.id };
 }

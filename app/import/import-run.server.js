@@ -175,6 +175,10 @@ export async function runPlans({ db, graphql, run, plans, sleep }) {
   await record({ status: "done" });
 }
 
+/** Marks a run stopped if it is still running, so a failure is visible and the shop can import again. */
+export const stopRun = (db, runId) =>
+  db.importRun.updateMany({ where: { id: runId, status: "running" }, data: { status: "stopped" } });
+
 /** Whether a backup holds a product's options (one taken before its first import does not). */
 export const hasOptionsToRestore = (data) => Array.isArray(data?.options);
 

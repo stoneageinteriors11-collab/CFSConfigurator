@@ -59,8 +59,9 @@ export const action = async ({ request }) => {
     createdByName: staff.name,
   });
   if (started.error) return { error: started.error };
-  backgroundRunnerFor(session.shop)((graphql) =>
-    runPlans({ db, graphql, run: started.run, plans: [started.plan] }),
+  backgroundRunnerFor(session.shop)(
+    (graphql) => runPlans({ db, graphql, run: started.run, plans: [started.plan] }),
+    started.run.id,
   );
   return { runId: started.run.id };
 };

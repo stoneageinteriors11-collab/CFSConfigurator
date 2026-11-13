@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import { afterEach, beforeEach, test } from "node:test";
 import { buildProduct } from "../../app/import/build-product.js";
 import { exportRows } from "../../app/import/export-rows.js";
-import { beginRun, hasOptionsToRestore, runPlans, runView, startRestore, writesAllowed } from "../../app/import/import-run.server.js";
+import { beginRun, hasOptionsToRestore, runPlans, runView, startRestore, stopRun, writesAllowed } from "../../app/import/import-run.server.js";
 import { loadConfigurableProduct } from "../../app/pricing/load-product.server.js";
 import { fakeStore } from "./fake-store.js";
 
@@ -38,7 +38,10 @@ function fakeDatabase({ clock = () => new Date() } = {}) {
       updateMany: async ({ where, data }) => {
         let count = 0;
         for (const run of runs) {
-          if (run.shop === where.shop && run.status === where.status && run.updatedAt < where.updatedAt.lt) {
+          const matches = where.id
+            ? run.id === where.id
+            : run.shop === where.shop && run.updatedAt < where.updatedAt.lt;
+          if (matches && run.status === where.status) {
             Object.assign(run, data, { updatedAt: clock() });
             count += 1;
           }
@@ -340,4 +343,17 @@ test("only a backup that holds options can be restored", () => {
   assert.equal(hasOptionsToRestore({ options: [], workflow: {}, modelCards: {} }), true);
   assert.equal(hasOptionsToRestore({ ordinary: true }), false);
   assert.equal(hasOptionsToRestore(null), false);
+});
+
+test("stopRun frees the shop when a run failed, and leaves a finished run alone", async () => {
+  const db = fakeDatabase();
+  const { run } = await beginRun({ db, shop: SHOP, kind: "import", planned: [{ cfsProductId: NG, title: "A" }] });
+  await stopRun(db, run.id);
+  assert.equal(db.runs[0].status, "stopped");
+  const next = await beginRun({ db, shop: SHOP, kind: "import", planned: [{ cfsProductId: NG, title: "A" }] });
+  assert.ok(next.run, "a new run can start");
+
+  db.runs[1].status = "done";
+  await stopRun(db, db.runs[1].id);
+  assert.equal(db.runs[1].status, "done");
 });
