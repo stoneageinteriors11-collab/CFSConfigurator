@@ -660,9 +660,9 @@
     "semantic_hash": ""
   },
   "app/routes/app.import.jsx": {
-    "mtime": 1794489852.4846377,
-    "seen": 1794490032.944918,
-    "ast_hash": "8ec80c07c507440fa5760a0a58475206",
+    "mtime": 1794553426.3770347,
+    "seen": 1794553502.2322059,
+    "ast_hash": "c1c453c51bc983b6bf2a1480994fd38f",
     "semantic_hash": ""
   },
   "app/routes/app.import.sample.jsx": {
@@ -726,15 +726,15 @@
     "semantic_hash": ""
   },
   "app/import/shared-options.server.js": {
-    "mtime": 1794488412.828807,
-    "seen": 1794488822.9242995,
-    "ast_hash": "66f30b6ff47b93f79756bf1aea7f0aba",
+    "mtime": 1794552687.4745207,
+    "seen": 1794553502.2322059,
+    "ast_hash": "827fa12b014e0307e3e2f4652f2d3ad5",
     "semantic_hash": ""
   },
   "test/import/shared-options.test.js": {
-    "mtime": 1794488395.097577,
-    "seen": 1794488822.9242995,
-    "ast_hash": "2bd4edab6acc273bbfb6bbbd4ee516c7",
+    "mtime": 1794552697.5855358,
+    "seen": 1794553502.2322059,
+    "ast_hash": "a2fe9acc383b5a1d0574aa9bdffa9407",
     "semantic_hash": ""
   },
   "app/import/shopify-writes.server.js": {

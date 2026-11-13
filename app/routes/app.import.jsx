@@ -5,6 +5,7 @@ import { boundary } from "@shopify/shopify-app-react-router/server";
 import db from "../db.server";
 import { authenticate } from "../shopify.server";
 import { backgroundRunnerFor } from "../import/background.server.js";
+import { staffFrom } from "../import/staff.server.js";
 import { MAX_FILE_BYTES, previewImport } from "../import/preview.server.js";
 import { RunProgress } from "../import/run-progress.jsx";
 import { startImport } from "../import/start-import.server.js";
@@ -23,6 +24,7 @@ const refused = (message) => ({
 
 export const action = async ({ request }) => {
   const { admin, session, sessionToken } = await authenticate.admin(request);
+  const staff = staffFrom(session, sessionToken);
   const importing = new URL(request.url).searchParams.get("intent") === "import";
   // Refuse a very large upload before reading it into memory. The request must state its size:
   // Node's HTTP server never reads more body than the stated length, and browsers always state it
@@ -45,7 +47,8 @@ export const action = async ({ request }) => {
     shop: session.shop,
     bytes,
     fileName: file.name,
-    createdBy: sessionToken?.sub ?? null,
+    createdBy: staff.id,
+    createdByName: staff.name,
     runInBackground: backgroundRunnerFor(session.shop),
   });
 };

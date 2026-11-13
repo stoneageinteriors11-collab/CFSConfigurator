@@ -7,7 +7,7 @@ import { prepareImport } from "./preview.server.js";
  * runInBackground(work) must call work(graphql) later, with a Shopify client that lasts beyond
  * this request. Returns { runId } or { errors }.
  */
-export async function startImport({ db, graphql, shop, bytes, fileName, createdBy, runInBackground }) {
+export async function startImport({ db, graphql, shop, bytes, fileName, createdBy, createdByName, runInBackground }) {
   // The sheet is checked again now, not trusted from the preview: Shopify may have changed since.
   const { preview, plans } = await prepareImport(graphql, bytes);
   if (!preview.importable) {
@@ -20,6 +20,7 @@ export async function startImport({ db, graphql, shop, bytes, fileName, createdB
     shop,
     kind: "import",
     createdBy,
+    createdByName,
     fileName,
     planned: plans.map((p) => ({ cfsProductId: p.cfsProductId, title: p.title })),
   });

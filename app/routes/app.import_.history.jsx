@@ -4,6 +4,7 @@ import { boundary } from "@shopify/shopify-app-react-router/server";
 import db from "../db.server";
 import { authenticate } from "../shopify.server";
 import { backgroundRunnerFor } from "../import/background.server.js";
+import { staffFrom } from "../import/staff.server.js";
 import { runPlans, runView, startRestore } from "../import/import-run.server.js";
 import { ResultRows, RunProgress } from "../import/run-progress.jsx";
 
@@ -27,6 +28,7 @@ export const loader = async ({ request }) => {
         status: view.status,
         fileName: run.fileName,
         createdBy: run.createdBy,
+        createdByName: run.createdByName,
         createdAt: run.createdAt,
         total: run.total,
         // Restorable: the product was written, and its backup has not been restored yet.
@@ -42,13 +44,15 @@ export const loader = async ({ request }) => {
 
 export const action = async ({ request }) => {
   const { admin, session, sessionToken } = await authenticate.admin(request);
+  const staff = staffFrom(session, sessionToken);
   const form = await request.formData();
   const started = await startRestore({
     db,
     graphql: admin.graphql,
     shop: session.shop,
     backupId: String(form.get("backupId") ?? ""),
-    createdBy: sessionToken?.sub ?? null,
+    createdBy: staff.id,
+    createdByName: staff.name,
   });
   if (started.error) return { error: started.error };
   backgroundRunnerFor(session.shop)((graphql) =>
@@ -67,7 +71,10 @@ const when = (iso) =>
 export default function ImportHistory() {
   const { runs } = useLoaderData();
   const answer = useActionData();
-  const busy = useNavigation().state === "submitting";
+  const navigation = useNavigation();
+  const busy = navigation.state === "submitting";
+  // Only the button that was pressed shows its spinner; the others wait, disabled.
+  const restoring = busy ? navigation.formData?.get("backupId") : null;
 
   const restoreButton = (result) =>
     result.restorable ? (
@@ -80,7 +87,11 @@ export default function ImportHistory() {
         }}
       >
         <input type="hidden" name="backupId" value={result.backupId} />
-        <s-button type="submit" loading={busy || undefined}>
+        <s-button
+          type="submit"
+          loading={restoring === result.backupId || undefined}
+          disabled={busy || undefined}
+        >
           Restore
         </s-button>
       </Form>
@@ -123,7 +134,9 @@ export default function ImportHistory() {
                 {run.status === "running" ? "Running" : "Stopped part-way"}
               </s-badge>
             )}
-            {run.createdBy && <s-text tone="subdued">Run by user {run.createdBy}</s-text>}
+            {(run.createdByName || run.createdBy) && (
+              <s-text tone="subdued">Run by {run.createdByName || `user ${run.createdBy}`}</s-text>
+            )}
             <ResultRows results={run.results} action={restoreButton} />
           </s-stack>
         </s-section>

@@ -106,6 +106,7 @@ const begin = (db, plans, extra = {}) =>
     shop: SHOP,
     kind: "import",
     createdBy: "staff-1",
+    createdByName: "Sam Staff",
     fileName: "options.xlsx",
     planned: plans.map((p) => ({ cfsProductId: p.cfsProductId, title: p.title })),
     ...extra,

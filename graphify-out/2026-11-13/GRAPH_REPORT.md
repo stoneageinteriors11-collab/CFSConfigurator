@@ -1,17 +1,17 @@
-# Graph Report - cfs-configurator  (2026-11-12)
+# Graph Report - cfs-configurator  (2026-11-13)
 
 ## Corpus Check
-- 137 files · ~98,051 words
+- 137 files · ~98,297 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 14 file(s) not represented in the graph (top: (none) 8, .toml 3, .css 1)
 
 ## Summary
-- 954 nodes · 1896 edges · 61 communities (53 shown, 8 thin omitted)
+- 956 nodes · 1899 edges · 60 communities (50 shown, 10 thin omitted)
 - Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 76 edges (avg confidence: 0.92)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `558b6dba`
+- Built from commit: `745baf74`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -26,15 +26,15 @@
 - TypeScript Editor Config
 - NPM Scripts
 - PNPM Build Allowlist
-- build-product.test.js
+- exportRows
 - lib.js
 - Cursor MCP Config
 - Claude MCP Config
 - shopify-writes.server.js
-- app.import.jsx
+- start-import.test.js
 - product-check.server.js
 - entry.server.jsx
-- Review Focus
+- Option importer stage 3: write and restore. Implementation plan
 - quote.server.js
 - spreadsheet.server.js
 - check-rows.js
@@ -43,11 +43,11 @@
 - devDependencies
 - preview.server.js
 - overrides
-- accessories-flow.test.js
+- check-basket.test.js
 - start-checkout.server.js
 - CFS configurator MVP: acceptance report
-- ref_node_test
-- import-run.test.js
+- ref_node_assert
+- app.import.jsx
 - Option importer stage 3: write and restore. Design
 - e4b-basket-check.js
 - Polaris web components 2.x (polaris-2.js)
@@ -57,24 +57,23 @@
 - polarisUrl option
 - Shopify CLI
 - app/shopify.server.ts shopify const
-- current-options.test.js
+- check-basket.server.js
 - @shopify/shopify-app-react-router
 - .graphqlrc.js
 - EncryptedSessionStorage
 - shopify.server.js
-- app.import.history.jsx
+- quote.test.js
 - react-router
 - quote-fargo.test.js
-- checkout-request.test.js
-- ref_node_assert
-- quote-ordinary.test.js
+- _index/route.jsx
+- basket-request.test.js
+- eslint-plugin-react-hooks@^4.6.2
 - e6d-status-check.js
 - same-product.test.js
 - quote-accessories.test.js
 - eslint-import-resolver-typescript@^3.10.1
-- eslint-plugin-jsx-a11y@^6.10.2
-- @types/eslint@^9.6.1
-- @types/react-dom@^18.3.7
+- graphql-config@^5.1.1
+- @shopify/api-codegen-preset
 
 ## God Nodes (most connected - your core abstractions)
 1. `loadConfigurableProduct()` - 28 edges
@@ -91,14 +90,14 @@
 ## Surprising Connections (you probably didn't know these)
 - `Task 2: Check and type each row` --references--> `checkRows()`  [INFERRED]
   docs/superpowers/plans/2026-11-12-option-importer-preview.md → app/import/check-rows.js
-- `Task 3: Check shared options against live products` --references--> `prepareImport()`  [INFERRED]
-  docs/superpowers/plans/2026-11-12-option-importer-write.md → app/import/preview.server.js
-- `Task 7: Import button, progress and history` --references--> `prepareImport()`  [INFERRED]
-  docs/superpowers/plans/2026-11-12-option-importer-write.md → app/import/preview.server.js
 - `Task 1: Read entry IDs and option codes from Shopify` --references--> `fakeShop()`  [INFERRED]
   docs/superpowers/plans/2026-11-12-option-importer-write.md → test/import/fake-shop.js
+- `Task 6: Import runs, backups and restore` --references--> `checkSharedOptions()`  [INFERRED]
+  docs/superpowers/plans/2026-11-12-option-importer-write.md → app/import/shared-options.server.js
 - `Task 4: Find the Shopify products` --references--> `sizeIdOf()`  [INFERRED]
   docs/superpowers/plans/2026-11-12-option-importer-preview.md → app/import/build-product.js
+- `Option importer, stage 1 (read-only preview) Implementation Plan` --references--> `loadConfigurableProduct()`  [INFERRED]
+  docs/superpowers/plans/2026-11-12-option-importer-preview.md → app/pricing/load-product.server.js
 
 ## Import Cycles
 - None detected.
@@ -108,11 +107,11 @@
 - **Production hosting options** — readme_google_cloud_run_deployment, readme_fly_io_deployment, readme_render_deployment, readme_manual_deployment_guide [EXTRACTED 1.00]
 - **Webhook subscription pitfalls and remedy** — readme_app_specific_webhooks, readme_afterauth_shop_specific_webhooks, readme_admin_created_webhook_hmac_failure, readme_cli_webhook_admin_undefined [INFERRED 0.85]
 
-## Communities (61 total, 8 thin omitted)
+## Communities (60 total, 10 thin omitted)
 
 ### Community 0 - "package.json"
 Cohesion: 0.13
-Nodes (14): author, prettier@^3.6.2, @types/react@^18.3.25, engines, node, name, private, resolutions (+6 more)
+Nodes (14): author, prettier@^3.6.2, @types/eslint@^9.6.1, engines, node, name, private, resolutions (+6 more)
 
 ### Community 1 - "Shopify App Template - React Router README"
 Cohesion: 0.15
@@ -123,8 +122,8 @@ Cohesion: 0.18
 Nodes (24): adminOrderUrl(), dateTime(), discountText(), groupName(), MATCH, matchBadge(), money(), needsAttention() (+16 more)
 
 ### Community 3 - "Server Rendering Runtime"
-Cohesion: 0.09
-Nodes (22): dependencies, isbot@^5.1.31, prisma@^6.16.3, @prisma/client@^6.16.3, react-dom@^18.3.1, @react-router/fs-routes@7.18.2, @react-router/node@7.18.2, @react-router/serve@7.18.2 (+14 more)
+Cohesion: 0.11
+Nodes (18): dependencies, prisma@^6.16.3, @prisma/client@^6.16.3, react@^18.3.1, @react-router/fs-routes@7.18.2, @react-router/serve@7.18.2, @shopify/app-bridge-react@^4.2.4, @shopify/cli@4.9.3 (+10 more)
 
 ### Community 4 - "choices-request.test.js"
 Cohesion: 0.20
@@ -150,9 +149,9 @@ Nodes (18): scripts, build, config:link, config:use, deploy, dev, docker-start, 
 Cohesion: 0.20
 Nodes (9): allowBuilds, esbuild, @parcel/watcher, prisma, @prisma/client, @prisma/engines, unrs-resolver, packages (+1 more)
 
-### Community 10 - "build-product.test.js"
-Cohesion: 0.16
-Nodes (15): assignmentsFor(), buildProduct(), checkChoices(), checkGroups(), checkRequiredGroups(), choiceIdFor(), sizeIdOf(), workflowFor() (+7 more)
+### Community 10 - "exportRows"
+Cohesion: 0.21
+Nodes (10): exportRows(), priceColumns(), sheetValues(), TYPE_NAMES, graphql, loft, naturalGold, OTHER_BED (+2 more)
 
 ### Community 11 - "lib.js"
 Cohesion: 0.17
@@ -167,60 +166,60 @@ Cohesion: 0.50
 Nodes (3): npx, @shopify/dev-mcp, shopify-dev-mcp
 
 ### Community 14 - "shopify-writes.server.js"
-Cohesion: 0.08
-Nodes (35): callShopify(), CREATE_ENTRY_MUTATION, createEntries(), DELETE_ENTRY_MUTATION, deleteEntries(), ENTRY_BY_HANDLE_QUERY, ENTRY_LISTED_QUERY, entryHandle() (+27 more)
+Cohesion: 0.06
+Nodes (49): assignmentsFor(), buildProduct(), checkChoices(), checkGroups(), checkRequiredGroups(), choiceIdFor(), sizeIdOf(), workflowFor() (+41 more)
 
-### Community 16 - "app.import.jsx"
-Cohesion: 0.14
-Nodes (21): MAX_FILE_BYTES, action(), CELL, changedCount(), CHOICE_CELL, downloadFile(), DownloadProblems(), GroupTable() (+13 more)
+### Community 16 - "start-import.test.js"
+Cohesion: 0.22
+Nodes (7): asEntry(), asShopify(), fakeShop(), searchEntries(), fakeStore(), naturalGold, start()
 
 ### Community 17 - "product-check.server.js"
 Cohesion: 0.19
 Nodes (10): cheapestSelection(), CHECKED_PRODUCTS_QUERY, checkProduct(), checkProducts(), reasonOf(), REASONS, adminProductUrl(), loader() (+2 more)
 
 ### Community 18 - "entry.server.jsx"
-Cohesion: 0.36
-Nodes (5): handleRequest(), streamTimeout, recoverAllShops(), startOrderRecovery(), addDocumentResponseHeaders
+Cohesion: 0.20
+Nodes (9): handleRequest(), streamTimeout, addDocumentResponseHeaders, isbot@^5.1.31, react-dom@^18.3.1, @react-router/node@7.18.2, isbot, react-dom (+1 more)
 
-### Community 19 - "Review Focus"
-Cohesion: 0.18
-Nodes (10): After all tasks, Global Constraints, Option importer stage 3: write and restore. Implementation plan, Review Focus, Task 1: Read entry IDs and option codes from Shopify, Task 3: Check shared options against live products, Task 4: Shopify write calls, Task 6: Import runs, backups and restore (+2 more)
+### Community 19 - "Option importer stage 3: write and restore. Implementation plan"
+Cohesion: 0.50
+Nodes (3): After all tasks, Global Constraints, Option importer stage 3: write and restore. Implementation plan
 
 ### Community 20 - "quote.server.js"
-Cohesion: 0.22
-Nodes (13): accessoryLimit(), ASSIGNMENT_FIELDS, CHOICE_KINDS, GROUP_FIELDS, MAPPING_FIELDS, quoteConfiguration(), resolveAssignment(), toPennies() (+5 more)
+Cohesion: 0.19
+Nodes (16): accessoryLimit(), ASSIGNMENT_FIELDS, CHOICE_KINDS, displayOf(), GROUP_FIELDS, MAPPING_FIELDS, quoteConfiguration(), quoteOrdinaryProduct() (+8 more)
 
 ### Community 21 - "spreadsheet.server.js"
-Cohesion: 0.13
-Nodes (21): asValues(), CellProblem, cellText(), CHOICE_COLUMNS, GROUP_COLUMNS, normalise(), readSheet(), readWorkbook() (+13 more)
+Cohesion: 0.10
+Nodes (26): asValues(), CellProblem, cellText(), CHOICE_COLUMNS, GROUP_COLUMNS, normalise(), readSheet(), readWorkbook() (+18 more)
 
 ### Community 22 - "check-rows.js"
-Cohesion: 0.50
-Nodes (7): checkChoice(), checkGroup(), checkRows(), parseSizePrices(), productId(), rowChecker(), TYPES
+Cohesion: 0.25
+Nodes (13): checkChoice(), checkGroup(), checkRows(), parseSizePrices(), productId(), rowChecker(), TYPES, CHOICE (+5 more)
 
 ### Community 23 - "@react-router/dev"
 Cohesion: 0.29
 Nodes (6): @react-router/dev@7.18.2, vite-tsconfig-paths@^5.1.4, vite@^6.3.6, @react-router/dev, vite, vite-tsconfig-paths
 
 ### Community 24 - "preview.test.js"
-Cohesion: 0.18
-Nodes (19): currentOptionsWorkbook(), londonDate(), parseProductIds(), exportRows(), priceColumns(), sheetValues(), TYPE_NAMES, findOne() (+11 more)
+Cohesion: 0.17
+Nodes (15): currentOptionsWorkbook(), londonDate(), parseProductIds(), findProducts(), writeWorkbook(), loader(), Global Constraints, Option importer stage 2: Download current options. Implementation plan (+7 more)
 
 ### Community 25 - "devDependencies"
-Cohesion: 0.10
-Nodes (21): devDependencies, eslint@^8.57.1, eslint-plugin-import@^2.32.0, eslint-plugin-react@^7.37.5, eslint-plugin-react-hooks@^4.6.2, graphql-config@^5.1.1, @shopify/polaris-types@^2.0.0, @types/node@^22.18.8 (+13 more)
+Cohesion: 0.09
+Nodes (23): devDependencies, eslint@^8.57.1, eslint-plugin-import@^2.32.0, eslint-plugin-jsx-a11y@^6.10.2, eslint-plugin-react@^7.37.5, @shopify/polaris-types@^2.0.0, @types/node@^22.18.8, @types/react@^18.3.25 (+15 more)
 
 ### Community 26 - "preview.server.js"
 Cohesion: 0.19
-Nodes (11): groupsPreview(), prepareImport(), previewImport(), refused(), comparable(), sameProduct(), Task 2: Mark products the sheet does not change, graphql (+3 more)
+Nodes (14): groupsPreview(), prepareImport(), previewImport(), refused(), comparable(), sameProduct(), Review Focus, Task 1: Read entry IDs and option codes from Shopify (+6 more)
 
 ### Community 27 - "overrides"
 Cohesion: 0.40
 Nodes (5): overrides, p-map, qs, pnpm, overrides
 
-### Community 28 - "accessories-flow.test.js"
-Cohesion: 0.08
-Nodes (31): checkBasket(), checkLine(), loadProducts(), quantityByVariant(), stockIsLimited(), handleQuoteRequest(), isPlainObject(), matches() (+23 more)
+### Community 28 - "check-basket.test.js"
+Cohesion: 0.27
+Nodes (7): check(), everything(), fixture, shop(), shopifyBed(), shopifyMattress(), STOCK
 
 ### Community 29 - "start-checkout.server.js"
 Cohesion: 0.06
@@ -230,21 +229,21 @@ Nodes (42): removePaidLines(), attemptTag(), createDraft(), draftInput(), draftL
 Cohesion: 0.06
 Nodes (29): 1. Identifiers and breakdowns: Pass, 2. Basket cases: Pass, 3. Shopify discounts: Pass for percentage discounts, 4. Stock and duplicates: Pass, 5. Saved order record: Pass, two fields missing, 6. Price bypass, shipping and VAT, payment methods: Open, CFS configurator MVP: acceptance report, Evidence orders (+21 more)
 
-### Community 31 - "ref_node_test"
-Cohesion: 0.14
-Nodes (4): naturalGold, priceChecks, quote(), FIXTURES
+### Community 31 - "ref_node_assert"
+Cohesion: 0.13
+Nodes (5): variant, ask(), saved, shopifyProduct, FIXTURES
 
-### Community 32 - "import-run.test.js"
-Cohesion: 0.09
-Nodes (31): beginRun(), messageFor(), runPlans(), startRestore(), writesAllowed(), checkSharedOptions(), detailsOf(), LIVE_OPTIONS_QUERY (+23 more)
+### Community 32 - "app.import.jsx"
+Cohesion: 0.05
+Nodes (60): backgroundRunnerFor(), beginRun(), messageFor(), runPlans(), runView(), startRestore(), writesAllowed(), MAX_FILE_BYTES (+52 more)
 
 ### Community 33 - "Option importer stage 3: write and restore. Design"
 Cohesion: 0.15
 Nodes (12): Database (new tables, applied by the Render deploy as before), How a product is written (both options), Not in this stage, Option importer stage 3: write and restore. Design, Permission and setup steps for the user, Restore, Running an import, Tests and trial (+4 more)
 
 ### Community 34 - "e4b-basket-check.js"
-Cohesion: 0.07
-Nodes (60): add(), changed(), changeQuantity(), handleBasketRequest(), matches(), NOT_FOUND, numericId(), publicBasket() (+52 more)
+Cohesion: 0.05
+Nodes (73): add(), changed(), changeQuantity(), handleBasketRequest(), matches(), NOT_FOUND, numericId(), publicBasket() (+65 more)
 
 ### Community 35 - "Polaris web components 2.x (polaris-2.js)"
 Cohesion: 0.25
@@ -270,49 +269,37 @@ Nodes (3): AppProvider, polarisUrl option, shopifyApp
 Cohesion: 0.40
 Nodes (4): Admin object undefined on CLI-triggered webhooks, Cloudflare tunnel streaming limitation, Localhost-based development, Shopify CLI
 
-### Community 42 - "current-options.test.js"
-Cohesion: 0.33
-Nodes (4): graphql, loft, naturalGold, NOW
+### Community 42 - "check-basket.server.js"
+Cohesion: 0.46
+Nodes (7): checkBasket(), checkLine(), loadProducts(), quantityByVariant(), stockIsLimited(), priceProduct(), selectionRequest()
 
 ### Community 43 - "@shopify/shopify-app-react-router"
-Cohesion: 0.19
-Nodes (9): loginErrorMessage(), action(), loader(), loginErrorMessage(), action(), login, react@^18.3.1, react (+1 more)
-
-### Community 44 - ".graphqlrc.js"
-Cohesion: 0.33
-Nodes (3): config, @shopify/api-codegen-preset@^1.2.0, @shopify/api-codegen-preset
+Cohesion: 0.46
+Nodes (5): loginErrorMessage(), action(), loader(), login, @shopify/shopify-app-react-router
 
 ### Community 45 - "EncryptedSessionStorage"
 Cohesion: 0.20
 Nodes (4): decrypt(), encrypt(), EncryptedSessionStorage, parseKey()
 
 ### Community 46 - "shopify.server.js"
-Cohesion: 0.13
-Nodes (12): runView(), loader(), loader(), action(), reply(), action(), reply(), apiVersion (+4 more)
+Cohesion: 0.16
+Nodes (9): action(), reply(), action(), reply(), apiVersion, authenticate, registerWebhooks, sessionStorage (+1 more)
 
-### Community 47 - "app.import.history.jsx"
-Cohesion: 0.23
-Nodes (12): backgroundRunnerFor(), badgeFor(), BADGES, headline(), ResultBadge(), ResultRows(), RunProgress(), titleOf() (+4 more)
+### Community 47 - "quote.test.js"
+Cohesion: 0.25
+Nodes (3): naturalGold, priceChecks, quote()
 
 ### Community 49 - "quote-fargo.test.js"
 Cohesion: 0.25
 Nodes (9): cents(), fargo, groups, inGroup(), LIVE_CFS, pick(), priceOf(), quote() (+1 more)
 
-### Community 50 - "checkout-request.test.js"
-Cohesion: 0.25
-Nodes (4): fakeShopify(), product(), send(), TOKEN
-
-### Community 51 - "ref_node_assert"
-Cohesion: 0.32
-Nodes (6): CHOICE, choice(), choiceError(), GROUP, group(), groupError()
-
-### Community 52 - "quote-ordinary.test.js"
-Cohesion: 0.33
-Nodes (4): displayOf(), quoteOrdinaryProduct(), quote(), variant
+### Community 51 - "basket-request.test.js"
+Cohesion: 0.29
+Nodes (3): ADD, send(), TOKEN
 
 ### Community 53 - "e6d-status-check.js"
-Cohesion: 0.13
-Nodes (14): copyStatus(), orderIdOf(), updateOrderStatus(), CHANGED_ORDERS_QUERY, handleOrder(), PAID_STATUSES, recoverOrders(), action() (+6 more)
+Cohesion: 0.12
+Nodes (17): copyStatus(), orderIdOf(), updateOrderStatus(), CHANGED_ORDERS_QUERY, handleOrder(), PAID_STATUSES, recoverOrders(), recoverAllShops() (+9 more)
 
 ### Community 54 - "same-product.test.js"
 Cohesion: 0.50
@@ -324,8 +311,8 @@ Nodes (5): LIVE_CFS_ACCESSORIES, LIVE_CFS_PLAIN, load(), quote(), variantFor()
 
 ## Knowledge Gaps
 - **28 isolated node(s):** `npx`, `@shopify/dev-mcp`, `npx`, `@shopify/dev-mcp`, `Shopify Dev MCP added to template` (+23 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 366 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 367 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **10 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -338,9 +325,9 @@ _Questions this graph is uniquely positioned to answer:_
   _28 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `package.json` be split into smaller, more focused modules?**
   _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
-- **Why does `@shopify/shopify-app-react-router` connect `@shopify/shopify-app-react-router` to `package.json`, `app.orders.$id.jsx`, `Server Rendering Runtime`, `.graphqlrc.js`, `EncryptedSessionStorage`, `shopify.server.js`, `app.import.history.jsx`, `react-router`, `app.import.jsx`, `product-check.server.js`, `app._index.jsx`?**
+- **Why does `@shopify/shopify-app-react-router` connect `@shopify/shopify-app-react-router` to `app.import.jsx`, `package.json`, `app.orders.$id.jsx`, `Server Rendering Runtime`, `.graphqlrc.js`, `EncryptedSessionStorage`, `shopify.server.js`, `react-router`, `product-check.server.js`, `_index/route.jsx`, `app._index.jsx`?**
   _High betweenness centrality (0.050) - this node is a cross-community bridge._
 - **Are the 5 inferred relationships involving `exportRows()` (e.g. with `Option importer stage 2: Download current options. Implementation plan` and `Task 1: Build the current-options workbook`) actually correct?**
   _`exportRows()` has 5 INFERRED edges - model-reasoned connections that need verification._
 - **Should `Server Rendering Runtime` be split into smaller, more focused modules?**
-  _Cohesion score 0.08695652173913043 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._

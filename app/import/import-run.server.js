@@ -32,6 +32,7 @@ export async function beginRun({
   shop,
   kind,
   createdBy = null,
+  createdByName = null,
   fileName = null,
   planned,
   now = new Date(),
@@ -51,6 +52,7 @@ export async function beginRun({
         shop,
         kind,
         createdBy,
+        createdByName,
         fileName,
         status: "running",
         total: planned.length,
@@ -177,7 +179,7 @@ export async function runPlans({ db, graphql, run, plans, sleep }) {
  * Starts a restore of one backup. Returns { run, plan } (give both to runPlans) or { error }.
  * Nothing is written, and no run is left behind, when it is refused.
  */
-export async function startRestore({ db, graphql, shop, backupId, createdBy = null, now }) {
+export async function startRestore({ db, graphql, shop, backupId, createdBy = null, createdByName = null, now }) {
   if (!writesAllowed(shop)) return { error: NOT_SWITCHED_ON };
   const backup = await db.importBackup.findUnique({ where: { id: backupId } });
   if (!backup || backup.shop !== shop) return { error: "That backup was not found" };
@@ -203,6 +205,7 @@ export async function startRestore({ db, graphql, shop, backupId, createdBy = nu
     shop,
     kind: "restore",
     createdBy,
+    createdByName,
     planned: [{ cfsProductId: backup.cfsProductId, title: backup.title }],
     now,
   });

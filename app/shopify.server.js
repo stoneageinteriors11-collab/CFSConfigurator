@@ -23,6 +23,9 @@ const shopify = shopifyApp({
   future: {
     expiringOfflineAccessTokens: true,
   },
+  // Online tokens name the signed-in staff member (shown in import history). Offline tokens are
+  // still saved for background work.
+  useOnlineTokens: true,
   ...(process.env.SHOP_CUSTOM_DOMAIN
     ? { customShopDomains: [process.env.SHOP_CUSTOM_DOMAIN] }
     : {}),

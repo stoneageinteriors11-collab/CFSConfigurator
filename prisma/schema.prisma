@@ -132,6 +132,7 @@ model ImportRun {
   shop      String
   kind      String
   createdBy String?
+  createdByName String?
   fileName  String?
   status    String         @default("running")
   total     Int

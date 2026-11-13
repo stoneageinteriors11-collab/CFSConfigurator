@@ -56,6 +56,7 @@ function start(db, bytes, extra = {}) {
     bytes,
     fileName: "options.xlsx",
     createdBy: "staff-1",
+    createdByName: "Sam Staff",
     runInBackground: (work) => background.push(work),
     ...extra,
   });
@@ -94,6 +95,7 @@ test("starts a run and hands the work to the background", async () => {
   assert.equal(db.runs.length, 1);
   assert.equal(db.runs[0].kind, "import");
   assert.equal(db.runs[0].createdBy, "staff-1");
+  assert.equal(db.runs[0].createdByName, "Sam Staff");
   assert.equal(db.runs[0].fileName, "options.xlsx");
   assert.deepEqual(db.runs[0].results.planned, [{ cfsProductId: NG, title: "Natural Gold" }]);
   assert.equal(background.length, 1, "the write is handed over, not run before answering");
