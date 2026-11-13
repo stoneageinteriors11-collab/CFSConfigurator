@@ -702,9 +702,9 @@
     "semantic_hash": ""
   },
   "docs/superpowers/plans/2026-11-12-option-importer-write.md": {
-    "mtime": 1794488964.738766,
-    "seen": 1794489015.9862974,
-    "ast_hash": "7c26442154e888e467f7a3cbfbfb6b1f",
+    "mtime": 1794554038.226249,
+    "seen": 1794554107.2858708,
+    "ast_hash": "6697fd3024a6fb6869525829c8b181ff",
     "semantic_hash": ""
   },
   "docs/superpowers/specs/2026-11-12-option-importer-write-design.md": {
@@ -797,12 +797,6 @@
     "ast_hash": "b89202477275e3abb53199aed5ef59b0",
     "semantic_hash": ""
   },
-  "app/routes/app.import.history.jsx": {
-    "mtime": 1794489822.4648638,
-    "seen": 1794490032.944918,
-    "ast_hash": "fa9d6671d7e079ed26ae7c39ca0e77df",
-    "semantic_hash": ""
-  },
   "app/routes/app.import.runs.$id.jsx": {
     "mtime": 1794489815.488579,
     "seen": 1794490032.944918,
@@ -819,6 +813,12 @@
     "mtime": 1794489747.7750165,
     "seen": 1794490032.944918,
     "ast_hash": "dc1256e457ceacea0f529118125c32cc",
+    "semantic_hash": ""
+  },
+  "app/routes/app.import_.history.jsx": {
+    "mtime": 1794489822.4648638,
+    "seen": 1794554107.2858708,
+    "ast_hash": "fa9d6671d7e079ed26ae7c39ca0e77df",
     "semantic_hash": ""
   },
   "package-lock.json": {

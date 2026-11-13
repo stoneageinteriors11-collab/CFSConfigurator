@@ -5,7 +5,7 @@ import db from "../db.server";
 import { authenticate } from "../shopify.server";
 import { backgroundRunnerFor } from "../import/background.server.js";
 import { staffFrom } from "../import/staff.server.js";
-import { runPlans, runView, startRestore } from "../import/import-run.server.js";
+import { hasOptionsToRestore, runPlans, runView, startRestore } from "../import/import-run.server.js";
 import { ResultRows, RunProgress } from "../import/run-progress.jsx";
 
 const HISTORY_LENGTH = 50;
@@ -16,11 +16,15 @@ export const loader = async ({ request }) => {
     where: { shop: session.shop },
     orderBy: { createdAt: "desc" },
     take: HISTORY_LENGTH,
-    include: { backups: { select: { id: true, restoredAt: true } } },
+    include: { backups: { select: { id: true, restoredAt: true, data: true } } },
   });
   return {
     runs: runs.map((run) => {
-      const open = new Set(run.backups.filter((b) => !b.restoredAt).map((b) => b.id));
+      const open = new Set(
+        run.backups
+          .filter((b) => !b.restoredAt && hasOptionsToRestore(b.data))
+          .map((b) => b.id),
+      );
       const view = runView(run);
       return {
         id: run.id,
@@ -31,7 +35,7 @@ export const loader = async ({ request }) => {
         createdByName: run.createdByName,
         createdAt: run.createdAt,
         total: run.total,
-        // Restorable: the product was written, and its backup has not been restored yet.
+        // Restorable: the product was written, and its backup has options and is not restored yet.
         results: view.results.map((r) => ({
           ...r,
           restorable:

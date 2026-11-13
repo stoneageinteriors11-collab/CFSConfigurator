@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import { afterEach, beforeEach, test } from "node:test";
 import { buildProduct } from "../../app/import/build-product.js";
 import { exportRows } from "../../app/import/export-rows.js";
-import { beginRun, runPlans, runView, startRestore, writesAllowed } from "../../app/import/import-run.server.js";
+import { beginRun, hasOptionsToRestore, runPlans, runView, startRestore, writesAllowed } from "../../app/import/import-run.server.js";
 import { loadConfigurableProduct } from "../../app/pricing/load-product.server.js";
 import { fakeStore } from "./fake-store.js";
 
@@ -334,4 +334,10 @@ test("shows a run that has not moved for 10 minutes as stopped", async () => {
   const late = runView(running, new Date("2026-11-12T10:11:00Z"));
   assert.equal(late.status, "stopped");
   assert.deepEqual(late.results.map((r) => r.status), ["stopped"]);
+});
+
+test("only a backup that holds options can be restored", () => {
+  assert.equal(hasOptionsToRestore({ options: [], workflow: {}, modelCards: {} }), true);
+  assert.equal(hasOptionsToRestore({ ordinary: true }), false);
+  assert.equal(hasOptionsToRestore(null), false);
 });

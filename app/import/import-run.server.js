@@ -175,6 +175,9 @@ export async function runPlans({ db, graphql, run, plans, sleep }) {
   await record({ status: "done" });
 }
 
+/** Whether a backup holds a product's options (one taken before its first import does not). */
+export const hasOptionsToRestore = (data) => Array.isArray(data?.options);
+
 /**
  * Starts a restore of one backup. Returns { run, plan } (give both to runPlans) or { error }.
  * Nothing is written, and no run is left behind, when it is refused.
@@ -185,7 +188,7 @@ export async function startRestore({ db, graphql, shop, backupId, createdBy = nu
   if (!backup || backup.shop !== shop) return { error: "That backup was not found" };
   if (backup.restoredAt) return { error: "This backup has already been restored" };
   const { options, workflow, modelCards } = backup.data ?? {};
-  if (!Array.isArray(options)) {
+  if (!hasOptionsToRestore(backup.data)) {
     return {
       error: "This product had no options before that import, so there is nothing to restore",
     };
