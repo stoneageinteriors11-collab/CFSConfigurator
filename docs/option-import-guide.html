@@ -143,8 +143,8 @@ When the banner is green, a blue <b>Import N products</b> button appears. Press 
 <table>
   <tr><td style="width:34%"><span class="badge b-green">Imported</span></td><td>Done. The bed has its new options and is ready to sell.</td></tr>
   <tr><td><span class="badge b-yellow">Written, not ready</span></td><td>The options were written but the bed is not ready to sell yet. Open Products to see why.</td></tr>
-  <tr><td><span class="badge b-red">Not changed</span></td><td>That bed failed and was left exactly as it was. The reason is shown. Fix it and try again.</td></tr>
-  <tr><td><span class="badge b-yellow">Check this product</span></td><td>The import stopped part-way for this bed. Open the bed in Shopify and the Product check page to see what state it is in, and tell the developer.</td></tr>
+  <tr><td><span class="badge b-red">Not changed</span></td><td>That bed failed and was left exactly as it was. The reason is shown. Fix it and try again. If the reason says the bed <b>"was changed in Shopify after it was checked"</b>, someone edited it while the import was running: press Preview again and re-import.</td></tr>
+  <tr><td><span class="badge b-yellow">Check this product</span></td><td>The import stopped part-way for this bed, so we cannot be sure which options it has. Go to <b>Import history</b> and press <b>Restore</b> next to it to put it back to how it was before. The bed is never left half-written, so Restore is safe either way.</td></tr>
 </table>
 A bed is never left half-written: it either gets all of its new options or none of them.</div></div>
 <div class="warn">Only <b>one import can run at a time</b> for a store. If you see "Another import is running", wait for it to finish, then try again. Please keep the page open until you see the result.</div>
@@ -161,6 +161,14 @@ A bed is never left half-written: it either gets all of its new options or none 
 <div class="step"><div class="num">1</div><div class="body"><b class="t">Find the import</b> in the list.</div></div>
 <div class="step"><div class="num">2</div><div class="body"><b class="t">Click Restore</b> next to the bed you want to put back. The bed's options go back to how they were <b>just before that import</b>.</div></div>
 <div class="step"><div class="num">3</div><div class="body"><b class="t">Wait for the result.</b> Restore is itself saved in the history, so a restore can be undone the same way.</div></div>
+<h3>If an import stops part-way</h3>
+<p>If the page closes, the app restarts, or something fails mid-import, the import shows <b>Stopped part-way</b> in Import history. Then:</p>
+<ol>
+  <li>Beds the import had already finished show <b>Imported</b>. Nothing to do.</li>
+  <li>Beds it had not reached are untouched.</li>
+  <li>A bed it was working on shows <b>Check this product</b>, with a <b>Restore</b> button. Press it to put that bed back to how it was before the import.</li>
+  <li>Press <b>Remove leftover options</b> under the stopped import to delete any half-made options that no bed uses. Options a bed is using are never removed.</li>
+</ol>
 <div class="tip">There is no Restore button when the bed had <b>no options at all</b> before that import (there was nothing to go back to). A backup that has already been restored also cannot be restored again.</div>
 <div class="ok">Orders already placed are never affected. Their prices and choices were saved when the customer paid and cannot be changed by an import or a restore.</div>
 

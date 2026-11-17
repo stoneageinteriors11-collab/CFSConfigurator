@@ -5,7 +5,8 @@ import db from "../db.server";
 import { authenticate } from "../shopify.server";
 import { backgroundRunnerFor } from "../import/background.server.js";
 import { staffFrom } from "../import/staff.server.js";
-import { hasOptionsToRestore, runPlans, runView, startRestore } from "../import/import-run.server.js";
+import { cleanupRun } from "../import/cleanup-run.server.js";
+import { runPlans, runView, startRestore, withRestorable } from "../import/import-run.server.js";
 import { ResultRows, RunProgress } from "../import/run-progress.jsx";
 
 const HISTORY_LENGTH = 50;
@@ -16,15 +17,10 @@ export const loader = async ({ request }) => {
     where: { shop: session.shop },
     orderBy: { createdAt: "desc" },
     take: HISTORY_LENGTH,
-    include: { backups: { select: { id: true, restoredAt: true, data: true } } },
+    include: { backups: { select: { id: true, cfsProductId: true, restoredAt: true, data: true } } },
   });
   return {
     runs: runs.map((run) => {
-      const open = new Set(
-        run.backups
-          .filter((b) => !b.restoredAt && hasOptionsToRestore(b.data))
-          .map((b) => b.id),
-      );
       const view = runView(run);
       return {
         id: run.id,
@@ -35,12 +31,8 @@ export const loader = async ({ request }) => {
         createdByName: run.createdByName,
         createdAt: run.createdAt,
         total: run.total,
-        // Restorable: the product was written, and its backup has options and is not restored yet.
-        results: view.results.map((r) => ({
-          ...r,
-          restorable:
-            (r.status === "imported" || r.status === "restored") && open.has(r.backupId),
-        })),
+        canCleanUp: view.status === "stopped",
+        results: withRestorable(run, view),
       };
     }),
   };
@@ -50,6 +42,15 @@ export const action = async ({ request }) => {
   const { admin, session, sessionToken } = await authenticate.admin(request);
   const staff = staffFrom(session, sessionToken);
   const form = await request.formData();
+  if (form.get("intent") === "cleanup") {
+    const cleaned = await cleanupRun({
+      db,
+      graphql: admin.graphql,
+      shop: session.shop,
+      runId: String(form.get("runId") ?? ""),
+    });
+    return cleaned.error ? { error: cleaned.error, intent: "cleanup" } : { cleaned };
+  }
   const started = await startRestore({
     db,
     graphql: admin.graphql,
@@ -113,8 +114,21 @@ export default function ImportHistory() {
       </s-section>
       {answer?.error && (
         <s-section>
-          <s-banner tone="critical" heading="Not restored. Nothing has been changed.">
+          <s-banner
+            tone="critical"
+            heading={answer.intent === "cleanup" ? "Not cleaned up." : "Not restored. Nothing has been changed."}
+          >
             {answer.error}
+          </s-banner>
+        </s-section>
+      )}
+      {answer?.cleaned && (
+        <s-section>
+          <s-banner tone={answer.cleaned.failed ? "warning" : "success"} heading="Clean-up finished">
+            Removed {answer.cleaned.deleted} leftover option
+            {answer.cleaned.deleted === 1 ? "" : "s"}
+            {answer.cleaned.kept ? `; kept ${answer.cleaned.kept} that a product still uses` : ""}
+            {answer.cleaned.failed ? `; ${answer.cleaned.failed} could not be removed, try again` : ""}.
           </s-banner>
         </s-section>
       )}
@@ -143,6 +157,21 @@ export default function ImportHistory() {
               <s-text tone="subdued">Run by {run.createdByName || `user ${run.createdBy}`}</s-text>
             )}
             <ResultRows results={run.results} action={restoreButton} />
+            {run.canCleanUp && (
+              <Form method="post">
+                <input type="hidden" name="intent" value="cleanup" />
+                <input type="hidden" name="runId" value={run.id} />
+                <s-stack direction="block" gap="small">
+                  <s-text tone="subdued">
+                    This import stopped part-way. A product marked Check this product can be restored
+                    above. Options it made that no product uses can be removed here.
+                  </s-text>
+                  <s-button type="submit" disabled={busy || undefined}>
+                    Remove leftover options
+                  </s-button>
+                </s-stack>
+              </Form>
+            )}
           </s-stack>
         </s-section>
       ))}

@@ -73,6 +73,14 @@ export function fakeStore(products, failures = {}) {
       }
       return answer({ metafieldsSet: { metafields: [{}, {}, {}, {}], userErrors: [] } });
     }
+    if (query.includes("CfsListEntries")) {
+      return answer({
+        metaobjects: {
+          pageInfo: { hasNextPage: false, endCursor: null },
+          nodes: [...entries.values()].map((e) => ({ id: e.entryId, handle: e.handle ?? null })),
+        },
+      });
+    }
     if (query.includes("CfsEntryListed")) {
       const listed = products.some((p) => !p.ordinary && p.options.some((o) => o.entryId === variables.id));
       return answer({

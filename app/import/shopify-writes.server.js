@@ -41,6 +41,14 @@ export const DELETE_ENTRY_MUTATION = `#graphql
     }
   }`;
 
+export const LIST_ENTRIES_QUERY = `#graphql
+  query CfsListEntries($after: String) {
+    metaobjects(type: "cfs_import_option", first: 250, after: $after) {
+      pageInfo { hasNextPage endCursor }
+      nodes { id handle }
+    }
+  }`;
+
 const realSleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const messagesOf = (errors) => errors.map((e) => e.message).join("; ");
 
@@ -92,7 +100,7 @@ function fieldsFor(option) {
  * caller can delete them if the product is not switched. An entry whose create answer was lost
  * is looked up by its handle so it is not left behind.
  */
-export async function createEntries(graphql, productId, options, runId, { sleep } = {}) {
+export async function createEntries(graphql, productId, options, runId, { sleep, tick } = {}) {
   const ids = [];
   for (const option of options) {
     const handle = entryHandle(productId, option.cfsId, runId);
@@ -108,6 +116,7 @@ export async function createEntries(graphql, productId, options, runId, { sleep 
         return { ids, error: `Shopify refused "${option.label}": ${messagesOf(userErrors)}` };
       }
       ids.push(metaobject.id);
+      await tick?.();
     } catch (error) {
       try {
         const found = await callShopify(
@@ -169,7 +178,7 @@ export async function isListed(graphql, entryId, { sleep } = {}) {
 }
 
 /** Deletes each entry, carrying on past failures. Returns { failed: the IDs that could not be deleted }. */
-export async function deleteEntries(graphql, ids, { sleep } = {}) {
+export async function deleteEntries(graphql, ids, { sleep, tick } = {}) {
   const failed = [];
   for (const id of ids) {
     try {
@@ -178,6 +187,21 @@ export async function deleteEntries(graphql, ids, { sleep } = {}) {
     } catch {
       failed.push(id);
     }
+    await tick?.();
   }
   return { failed };
+}
+
+/** Every option entry in the shop as { id, handle }, across all pages. Throws if Shopify's answer is unusable. */
+export async function listEntries(graphql, { sleep } = {}) {
+  const entries = [];
+  let after = null;
+  for (;;) {
+    const data = await callShopify(graphql, LIST_ENTRIES_QUERY, { after }, { sleep });
+    const page = data.metaobjects;
+    if (!page) throw new Error("Shopify did not return the option entries");
+    entries.push(...page.nodes.map((n) => ({ id: n.id, handle: n.handle })));
+    if (!page.pageInfo.hasNextPage) return entries;
+    after = page.pageInfo.endCursor;
+  }
 }

@@ -1,5 +1,6 @@
 // Option import runs: who may write, one run at a time, a backup before each product is
 // changed, a result per product, and Restore (which is a run that writes a backup back).
+import { isDeepStrictEqual } from "node:util";
 import { loadConfigurableProduct } from "../pricing/load-product.server.js";
 import { checkSharedOptions, warmSharedOptions } from "./shared-options.server.js";
 import { writeProduct } from "./write-product.server.js";
@@ -12,6 +13,32 @@ const ALREADY_RUNNING =
   "Another import is running for this store; wait for it to finish";
 const BACKUP_FAILED = "Not changed: the backup could not be saved";
 const STOPPED = "Stopped part-way; check this product";
+const CANNOT_READ = "Not changed: Shopify could not be read for this product just now";
+
+// How often a running import tells the database it is alive. Well inside STALE_AFTER_MS.
+const HEARTBEAT_MS = 30 * 1000;
+
+const optionKey = (o) => ({
+  entryId: o.entryId,
+  cfsId: o.cfsId,
+  label: o.label,
+  groupName: o.groupName,
+  imageUrl: o.imageUrl ?? null,
+  optionCode: o.optionCode || "",
+  mappings: o.mappings,
+});
+
+/** Whether a product is still exactly as it was when it was checked (its options, costs and sizes). */
+export function unchangedSince(checked, live) {
+  const shape = (p) => ({
+    options: (p.options ?? []).map(optionKey),
+    workflow: p.workflow,
+    modelCards: p.modelCards,
+    optionCosts: p.optionCosts ?? {},
+    variants: (p.variants ?? []).map((v) => [v.id, v.sku]),
+  });
+  return isDeepStrictEqual(shape(checked), shape(live));
+}
 
 /** Writing is allowed only for shops listed (comma separated) in the IMPORT_WRITE_SHOPS setting. */
 export function writesAllowed(shop) {
@@ -83,7 +110,7 @@ function messageFor(kind, result) {
  * product does not stop the others. plans: { cfsProductId, productId, title, current, product,
  * restoreOfBackupId? }. The run ends done.
  */
-export async function runPlans({ db, graphql, run, plans, sleep }) {
+export async function runPlans({ db, graphql, run, plans, sleep, heartbeatMs = HEARTBEAT_MS }) {
   const { planned } = run.results;
   const done = [];
   const record = (data) =>
@@ -91,6 +118,18 @@ export async function runPlans({ db, graphql, run, plans, sleep }) {
       where: { id: run.id },
       data: { ...data, results: { planned, done } },
     });
+  // A long product can take many minutes, so the run says it is alive as it goes. Without this a
+  // second import could take over a run that is still writing.
+  let lastBeat = Date.now();
+  const tick = async () => {
+    if (Date.now() - lastBeat < heartbeatMs) return;
+    lastBeat = Date.now();
+    try {
+      await record({});
+    } catch {
+      // a missed beat is harmless; the next one tries again
+    }
+  };
 
   for (const plan of plans) {
     const entry = {
@@ -98,6 +137,33 @@ export async function runPlans({ db, graphql, run, plans, sleep }) {
       productId: plan.productId,
       title: plan.title,
     };
+    // The product is read again now, right before it is written: the check may be minutes old,
+    // and anyone may have edited it in Shopify since. The backup and the entries replaced come
+    // from this fresh read, so Restore never puts back something that was not there.
+    let live = null;
+    try {
+      live = await loadConfigurableProduct(graphql, plan.productId);
+    } catch {
+      live = null;
+    }
+    if (!live || live.ordinary) {
+      done.push({ ...entry, status: "failed", ready: false, message: CANNOT_READ, backupId: null });
+      await record({});
+      continue;
+    }
+    if (!unchangedSince(plan.current, live)) {
+      const again = run.kind === "restore" ? "try the restore again" : "preview the sheet again";
+      done.push({
+        ...entry,
+        status: "failed",
+        ready: false,
+        message: `Not changed: this product was changed in Shopify after it was checked; ${again}`,
+        backupId: null,
+      });
+      await record({});
+      continue;
+    }
+
     let backup = null;
     try {
       backup = await db.importBackup.create({
@@ -108,10 +174,10 @@ export async function runPlans({ db, graphql, run, plans, sleep }) {
           cfsProductId: plan.cfsProductId,
           title: plan.title ?? "",
           data: {
-            options: plan.current.options ?? null,
-            workflow: plan.current.workflow ?? null,
-            modelCards: plan.current.modelCards ?? null,
-            optionCosts: plan.current.optionCosts ?? {},
+            options: live.options ?? null,
+            workflow: live.workflow ?? null,
+            modelCards: live.modelCards ?? null,
+            optionCosts: live.optionCosts ?? {},
           },
         },
       });
@@ -126,9 +192,10 @@ export async function runPlans({ db, graphql, run, plans, sleep }) {
       result = await writeProduct({
         graphql,
         product: plan.product,
-        current: plan.current,
+        current: live,
         runId: run.id,
         sleep,
+        tick,
       });
     } catch (error) {
       // Unknown how far it got, so the backup stays.
@@ -173,7 +240,11 @@ export async function runPlans({ db, graphql, run, plans, sleep }) {
     }
     await record({});
   }
-  await record({ status: "done" });
+  // Only a run that is still running may finish: one already taken over as stopped stays stopped.
+  await db.importRun.updateMany({
+    where: { id: run.id, status: "running" },
+    data: { status: "done", results: { planned, done } },
+  });
 }
 
 /** Marks a run stopped if it is still running, so a failure is visible and the shop can import again. */
@@ -266,4 +337,26 @@ export function runView(run, now = new Date()) {
           .map((p) => ({ ...p, status: "stopped", message: STOPPED }))
       : [];
   return { ...run, status, results: [...done, ...unfinished] };
+}
+
+/**
+ * A run's results for the history page, each with the backup that can put the product back
+ * (backupId) and whether Restore is offered (restorable). Restore is offered for a product that
+ * was written, and also for one that may have been: a stopped run's unfinished product, or one
+ * marked "Check this product". run.backups: { id, cfsProductId, restoredAt, data }.
+ */
+export function withRestorable(run, view = runView(run)) {
+  const backups = run.backups ?? [];
+  const open = new Set(
+    backups.filter((b) => !b.restoredAt && hasOptionsToRestore(b.data)).map((b) => b.id),
+  );
+  const byProduct = new Map(backups.map((b) => [b.cfsProductId, b.id]));
+  return view.results.map((r) => {
+    const mayHaveChanged =
+      r.status === "stopped" ||
+      (r.status === "failed" && r.message?.startsWith("Check this product"));
+    const written = r.status === "imported" || r.status === "restored";
+    const backupId = r.backupId ?? (mayHaveChanged ? byProduct.get(r.cfsProductId) : undefined);
+    return { ...r, backupId, restorable: (written || mayHaveChanged) && open.has(backupId) };
+  });
 }

@@ -32,10 +32,10 @@ async function listedNow(graphql, productId) {
  * entries that could not be removed), or { ok: false, error } when it was not changed or, for an
  * unconfirmed change that could not be read back, when it must be checked by hand.
  */
-export async function writeProduct({ graphql, product, current, runId, sleep }) {
+export async function writeProduct({ graphql, product, current, runId, sleep, tick }) {
   const productId = current.productId;
 
-  const made = await createEntries(graphql, productId, product.options, runId, { sleep });
+  const made = await createEntries(graphql, productId, product.options, runId, { sleep, tick });
   if (made.error) {
     await deleteEntries(graphql, made.ids, { sleep });
     return { ok: false, error: `Not changed: ${made.error}` };
@@ -79,9 +79,10 @@ export async function writeProduct({ graphql, product, current, runId, sleep }) 
     } catch {
       // keep the entry
     }
+    await tick?.();
     if (!listed) removable.push(id);
   }
-  const { failed } = await deleteEntries(graphql, removable, { sleep });
+  const { failed } = await deleteEntries(graphql, removable, { sleep, tick });
   if (failed.length) {
     problems = [
       ...problems,

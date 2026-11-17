@@ -3,7 +3,8 @@ import { readFileSync } from "node:fs";
 import { afterEach, beforeEach, test } from "node:test";
 import { buildProduct } from "../../app/import/build-product.js";
 import { exportRows } from "../../app/import/export-rows.js";
-import { beginRun, hasOptionsToRestore, runPlans, runView, startRestore, stopRun, writesAllowed } from "../../app/import/import-run.server.js";
+import { cleanupRun } from "../../app/import/cleanup-run.server.js";
+import { beginRun, hasOptionsToRestore, runPlans, runView, startRestore, stopRun, withRestorable, writesAllowed } from "../../app/import/import-run.server.js";
 import { loadConfigurableProduct } from "../../app/pricing/load-product.server.js";
 import { fakeStore } from "./fake-store.js";
 
@@ -56,6 +57,8 @@ function fakeDatabase({ clock = () => new Date() } = {}) {
         runs.push(run);
         return run;
       },
+      findFirst: async ({ where }) =>
+        runs.find((r) => r.id === where.id && r.shop === where.shop) ?? null,
       update: async ({ where, data }) => {
         const run = runs.find((r) => r.id === where.id);
         Object.assign(run, structuredClone(data), { updatedAt: clock() });
@@ -387,4 +390,163 @@ test("restoring a backup from before costs existed keeps the costs the choices n
 
   const restore = await startRestore({ db, graphql: s.graphql, shop: SHOP, backupId: "backup-1", createdBy: "staff-1" });
   assert.deepEqual(restore.plan.product.optionCosts, { [drawerId]: { cost: { default: "40.00" } } });
+});
+
+test("a running import keeps telling the database it is alive, and how often can be set", async () => {
+  const updatesWith = async (heartbeatMs) => {
+    const db = fakeDatabase();
+    const s = await setup();
+    let updates = 0;
+    const update = db.importRun.update;
+    db.importRun.update = async (args) => {
+      updates += 1;
+      return update(args);
+    };
+    const started = await begin(db, s.plans);
+    await runPlans({ db, graphql: s.graphql, run: started.run, plans: s.plans, sleep: noSleep, heartbeatMs });
+    return updates;
+  };
+  assert.ok((await updatesWith(0)) > (await updatesWith(60 * 60 * 1000)));
+});
+
+test("a run that was taken over as stopped is not marked done by the import still writing", async () => {
+  const db = fakeDatabase();
+  const s = await setup();
+  const started = await begin(db, s.plans);
+  let taken = false;
+  const graphql = async (query, args) => {
+    if (!taken && query.includes("CfsCreateEntry")) {
+      taken = true;
+      db.runs[0].status = "stopped"; // another import took the run over meanwhile
+    }
+    return s.graphql(query, args);
+  };
+  await runPlans({ db, graphql, run: started.run, plans: s.plans, sleep: noSleep });
+  assert.equal(db.runs[0].status, "stopped");
+});
+
+test("a product edited in Shopify after the check is not written, and the others still are", async () => {
+  const db = fakeDatabase();
+  const s = await setup();
+  const started = await begin(db, s.plans);
+  s.naturalGold.options[0].label = "Edited in Shopify"; // after the plans were made
+  await run(db, s, started);
+
+  const [first, second] = db.runs[0].results.done;
+  assert.equal(first.status, "failed");
+  assert.match(first.message, /^Not changed: this product was changed in Shopify after it was checked; preview the sheet again$/);
+  assert.equal(first.backupId, null);
+  assert.equal(second.status, "imported");
+  // only the untouched product was backed up and written
+  assert.equal(db.backups.length, 1);
+  assert.equal(db.backups[0].cfsProductId, LOFT);
+  assert.equal(s.store.calls.creates, s.plans[1].product.options.length);
+  assert.equal(s.naturalGold.options[0].label, "Edited in Shopify");
+});
+
+test("the backup is taken from the product as it is when written", async () => {
+  const db = fakeDatabase();
+  const s = await setup();
+  await run(db, s, await begin(db, s.plans));
+  const backed = db.backups.find((b) => b.cfsProductId === NG).data;
+  assert.equal(backed.options.length, load("natural-gold").options.length);
+  assert.ok(backed.options.every((o) => o.entryId));
+});
+
+test("a product Shopify cannot be read for is not written and not backed up", async () => {
+  const db = fakeDatabase();
+  const s = await setup();
+  const started = await begin(db, s.plans);
+  const graphql = async (query, args) => {
+    if (query.includes("CfsConfigurableProduct")) throw new Error("Shopify is down");
+    return s.graphql(query, args);
+  };
+  await runPlans({ db, graphql, run: started.run, plans: s.plans, sleep: noSleep });
+  assert.deepEqual(
+    db.runs[0].results.done.map((d) => [d.status, d.message]),
+    [
+      ["failed", "Not changed: Shopify could not be read for this product just now"],
+      ["failed", "Not changed: Shopify could not be read for this product just now"],
+    ],
+  );
+  assert.equal(db.backups.length, 0);
+  assert.equal(s.store.calls.creates, 0);
+});
+
+test("Restore is offered for a written product and for one that may have been, not for a certain failure", () => {
+  const old = new Date(Date.now() - 60 * 60 * 1000);
+  const backups = [
+    { id: "b1", cfsProductId: "1", restoredAt: null, data: { options: [] } },
+    { id: "b2", cfsProductId: "2", restoredAt: null, data: { options: [] } },
+    { id: "b3", cfsProductId: "3", restoredAt: null, data: { options: null } },
+    { id: "b5", cfsProductId: "5", restoredAt: new Date(), data: { options: [] } },
+  ];
+  const stoppedRun = {
+    status: "running",
+    updatedAt: old,
+    backups,
+    results: {
+      planned: ["1", "2", "3", "4", "5", "6"].map((id) => ({ cfsProductId: id })),
+      done: [
+        { cfsProductId: "2", status: "failed", message: "Check this product: Shopify did not confirm the change", backupId: "b2" },
+        { cfsProductId: "4", status: "failed", message: "Not changed: Shopify refused", backupId: null },
+        { cfsProductId: "5", status: "imported", message: "Imported", backupId: "b5" },
+        { cfsProductId: "6", status: "imported", message: "Imported", backupId: "b1" },
+      ],
+    },
+  };
+  const results = withRestorable(stoppedRun);
+  const by = (id) => results.find((r) => r.cfsProductId === id);
+  assert.equal(by("1").status, "stopped"); // unfinished: found by product
+  assert.equal(by("1").backupId, "b1");
+  assert.equal(by("1").restorable, true);
+  assert.equal(by("2").restorable, true); // may have changed
+  assert.equal(by("3").restorable, false); // its backup had no options
+  assert.equal(by("4").restorable, false); // certainly unchanged
+  assert.equal(by("5").restorable, false); // already restored
+  assert.equal(by("6").restorable, true); // written
+});
+
+// A run that stopped, and entries it left in the store.
+async function stoppedWithLeftovers(failures = {}) {
+  const db = fakeDatabase();
+  const s = await setup(failures);
+  const started = await begin(db, []);
+  db.runs[0].status = "stopped";
+  const suffix = started.run.id.slice(0, 8);
+  const leftover = (id, handle) => s.store.entries.set(id, { entryId: id, handle });
+  leftover("gid://shopify/Metaobject/orphan-1", `cfs-1-a-${suffix}`);
+  leftover("gid://shopify/Metaobject/orphan-2", `cfs-1-b-${suffix}`);
+  leftover("gid://shopify/Metaobject/other-run", "cfs-1-a-zzzzzzzz");
+  const used = s.naturalGold.options[0].entryId; // a product still lists this one
+  s.store.entries.get(used).handle = `cfs-1-c-${suffix}`;
+  return { db, s, runId: started.run.id, used };
+}
+const clean = ({ db, s, runId }, extra = {}) =>
+  cleanupRun({ db, graphql: s.graphql, shop: SHOP, runId, sleep: noSleep, ...extra });
+
+test("cleaning up a stopped run removes its unused entries, and keeps used ones and other runs'", async () => {
+  const ctx = await stoppedWithLeftovers();
+  assert.deepEqual(await clean(ctx), { deleted: 2, kept: 1, failed: 0 });
+  const left = [...ctx.s.store.entries.keys()];
+  assert.ok(!left.includes("gid://shopify/Metaobject/orphan-1"));
+  assert.ok(!left.includes("gid://shopify/Metaobject/orphan-2"));
+  assert.ok(left.includes("gid://shopify/Metaobject/other-run"));
+  assert.ok(left.includes(ctx.used));
+});
+
+test("a clean-up that cannot delete one entry says so", async () => {
+  const ctx = await stoppedWithLeftovers({ deleteFails: new Set(["gid://shopify/Metaobject/orphan-1"]) });
+  assert.deepEqual(await clean(ctx), { deleted: 1, kept: 1, failed: 1 });
+});
+
+test("only a stopped run of this shop, where importing is switched on, can be cleaned up", async () => {
+  const ctx = await stoppedWithLeftovers();
+  assert.deepEqual(await clean(ctx, { shop: "other.myshopify.com" }), { error: "Importing is not switched on for this store" });
+  process.env.IMPORT_WRITE_SHOPS = `${SHOP},other.myshopify.com`;
+  assert.deepEqual(await clean(ctx, { shop: "other.myshopify.com" }), { error: "That import was not found" });
+  assert.deepEqual(await clean(ctx, { runId: "nope" }), { error: "That import was not found" });
+  ctx.db.runs[0].status = "running";
+  assert.deepEqual(await clean(ctx), { error: "Only an import that stopped part-way can be cleaned up" });
+  assert.equal(ctx.s.store.calls.deletes.length, 0);
 });
