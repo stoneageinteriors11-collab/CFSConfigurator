@@ -157,3 +157,25 @@ test("refuses a file that would unpack to more than 50 MB, before opening it", a
     { sheet: null, row: null, message: "The file unpacks to more than 50 MB; split it into smaller files" },
   ]);
 });
+
+test("a sheet without the Inside colour column is still read; with it, the text is read", async () => {
+  const older = CHOICE_COLUMNS.filter((c) => c !== "Inside colour");
+  const without = await readWorkbook(
+    await workbook({ Groups: [GROUP_COLUMNS], Choices: [older, older.map(() => "x")] }),
+  );
+  assert.deepEqual(without.errors, []);
+  assert.equal(without.choices[0].values["Inside colour"], "");
+
+  const withColumn = await readWorkbook(
+    await workbook({ Groups: [GROUP_COLUMNS], Choices: [CHOICE_COLUMNS, choiceRow({ "Inside colour": "Linen" })] }),
+  );
+  assert.deepEqual(withColumn.errors, []);
+  assert.equal(withColumn.choices[0].values["Inside colour"], "Linen");
+});
+
+test("Display order may be left off the Choices sheet, but is still required on Groups", async () => {
+  const groupsWithout = GROUP_COLUMNS.filter((c) => c !== "Display order");
+  const choicesWithout = CHOICE_COLUMNS.filter((c) => c !== "Display order");
+  const read = await readWorkbook(await workbook({ Groups: [groupsWithout], Choices: [choicesWithout] }));
+  assert.deepEqual(read.errors, [{ sheet: "Groups", row: 1, message: 'Missing column "Display order"' }]);
+});

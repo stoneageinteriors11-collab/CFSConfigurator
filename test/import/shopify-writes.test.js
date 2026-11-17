@@ -117,9 +117,9 @@ test("finds an entry whose create answer was lost, so it can be cleaned up", asy
   assert.match(result.error, /socket hang up/);
 });
 
-test("switches all three values in one call", async () => {
+test("switches all four values in one call", async () => {
   const { graphql, calls } = fakeShopify([{ data: { metafieldsSet: { metafields: [{}, {}, {}], userErrors: [] } } }]);
-  const product = { workflow: { mode: "x" }, modelCards: { A: { source_id: "1" } } };
+  const product = { workflow: { mode: "x" }, modelCards: { A: { source_id: "1" } }, optionCosts: { c1: { cost: { default: "40.00" } } } };
   const result = await switchProduct(graphql, PRODUCT, ["gid://shopify/Metaobject/1", "gid://shopify/Metaobject/2"], product);
   assert.deepEqual(result, {});
   assert.equal(calls.length, 1);
@@ -127,6 +127,7 @@ test("switches all three values in one call", async () => {
     { ownerId: PRODUCT, namespace: "cfs_import", key: "options", type: "list.metaobject_reference", value: JSON.stringify(["gid://shopify/Metaobject/1", "gid://shopify/Metaobject/2"]) },
     { ownerId: PRODUCT, namespace: "cfs_import", key: "workflow", type: "json", value: JSON.stringify({ mode: "x" }) },
     { ownerId: PRODUCT, namespace: "cfs_import", key: "model_cards", type: "json", value: JSON.stringify({ A: { source_id: "1" } }) },
+    { ownerId: PRODUCT, namespace: "cfs_import", key: "option_costs", type: "json", value: JSON.stringify({ c1: { cost: { default: "40.00" } } }) },
   ]);
 });
 

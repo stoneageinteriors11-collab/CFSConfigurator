@@ -65,6 +65,7 @@ An Excel file (`.xlsx`) with two sheets. Column names are fixed; the order of co
 | CFS product ID | yes | The product |
 | Group | yes | Must match a group on the Groups sheet for that product |
 | Choice | yes | Name shown to shoppers, for example `Carlton Black` |
+| Display order | no | Added 17 November 2026. The choice's place within its group: a whole number from 1; unique within a group (a repeat is an error on that row). Blank choices come after numbered ones in sheet order. With no numbers at all, sheet row order is used. Each group keeps the places it already holds in the product's option list, so a sheet without numbers changes nothing. Download current options numbers each group 1, 2, 3 in its current order |
 | Price (£) | yes | Price on every size it is offered on. `0` means included |
 | Sizes | no | Size IDs it is offered on, separated by `;`. Blank means every size |
 | Size prices | no | Exceptions to Price, for example `17019161=99.99; 17019162=109.99` |
@@ -72,6 +73,11 @@ An Excel file (`.xlsx`) with two sheets. Column names are fixed; the order of co
 | Option code | no | The team's code for an option offered on several products, for example `FAB-CARLTON-BLACK`. Rows with the same code share one name, image and details. Blank means the choice belongs to this product only. See "Shared options" |
 | Image URL | no | Full web address starting with `https://`, copied from the CFS website. A bare CFS file name is refused, because the image folder differs by product type (for example `…/images2/Bedrooms/Beds/`) |
 | Details | no | Extra text under the choice, for example dimensions. `<br>` makes a line break |
+| Cost price | no | Added 17 November 2026. The choice's cost to CFS, pounds with up to two decimals. Like Price: applies on every size the choice is offered on. Staff-only, see "Costs" below. Blank keeps the current value |
+| Size cost prices | no | Exceptions to Cost price by size, like Size prices: `17019161=45.00; 17019162=50.00`. A size must be in Sizes when Sizes is filled |
+| Supplier cost price | no | What the supplier charges. Same rules as Cost price |
+| Size supplier cost prices | no | Exceptions to Supplier cost price by size, same format |
+| Inside colour | no | Second line of text under Details, for example `Texline (Natural Color Linen Look) A0066`. Stored as `inside_color` in the option's `source_mappings`. Added 17 November 2026. Optional column: a sheet without it still reads. A blank cell keeps the choice's current value, so it cannot be cleared from the sheet; a filled cell replaces it. A new choice starts blank. Not part of the shared-option comparison |
 
 ### Example
 
@@ -165,3 +171,16 @@ Writing options needs the `write_metaobjects` permission, which the app does not
 - The seven test products can be exported, re-imported unchanged, and still price exactly as today (all existing price tests pass, and the live product check says ready).
 - A changed price shows on the product page and at checkout after import, and Restore brings the old price back.
 - A sheet with an error writes nothing and names the row.
+
+## Costs (added 17 November 2026)
+
+Per-choice cost price and supplier cost price, with per-size exceptions exactly like Price and Size prices.
+
+- **Never shoppers.** The option metaobject and its `source_mappings` prices are readable by the theme, and the price assignments are printed into the product page. So costs are **not** stored there. They go in one JSON **product** metafield, `cfs_import.option_costs`, which must have storefront access turned off.
+- **Setup (once, in Shopify admin):** create a metafield definition for Products, namespace `cfs_import`, key `option_costs`, type JSON, with storefront access **off**. The app does not change definitions itself. After creating it, check that the theme and the Storefront API cannot read it.
+- **Shape:** `{ "<option CFS ID>": { "cost": { "default": "40.00", "sizes": { "17019161": "45.00" } }, "supplier": { ... } } }`. A part is left out when it has no value.
+- **Blank keeps:** a blank cost cell (or a sheet without the columns) keeps the choice's current cost; a filled cell replaces it. A choice left out of the sheet loses its costs. Costs can't be cleared from the sheet.
+- **Written with the options:** `option_costs` is set in the same all-or-nothing `metafieldsSet` as the options list, workflow and model cards, so costs and options change together.
+- **Backup and Restore:** the backup keeps `optionCosts`. Restoring a backup taken before costs existed keeps the costs the returning choices have now.
+- **Checks:** costs must be numbers with up to two decimals, not negative; a size must be a size of the product. A cost above the selling price on a size is a warning in the preview, not an error.
+- **Not done:** costs are not copied onto saved order records, not shown in the preview tables, and not part of shared-option checks.

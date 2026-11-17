@@ -111,6 +111,7 @@ export async function runPlans({ db, graphql, run, plans, sleep }) {
             options: plan.current.options ?? null,
             workflow: plan.current.workflow ?? null,
             modelCards: plan.current.modelCards ?? null,
+            optionCosts: plan.current.optionCosts ?? {},
           },
         },
       });
@@ -222,7 +223,17 @@ export async function startRestore({ db, graphql, shop, backupId, createdBy = nu
   if (started.error) return { error: started.error };
 
   const rest = { ...live };
-  for (const key of ["options", "modelCards", "workflow", "ordinary"]) delete rest[key];
+  for (const key of ["options", "modelCards", "workflow", "ordinary", "optionCosts"]) delete rest[key];
+  // A backup taken before costs existed holds none, so the costs now on the product stay for the
+  // choices that come back; a newer backup puts back exactly the costs it saved.
+  const optionCosts =
+    backup.data && "optionCosts" in backup.data
+      ? (backup.data.optionCosts ?? {})
+      : Object.fromEntries(
+          Object.entries(live.optionCosts ?? {}).filter(([cfsId]) =>
+            options.some((o) => o.cfsId === cfsId),
+          ),
+        );
   return {
     run: started.run,
     plan: {
@@ -230,7 +241,7 @@ export async function startRestore({ db, graphql, shop, backupId, createdBy = nu
       productId: backup.productId,
       title: backup.title,
       current: live,
-      product: { ...rest, options, workflow, modelCards },
+      product: { ...rest, options, workflow, modelCards, optionCosts },
       restoreOfBackupId: backup.id,
     },
   };

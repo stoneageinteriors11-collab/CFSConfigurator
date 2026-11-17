@@ -22,6 +22,17 @@ function priceColumns(assignments) {
   return { price, sizes: assignments.map((a) => a.parent), sizePrices };
 }
 
+const sizeList = (bySize = {}) =>
+  Object.entries(bySize)
+    .map(([size, price]) => `${size}=${price}`)
+    .join("; ");
+
+// A choice's costs in checkRows' shape: { cost, supplier }, each { default, sizes }.
+const costsOf = (costs = {}) => ({
+  cost: { default: costs.cost?.default ?? "", sizes: { ...costs.cost?.sizes } },
+  supplier: { default: costs.supplier?.default ?? "", sizes: { ...costs.supplier?.sizes } },
+});
+
 /** product: from loadConfigurableProduct. Returns { groups, choices } in checkRows' shapes, without row numbers. */
 export function exportRows(cfsProductId, product) {
   const groups = product.workflow.groups.map((group, index) => {
@@ -42,14 +53,18 @@ export function exportRows(cfsProductId, product) {
     };
   });
 
+  const placeInGroup = new Map();
   const choices = product.options.map((option) => ({
     group: option.groupName,
     label: option.label,
+    displayOrder: placeInGroup.set(option.groupName, (placeInGroup.get(option.groupName) ?? 0) + 1).get(option.groupName),
     ...priceColumns(option.mappings.assignments),
     cfsId: option.cfsId,
     optionCode: option.optionCode ?? "",
     imageUrl: option.imageUrl ?? "",
     details: option.mappings.dimensions ?? "",
+    insideColour: option.mappings.inside_color ?? "",
+    costs: costsOf(product.optionCosts?.[option.cfsId]),
   }));
 
   return { groups, choices };
@@ -73,6 +88,7 @@ export function sheetValues(cfsProductId, { groups, choices }) {
       "CFS product ID": cfsProductId,
       Group: c.group,
       Choice: c.label,
+      "Display order": String(c.displayOrder),
       "Price (£)": c.price,
       Sizes: c.sizes.join("; "),
       "Size prices": Object.entries(c.sizePrices)
@@ -82,6 +98,11 @@ export function sheetValues(cfsProductId, { groups, choices }) {
       "Option code": c.optionCode,
       "Image URL": c.imageUrl,
       Details: c.details,
+      "Inside colour": c.insideColour,
+      "Cost price": c.costs.cost.default,
+      "Size cost prices": sizeList(c.costs.cost.sizes),
+      "Supplier cost price": c.costs.supplier.default,
+      "Size supplier cost prices": sizeList(c.costs.supplier.sizes),
     })),
   };
 }

@@ -15,6 +15,7 @@ const CHOICE = {
   "CFS product ID": "146477",
   Group: "Select Fabric",
   Choice: "Carlton Black",
+  "Display order": "",
   "Price (£)": "0",
   Sizes: "",
   "Size prices": "",
@@ -22,6 +23,11 @@ const CHOICE = {
   "Option code": "",
   "Image URL": "",
   Details: "",
+  "Inside colour": "",
+  "Cost price": "",
+  "Size cost prices": "",
+  "Supplier cost price": "",
+  "Size supplier cost prices": "",
 };
 
 let nextRow = 2;
@@ -81,6 +87,7 @@ test("types a good group and choice row", () => {
       row: 2,
       group: "Select Fabric",
       label: "Carlton Black",
+      displayOrder: null,
       price: "89.99",
       sizes: ["17019159", "17019160", "17019161"],
       sizePrices: { 17019161: "99.99", 17019160: "109.99" },
@@ -88,6 +95,8 @@ test("types a good group and choice row", () => {
       optionCode: "",
       imageUrl: "https://images.example.co.uk/a.jpg",
       details: "W 90cm<br>H 40cm",
+      insideColour: "",
+      costs: { cost: { default: "", sizes: {} }, supplier: { default: "", sizes: {} } },
     },
   ]);
 });
@@ -198,4 +207,30 @@ test("shared option codes must agree", () => {
   assert.equal(products.get("146477").choices[0].optionCode, "FAB-CARLTON-BLACK");
   assert.equal(products.get("146506").choices[0].optionCode, "FAB-CARLTON-BLACK");
   assert.equal(products.has("69733"), false);
+});
+
+test("a choice's Display order is optional, a whole number from 1, and not repeated in a group", () => {
+  const groups = [group()];
+  const of = (...rows) => checkRows({ groups, choices: rows });
+  const ok = of(
+    choice({ Choice: "A", "Display order": "2" }),
+    choice({ Choice: "B", "Display order": "1" }),
+    choice({ Choice: "C" }),
+  );
+  assert.deepEqual(ok.errors, []);
+  assert.deepEqual(ok.products.get("146477").choices.map((c) => c.displayOrder), [2, 1, null]);
+
+  const messages = (value) => of(choice({ "Display order": value })).errors.map((e) => e.message);
+  assert.deepEqual(messages("0"), ['"Display order" must be a whole number, 1 or more']);
+  assert.deepEqual(messages("1.5"), ['"Display order" must be a whole number, 1 or more']);
+  assert.deepEqual(messages("first"), ['"Display order" must be a whole number, 1 or more']);
+
+  const twice = of(choice({ Choice: "A", "Display order": "1" }), choice({ Choice: "B", "Display order": "1" }));
+  assert.deepEqual(twice.errors.map((e) => e.message), ['Display order 1 is used twice in "Select Fabric"']);
+  // the same number in two different groups is fine
+  const apart = of(
+    choice({ Choice: "A", "Display order": "1" }),
+    choice({ Choice: "B", Group: "Select Drawer", "Display order": "1" }),
+  );
+  assert.deepEqual(apart.errors.filter((e) => /Display order/.test(e.message)), []);
 });

@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Option Import: Simple Guide</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  * { box-sizing: border-box; }
+  body { font-family: "Segoe UI", Arial, sans-serif; font-size: 11.5pt; line-height: 1.5; color: #1f2933; }
+  h1 { font-size: 26pt; margin: 0 0 4pt; color: #0b3d4f; }
+  h2 { font-size: 17pt; color: #0b3d4f; border-bottom: 2px solid #0b3d4f; padding-bottom: 3pt; margin: 22pt 0 8pt; break-after: avoid; }
+  h3 { font-size: 13pt; margin: 14pt 0 4pt; color: #0b3d4f; break-after: avoid; }
+  p { margin: 5pt 0; }
+  .sub { color: #52606d; font-size: 12.5pt; margin-bottom: 14pt; }
+  .page-break { break-before: page; }
+  .step { display: flex; gap: 10pt; margin: 8pt 0; break-inside: avoid; }
+  .num { flex: 0 0 24pt; height: 24pt; border-radius: 50%; background: #0b3d4f; color: #fff; font-weight: 700; text-align: center; line-height: 24pt; font-size: 11pt; }
+  .step .body { flex: 1; }
+  .step .body b.t { display: block; }
+  .tip, .warn, .ok { padding: 7pt 10pt; border-radius: 6pt; margin: 8pt 0; break-inside: avoid; }
+  .tip { background: #e8f3f8; border-left: 4px solid #2b8cb3; }
+  .warn { background: #fff4e0; border-left: 4px solid #e08a00; }
+  .ok { background: #e6f5ea; border-left: 4px solid #2f9e57; }
+  table { border-collapse: collapse; width: 100%; margin: 8pt 0; font-size: 10.5pt; break-inside: avoid; }
+  th, td { border: 1px solid #c4ccd4; padding: 4pt 7pt; text-align: left; vertical-align: top; }
+  th { background: #eef2f5; }
+  code { background: #eef2f5; padding: 0 3pt; border-radius: 3pt; font-family: Consolas, monospace; font-size: 10.5pt; }
+  .badge { display: inline-block; padding: 0 7pt; border-radius: 9pt; font-size: 10pt; font-weight: 600; }
+  .b-green { background: #cdeed7; color: #17623a; }
+  .b-red { background: #fbd5d5; color: #8a1c1c; }
+  .b-yellow { background: #fde9b8; color: #7a5200; }
+  .b-blue { background: #d3e6f5; color: #1b4f77; }
+  ul, ol { margin: 4pt 0 4pt 18pt; padding: 0; }
+  li { margin: 2pt 0; }
+  .foot { margin-top: 24pt; color: #52606d; font-size: 10pt; }
+</style>
+</head>
+<body>
+
+<h1>Option Import: Simple Guide</h1>
+<p class="sub">How to add or change a bed's options (fabrics, drawers, lights and so on) from an Excel sheet, without a developer.</p>
+
+<h2 style="margin-top:6pt">1. What this tool does</h2>
+<p>Every configurable bed has <b>options</b>: for example the drawer choices, the fabric choices and the extra lights. The <b>Option Import</b> tool lets you change those options by filling in an Excel sheet and uploading it.</p>
+<p>It has two pages in the app's left-hand menu:</p>
+<table>
+  <tr><th style="width:28%">Page</th><th>What it is for</th></tr>
+  <tr><td><b>Options import</b></td><td>Get the sheet, upload it, check it, and press Import.</td></tr>
+  <tr><td><b>Import history</b></td><td>See what was imported before, and undo it with <b>Restore</b> if it was a mistake.</td></tr>
+</table>
+<div class="ok"><b>You cannot break anything by previewing.</b> Preview only reads. Nothing in the shop changes until you press <b>Import</b> yourself.</div>
+
+<h3>Before you start, you need:</h3>
+<ul>
+  <li>The <b>CFS product ID</b> of each bed, for example <code>146477</code>. (It is the number in the middle of the SKU: <code>CFS-<b>146477</b>-17019159</code>.)</li>
+  <li>The bed must <b>already exist in Shopify</b> with its sizes. This tool changes options only. It cannot create products or sizes.</li>
+  <li>Importing must be <b>switched on for the store</b>. If it is not, you can still preview, but the Import button will not appear. Ask the developer to switch it on.</li>
+</ul>
+
+<h2>2. The Excel sheet, in plain words</h2>
+<p>The sheet is an Excel file (<code>.xlsx</code>) with <b>two tabs</b>. Keep the tab names exactly <code>Groups</code> and <code>Choices</code>, and do not rename the column headings.</p>
+<ul>
+  <li><b>Groups tab</b> = the <i>headings</i> a shopper sees, such as "Select Drawer" or "Select Fabric". One row per heading.</li>
+  <li><b>Choices tab</b> = the <i>things to pick</i> under each heading, such as "with 2 Drawer" or "Carlton Black". One row per choice.</li>
+</ul>
+
+<h3>Groups tab: one row per heading</h3>
+<table>
+  <tr><th style="width:22%">Column</th><th style="width:12%">Must fill?</th><th>What to type</th></tr>
+  <tr><td>CFS product ID</td><td>Yes</td><td>The bed's number, e.g. <code>146477</code></td></tr>
+  <tr><td>Group</td><td>Yes</td><td>The heading name, e.g. <code>Select Fabric</code></td></tr>
+  <tr><td>Display order</td><td>Yes</td><td>Position on the page: 1, 2, 3 ...</td></tr>
+  <tr><td>Required</td><td>Yes</td><td><code>Yes</code> if the shopper must pick something, <code>No</code> if it is optional</td></tr>
+  <tr><td>Choose after</td><td>No</td><td>If this heading only appears after another is picked, type that other heading's name. Otherwise leave blank.</td></tr>
+  <tr><td>Type</td><td>Yes</td><td><code>Choose one</code> (pick one thing) or <code>Add-on with quantity</code> (pick several, e.g. 2 lights)</td></tr>
+  <tr><td>Max quantity</td><td>Add-ons only</td><td>The most a shopper can take of one add-on, e.g. <code>5</code>. Leave blank for "Choose one".</td></tr>
+</table>
+
+<h3>Choices tab: one row per choice</h3>
+<table>
+  <tr><th style="width:22%">Column</th><th style="width:12%">Must fill?</th><th>What to type</th></tr>
+  <tr><td>CFS product ID</td><td>Yes</td><td>The bed's number</td></tr>
+  <tr><td>Group</td><td>Yes</td><td>The heading it belongs to. Must match a heading on the Groups tab <b>exactly</b>.</td></tr>
+  <tr><td>Choice</td><td>Yes</td><td>The name the shopper sees, e.g. <code>Carlton Black</code></td></tr>
+  <tr><td>Display order</td><td>No</td><td>Where the choice sits <b>within its group</b>: 1 is first, 2 is second, and so on (whole numbers). Start again at 1 in each group. Two choices in the same group cannot share a number. Choices with no number come after the numbered ones, in sheet order. If you number nothing, the sheet's row order is used.</td></tr>
+  <tr><td>Price (£)</td><td>Yes</td><td>Extra cost in pounds, e.g. <code>89.99</code>. Type <code>0</code> if it is included in the price.</td></tr>
+  <tr><td>Sizes</td><td>No</td><td>Only offer it on some sizes: type the size IDs with <code>;</code> between them. Blank = every size.</td></tr>
+  <tr><td>Size prices</td><td>No</td><td>A different price on certain sizes, e.g. <code>17019161=99.99; 17019162=109.99</code></td></tr>
+  <tr><td>CFS choice ID</td><td>No</td><td>CFS's own reference number for the choice. Keep it the same each time so old orders still match.</td></tr>
+  <tr><td>Option code</td><td>No</td><td>Use when the <b>same</b> option (e.g. a fabric) is used on <b>several beds</b>. Give it the same code everywhere, e.g. <code>FAB-CARLTON-BLACK</code> (letters, numbers and hyphens only).</td></tr>
+  <tr><td>Image URL</td><td>No</td><td>A full web address starting with <code>https://</code>. A bare file name will be refused.</td></tr>
+  <tr><td>Details</td><td>No</td><td>Small text under the choice, e.g. dimensions such as <code>W 32cm x H 27cm x D 6cm</code>. Type <code>&lt;br&gt;</code> for a new line.</td></tr>
+  <tr><td>Inside colour</td><td>No</td><td>A second line of small text under Details, e.g. <code>Texline (Natural Color Linen Look) A0066</code>. <b>Leave it blank to keep what the choice has now.</b> Type new text to replace it. You cannot clear it from the sheet. Older sheets without this column still work.</td></tr>
+  <tr><td>Cost price</td><td>No</td><td>What the choice costs <b>us</b>, in pounds, e.g. <code>40.00</code>. Works like Price (£): it applies on every size the choice is offered on. Staff only; <b>shoppers never see it</b>. Blank keeps the current cost.</td></tr>
+  <tr><td>Size cost prices</td><td>No</td><td>A different cost on certain sizes, written like Size prices: <code>17019161=45.00; 17019162=50.00</code></td></tr>
+  <tr><td>Supplier cost price</td><td>No</td><td>What the <b>supplier</b> charges for the choice. Same rules as Cost price.</td></tr>
+  <tr><td>Size supplier cost prices</td><td>No</td><td>Supplier cost on certain sizes: <code>17019161=38.00</code></td></tr>
+</table>
+<div class="tip"><b>About the cost columns.</b> They are all optional, and an old sheet without them still works. A <b>blank cell never erases</b> a cost: it keeps what is saved now. To change a cost, type the new number. A size listed in a size-cost column must also be in Sizes when Sizes is filled in. If a cost is higher than the selling price on some size, the preview shows a yellow "Check these" warning (a likely typo), but you can still import. Costs are saved on the bed in a staff-only field, and Download current options includes them.</div>
+
+<div class="warn"><b>The most important rule:</b> the sheet is a bed's <b>complete</b> list of options. Anything that is on the bed now but <b>not in your sheet will be removed</b>. This is why the easiest way to change something is to download the current options first (see step 3 below), edit them, and upload the whole thing again.</div>
+
+<h2 class="page-break">3. How to use the Options import page, step by step</h2>
+<p>Open the app, then click <b>Options import</b> in the left menu.</p>
+
+<h3>A. Get a sheet to work from (pick one)</h3>
+<div class="step"><div class="num">1</div><div class="body"><b class="t">To change a bed that already has options (most common): "Download current options"</b>
+Find the box called <b>CFS product IDs</b> (lower down the page). Type one or more bed numbers, separated by commas, spaces or new lines, for example <code>146477, 69733</code> (up to 100). Click <b>Download current options</b>. You get an Excel file showing exactly what those beds have right now. Nothing is changed.</div></div>
+<div class="step"><div class="num">2</div><div class="body"><b class="t">To set up a bed from scratch: "Download sample"</b>
+Click <b>Download sample</b> at the top of the page. You get an Excel file with the right columns and a few example rows. Copy the pattern for your own bed, and delete the example rows.</div></div>
+<div class="tip">If a bed number is not found in Shopify, nothing downloads and a red message names the bed. Check the number and try again.</div>
+
+<h3>B. Edit the sheet in Excel</h3>
+<div class="step"><div class="num">3</div><div class="body"><b class="t">Make your changes</b>
+Change a price, add a fabric row, delete a row you no longer want, and so on. Follow the column guide in section 2. Save the file as <code>.xlsx</code>.</div></div>
+
+<h3>C. Preview (this changes nothing)</h3>
+<div class="step"><div class="num">4</div><div class="body"><b class="t">Choose the file</b>
+At the top of the page, click the file chooser and select your saved Excel file.</div></div>
+<div class="step"><div class="num">5</div><div class="body"><b class="t">Click Preview</b>
+The app checks every row against the real Shopify bed and its sizes. This can take a little while if the sheet is big. Please wait.</div></div>
+<div class="step"><div class="num">6</div><div class="body"><b class="t">Read the result banner</b>
+It will be one of these three:
+<table>
+  <tr><td style="width:36%"><span class="badge b-green">Ready to import: N products</span></td><td>All good. Every row is correct and every bed would be ready to sell. You may go on to Import.</td></tr>
+  <tr><td><span class="badge b-red">Not ready: fix the problems below</span></td><td>Something is wrong. A list of problems appears with the <b>sheet name and row number</b> for each. Fix them in Excel, then choose the file again and press Preview again. <b>Nothing has been changed.</b></td></tr>
+  <tr><td><span class="badge b-blue">Nothing to import</span></td><td>The sheet is identical to what the shop already has. There is nothing to do.</td></tr>
+</table></div></div>
+<div class="step"><div class="num">7</div><div class="body"><b class="t">Look at each bed's tab</b>
+Each bed has its own tab under <b>Products</b>. It shows its groups, its choices, and the price on every size. Beds with a problem are marked. Useful messages you may see:
+<ul>
+  <li><b>"Fix these rows for this product"</b> (red): you must fix these rows before importing.</li>
+  <li><b>"Check these"</b> (yellow): a warning only. For example, a choice has the same name as an option that already has a code on another bed. Add the code if it is the same option.</li>
+  <li><b>"Will remove N choices not in the sheet"</b>: those choices are on the bed now but missing from your sheet. If that is a surprise, stop and fix the sheet.</li>
+  <li><b>"No changes; this product will be skipped"</b>: nothing to do for this bed.</li>
+</ul></div></div>
+
+<h3>D. Import (this changes the shop)</h3>
+<div class="step"><div class="num">8</div><div class="body"><b class="t">Click Import</b>
+When the banner is green, a blue <b>Import N products</b> button appears. Press it. The app first <b>backs up every bed</b>, then writes the new options. You will see a progress bar.
+<div class="tip">If you change the file after previewing, the button disappears. That is on purpose: choose the file again and press Preview again, so you only ever import what you have checked.</div></div></div>
+<div class="step"><div class="num">9</div><div class="body"><b class="t">Read the result for each bed</b>
+<table>
+  <tr><td style="width:34%"><span class="badge b-green">Imported</span></td><td>Done. The bed has its new options and is ready to sell.</td></tr>
+  <tr><td><span class="badge b-yellow">Written, not ready</span></td><td>The options were written but the bed is not ready to sell yet. Open Products to see why.</td></tr>
+  <tr><td><span class="badge b-red">Not changed</span></td><td>That bed failed and was left exactly as it was. The reason is shown. Fix it and try again.</td></tr>
+  <tr><td><span class="badge b-yellow">Check this product</span></td><td>The import stopped part-way for this bed. Open the bed in Shopify and the Product check page to see what state it is in, and tell the developer.</td></tr>
+</table>
+A bed is never left half-written: it either gets all of its new options or none of them.</div></div>
+<div class="warn">Only <b>one import can run at a time</b> for a store. If you see "Another import is running", wait for it to finish, then try again. Please keep the page open until you see the result.</div>
+
+<h2 class="page-break">4. How to use the Import history page</h2>
+<p>Click <b>Import history</b> in the left menu. It lists the last 50 imports and restores, newest first. Each one shows:</p>
+<ul>
+  <li>When it happened and the file name</li>
+  <li><b>Run by</b>: who did it</li>
+  <li>Each bed that was changed, with its result badge (same badges as above)</li>
+</ul>
+
+<h3>How to undo an import (Restore)</h3>
+<div class="step"><div class="num">1</div><div class="body"><b class="t">Find the import</b> in the list.</div></div>
+<div class="step"><div class="num">2</div><div class="body"><b class="t">Click Restore</b> next to the bed you want to put back. The bed's options go back to how they were <b>just before that import</b>.</div></div>
+<div class="step"><div class="num">3</div><div class="body"><b class="t">Wait for the result.</b> Restore is itself saved in the history, so a restore can be undone the same way.</div></div>
+<div class="tip">There is no Restore button when the bed had <b>no options at all</b> before that import (there was nothing to go back to). A backup that has already been restored also cannot be restored again.</div>
+<div class="ok">Orders already placed are never affected. Their prices and choices were saved when the customer paid and cannot be changed by an import or a restore.</div>
+
+<h2>5. Example: change one price</h2>
+<p><i>Task: make "with 2 Drawer" cost £99.99 instead of £89.99 on Natural Gold (bed 146477).</i></p>
+<ol>
+  <li>Options import: type <code>146477</code> in <b>CFS product IDs</b> and click <b>Download current options</b>.</li>
+  <li>Open the file. On the <b>Choices</b> tab find the row "with 2 Drawer". Change <b>Price (£)</b> to <code>99.99</code>. Save.</li>
+  <li>Choose the saved file at the top and click <b>Preview</b>.</li>
+  <li>Check the Natural Gold tab shows the new price. The banner should say <span class="badge b-green">Ready to import: 1 product</span>.</li>
+  <li>Click <b>Import 1 product</b> and wait for <span class="badge b-green">Imported</span>.</li>
+  <li>If it was a mistake, go to <b>Import history</b> and click <b>Restore</b>.</li>
+</ol>
+
+<h2>6. Common problems and what to do</h2>
+<table>
+  <tr><th style="width:38%">What you see</th><th>What it means / what to do</th></tr>
+  <tr><td>"Unknown column" or "Unknown sheet"</td><td>A tab or heading was renamed. Use exactly <code>Groups</code> and <code>Choices</code> and the original column names.</td></tr>
+  <tr><td>Product not found</td><td>The CFS product ID does not match any Shopify bed. Check the number against the SKU.</td></tr>
+  <tr><td>A size ID is not one of the product's sizes</td><td>A size number in <b>Sizes</b> or <b>Size prices</b> is wrong. Copy it from the SKU: <code>CFS-146477-<b>17019159</b></code>.</td></tr>
+  <tr><td>Group not found</td><td>The group name on the Choices tab does not exactly match the Groups tab (check spelling and spaces).</td></tr>
+  <tr><td>Image URL problem</td><td>It must be a full address starting with <code>https://</code>.</td></tr>
+  <tr><td>"Option code ... is ... on another product; this sheet gives it a different name/image/details"</td><td>The same option code must have the <b>same</b> name, image and details everywhere. Either match the other bed, or add that bed to the sheet too so both change together.</td></tr>
+  <tr><td>Price problem</td><td>Prices must be numbers with up to 2 decimals and not negative.</td></tr>
+  <tr><td>"Not ready to sell"</td><td>Some size has no valid way to be priced (for example a required group with no choice on one size). Add the missing choices.</td></tr>
+  <tr><td>File too large</td><td>The limit is 5 MB, 100 beds per file, and 1,024 choices on one bed. Split it into smaller files.</td></tr>
+  <tr><td>"Importing is not switched on for this store"</td><td>Writing is turned off for this store. Preview still works. Ask the developer.</td></tr>
+  <tr><td>"Shopify could not be asked about shared options just now; try again"</td><td>A temporary Shopify hiccup. Wait a minute and press Preview again.</td></tr>
+</table>
+
+<h2>7. Golden rules</h2>
+<ol>
+  <li><b>Always download the current options first</b> when changing an existing bed, so you do not accidentally remove choices.</li>
+  <li><b>Always preview</b> and read the banner and each bed's tab before pressing Import.</li>
+  <li><b>If anything is red, nothing is imported.</b> Fix the rows named and preview again.</li>
+  <li><b>Check "Will remove N choices"</b>: it must be what you intended.</li>
+  <li>Made a mistake? <b>Import history, then Restore.</b></li>
+  <li>Keep <b>CFS choice ID</b> and <b>Option code</b> the same from import to import.</li>
+</ol>
+
+<p class="foot">Guide for the CFS configurator app, Options import and Import history pages. Written 17 November 2026.</p>
+</body>
+</html>

@@ -357,3 +357,34 @@ test("stopRun frees the shop when a run failed, and leaves a finished run alone"
   await stopRun(db, db.runs[1].id);
   assert.equal(db.runs[1].status, "done");
 });
+
+test("an import writes the costs, the backup keeps the old ones, and restore puts them back", async () => {
+  const db = fakeDatabase();
+  const s = await setup();
+  const nowCosts = async () => (await loadConfigurableProduct(s.graphql, s.naturalGold.productId)).optionCosts;
+  const drawerId = s.plans[0].product.options.find((o) => o.label === "with 2 Drawer").cfsId;
+
+  // the first import saves a cost
+  s.plans[0].product.optionCosts = { [drawerId]: { cost: { default: "40.00" } } };
+  await run(db, s, await begin(db, s.plans));
+  assert.deepEqual(await nowCosts(), { [drawerId]: { cost: { default: "40.00" } } });
+  assert.deepEqual(db.backups[0].data.optionCosts, {});
+
+  // restoring that first backup takes the cost away again, because the product had none
+  const restore = await startRestore({ db, graphql: s.graphql, shop: SHOP, backupId: "backup-1", createdBy: "staff-1" });
+  await runPlans({ db, graphql: s.graphql, run: restore.run, plans: [restore.plan], sleep: noSleep });
+  assert.deepEqual(await nowCosts(), {});
+});
+
+test("restoring a backup from before costs existed keeps the costs the choices now have", async () => {
+  const db = fakeDatabase();
+  const s = await setup();
+  const drawerId = s.plans[0].product.options.find((o) => o.label === "with 2 Drawer").cfsId;
+  await run(db, s, await begin(db, s.plans));
+  delete db.backups[0].data.optionCosts; // a backup taken before this feature
+  // a cost is added to the live product afterwards
+  s.naturalGold.optionCosts = { [drawerId]: { cost: { default: "40.00" } }, "gone-choice": { cost: { default: "9" } } };
+
+  const restore = await startRestore({ db, graphql: s.graphql, shop: SHOP, backupId: "backup-1", createdBy: "staff-1" });
+  assert.deepEqual(restore.plan.product.optionCosts, { [drawerId]: { cost: { default: "40.00" } } });
+});

@@ -9,6 +9,7 @@ const asShopify = (p) => ({
   variants: { pageInfo: { hasNextPage: false }, nodes: p.variants },
   modelCards: p.ordinary ? null : { value: JSON.stringify(p.modelCards) },
   workflow: p.ordinary ? null : { value: JSON.stringify(p.workflow) },
+  optionCosts: p.optionCosts ? { value: JSON.stringify(p.optionCosts) } : null,
   options: p.ordinary
     ? null
     : {

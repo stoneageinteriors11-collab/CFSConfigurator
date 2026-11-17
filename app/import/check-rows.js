@@ -78,7 +78,7 @@ function checkGroup(raw, errors) {
   });
 }
 
-function parseSizePrices(text, check) {
+function parseSizePrices(text, check, column = "Size prices") {
   const prices = {};
   for (const entry of text
     .split(";")
@@ -86,11 +86,11 @@ function parseSizePrices(text, check) {
     .filter(Boolean)) {
     const match = /^(\d+)\s*=\s*(\d+(?:\.\d{1,2})?)$/.exec(entry);
     if (!match) {
-      check.fail('"Size prices" must look like 17019161=99.99');
+      check.fail(`"${column}" must look like 17019161=99.99`);
       return prices;
     }
     if (match[1] in prices) {
-      check.fail(`Size ${match[1]} is priced twice in "Size prices"`);
+      check.fail(`Size ${match[1]} is priced twice in "${column}"`);
       return prices;
     }
     prices[match[1]] = match[2];
@@ -104,6 +104,12 @@ function checkChoice(raw, errors) {
   const product = productId(check);
   const group = check.need("Group");
   const label = check.need("Choice");
+
+  // Optional: the choice's place within its group. Blank choices follow the numbered ones.
+  const orderText = values["Display order"] ?? "";
+  if (orderText && (!WHOLE.test(orderText) || Number(orderText) < 1))
+    check.fail('"Display order" must be a whole number, 1 or more');
+  const displayOrder = WHOLE.test(orderText) && Number(orderText) >= 1 ? Number(orderText) : null;
 
   const price = check.need("Price (£)");
   if (price && !PRICE.test(price)) check.fail(PRICE_MESSAGE);
@@ -126,6 +132,27 @@ function checkChoice(raw, errors) {
     }
   }
 
+  // Costs work like Price and Size prices, but both columns may be left blank.
+  const costs = {};
+  for (const [part, priceColumn, sizeColumn] of [
+    ["cost", "Cost price", "Size cost prices"],
+    ["supplier", "Supplier cost price", "Size supplier cost prices"],
+  ]) {
+    const amount = values[priceColumn] ?? "";
+    if (amount && !PRICE.test(amount))
+      check.fail(
+        `"${priceColumn}" must be pounds with up to two decimals, like 40.00`,
+      );
+    const bySize = parseSizePrices(values[sizeColumn] ?? "", check, sizeColumn);
+    if (sizes.length) {
+      for (const size of Object.keys(bySize)) {
+        if (!sizes.includes(size))
+          check.fail(`Size ${size} has a cost but is not in "Sizes"`);
+      }
+    }
+    costs[part] = { default: amount, sizes: bySize };
+  }
+
   const imageUrl = values["Image URL"];
   if (imageUrl && !/^https:\/\/\S+$/i.test(imageUrl)) {
     check.fail('"Image URL" must be a full address starting with https://');
@@ -144,6 +171,7 @@ function checkChoice(raw, errors) {
       row: raw.row,
       group,
       label,
+      displayOrder,
       price,
       sizes,
       sizePrices,
@@ -151,6 +179,8 @@ function checkChoice(raw, errors) {
       optionCode,
       imageUrl,
       details: values.Details,
+      insideColour: values["Inside colour"],
+      costs,
     },
   });
 }
@@ -198,6 +228,17 @@ export function checkRows({ groups, choices }) {
       existing.some((c) => c.group === choice.group && c.label === choice.label)
     ) {
       fail(`"${choice.label}" is listed twice in "${choice.group}"`);
+      continue;
+    }
+    if (
+      choice.displayOrder !== null &&
+      existing.some(
+        (c) => c.group === choice.group && c.displayOrder === choice.displayOrder,
+      )
+    ) {
+      fail(
+        `Display order ${choice.displayOrder} is used twice in "${choice.group}"`,
+      );
       continue;
     }
     if (choice.optionCode) {

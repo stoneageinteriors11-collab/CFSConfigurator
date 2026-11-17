@@ -43,6 +43,7 @@ const PRODUCT_QUERY = `#graphql
       }
       modelCards: metafield(namespace: "cfs_import", key: "model_cards") { value }
       workflow: metafield(namespace: "cfs_import", key: "workflow") { value }
+      optionCosts: metafield(namespace: "cfs_import", key: "option_costs") { value }
       options: metafield(namespace: "cfs_import", key: "options") {
         references(first: ${CHOICES_PER_PAGE}) {
           pageInfo { hasNextPage endCursor }
@@ -115,6 +116,8 @@ export async function loadConfigurableProduct(graphql, productId) {
     variants: product.variants.nodes,
     modelCards: parseJson(product.modelCards?.value),
     workflow: parseJson(product.workflow?.value),
+    // Staff-only costs (never shown to shoppers). Missing or unreadable means none.
+    optionCosts: parseJson(product.optionCosts?.value) ?? {},
     options: nodes.map((node) => ({
       entryId: node.entryId,
       cfsId: node.cfsId?.value,

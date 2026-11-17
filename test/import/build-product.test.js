@@ -289,3 +289,26 @@ test("refuses more choices than a product's list can hold (1,024)", () => {
   const most = Array.from({ length: 1024 }, (_, i) => choice({ row: i + 2, label: `Fabric ${i}` }));
   assert.deepEqual(build([group()], most).errors, []);
 });
+
+test("Inside colour from the sheet is written; blank keeps the current value; a new choice starts blank", () => {
+  const fixture = load("natural-gold");
+  const current = fixture.options.find((o) => o.mappings.inside_color !== undefined) ?? fixture.options[0];
+  const withColour = { ...fixture, options: fixture.options.map((o) => (o === current
+    ? { ...o, mappings: { ...o.mappings, inside_color: "Texline A0066" } }
+    : o)) };
+  const sheet = (insideColour) => {
+    const { groups, choices } = exportRows(NG, withColour);
+    return { groups, choices: choices.map((c) => (c.cfsId === current.cfsId ? { ...c, insideColour } : c)) };
+  };
+  const insideOf = (product) => product.options.find((o) => o.cfsId === current.cfsId).mappings.inside_color;
+
+  // the export carries the current value, and a blank cell keeps it
+  assert.equal(exportRows(NG, withColour).choices.find((c) => c.cfsId === current.cfsId).insideColour, "Texline A0066");
+  assert.equal(insideOf(buildProduct({ cfsProductId: NG, ...sheet("") }, withColour).product), "Texline A0066");
+  // a filled cell replaces it
+  assert.equal(insideOf(buildProduct({ cfsProductId: NG, ...sheet("Linen A1") }, withColour).product), "Linen A1");
+  // a choice the store has not seen starts with nothing
+  const fresh = build([group()], [choice({ label: "Brand new", insideColour: "" })]).product;
+  assert.equal(fresh.options[0].mappings.inside_color, "");
+  assert.equal(build([group()], [choice({ label: "Brand new", insideColour: "Silk S2" })]).product.options[0].mappings.inside_color, "Silk S2");
+});

@@ -5,6 +5,7 @@ import { resolveAssignment } from "../pricing/quote.server.js";
 import { buildProduct } from "./build-product.js";
 import { checkRows } from "./check-rows.js";
 import { findProducts } from "./find-products.server.js";
+import { costWarnings } from "./cost-checks.js";
 import { checkSharedOptions, warmSharedOptions } from "./shared-options.server.js";
 import { sameProduct } from "./same-product.js";
 import { readWorkbook } from "./spreadsheet.server.js";
@@ -171,7 +172,7 @@ export async function prepareImport(graphql, bytes) {
       exceptProductIds: sheetProductIds,
       cache: sharedCache,
     });
-    entry.warnings = shared.warnings;
+    entry.warnings = [...costWarnings(built.product), ...shared.warnings];
     errors.push(
       ...shared.errors.map((message) => ({
         sheet: null,

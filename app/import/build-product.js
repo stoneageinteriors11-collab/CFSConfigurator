@@ -67,6 +67,8 @@ function checkChoices(cfsProductId, choices, byName, sizeIds, fail) {
     for (const size of new Set([
       ...choice.sizes,
       ...Object.keys(choice.sizePrices),
+      ...Object.keys(choice.costs?.cost?.sizes ?? {}),
+      ...Object.keys(choice.costs?.supplier?.sizes ?? {}),
     ])) {
       if (!sizeIds.includes(size))
         fail(
@@ -135,6 +137,50 @@ function assignmentsFor(choice, cfsId, existing) {
       `${cfsId}-${size}`,
     ),
   );
+}
+
+/**
+ * Each group's choices in "Display order" (numbered first, the rest after in sheet order). Every
+ * group keeps the places in the list it already had, so a sheet with no numbers changes nothing.
+ */
+export function inDisplayOrder(choices) {
+  const slots = new Map();
+  choices.forEach((choice, index) => {
+    if (!slots.has(choice.group)) slots.set(choice.group, []);
+    slots.get(choice.group).push(index);
+  });
+  const result = [...choices];
+  for (const indexes of slots.values()) {
+    const sorted = indexes
+      .map((i) => choices[i])
+      .sort((a, b) => (a.displayOrder ?? Infinity) - (b.displayOrder ?? Infinity));
+    sorted.forEach((choice, n) => {
+      result[indexes[n]] = choice;
+    });
+  }
+  return result;
+}
+
+const hasCost = (part) =>
+  Boolean(part && (part.default || Object.keys(part.sizes ?? {}).length));
+
+/**
+ * One choice's costs ({ cost, supplier }, each { default?, sizes? }). A cost the sheet leaves
+ * blank keeps what the choice has now; a filled one replaces it.
+ */
+function costsFor(choice, existing) {
+  const result = {};
+  for (const part of ["cost", "supplier"]) {
+    const given = choice.costs?.[part];
+    if (hasCost(given)) {
+      result[part] = {};
+      if (given.default) result[part].default = given.default;
+      if (Object.keys(given.sizes).length) result[part].sizes = { ...given.sizes };
+    } else if (existing?.[part]) {
+      result[part] = existing[part];
+    }
+  }
+  return result;
 }
 
 function workflowFor(kept, groups) {
@@ -214,7 +260,8 @@ export function buildProduct(
   const existingOptions = new Map(
     (shopifyProduct.options ?? []).map((o) => [o.cfsId, o]),
   );
-  const options = choices.map((choice) => {
+  const optionCosts = {};
+  const options = inDisplayOrder(choices).map((choice) => {
     const cfsId = choiceIdFor(
       cfsProductId,
       choice.group,
@@ -229,13 +276,16 @@ export function buildProduct(
       mappings: {
         kind: byName.get(choice.group).kind,
         dimensions: choice.details,
-        // Not on the sheet: kept from the product's current data.
-        inside_color: existing?.mappings?.inside_color ?? "",
+        // From the sheet's "Inside colour"; blank keeps the choice's current value.
+        inside_color:
+          choice.insideColour || (existing?.mappings?.inside_color ?? ""),
         assignments: assignmentsFor(choice, cfsId, existing),
       },
       imageUrl: choice.imageUrl || null,
     };
     if (choice.optionCode) option.optionCode = choice.optionCode;
+    const costs = costsFor(choice, shopifyProduct.optionCosts?.[cfsId]);
+    if (Object.keys(costs).length) optionCosts[cfsId] = costs;
     return option;
   });
 
@@ -253,13 +303,14 @@ export function buildProduct(
   }
 
   const rest = { ...shopifyProduct };
-  for (const key of ["options", "modelCards", "workflow", "ordinary"])
+  for (const key of ["options", "modelCards", "workflow", "ordinary", "optionCosts"])
     delete rest[key];
   const product = {
     ...rest,
     modelCards,
     workflow: workflowFor(shopifyProduct.workflow, groups),
     options,
+    optionCosts,
   };
 
   const reason = unsupportedReason(product);

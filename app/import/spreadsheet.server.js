@@ -16,6 +16,7 @@ export const CHOICE_COLUMNS = [
   "CFS product ID",
   "Group",
   "Choice",
+  "Display order",
   "Price (£)",
   "Sizes",
   "Size prices",
@@ -23,7 +24,24 @@ export const CHOICE_COLUMNS = [
   "Option code",
   "Image URL",
   "Details",
+  "Inside colour",
+  "Cost price",
+  "Size cost prices",
+  "Supplier cost price",
+  "Size supplier cost prices",
 ];
+
+// Columns an older sheet may lack (per sheet: "Display order" is required on Groups).
+const OPTIONAL_COLUMNS = {
+  Choices: new Set([
+    "Display order",
+    "Inside colour",
+    "Cost price",
+    "Size cost prices",
+    "Supplier cost price",
+    "Size supplier cost prices",
+  ]),
+};
 
 const SHEETS = { Groups: GROUP_COLUMNS, Choices: CHOICE_COLUMNS };
 
@@ -95,7 +113,7 @@ function readSheet(sheet, name, columns, errors) {
     }
   });
   for (const column of columns) {
-    if (!seen.has(column))
+    if (!seen.has(column) && !OPTIONAL_COLUMNS[name]?.has(column))
       errors.push({
         sheet: name,
         row: 1,
@@ -237,6 +255,7 @@ const SAMPLE_CHOICES = [
     "146477",
     "Select Drawer",
     "with 2 Drawer",
+    1,
     89.99,
     "",
     "",
@@ -249,6 +268,7 @@ const SAMPLE_CHOICES = [
     "146477",
     "Select Drawer",
     "with 4 Drawer",
+    2,
     179.99,
     "17019159; 17019160; 17019161; 17019162",
     "",
@@ -261,6 +281,7 @@ const SAMPLE_CHOICES = [
     "146477",
     "Select Fabric",
     "Carlton Black",
+    1,
     0,
     "",
     "",
@@ -273,6 +294,7 @@ const SAMPLE_CHOICES = [
     "69733",
     "Select Lightings",
     "102 : Lighting for Footboard",
+    1,
     209.99,
     "",
     "",

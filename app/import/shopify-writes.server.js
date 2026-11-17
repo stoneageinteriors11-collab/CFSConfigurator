@@ -149,6 +149,7 @@ export async function switchProduct(graphql, productId, entryIds, product, { sle
           metafield("options", "list.metaobject_reference", entryIds),
           metafield("workflow", "json", product.workflow),
           metafield("model_cards", "json", product.modelCards),
+          metafield("option_costs", "json", product.optionCosts ?? {}),
         ],
       },
       { sleep },

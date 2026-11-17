@@ -17,6 +17,7 @@ export function sameProduct(current, built) {
   return (
     isDeepStrictEqual(current.workflow, built.workflow) &&
     isDeepStrictEqual(current.modelCards, built.modelCards) &&
+    isDeepStrictEqual(current.optionCosts ?? {}, built.optionCosts ?? {}) &&
     currentOptions.length === built.options.length &&
     currentOptions.every((option, i) =>
       isDeepStrictEqual(comparable(option), comparable(built.options[i])),

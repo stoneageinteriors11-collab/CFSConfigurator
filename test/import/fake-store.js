@@ -65,12 +65,13 @@ export function fakeStore(products, failures = {}) {
         product.options = value("options").map((id) => ({ ...entries.get(id) }));
         product.workflow = value("workflow");
         product.modelCards = value("model_cards");
+        product.optionCosts = value("option_costs");
       }
       if (failures.switchThrows) {
         broken = Boolean(failures.unreadable);
         throw new Error("socket hang up");
       }
-      return answer({ metafieldsSet: { metafields: [{}, {}, {}], userErrors: [] } });
+      return answer({ metafieldsSet: { metafields: [{}, {}, {}, {}], userErrors: [] } });
     }
     if (query.includes("CfsEntryListed")) {
       const listed = products.some((p) => !p.ordinary && p.options.some((o) => o.entryId === variables.id));

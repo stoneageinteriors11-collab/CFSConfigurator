@@ -42,6 +42,7 @@ test("converts Shopify's response for the pricing engine", async () => {
     variants: [{ id: "v1", sku: "A", price: "10.00", inventoryQuantity: 1 }],
     modelCards: { A: { source_id: "1" } },
     workflow: { mode: "m" },
+    optionCosts: {},
     options: [{
       entryId: "gid://shopify/Metaobject/9",
       cfsId: "c1",
@@ -159,4 +160,11 @@ test("leaves bad JSON undefined so the engine refuses it", async () => {
   const loaded = await load(product);
   assert.equal(loaded.workflow, undefined);
   assert.equal(loaded.options[0].mappings, undefined);
+});
+
+test("reads the staff-only option costs, and treats missing or unreadable ones as none", async () => {
+  const costs = { c1: { cost: { default: "40.00" } } };
+  const product = { ...shopifyProduct(), optionCosts: { value: JSON.stringify(costs) } };
+  assert.deepEqual((await load(product)).optionCosts, costs);
+  assert.deepEqual((await load({ ...shopifyProduct(), optionCosts: { value: "{not json" } })).optionCosts, {});
 });
