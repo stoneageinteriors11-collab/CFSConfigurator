@@ -77,6 +77,42 @@ async function search(graphql, query, cache, sleep) {
   return entries;
 }
 
+/** Every search checkSharedOptions will make for these options, each once. */
+function queriesFor(options) {
+  const queries = new Set();
+  for (const option of options) {
+    if (option.optionCode) queries.add(`fields.option_code:${option.optionCode}`);
+    queries.add(`fields.label:"${quoted(option.label)}"`);
+  }
+  return queries;
+}
+
+/**
+ * Makes the searches for every product's options at once, a few at a time, and keeps the answers
+ * in `cache`, so the checks that follow find them ready instead of asking Shopify one by one. A
+ * search that still fails is left out of the cache: the check asks again and reports the failure.
+ */
+export async function warmSharedOptions(
+  graphql,
+  optionLists,
+  { cache, sleep = realSleep, concurrency = 4 },
+) {
+  const queries = new Set();
+  for (const options of optionLists)
+    for (const query of queriesFor(options)) if (!cache.has(query)) queries.add(query);
+  const waiting = [...queries];
+  const worker = async () => {
+    for (let query = waiting.shift(); query !== undefined; query = waiting.shift()) {
+      try {
+        await search(graphql, query, cache, sleep);
+      } catch {
+        // checkSharedOptions will try this search again and report it
+      }
+    }
+  };
+  await Promise.all(Array.from({ length: Math.min(concurrency, waiting.length) }, worker));
+}
+
 const productList = (products) =>
   products.map((p) => `${p.title} (${numberOf(p.id)})`).join(", ");
 

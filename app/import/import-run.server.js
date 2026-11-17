@@ -1,7 +1,7 @@
 // Option import runs: who may write, one run at a time, a backup before each product is
 // changed, a result per product, and Restore (which is a run that writes a backup back).
 import { loadConfigurableProduct } from "../pricing/load-product.server.js";
-import { checkSharedOptions } from "./shared-options.server.js";
+import { checkSharedOptions, warmSharedOptions } from "./shared-options.server.js";
 import { writeProduct } from "./write-product.server.js";
 
 // A run not updated for this long is taken to have died with its server.
@@ -202,8 +202,11 @@ export async function startRestore({ db, graphql, shop, backupId, createdBy = nu
   if (!live) {
     return { error: "Shopify could not be read for this product just now; try again" };
   }
+  const cache = new Map();
+  await warmSharedOptions(graphql, [options], { cache });
   const shared = await checkSharedOptions(graphql, options, {
     exceptProductIds: [backup.productId],
+    cache,
   });
   if (shared.errors.length) return { error: shared.errors.join("; ") };
 

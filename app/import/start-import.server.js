@@ -1,6 +1,6 @@
 // Starts an option import from an uploaded sheet: checks the file again in full, then hands
 // the writing to the background so the page can show progress.
-import { beginRun, runPlans } from "./import-run.server.js";
+import { beginRun, runPlans, writesAllowed } from "./import-run.server.js";
 import { prepareImport } from "./preview.server.js";
 
 /**
@@ -8,6 +8,8 @@ import { prepareImport } from "./preview.server.js";
  * this request. Returns { runId } or { errors }.
  */
 export async function startImport({ db, graphql, shop, bytes, fileName, createdBy, createdByName, runInBackground }) {
+  // Refuse before the slow checks when this store may not be written to (beginRun checks again).
+  if (!writesAllowed(shop)) return { errors: ["Importing is not switched on for this store"] };
   // The sheet is checked again now, not trusted from the preview: Shopify may have changed since.
   const { preview, plans } = await prepareImport(graphql, bytes);
   if (!preview.importable) {

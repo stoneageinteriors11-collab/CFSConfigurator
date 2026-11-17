@@ -5,7 +5,7 @@ import { resolveAssignment } from "../pricing/quote.server.js";
 import { buildProduct } from "./build-product.js";
 import { checkRows } from "./check-rows.js";
 import { findProducts } from "./find-products.server.js";
-import { checkSharedOptions } from "./shared-options.server.js";
+import { checkSharedOptions, warmSharedOptions } from "./shared-options.server.js";
 import { sameProduct } from "./same-product.js";
 import { readWorkbook } from "./spreadsheet.server.js";
 
@@ -142,20 +142,6 @@ export async function prepareImport(graphql, bytes) {
     if (!built.product) continue;
     builtOf.set(id, { current, product: built.product });
 
-    const shared = await checkSharedOptions(graphql, built.product.options, {
-      exceptProductIds: sheetProductIds,
-      cache: sharedCache,
-    });
-    entry.warnings = shared.warnings;
-    errors.push(
-      ...shared.errors.map((message) => ({
-        sheet: null,
-        row: null,
-        product: id,
-        message,
-      })),
-    );
-
     const keptIds = new Set(built.product.options.map((o) => o.cfsId));
     const { ready, problems, fromCents } = checkProduct(built.product);
     for (const problem of problems) {
@@ -171,6 +157,29 @@ export async function prepareImport(graphql, bytes) {
     entry.removed = (current.options ?? [])
       .filter((o) => !keptIds.has(o.cfsId))
       .map((o) => o.label);
+  }
+  // Shared-option checks come after every product is built, so their searches run together.
+  await warmSharedOptions(
+    graphql,
+    [...builtOf.values()].map((b) => b.product.options),
+    { cache: sharedCache },
+  );
+  for (const entry of products) {
+    const built = builtOf.get(entry.cfsProductId);
+    if (!built) continue;
+    const shared = await checkSharedOptions(graphql, built.product.options, {
+      exceptProductIds: sheetProductIds,
+      cache: sharedCache,
+    });
+    entry.warnings = shared.warnings;
+    errors.push(
+      ...shared.errors.map((message) => ({
+        sheet: null,
+        row: null,
+        product: entry.cfsProductId,
+        message,
+      })),
+    );
   }
   const plans = [];
   for (const entry of products) {

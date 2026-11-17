@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { checkSharedOptions } from "../../app/import/shared-options.server.js";
+import { checkSharedOptions, warmSharedOptions } from "../../app/import/shared-options.server.js";
 import { fakeShop } from "./fake-shop.js";
 
 const IN_SHEET = "gid://shopify/Product/1";
@@ -146,4 +146,40 @@ test("retries a search that fails once, but not for ever", async () => {
   const result = await checkSharedOptions(down, [option()], { exceptProductIds: [IN_SHEET], sleep: noWait });
   assert.deepEqual(result.errors, ["Shopify could not be asked about shared options just now; try again"]);
   assert.equal(calls, 3);
+});
+
+test("warming makes every search once, a few at a time, and the check then asks nothing more", async () => {
+  const shop = fakeShop([], [live()]);
+  let searches = 0;
+  let active = 0;
+  let busiest = 0;
+  const counting = async (query, args) => {
+    searches += 1;
+    active += 1;
+    busiest = Math.max(busiest, active);
+    await new Promise((resolve) => setTimeout(resolve, 5));
+    active -= 1;
+    return shop(query, args);
+  };
+  const options = [1, 2, 3, 4, 5, 6].map((n) =>
+    option({ cfsId: `c${n}`, label: `Fabric ${n}`, optionCode: `FAB-${n}` }),
+  );
+  const cache = new Map();
+  await warmSharedOptions(counting, [options, options], { cache });
+  assert.equal(searches, 12); // a code and a name for each of 6, however many products use them
+  assert.ok(busiest > 1 && busiest <= 4);
+  await checkSharedOptions(counting, options, { exceptProductIds: [IN_SHEET], cache });
+  assert.equal(searches, 12);
+});
+
+test("a search that fails while warming is asked again by the check, which reports it", async () => {
+  const down = async () => {
+    throw new Error("socket hang up");
+  };
+  const cache = new Map();
+  const noWait = async () => {};
+  await warmSharedOptions(down, [[option()]], { cache, sleep: noWait });
+  assert.equal(cache.size, 0);
+  const result = await checkSharedOptions(down, [option()], { exceptProductIds: [IN_SHEET], cache, sleep: noWait });
+  assert.deepEqual(result.errors, ["Shopify could not be asked about shared options just now; try again"]);
 });

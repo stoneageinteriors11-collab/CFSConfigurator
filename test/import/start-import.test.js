@@ -108,3 +108,22 @@ test("refuses a store that is not switched on, after the preview", async () => {
   assert.deepEqual(result, { errors: ["Importing is not switched on for this store"] });
   assert.equal(db.runs.length, 0);
 });
+
+test("a store that may not be written to is refused before anything is read from Shopify", async () => {
+  process.env.IMPORT_WRITE_SHOPS = "somewhere-else.myshopify.com";
+  let reads = 0;
+  const graphql = async () => {
+    reads += 1;
+    throw new Error("should not be called");
+  };
+  const result = await startImport({
+    db: fakeDatabase(),
+    graphql,
+    shop: SHOP,
+    bytes: await sheet(dearer),
+    fileName: "x.xlsx",
+    runInBackground: () => {},
+  });
+  assert.deepEqual(result, { errors: ["Importing is not switched on for this store"] });
+  assert.equal(reads, 0);
+});

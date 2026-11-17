@@ -1,19 +1,20 @@
 // Options import: upload a sheet, preview it, then import it into Shopify.
 import { useRef, useState } from "react";
-import { Form, useActionData, useFetcher, useNavigation } from "react-router";
+import { Form, useActionData, useFetcher, useLoaderData, useNavigation } from "react-router";
 import { boundary } from "@shopify/shopify-app-react-router/server";
 import db from "../db.server";
 import { authenticate } from "../shopify.server";
 import { backgroundRunnerFor } from "../import/background.server.js";
 import { staffFrom } from "../import/staff.server.js";
 import { MAX_FILE_BYTES, previewImport } from "../import/preview.server.js";
+import { writesAllowed } from "../import/import-run.server.js";
 import { RunProgress } from "../import/run-progress.jsx";
 import { startImport } from "../import/start-import.server.js";
 import { money } from "../orders/format.js";
 
 export const loader = async ({ request }) => {
-  await authenticate.admin(request);
-  return null;
+  const { session } = await authenticate.admin(request);
+  return { canWrite: writesAllowed(session.shop) };
 };
 
 const refused = (message) => ({
@@ -449,6 +450,7 @@ export default function OptionsImport() {
   const busy = navigation.state === "submitting";
   // The last preview is cleared the moment a new one starts, so nothing from the old file
   // (its tabs, its banner, its Import button) is shown beside the new one.
+  const { canWrite } = useLoaderData();
   const result = navigation.state === "idle" ? previous : undefined;
   const sample = useDownload();
   const current = useDownload();
@@ -466,6 +468,7 @@ export default function OptionsImport() {
     file ? `${file.name}|${file.size}|${file.lastModified}` : null;
   const importing = importer.state !== "idle";
   const canImport =
+    canWrite &&
     result?.importable &&
     result.products.some((p) => !p.unchanged) &&
     previewed !== null &&
@@ -606,7 +609,9 @@ export default function OptionsImport() {
               ) : (
                 !answer?.runId && (
                   <s-text>
-                    Choose the file again and press Preview before importing.
+                    {canWrite
+                      ? "Choose the file again and press Preview before importing."
+                      : "Importing is not switched on for this store, so this is a preview only."}
                   </s-text>
                 )
               )}
