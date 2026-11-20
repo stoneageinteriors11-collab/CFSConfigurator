@@ -228,9 +228,9 @@
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1794920306.599222,
-    "seen": 1794920527.1982622,
-    "ast_hash": "d73ceeb1ca359c6f2ace5d4a8887ba2e",
+    "mtime": 1794983805.3211324,
+    "seen": 1795160212.7874546,
+    "ast_hash": "740d007f276133943f46fbb08383d1fd",
     "semantic_hash": ""
   },
   "app/pricing/quote-request.server.js": {
@@ -552,9 +552,9 @@
     "semantic_hash": ""
   },
   "app/pricing/choices-request.server.js": {
-    "mtime": 1794398717.5843253,
-    "seen": 1794398790.8301902,
-    "ast_hash": "6e4d82272bb9588e304a090d509f23de",
+    "mtime": 1795160010.6560004,
+    "seen": 1795160212.7864501,
+    "ast_hash": "1594b6d0d326678e998719fccb69f315",
     "semantic_hash": ""
   },
   "app/routes/proxy.choices.jsx": {
@@ -576,9 +576,9 @@
     "semantic_hash": ""
   },
   "docs/ACCEPTANCE.md": {
-    "mtime": 1794467132.0431912,
-    "seen": 1794478892.3144212,
-    "ast_hash": "0d4bf219e0fa813532dc9c05ff5d994d",
+    "mtime": 1794983732.6494763,
+    "seen": 1795160212.7874546,
+    "ast_hash": "04b87ba6439c6fe2a86e121ed9ee1833",
     "semantic_hash": ""
   },
   "app/import/spreadsheet.server.js": {
@@ -873,6 +873,96 @@
     "mtime": 1794920236.2627406,
     "seen": 1794920527.1982622,
     "ast_hash": "669a0d16d8b9fed93beb24faf450a008",
+    "semantic_hash": ""
+  },
+  "app/routes/staff.choices.jsx": {
+    "mtime": 1795160040.3546548,
+    "seen": 1795160212.7864501,
+    "ast_hash": "e98d86e5f9a354f90c0556eca9f48cbf",
+    "semantic_hash": ""
+  },
+  "app/routes/staff.order-lines.jsx": {
+    "mtime": 1795160040.3137407,
+    "seen": 1795160212.7864501,
+    "ast_hash": "7bc61a1ccfb5fc381adc485ef57ac20f",
+    "semantic_hash": ""
+  },
+  "app/routes/staff.quote.jsx": {
+    "mtime": 1795160040.5087678,
+    "seen": 1795160212.7864501,
+    "ast_hash": "ab649a32ec666609f5df268c65ef0788",
+    "semantic_hash": ""
+  },
+  "app/staff-api/admin.server.js": {
+    "mtime": 1795160040.1714005,
+    "seen": 1795160212.7864501,
+    "ast_hash": "584f1967f01785d9e34b9abdbd166643",
+    "semantic_hash": ""
+  },
+  "app/staff-api/choices.server.js": {
+    "mtime": 1795159999.9650733,
+    "seen": 1795160212.7864501,
+    "ast_hash": "5df66df3964baf95ff5114b56f566717",
+    "semantic_hash": ""
+  },
+  "app/staff-api/guard.server.js": {
+    "mtime": 1795159955.813989,
+    "seen": 1795160212.7864501,
+    "ast_hash": "d3de9eb99f4631528f0a8f5a580d3f14",
+    "semantic_hash": ""
+  },
+  "app/staff-api/order-lines.server.js": {
+    "mtime": 1795159955.8721204,
+    "seen": 1795160212.7874546,
+    "ast_hash": "4336cd2b15a564bf44a4ad2520729896",
+    "semantic_hash": ""
+  },
+  "app/staff-api/quote-params.server.js": {
+    "mtime": 1795160040.1229935,
+    "seen": 1795160212.7874546,
+    "ast_hash": "09d08370bd8648c75e0396d05a59a8cd",
+    "semantic_hash": ""
+  },
+  "app/staff-api/signature.server.js": {
+    "mtime": 1795159955.7539861,
+    "seen": 1795160212.7874546,
+    "ast_hash": "2b230f70490d3f428587bea41da824f2",
+    "semantic_hash": ""
+  },
+  "test/staff-api/choices.test.js": {
+    "mtime": 1795159917.3434975,
+    "seen": 1795160212.7874546,
+    "ast_hash": "101a21896f3f25942802bd113046a4c6",
+    "semantic_hash": ""
+  },
+  "test/staff-api/guard.test.js": {
+    "mtime": 1795159917.110523,
+    "seen": 1795160212.7874546,
+    "ast_hash": "4e4d94f41c141b7165c976e9039da870",
+    "semantic_hash": ""
+  },
+  "test/staff-api/order-lines.test.js": {
+    "mtime": 1795159917.1869345,
+    "seen": 1795160212.7874546,
+    "ast_hash": "27105a1f280d47419884ad1d6a2e682f",
+    "semantic_hash": ""
+  },
+  "test/staff-api/quote-params.test.js": {
+    "mtime": 1795160024.5351114,
+    "seen": 1795160212.7874546,
+    "ast_hash": "1f1aa7878246704d34e0fcc0e0e18f25",
+    "semantic_hash": ""
+  },
+  "test/staff-api/signature.test.js": {
+    "mtime": 1795159917.024795,
+    "seen": 1795160212.7874546,
+    "ast_hash": "4beb9c4d3a1d4be46b5e9b6867061f4d",
+    "semantic_hash": ""
+  },
+  "docs/promotion-questions.md": {
+    "mtime": 1794983962.5684307,
+    "seen": 1795160212.7874546,
+    "ast_hash": "718f215e45dbcf80734920ef2c172f1b",
     "semantic_hash": ""
   },
   "package-lock.json": {

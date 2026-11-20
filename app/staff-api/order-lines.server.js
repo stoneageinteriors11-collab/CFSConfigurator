@@ -17,7 +17,7 @@ function describeLine(line, { matched, cancelled }) {
   };
   if (cancelled) return { ...base, editable: false, reason: "order_cancelled" };
   if (!matched) return { ...base, editable: false, reason: "no_matching_checkout" };
-  if (!line.configuration) return { ...base, editable: false, reason: "not_configured" };
+  if (!line.configuration || line.configurable === false) return { ...base, editable: false, reason: "not_configured" };
   return { ...base, editable: true };
 }
 

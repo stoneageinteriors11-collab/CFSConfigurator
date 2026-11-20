@@ -74,6 +74,11 @@ test("an ordinary line with no configuration is not editable", async () => {
   assert.deepEqual([body.lines[0].editable, body.lines[0].reason], [false, "not_configured"]);
 });
 
+test("an ordinary product from the same checkout (no options, not configurable) is not editable", async () => {
+  const { body } = await ask(row({}, [line({ configurable: false, configuration: { baseCents: 14900, unitCents: 14900, options: [] } })]));
+  assert.deepEqual([body.lines[0].editable, body.lines[0].reason], [false, "not_configured"]);
+});
+
 test("each line is judged on its own", async () => {
   const { body } = await ask(row({}, [line(), line({ lineItemId: "gid://shopify/LineItem/2", configurable: false, configuration: null })]));
   assert.deepEqual(body.lines.map((l) => l.editable), [true, false]);

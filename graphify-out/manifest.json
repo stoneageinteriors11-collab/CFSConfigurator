@@ -906,9 +906,9 @@
     "semantic_hash": ""
   },
   "app/staff-api/guard.server.js": {
-    "mtime": 1795159955.813989,
-    "seen": 1795160212.7864501,
-    "ast_hash": "d3de9eb99f4631528f0a8f5a580d3f14",
+    "mtime": 1795162984.2890978,
+    "seen": 1795163022.558435,
+    "ast_hash": "258facf105462b2866d5b39de26ab627",
     "semantic_hash": ""
   },
   "app/staff-api/order-lines.server.js": {
@@ -924,9 +924,9 @@
     "semantic_hash": ""
   },
   "app/staff-api/signature.server.js": {
-    "mtime": 1795159955.7539861,
-    "seen": 1795160212.7874546,
-    "ast_hash": "2b230f70490d3f428587bea41da824f2",
+    "mtime": 1795162984.2890978,
+    "seen": 1795163022.558435,
+    "ast_hash": "94cfd26b69b194b2346940c73f25a944",
     "semantic_hash": ""
   },
   "test/staff-api/choices.test.js": {
@@ -936,9 +936,9 @@
     "semantic_hash": ""
   },
   "test/staff-api/guard.test.js": {
-    "mtime": 1795159917.110523,
-    "seen": 1795160212.7874546,
-    "ast_hash": "4e4d94f41c141b7165c976e9039da870",
+    "mtime": 1795162984.2875936,
+    "seen": 1795163022.558435,
+    "ast_hash": "e1fc670f53d06a13c5a661fc39bdeaa9",
     "semantic_hash": ""
   },
   "test/staff-api/order-lines.test.js": {
