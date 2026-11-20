@@ -15,6 +15,13 @@ export function signRequest({ secret, timestamp, method, path, shop, body = "" }
   return createHmac("sha256", secret).update([timestamp, method.toUpperCase(), path, shop, bodyHash].join("\n")).digest("hex");
 }
 
+/** The path and query as both sides sign them: the query is re-encoded the same way whatever form it arrived in. */
+export function canonicalPath(url) {
+  const { pathname, searchParams } = new URL(url);
+  const query = searchParams.toString();
+  return query ? `${pathname}?${query}` : pathname;
+}
+
 const header = (headers, name) => (typeof headers?.get === "function" ? headers.get(name) : headers?.[name]) ?? "";
 
 /** Returns { ok: true, shop } for a good request, or { ok: false, reason }. Never throws. */
