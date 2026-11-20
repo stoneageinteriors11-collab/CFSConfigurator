@@ -216,21 +216,21 @@
     "semantic_hash": ""
   },
   "app/pricing/load-product.server.js": {
-    "mtime": 1794486268.3991318,
-    "seen": 1794486446.213103,
-    "ast_hash": "4e0558c207bde3e4dc30ca66b7eae4cb",
+    "mtime": 1794918034.6635382,
+    "seen": 1794919974.4100525,
+    "ast_hash": "4ed48ed85d5362fc76b6aa7026d400fa",
     "semantic_hash": ""
   },
   "test/pricing/load-product.test.js": {
-    "mtime": 1794486297.2039666,
-    "seen": 1794486446.213103,
-    "ast_hash": "4ab42cc0b031081cd1d997488ee43b94",
+    "mtime": 1794918123.4212623,
+    "seen": 1794919974.4100525,
+    "ast_hash": "49fda4c65c0d58e61050cd197b5f10fd",
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1794555513.3417037,
-    "seen": 1794564642.286177,
-    "ast_hash": "85bc053452e20e36400784f70363fbf1",
+    "mtime": 1794918188.6004183,
+    "seen": 1794919974.4100525,
+    "ast_hash": "7134a2ca2540c946a82f2eba1432e3cf",
     "semantic_hash": ""
   },
   "app/pricing/quote-request.server.js": {
@@ -582,15 +582,15 @@
     "semantic_hash": ""
   },
   "app/import/spreadsheet.server.js": {
-    "mtime": 1794483632.2961438,
-    "seen": 1794484553.0290341,
-    "ast_hash": "07602b4ef3ca1c4c8e7e8bac41b7846a",
+    "mtime": 1794919764.8796992,
+    "seen": 1794919974.4100525,
+    "ast_hash": "6f0d5e90014ae90fb49c4412dbe3542d",
     "semantic_hash": ""
   },
   "test/import/spreadsheet.test.js": {
-    "mtime": 1794483602.7237487,
-    "seen": 1794484553.0290341,
-    "ast_hash": "4be669f455430344a0ad45c3d2bcbc16",
+    "mtime": 1794919795.5258622,
+    "seen": 1794919974.4100525,
+    "ast_hash": "2c31cb16f10362dc2f814d2d554980bf",
     "semantic_hash": ""
   },
   "docs/superpowers/plans/2026-11-12-option-importer-preview.md": {
@@ -600,39 +600,39 @@
     "semantic_hash": ""
   },
   "docs/superpowers/specs/2026-11-12-option-importer-design.md": {
-    "mtime": 1794483707.4807453,
-    "seen": 1794484553.0290341,
-    "ast_hash": "bef5ce01e9e616c3d47b390f56d3b6ab",
+    "mtime": 1794919795.5455866,
+    "seen": 1794919974.4100525,
+    "ast_hash": "d7c6d8c514df9e494d0bb626d454fa54",
     "semantic_hash": ""
   },
   "app/import/check-rows.js": {
-    "mtime": 1794483632.2481449,
-    "seen": 1794484553.0290341,
-    "ast_hash": "b0e4ecfe8e783c43dfd33bc5fc9f0e84",
+    "mtime": 1794919741.7205014,
+    "seen": 1794919974.4100525,
+    "ast_hash": "1f4c1166879e323c0bdeb98c359590b7",
     "semantic_hash": ""
   },
   "test/import/check-rows.test.js": {
-    "mtime": 1794478948.0152972,
-    "seen": 1794479004.9692018,
-    "ast_hash": "e2b9b5d1f61e0b29b0f6eb4c6be2e058",
+    "mtime": 1794919775.402359,
+    "seen": 1794919974.4100525,
+    "ast_hash": "46ce09881eca150f5f7025aa89ff8d2c",
     "semantic_hash": ""
   },
   "app/import/build-product.js": {
-    "mtime": 1794486775.1184304,
-    "seen": 1794488091.5827372,
-    "ast_hash": "28493ca7560442c4ced0b24e808f1400",
+    "mtime": 1794919741.7485483,
+    "seen": 1794919974.4100525,
+    "ast_hash": "ed37f3476e13ff5fdab846b0e3dd6366",
     "semantic_hash": ""
   },
   "app/import/export-rows.js": {
-    "mtime": 1794483632.2591448,
-    "seen": 1794484553.0290341,
-    "ast_hash": "6497919cd8d7da9a7f0da4359a383ea5",
+    "mtime": 1794919741.7630677,
+    "seen": 1794919974.4100525,
+    "ast_hash": "3e6592596a1897f7cf6778389b94962f",
     "semantic_hash": ""
   },
   "test/import/build-product.test.js": {
-    "mtime": 1794486769.5582876,
-    "seen": 1794488091.5827372,
-    "ast_hash": "8363a690f97c4b79996703d8ff58688d",
+    "mtime": 1794917397.854549,
+    "seen": 1794919974.4100525,
+    "ast_hash": "6c4e3bafeab80c7aad9d2614dab09ce2",
     "semantic_hash": ""
   },
   "app/import/find-products.server.js": {
@@ -648,9 +648,9 @@
     "semantic_hash": ""
   },
   "app/import/preview.server.js": {
-    "mtime": 1794896465.4534264,
-    "seen": 1794896855.4309063,
-    "ast_hash": "0fde6673648d3bbfcea25c7e8882b11b",
+    "mtime": 1794918062.6780732,
+    "seen": 1794919974.4100525,
+    "ast_hash": "f6e132dac5fa704b02c4d2156e57acdd",
     "semantic_hash": ""
   },
   "test/import/preview.test.js": {
@@ -684,9 +684,9 @@
     "semantic_hash": ""
   },
   "test/import/fake-shop.js": {
-    "mtime": 1794488395.032728,
-    "seen": 1794488822.9242995,
-    "ast_hash": "241245aff9d0967b1874d3f692019c11",
+    "mtime": 1794918152.9248304,
+    "seen": 1794919974.4100525,
+    "ast_hash": "6924060f415746117fb428c3864c70eb",
     "semantic_hash": ""
   },
   "docs/superpowers/plans/2026-11-12-option-importer-download-current.md": {
@@ -714,9 +714,9 @@
     "semantic_hash": ""
   },
   "app/import/same-product.js": {
-    "mtime": 1794486740.780625,
-    "seen": 1794488091.5827372,
-    "ast_hash": "3fea20edf122799a1e1fbe818febc1e5",
+    "mtime": 1794918034.6635382,
+    "seen": 1794919974.4100525,
+    "ast_hash": "76295f8b24389555b281211fb057f78e",
     "semantic_hash": ""
   },
   "test/import/same-product.test.js": {
@@ -738,15 +738,15 @@
     "semantic_hash": ""
   },
   "app/import/shopify-writes.server.js": {
-    "mtime": 1794488938.5015879,
-    "seen": 1794489015.9862974,
-    "ast_hash": "57dca7eb52903ca84bc4bc9033d9392c",
+    "mtime": 1794918034.6650429,
+    "seen": 1794919974.4100525,
+    "ast_hash": "6fb170e5cc0883db78e12d7686e16dba",
     "semantic_hash": ""
   },
   "test/import/shopify-writes.test.js": {
-    "mtime": 1794488938.0835958,
-    "seen": 1794489015.9862974,
-    "ast_hash": "8ba56a21d11623401feb2dd499806ab9",
+    "mtime": 1794918123.3850617,
+    "seen": 1794919974.4100525,
+    "ast_hash": "9c2ae6f860c00f949101529fd1ad3aa2",
     "semantic_hash": ""
   },
   "app/import/write-product.server.js": {
@@ -756,9 +756,9 @@
     "semantic_hash": ""
   },
   "test/import/fake-store.js": {
-    "mtime": 1794489157.3520818,
-    "seen": 1794489273.2293139,
-    "ast_hash": "356e1af6412dfa8919c754265b61c373",
+    "mtime": 1794918152.9383664,
+    "seen": 1794919974.4100525,
+    "ast_hash": "15acd5a12228d28d39fb5f73a258294e",
     "semantic_hash": ""
   },
   "test/import/write-product.test.js": {
@@ -768,15 +768,15 @@
     "semantic_hash": ""
   },
   "app/import/import-run.server.js": {
-    "mtime": 1794896465.4534264,
-    "seen": 1794896855.4309063,
-    "ast_hash": "32d606132d95d763649d7a5c660c12d2",
+    "mtime": 1794918041.4808247,
+    "seen": 1794919974.4100525,
+    "ast_hash": "107efa7da328194433392306be48edfe",
     "semantic_hash": ""
   },
   "test/import/import-run.test.js": {
-    "mtime": 1794565079.8992307,
-    "seen": 1794569557.2723315,
-    "ast_hash": "9c108facebfc883cee984c3bac6955ff",
+    "mtime": 1794918152.9393663,
+    "seen": 1794919974.4100525,
+    "ast_hash": "3137e114f9d44fe2d686b6d296cbd844",
     "semantic_hash": ""
   },
   "app/import/background.server.js": {
@@ -837,6 +837,36 @@
     "mtime": 1794554575.4878533,
     "seen": 1794564642.286177,
     "ast_hash": "737b4c1ed8e4683518534861369f895b",
+    "semantic_hash": ""
+  },
+  "app/import/cost-checks.js": {
+    "mtime": 1794918062.56048,
+    "seen": 1794919974.4100525,
+    "ast_hash": "3e1d9ba01783ffcb27b17bc78221aee3",
+    "semantic_hash": ""
+  },
+  "test/import/costs.test.js": {
+    "mtime": 1794918119.2164004,
+    "seen": 1794919974.4100525,
+    "ast_hash": "db9b0deeacff16cd9d08d165af3f5cb4",
+    "semantic_hash": ""
+  },
+  "test/import/display-order.test.js": {
+    "mtime": 1794919764.9082468,
+    "seen": 1794919974.4100525,
+    "ast_hash": "effa0680f8ec02a9554876936f50eccb",
+    "semantic_hash": ""
+  },
+  "docs/option-import-guide.html": {
+    "mtime": 1794919795.5405884,
+    "seen": 1794919974.4100525,
+    "ast_hash": "8a5a3e7baaa69d593b0cec496c1d62ae",
+    "semantic_hash": ""
+  },
+  "docs/option-import-guide.pdf": {
+    "mtime": 1794919796.711381,
+    "seen": 1794919974.4100525,
+    "ast_hash": "e0d653e70bac9a21442e312a4223f608",
     "semantic_hash": ""
   },
   "package-lock.json": {

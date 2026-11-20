@@ -92,7 +92,7 @@ The database refuses any change to a saved specification, so later edits to choi
 
 | Item | Result | Notes |
 |---|---|---|
-| Price bypass through direct cart links | **Fail (known, accepted for now)** | `/cart/VARIANT:1` and `/cart/add.js` still buy a published configurable product at its base price (B8). Decided 11 November 2026: products stay published, and such orders are saved and shown to staff as needing attention. A hidden purchase product and automatic cancelling were considered and not chosen for now |
+| Price bypass through direct cart links | **Fail (known, accepted for now)** | `/cart/VARIANT:1` and `/cart/add.js` still buy a published configurable product at its base price (B8). Decided 11 November 2026: products stay published, and such orders are saved and shown to staff as needing attention. A hidden purchase product and automatic cancelling were considered and not chosen for now. Confirmed 18 November 2026: keep this. A staff alert for flagged orders is wanted, but the channel (Slack or email) is not chosen yet, so today a flagged order only writes "Order needs attention" to the server log (`app/routes/webhooks.orders.paid.jsx`) and shows in the app's Orders list. Until the alert exists, someone must check the Orders list. Revisit the hidden purchase product only if flagged orders appear in real numbers after launch |
 | Paying from an old checkout tab after a change | **Blocked** | B11 and B12: the old tab did not complete payment, cause unknown |
 | Shipping | **Open** | Never charged on the development store |
 | VAT | **Open** | £0 on every order |

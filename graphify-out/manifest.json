@@ -228,9 +228,9 @@
     "semantic_hash": ""
   },
   "docs/PLAN.md": {
-    "mtime": 1794918188.6004183,
-    "seen": 1794919974.4100525,
-    "ast_hash": "7134a2ca2540c946a82f2eba1432e3cf",
+    "mtime": 1794920306.599222,
+    "seen": 1794920527.1982622,
+    "ast_hash": "d73ceeb1ca359c6f2ace5d4a8887ba2e",
     "semantic_hash": ""
   },
   "app/pricing/quote-request.server.js": {
@@ -738,9 +738,9 @@
     "semantic_hash": ""
   },
   "app/import/shopify-writes.server.js": {
-    "mtime": 1794918034.6650429,
-    "seen": 1794919974.4100525,
-    "ast_hash": "6fb170e5cc0883db78e12d7686e16dba",
+    "mtime": 1794920236.087734,
+    "seen": 1794920527.1982622,
+    "ast_hash": "e29d64cc24e59dbfead600a809e088dc",
     "semantic_hash": ""
   },
   "test/import/shopify-writes.test.js": {
@@ -750,15 +750,15 @@
     "semantic_hash": ""
   },
   "app/import/write-product.server.js": {
-    "mtime": 1794489171.615833,
-    "seen": 1794489273.2293139,
-    "ast_hash": "3968efab4136c6fd31a851c35c31e8ab",
+    "mtime": 1794920236.12825,
+    "seen": 1794920527.1982622,
+    "ast_hash": "6f36ffcadbe2a44ce63ff9e77f804dce",
     "semantic_hash": ""
   },
   "test/import/fake-store.js": {
-    "mtime": 1794918152.9383664,
-    "seen": 1794919974.4100525,
-    "ast_hash": "15acd5a12228d28d39fb5f73a258294e",
+    "mtime": 1794920236.3160994,
+    "seen": 1794920527.1982622,
+    "ast_hash": "c32c00d6ab0ff34b02e0ba2a2870f792",
     "semantic_hash": ""
   },
   "test/import/write-product.test.js": {
@@ -768,15 +768,15 @@
     "semantic_hash": ""
   },
   "app/import/import-run.server.js": {
-    "mtime": 1794918041.4808247,
-    "seen": 1794919974.4100525,
-    "ast_hash": "107efa7da328194433392306be48edfe",
+    "mtime": 1794920236.261739,
+    "seen": 1794920527.1982622,
+    "ast_hash": "057147a2361bb99055593d7dc6f45f0e",
     "semantic_hash": ""
   },
   "test/import/import-run.test.js": {
-    "mtime": 1794918152.9393663,
-    "seen": 1794919974.4100525,
-    "ast_hash": "3137e114f9d44fe2d686b6d296cbd844",
+    "mtime": 1794920285.250661,
+    "seen": 1794920527.1982622,
+    "ast_hash": "c70d160d2a9dcfb957d0e38a38012d21",
     "semantic_hash": ""
   },
   "app/import/background.server.js": {
@@ -816,9 +816,9 @@
     "semantic_hash": ""
   },
   "app/routes/app.import_.history.jsx": {
-    "mtime": 1794565079.8778148,
-    "seen": 1794569557.2723315,
-    "ast_hash": "55929b017055db2a37803c82c712cb60",
+    "mtime": 1794920236.3160994,
+    "seen": 1794920527.1982622,
+    "ast_hash": "821b0ccc6e1d480e4708cd6001b5fa98",
     "semantic_hash": ""
   },
   "app/import/staff.server.js": {
@@ -858,15 +858,21 @@
     "semantic_hash": ""
   },
   "docs/option-import-guide.html": {
-    "mtime": 1794919795.5405884,
-    "seen": 1794919974.4100525,
-    "ast_hash": "8a5a3e7baaa69d593b0cec496c1d62ae",
+    "mtime": 1794920306.5982208,
+    "seen": 1794920527.1982622,
+    "ast_hash": "b40222c85da8f1a22425224f58eee09c",
     "semantic_hash": ""
   },
   "docs/option-import-guide.pdf": {
-    "mtime": 1794919796.711381,
-    "seen": 1794919974.4100525,
-    "ast_hash": "e0d653e70bac9a21442e312a4223f608",
+    "mtime": 1794920307.9071953,
+    "seen": 1794920527.1982622,
+    "ast_hash": "15df094b8eef27650f13da2034eeddce",
+    "semantic_hash": ""
+  },
+  "app/import/cleanup-run.server.js": {
+    "mtime": 1794920236.2627406,
+    "seen": 1794920527.1982622,
+    "ast_hash": "669a0d16d8b9fed93beb24faf450a008",
     "semantic_hash": ""
   },
   "package-lock.json": {
